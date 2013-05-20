@@ -1,0 +1,13 @@
+# no output in X (with vanilla conky, not conky-cli)
+out_to_x no
+# print text to standard output
+out_to_console yes
+# run indefinitely
+total_run_times 0
+# update every 1 second
+update_interval 1
+
+TEXT
+${cpu cpu}% | \
+${if_up enp3s0}${addrs enp3s0} | $endif\
+${time %Y-%m-%d %R}
