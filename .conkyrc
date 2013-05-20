@@ -8,6 +8,6 @@ total_run_times 0
 update_interval 1
 
 TEXT
-${cpu cpu}% | \
+CPU: ${cpu cpu}% | \
 ${if_up enp3s0}${addrs enp3s0} | $endif\
 ${time %Y-%m-%d %R}
