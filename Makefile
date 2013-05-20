@@ -4,7 +4,9 @@ FILES = conkyrc\
 				Xresources\
 				zshrc
 
+.PHONY: install $(FILES)
+
 install: $(FILES)
 
 $(FILES):
-	cp .$@ ~
+	cp $@ ~/.$@
