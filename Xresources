@@ -2,21 +2,26 @@ Xft.dpi: 96
 Xft.antialias: true
 Xft.rgba: rgb
 
-urxvt*font: xft:Monaco:size=10
-urxvt*boldFont: xft:Monaco:size=10
-urxvt.scrollBar: false
-urxvt.loginShell: true
-urxvt.saveLines: 512
-urxvt.geometry: 100x30
-urxvt.xftAntialias: false
-urxvt.jumpScroll: true
-urxvt.cursorBlink: false
-urxvt.borderless: false
-urxvt.scrollTtyOuput: false
-urxvt.scrollTtyKeypress: true
-urxvt*.transparent: true
-urxvt*.shading: 25
-urxvt*scrollWithBuffer: false
+URxvt*font: xft:Monaco:size=10
+! URxvt*boldFont: xft:Monaco:size=10
+URxvt*scrollBar: false
+URxvt.loginShell: true
+URxvt*saveLines: 512
+URxvt*geometry: 100x30
+URxvt.xftAntialias: false
+URxvt.jumpScroll: true
+URxvt.cursorBlink: true
+URxvt*borderless: false
+URxvt.scrollTtyOuput: false
+URxvt.scrollTtyKeypress: true
+URxvt*scrollWithBuffer: false
+URxvt*.transparent: true
+URxvt*.shading: 25
+URxvt*depth: 32
+URxvt*termName: rxvt-unicode
+URxvt.urlLauncher: firefox
+URxvt.matcher.button: true
+! URxvt.cursorUnderline: true
 
 URxvt*keysym.Home: \033[1~
 URxvt*keysym.End: \033[4~
@@ -26,6 +31,16 @@ URxvt.keysym.C-Right:   \033[1;5C
 URxvt.keysym.C-Left:    \033[1;5D
 URxvt.keysym.C-Prior:   \033[5;5~
 URxvt.keysym.C-Next:    \033[6;5~
+
+URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+URxvt.clipboard.autocopy: true
+URxvt.url-select.launcher:  firefox
+URxvt.url-select.underline: true
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
 
 !!!!!!!!!!!!
 !! COLORS !!
