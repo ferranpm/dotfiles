@@ -1,0 +1,119 @@
+snippet main
+	public static void main (String [] args) {
+		${1:/* code */}
+	}
+snippet pu
+	public ${1}
+snippet po
+	protected ${1}
+snippet pr
+	private ${1}
+snippet st
+	static ${1}
+snippet fi
+	final ${1}
+snippet ab
+	abstract ${1}
+snippet re
+	return ${1}
+snippet br
+	break;
+snippet de
+	default:
+		${1}
+snippet ca
+	catch(${1:Exception} ${2:e}) ${3}
+snippet th
+	throw  ${1}
+snippet sy
+	synchronized ${1}
+snippet im
+	import ${1}
+snippet imp
+	implements ${1}
+snippet ext
+	extends ${1}
+snippet j.u
+	java.util${1}
+snippet j.i
+	java.io.${1}
+snippet j.b
+	java.beans.${1}
+snippet j.n
+	java.net.${1}
+snippet j.m
+	java.math.${1}
+snippet if
+	if (${1}) {
+		${2}
+	}
+snippet el
+	else {
+		${2}
+	}
+snippet elif
+	else if (${1}) {
+		${2}
+	}
+snippet wh
+	while (${1}) {
+		${2}
+	}
+snippet for
+	for (int ${2:i} = 0; $2 < ${1:count}; $2${3:++}) {
+		${4:/* code */}
+	}
+snippet fore
+	for (${1:Object o} : ${2:objectList}) {
+		${3}
+	}
+snippet sw
+	switch (${1}) {
+		${2}
+	}
+snippet cs
+	case ${1}:
+		${2}
+	${3}
+snippet tc
+	public class `Filename()` extends ${1:TestCase} {
+		${2}
+	}
+snippet t
+	public void test${1:Name}() throws Exception ${2}
+snippet cl
+	class `Filename()` {
+		${1}
+	}
+snippet in
+	interface ${1:`Filename("", "untitled")`} ${2:extends Parent}${3}
+snippet m
+	${1:void} ${2:method}(${3}) ${4:throws }${5}
+snippet v
+	${1:String} ${2:var}${3: = null}${4};${5}
+snippet co
+	static public final ${1:String} ${2:var} = ${3};${4}
+snippet cos
+	static public final String ${1:var} = "${2}";${3}
+snippet as
+	assert ${1:test} : "${2:Failure message}";${3}
+snippet try
+	try {
+		${3}
+	}
+	catch(${1:Exception} ${2:e}) {
+	}
+snippet tryf
+	try {
+		${3}
+	}
+	catch(${1:Exception} ${2:e}) {
+	}
+	finally {
+	}
+snippet rst
+	ResultSet ${1:rst}${2: = null}${3};${4}
+snippet print
+	System.out.print(${1});${2}
+snippet println
+	System.out.println(${1});${2}

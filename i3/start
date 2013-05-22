@@ -6,5 +6,5 @@ xrdb $HOME/.Xresources
 #set wallpaper
 feh --bg-scale ~/Pictures/Wallpapers/ISS.jpg
 
-google-chrome &
+firefox &
 urxvt &

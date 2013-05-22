@@ -97,7 +97,7 @@ bindsym $mod+b split h
 bindsym $mod+f fullscreen
 
 # change container layout (stacked, tabbed, default)
-bindsym $mod+s layout stacking
+# bindsym $mod+s layout stacking # comentat perque no l'utilitzo i incompatible amb guardar a vim
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout default
 

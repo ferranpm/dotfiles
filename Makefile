@@ -1,5 +1,6 @@
 FILES = conkyrc\
 				i3 \
+				vim \
 				vimrc\
 				xinitrc\
 				Xresources\
@@ -10,4 +11,4 @@ FILES = conkyrc\
 install: $(FILES)
 
 $(FILES):
-	cp -ru $@ ~/.$@
+	cp -rTu $@ ~/.$@

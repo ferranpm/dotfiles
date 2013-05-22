@@ -23,24 +23,14 @@ URxvt.urlLauncher: firefox
 URxvt.matcher.button: true
 ! URxvt.cursorUnderline: true
 
-URxvt*keysym.Home: \033[1~
-URxvt*keysym.End: \033[4~
+URxvt*keysym.Home:      \033[1~
+URxvt*keysym.End:       \033[4~
 URxvt.keysym.C-Up:      \033[1;5A
 URxvt.keysym.C-Down:    \033[1;5B
 URxvt.keysym.C-Right:   \033[1;5C
 URxvt.keysym.C-Left:    \033[1;5D
 URxvt.keysym.C-Prior:   \033[5;5~
 URxvt.keysym.C-Next:    \033[6;5~
-
-URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
-URxvt.clipboard.autocopy: true
-URxvt.url-select.launcher:  firefox
-URxvt.url-select.underline: true
-URxvt.keysym.M-u:           perl:url-select:select_next
-URxvt.keysym.M-Escape:      perl:keyboard-select:activate
-URxvt.keysym.M-s:           perl:keyboard-select:search
-URxvt.keysym.M-c: perl:clipboard:copy
-URxvt.keysym.M-v: perl:clipboard:paste
 
 !!!!!!!!!!!!
 !! COLORS !!
