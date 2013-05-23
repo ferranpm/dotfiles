@@ -14,6 +14,7 @@ keycode 17 = asterisk 8
 keycode 18 = parenleft 9
 keycode 19 = parenright 0
 keycode 20 = underscore minus
+keycode 21 = equal plus
 keycode 34 = braceleft bracketleft
 keycode 35 = braceright bracketright
 keycode 49 = asciitilde grave

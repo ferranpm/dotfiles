@@ -2,6 +2,7 @@
 
 DIFF='diff -BbErwy --suppress-common-lines'
 CP='cp -rT'
+RM='rm -rf'
 FILES='
 conkyrc
 i3
@@ -39,6 +40,20 @@ case $1 in
       do
         echo $CP $file ~/.$file
         $CP $file ~/.$file
+      done
+    fi
+    ;;
+
+  clean)
+    if [ $2 ]
+    then
+      echo $RM ~/.$2
+      $RM ~/.$2
+    else
+      for file in $FILES
+      do
+        echo $RM ~/.$file
+        $RM ~/.$file
       done
     fi
     ;;
