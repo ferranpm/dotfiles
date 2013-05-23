@@ -10,6 +10,8 @@ let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.class$']
 " QuickBuf
 let g:qb_hotkey = '<F2>'
 
+let mapleader = ','
+
 syntax on
 filetype plugin indent on
 
@@ -77,17 +79,19 @@ nmap gl <C-w>l
 
 nmap <C-l> gt
 nmap <C-h> gT
-
+noremap <leader>, :update<CR>
+noremap <leader>e :q<CR>
+noremap <leader>E :qa!<CR>
 nnoremap <silent> <F1> :NERDTree<CR>
 nnoremap <silent> <F5> :wa<CR>:!make && make run<CR>
 nnoremap <silent> <Space> i_<Esc>r
 inoremap <C-n> <C-x><C-o>
 inoremap <C-p> <C-x><C-p>
 
-nnoremap <silent> ,y :call Copy()<CR>
-vnoremap <silent> ,y :call Copy()<CR>
-nnoremap <silent> ,p :call Paste()<CR>
-vnoremap <silent> ,p :call Paste()<CR>
+nnoremap <silent> <leader>y :call Copy()<CR>
+vnoremap <silent> <leader>y :call Copy()<CR>
+nnoremap <silent> <leader>p :call Paste()<CR>
+vnoremap <silent> <leader>p :call Paste()<CR>
 
 let g:reg_file = '/home/ferran/.vim/reg'
 

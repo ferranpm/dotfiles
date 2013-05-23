@@ -1,0 +1,45 @@
+#!/bin/bash
+
+DIFF='diff -BbErwy --suppress-common-lines'
+CP='cp -rT'
+FILES='
+conkyrc
+i3
+vim
+vimrc
+xinitrc
+Xmodmap
+Xresources
+zshrc
+'
+
+case $1 in
+  diff)
+    if [ $2 ]
+    then
+      echo $DIFF $2 ~/.$2
+      $DIFF $2 ~/.$2
+    else
+      for file in $FILES
+      do
+        echo $DIFF $file ~/.$file
+        $DIFF $file ~/.$file
+        echo ''
+      done
+    fi
+    ;;
+
+  install)
+    if [ $2 ]
+    then
+      echo $CP $2 ~/.$2
+      $CP $2 ~/.$2
+    else
+      for file in $FILES
+      do
+        echo $CP $file ~/.$file
+        $CP $file ~/.$file
+      done
+    fi
+    ;;
+esac

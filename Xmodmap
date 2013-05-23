@@ -1,0 +1,25 @@
+remove Lock = Caps_Lock
+remove Lock = Escape
+keycode 9 = Caps_Lock
+keycode 66 = Escape
+
+keycode 10 = exclam 1
+keycode 11 = at 2
+keycode 12 = numbersign 3
+keycode 13 = dollar 4
+keycode 14 = percent 5
+keycode 15 = asciicircum 6
+keycode 16 = ampersand 7
+keycode 17 = asterisk 8
+keycode 18 = parenleft 9
+keycode 19 = parenright 0
+keycode 20 = underscore minus
+keycode 34 = braceleft bracketleft
+keycode 35 = braceright bracketright
+keycode 49 = asciitilde grave
+keycode 59 = comma less
+keycode 60 = period greater
+keycode 61 = slash question
+keycode 47 = semicolon colon
+keycode 48 = apostrophe quotedbl
+keycode 51 = backslash bar
