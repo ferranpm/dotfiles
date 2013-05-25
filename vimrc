@@ -4,11 +4,13 @@ call pathogen#infect()
 let g:clang_library_path='/usr/lib/llvm/'
 let g:clang_use_librar=1
 
-" NERDTree ignore list
-let NERDTreeIgnore = ['\.pyc$', '\.o$', '\.class$']
-
 " QuickBuf
 let g:qb_hotkey = '<F2>'
+
+" CtrlP
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_max_height = 100
+let g:ctrlp_by_filename = 1
 
 let mapleader = ','
 
@@ -51,6 +53,7 @@ set nobackup
 set nowritebackup
 
 set statusline=%F%m%r%h%w\ type=%Y\ x=%l\ y=%v\ %p%%\ %{strftime(\"%d/%m/%y\ -\%H:%M\")}
+set wildignore+=.git/*,*.class,*.o
 
 " Tancar la finestra d'ajuda de Omni-Completion
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
@@ -82,7 +85,6 @@ nmap <C-h> gT
 noremap <leader>, :update<CR>
 noremap <leader>e :q<CR>
 noremap <leader>E :qa!<CR>
-nnoremap <silent> <F1> :NERDTree<CR>
 nnoremap <silent> <F5> :wa<CR>:!make && make run<CR>
 nnoremap <silent> <Space> i_<Esc>r
 inoremap <C-n> <C-x><C-o>
