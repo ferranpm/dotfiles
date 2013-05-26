@@ -10,6 +10,7 @@ let g:qb_hotkey = '<F2>'
 " CtrlP
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_max_height = 100
+let g:ctrlp_max_files = 2500
 let g:ctrlp_by_filename = 1
 
 let mapleader = ','
@@ -82,9 +83,11 @@ nmap gl <C-w>l
 
 nmap <C-l> gt
 nmap <C-h> gT
+
 noremap <leader>, :update<CR>
 noremap <leader>e :q<CR>
 noremap <leader>E :qa!<CR>
+nnoremap <F1> :NERDTree<CR>
 nnoremap <silent> <F5> :wa<CR>:!make && make run<CR>
 nnoremap <silent> <Space> i_<Esc>r
 inoremap <C-n> <C-x><C-o>

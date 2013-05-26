@@ -14,10 +14,11 @@ set $mod Mod1
 ############
 # PERSONAL #
 ############
+for_window [instance="sun-awt-X11-XFramePeer"] floating enable
 exec "~/.i3/start"
 set $win Mod4
 focus_follows_mouse no
-bindsym $win+i exec firefox
+bindsym $win+i exec google-chrome
 bindsym $win+r exec rhythmbox
 bindsym $win+f exec "urxvt -e ranger"
 bindsym $win+n exec "urxvt -e newsbeuter -r"
@@ -91,7 +92,7 @@ bindsym $mod+Shift+Right move right
 bindsym $mod+b split h
 
 # split in vertical orientation
-# bindsym $mod+v split v # comentat perque sino es incompatible amb .Xresources
+bindsym $mod+v split v 
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
