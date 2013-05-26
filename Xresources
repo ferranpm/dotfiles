@@ -41,7 +41,7 @@ URxvt.keysym.C-Next:    \033[6;5~
 #define t_bg_bump      #3F3E3B
 #define t_fg_comment   #7F7F83
 #define t_foreground   #A6A7AA
-#define t_fg_highlight #B6B7BB
+#define t_fg_highlight #FFFFFF
 #define t_fg_ceiling   #FEFFFF
 
 URxvt.background: t_background
@@ -51,7 +51,7 @@ URxvt.colorBD: t_fg_highlight
 URxvt.colorIT: t_fg_highlight
 URxvt.colorUL: t_fg_highlight
 
-URxvt.cursorColor: #CE94C6
+URxvt.cursorColor: #9AB9F3
 
 ! BLK
 URxvt.color0: t_bg_bump
@@ -63,7 +63,7 @@ URxvt.color15: t_fg_ceiling
 
 ! RED
 URxvt.color1: #B36B65
-URxvt.color9: #EFA29B
+URxvt.color9: #E64839
 
 ! YEL
 URxvt.color3: #8D7E45
@@ -71,7 +71,6 @@ URxvt.color11: #C7B679
 
 ! GRN
 URxvt.color2: #4FAC67
-!URxvt.color2: #4F8C61
 URxvt.color10: #86C596
 
 ! CYN
