@@ -6,7 +6,6 @@ RM='rm -rf'
 FILES='
 conkyrc
 i3
-vim
 vimrc
 xinitrc
 Xmodmap
