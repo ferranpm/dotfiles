@@ -1,10 +1,17 @@
 #!/bin/sh
 
-#set resources
-xrdb $HOME/.Xresources
-
-#set wallpaper
+# set wallpaper
 feh --bg-scale ~/Pictures/Wallpapers/ISS.jpg
 
-google-chrome &
+# set keymap mod
+xmodmap ~/.Xmodmap
+
+# set resources
+xrdb ~/.Xresources
+
+# open apps
+firefox &
+pidgin &
+turpial &
 urxvt &
+urxvt -title RSS -g 65x15 -e newsbeuter -r &
