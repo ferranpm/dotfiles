@@ -20,6 +20,7 @@ zshrc
 
 VIM_PATHOGEN='https://github.com/vim-scripts/pathogen.vim'
 VIM_PLUGINS='
+https://github.com/vim-scripts/php.vim-html-enhanced
 https://github.com/vim-scripts/clang-complete
 https://github.com/vim-scripts/ctrlp.vim
 https://github.com/vim-scripts/fugitive.vim

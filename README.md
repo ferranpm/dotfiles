@@ -1,7 +1,6 @@
 # dotfiles
 
 ## Vim plugins
-  * [Pathogen](https://github.com/vim-scripts/pathogen.vim)
   * [ClangComplete](https://github.com/vim-scripts/clang-complete)
   * [CtrlP](https://github.com/vim-scripts/ctrlp.vim)
   * [FuGITive](https://github.com/vim-scripts/fugitive.vim)
@@ -9,6 +8,8 @@
   * [JavaComplete](https://github.com/vim-scripts/javacomplete)
   * [MatchIt](https://github.com/vim-scripts/matchit.zip)
   * [NERDTree](https://github.com/vim-scripts/The-NERD-tree)
+  * [PHP-HTML](https://github.com/vim-scripts/php.vim-html-enhanced)
+  * [Pathogen](https://github.com/vim-scripts/pathogen.vim)
   * [PowerLine](https://github.com/Lokaltog/vim-powerline)
   * [PythonComplete](https://github.com/vim-scripts/pythoncomplete)
   * [QuickBuf](https://github.com/vim-scripts/QuickBuf)

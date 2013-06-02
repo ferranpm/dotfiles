@@ -16,12 +16,14 @@ let g:ctrlp_by_filename=1
 " taglist
 let Tlist_WinWidth=75
 let Tlist_GainFocus_On_ToggleOpen=1
+let Tlist_Use_Right_Window=1
 let Tlist_Close_On_Select=1
 let Tlist_Show_One_File=1
 let Tlist_Inc_Winwidth=1
 let Tlist_Compact_Format=1
 
 " NERDTree
+let NERDTreeWinSize=75
 let NERDTreeQuitOnOpen=1
 let NERDTreeMinimalUI=1
 
@@ -71,13 +73,16 @@ set showbreak=↪
 set foldmethod=indent
 set foldlevelstart=99
 
+
+set cursorline
+highlight CursorLine cterm=bold ctermbg=black ctermfg=None guibg=None guifg=None
+
 " Tancar la finestra d'ajuda de Omni-Completion
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 autocmd FileType java set omnifunc=javacomplete#Complete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
 nnoremap j gj
 nnoremap k gk
@@ -96,6 +101,15 @@ nmap gl <C-w>l
 
 nmap <C-l> gt
 nmap <C-h> gT
+
+imap <leader>' ''<Esc>i
+imap <leader>" ""<Esc>i
+imap <leader>( ()<Esc>i
+imap <leader>[ []<Esc>i
+imap <leader>{ {}<Esc>i
+
+nmap <down> ddp
+nmap <up> ddkP
 
 nnoremap <leader><leader> :update<CR>
 nnoremap <leader>e :q<CR>

@@ -28,27 +28,27 @@ Xft.rgba: rgb
 !! URxvt specific !!
 !!!!!!!!!!!!!!!!!!!!
 URxvt.termName: rxvt-unicode
-URxvt.font: xft:DejaVu Sans Mono:size=11
-URxvt.transparent: true
-URxvt.shading: 25
-URxvt.depth: 32
+URxvt.font: xft:DejaVu Sans Mono:size=9
+! URxvt.transparent: true
+! URxvt.shading: 20
+! URxvt.depth: 32
 
 !!!!!!!!!!!!!!!!!!!!
 !! XTerm specific !!
 !!!!!!!!!!!!!!!!!!!!
-XTerm*faceName: DejaVu Sans Mono:size=11
+XTerm*faceName: DejaVu Sans Mono:size=9
 
 !!!!!!!!!!!!
 !! COLORS !!
 !!!!!!!!!!!!
 #define t_bg_floor     #010000
 #define t_bg_dip       #2B2B28
-#define t_background   #22211E
+#define t_background   #111111
 #define t_bg_bump      #3F3E3B
 #define t_fg_comment   #7F7F83
 #define t_foreground   #A6A7AA
 #define t_fg_highlight #FFFFFF
-#define t_fg_ceiling   #FEFFFF
+#define t_fg_ceiling   #444444
 
 *.background: t_background
 *.foreground: t_foreground
@@ -73,7 +73,7 @@ XTerm*faceName: DejaVu Sans Mono:size=11
 
 ! YEL
 *.color3: #8D7E45
-*.color11: #C7B679
+*.color11: #807040
 
 ! GRN
 *.color2: #4FAC67
@@ -84,8 +84,8 @@ XTerm*faceName: DejaVu Sans Mono:size=11
 *.color14: #5EC7D4
 
 ! BLU
-*.color4: #6181B8
-*.color12: #9AB9F3
+*.color4: #79A1E6
+*.color12: #A5B9F3
 
 ! MAG
 *.color5: #A46D9D
