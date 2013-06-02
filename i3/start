@@ -11,7 +11,6 @@ xrdb ~/.Xresources
 
 # open apps
 firefox &
-pidgin &
 turpial &
 urxvt &
 urxvt -title RSS -g 65x15 -e newsbeuter -r &
