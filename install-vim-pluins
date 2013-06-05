@@ -1,0 +1,35 @@
+#!/bin/bash
+
+VIM_PATHOGEN='https://github.com/vim-scripts/pathogen.vim'
+VIM_PLUGINS='
+https://github.com/Lokaltog/vim-powerline
+https://github.com/terryma/vim-multiple-cursors
+https://github.com/vim-scripts/QuickBuf
+https://github.com/vim-scripts/The-NERD-tree
+https://github.com/vim-scripts/clang-complete
+https://github.com/vim-scripts/ctrlp.vim
+https://github.com/vim-scripts/fugitive.vim
+https://github.com/vim-scripts/html5.vim
+https://github.com/vim-scripts/javacomplete
+https://github.com/vim-scripts/matchit.zip
+https://github.com/vim-scripts/php.vim-html-enhanced
+https://github.com/vim-scripts/pythoncomplete
+https://github.com/vim-scripts/snipMate
+https://github.com/vim-scripts/tComment
+https://github.com/vim-scripts/taglist.vim
+'
+
+mkdir -p ~/.vim
+mkdir -p ~/.vim/autoload
+git clone $VIM_PATHOGEN
+cp $(find -type f -name 'pathogen.vim') ~/.vim/autoload
+rm -rf pathogen.vim
+
+mkdir -p ~/.vim/bundle
+cd ~/.vim/bundle
+for plugin in $VIM_PLUGINS
+do
+  git clone $plugin
+done
+cd ~/.vim
+find -name ".git*" | xargs -l rm -rf

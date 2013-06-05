@@ -1,0 +1,20 @@
+#!/bin/bash
+
+DIR=$(pwd)
+FILES='
+conkyrc
+i3
+vimrc
+xinitrc
+Xmodmap
+Xresources
+zshrc
+'
+
+mkdir -p ~/dotfiles_old
+
+for file in $FILES
+do
+  mv ~/.$file ~/dotfiles_old
+  ln --force -s $DIR/$file ~/.$file
+done

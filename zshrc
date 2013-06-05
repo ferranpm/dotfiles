@@ -17,8 +17,8 @@ ZSH=$HOME/.oh-my-zsh
 # ZSH_THEME="murilasso"
 # ZSH_THEME="intheloop"
 # ZSH_THEME="fino"
-ZSH_THEME="bira"
-# ZSH_THEME="blinks"
+# ZSH_THEME="bira"
+ZSH_THEME="blinks"
 
 CASE_SENSITIVE="true"
 DISABLE_CORRECTION="true"
