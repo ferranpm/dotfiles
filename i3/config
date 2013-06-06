@@ -24,7 +24,7 @@ client.focused_inactive #333333 #5F676A #EEEEEE #374727
 bindsym $win+i exec firefox
 bindsym $win+r exec rhythmbox
 bindsym $win+f exec urxvt -e ranger
-bindsym $win+n exec urxvt -title RSS -g 65x15 -e newsbeuter -r
+bindsym $win+n exec urxvt -title RSS -g 65x25 -e newsbeuter -r
 bindsym $win+e exec setxkbmap es
 bindsym $win+u exec setxkbmap us
 bindsym $win+c exec xmodmap ~/.Xmodmap
@@ -44,6 +44,7 @@ assign [title="RSS"] 3
 for_window [class="Skype"] floating enable
 for_window [class="Evince"] floating enable
 for_window [class="feh"] floating enable
+for_window [class="GoL"] floating enable
 for_window [class="MPlayer"] floating enable
 for_window [class="Pidgin"] floating enable
 for_window [class="python2.7"] floating enable
