@@ -10,10 +10,10 @@ Xft.rgba: rgb
 *.jumpScroll: true
 *.cursorBlink: true
 *.borderless: false
-*.scrollTtyOuput: false
+*.scrollTtyOutput: false
 *.scrollTtyKeypress: true
-*.scrollWithBuffer: false
-*.urlLauncher: google-chrome
+*.scrollWithBuffer: true
+*.urlLauncher: firefox
 
 *.keysym.Home:      \033[1~
 *.keysym.End:       \033[4~
@@ -30,7 +30,7 @@ Xft.rgba: rgb
 URxvt.termName: rxvt-unicode
 URxvt.font: xft:DejaVu Sans Mono:size=9
 ! URxvt.transparent: true
-! URxvt.shading: 20
+! URxvt.shading: 130
 ! URxvt.depth: 32
 
 !!!!!!!!!!!!!!!!!!!!
@@ -41,42 +41,35 @@ XTerm*faceName: DejaVu Sans Mono:size=9
 !!!!!!!!!!!!
 !! COLORS !!
 !!!!!!!!!!!!
-#define t_dark0 #282828
-#define t_dark1 #3c3836
-#define t_dark2 #504945
-#define t_dark3 #665c54
-#define t_dark4 #7c6f64
+*.foreground: #CBAE83
+*.background: #282828
 
-#define t_light0 #fdf4c1
-#define t_light1 #ebdbb2
-#define t_light2 #d5c4a1
-#define t_light3 #bdae93
-#define t_light4 #a89984
+*.borderColor:        #151515
+*.colorBD:            #ffffff
+*.cursorColor:        #ff8939
+*.cursorColor2:       #151515
 
-*.background: t_dark1
-*.foreground: t_light1
-
-! Black
-URxvt*color0:           #3d3e3d
-URxvt*color8:           #5a5b5c
-!Red
-URxvt*color1:           #755a5b
-URxvt*color9:           #a37679
-!Green
-URxvt*color2:           #68755a
-URxvt*color10:          #87a376
-!Yellow
-URxvt*color3:           #756e5a
-URxvt*color11:          #a39b76
-!Blue
-URxvt*color4:           #5b6976
-URxvt*color12:          #758ba3
-!Magenta
-URxvt*color5:           #755b76
-URxvt*color13:          #9f76a3
-!Cyan
-URxvt*color6:           #5b7674
-URxvt*color14:          #75a3a1
-!White
-URxvt*color7:           #808080
-URxvt*color15:          #aeafb0
+! black
+*.color0:     #1B1B1B
+*.color8:     #404040
+!red
+*.color1:     #E84F4F
+*.color9:     #D23D3D
+!green
+*.color2:     #B8D68C
+*.color10:    #A0CF5D
+!yellow
+*.color3:     #E1AA5D
+*.color11:    #F39D21
+!blue
+*.color4:     #7DC1CF
+*.color12:    #4E9FB1
+!magenta
+*.color5:     #9B64FB
+*.color13:    #8542FF
+!cyan
+*.color6:     #6D878D
+*.color14:    #42717B
+!white
+*.color7:     #dddddd
+*.color15:    #dddddd

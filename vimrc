@@ -14,13 +14,14 @@ let g:ctrlp_max_files=2500
 let g:ctrlp_by_filename=1
 
 " taglist
-let Tlist_WinWidth=75
-let Tlist_GainFocus_On_ToggleOpen=1
-let Tlist_Use_Right_Window=1
+let Tlist_Auto_Highlight_Tag = 0
 let Tlist_Close_On_Select=1
-let Tlist_Show_One_File=1
-let Tlist_Inc_Winwidth=1
 let Tlist_Compact_Format=1
+let Tlist_GainFocus_On_ToggleOpen=1
+let Tlist_Highlight_Tag_On_BufEnter = 0
+let Tlist_Show_One_File=1
+let Tlist_Sort_Type = "name"
+let Tlist_WinWidth=75
 
 " NERDTree
 let NERDTreeWinSize=75
@@ -31,6 +32,8 @@ let mapleader=','
 
 syntax on
 filetype plugin indent on
+
+colorscheme gruvbox
 
 set number
 set ruler
@@ -43,8 +46,6 @@ set incsearch
 set ignorecase
 set smartcase
 set nohlsearch
-set noerrorbells
-set visualbell
 set mouse=a
 set scrolloff=10
 
@@ -75,7 +76,11 @@ set foldlevelstart=99
 
 
 set cursorline
-highlight CursorLine cterm=bold ctermbg=black ctermfg=None guibg=None guifg=None
+if has("gui_running")
+  highlight CursorLine cterm=bold ctermbg=black
+else 
+  highlight CursorLine cterm=bold ctermbg=black ctermfg=None guibg=None guifg=None
+endif
 
 " Tancar la finestra d'ajuda de Omni-Completion
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
