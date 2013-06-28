@@ -26,17 +26,26 @@ let Tlist_WinWidth=75
 " NERDTree
 let NERDTreeWinSize=75
 let NERDTreeQuitOnOpen=1
-let NERDTreeMinimalUI=1
 
 let mapleader=','
+
+set cursorline
+if has("gui_running")
+  highlight CursorLine cterm=bold ctermbg=black
+  colorscheme gruvbox
+else 
+  highlight CursorLine cterm=bold ctermfg=None guibg=None guifg=None
+  colorscheme lucius
+endif
 
 syntax on
 filetype plugin indent on
 
-colorscheme gruvbox
-
+set background=light
 set number
 set ruler
+
+set t_Co=256
 
 set autoread
 set gdefault
@@ -46,7 +55,6 @@ set incsearch
 set ignorecase
 set smartcase
 set nohlsearch
-set mouse=a
 set scrolloff=10
 
 set encoding=utf-8
@@ -68,26 +76,17 @@ set nobackup
 set nowritebackup
 
 set statusline=%F%m%r%h%w\ type=%Y\ x=%l\ y=%v\ %p%%\ %{strftime(\"%d/%m/%y\ -\%H:%M\")}
-set wildignore+=.git/*,.gitignore,*.class,*.o,*.pyc
+set wildignore+=.git/*,.gitignore,*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar
 
 set showbreak=↪
 set foldmethod=indent
 set foldlevelstart=99
-
-
-set cursorline
-if has("gui_running")
-  highlight CursorLine cterm=bold ctermbg=black
-else 
-  highlight CursorLine cterm=bold ctermbg=black ctermfg=None guibg=None guifg=None
-endif
 
 " Tancar la finestra d'ajuda de Omni-Completion
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 autocmd FileType java set omnifunc=javacomplete#Complete
-autocmd FileType python set omnifunc=pythoncomplete#Complete
 
 nnoremap j gj
 nnoremap k gk
@@ -107,21 +106,16 @@ nmap gl <C-w>l
 nmap <C-l> gt
 nmap <C-h> gT
 
-imap <leader>' ''<Esc>i
-imap <leader>" ""<Esc>i
-imap <leader>( ()<Esc>i
-imap <leader>[ []<Esc>i
-imap <leader>{ {}<Esc>i
-
 nmap <down> ddp
 nmap <up> ddkP
 
-nnoremap <leader><leader> :update<CR>
+nnoremap <leader>. :update<CR>
 nnoremap <leader>e :q<CR>
-nnoremap <leader>E :qa!<CR>
+nnoremap <leader>E :qa<CR>
 nnoremap <leader>o :only<CR>
 nnoremap <silent> <C-g> :TlistToggle<CR>
 nnoremap <silent> <C-f> :NERDTreeToggle<CR>
 nnoremap <silent> <Space> i_<Esc>r
+
 inoremap <C-n> <C-x><C-o>
 inoremap <C-p> <C-x><C-p>
