@@ -1,36 +1,52 @@
 [submodule "vim/bundle/AirLine"]
 	path = vim/bundle/AirLine
 	url = https://github.com/bling/vim-airline
+  ignore = dirty
 [submodule "vim/bundle/AutoComplPop"]
 	path = vim/bundle/AutoComplPop
 	url = https://github.com/vim-scripts/AutoComplPop
+  ignore = dirty
 [submodule "vim/bundle/MultipleCursors"]
 	path = vim/bundle/MultipleCursors
 	url = https://github.com/terryma/vim-multiple-cursors
+  ignore = dirty
 [submodule "vim/bundle/QuickBuf"]
 	path = vim/bundle/QuickBuf
 	url = https://github.com/vim-scripts/QuickBuf
+  ignore = dirty
 [submodule "vim/bundle/NERDtree"]
 	path = vim/bundle/NERDtree
 	url = https://github.com/vim-scripts/The-NERD-tree
+  ignore = dirty
 [submodule "vim/bundle/ClangComplete"]
 	path = vim/bundle/ClangComplete
 	url = https://github.com/vim-scripts/clang-complete
+  ignore = dirty
 [submodule "vim/bundle/CtrlP"]
 	path = vim/bundle/CtrlP
 	url = https://github.com/vim-scripts/ctrlp.vim
+  ignore = dirty
 [submodule "vim/bundle/HTML5"]
 	path = vim/bundle/HTML5
 	url = https://github.com/vim-scripts/html5.vim
+  ignore = dirty
 [submodule "vim/bundle/MatchIt"]
 	path = vim/bundle/MatchIt
 	url = https://github.com/vim-scripts/matchit.zip
+  ignore = dirty
 [submodule "vim/bundle/php-HTML"]
 	path = vim/bundle/php-HTML
 	url = https://github.com/vim-scripts/php.vim-html-enhanced
+  ignore = dirty
 [submodule "vim/bundle/tComment"]
 	path = vim/bundle/tComment
 	url = https://github.com/vim-scripts/tComment
+  ignore = dirty
 [submodule "vim/bundle/TagList"]
 	path = vim/bundle/TagList
 	url = https://github.com/vim-scripts/taglist.vim
+  ignore = dirty
+[submodule "vim/bundle/UltiSnips"]
+	path = vim/bundle/UltiSnips
+	url = https://github.com/SirVer/ultisnips
+  ignore = dirty
