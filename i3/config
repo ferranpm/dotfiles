@@ -47,6 +47,7 @@ assign [title="RSS"] 3
 for_window [class="Evince"] floating enable
 for_window [class="GoL"] floating enable
 for_window [class="MPlayer"] floating enable
+for_window [class="Nvidia-settings"] floating enable
 for_window [class="Pidgin"] floating enable
 for_window [class="Ristretto"] floating enable
 for_window [class="Skype"] floating enable

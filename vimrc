@@ -13,7 +13,7 @@ let g:ctrlp_max_height=100
 let g:ctrlp_max_files=2500
 let g:ctrlp_by_filename=1
 
-" taglist
+" TagList
 let Tlist_Auto_Highlight_Tag = 0
 let Tlist_Close_On_Select=1
 let Tlist_Compact_Format=1
@@ -26,6 +26,15 @@ let Tlist_WinWidth=75
 " NERDTree
 let NERDTreeWinSize=75
 let NERDTreeQuitOnOpen=1
+
+" AirLine
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 let mapleader=','
 
@@ -86,7 +95,7 @@ set foldlevelstart=99
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
-autocmd FileType java set omnifunc=javacomplete#Complete
+" autocmd FileType java set omnifunc=javacomplete#Complete
 
 nnoremap j gj
 nnoremap k gk
