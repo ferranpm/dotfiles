@@ -36,6 +36,12 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
+" AutocomplPop
+let g:acp_behaviorKeywordLength = -1
+let g:acp_behaviorPythonOmniLength = 0
+let g:acp_ignorecaseOption = 0
+let g:acp_completeoptPreview = 0
+
 let mapleader=','
 
 set cursorline
@@ -56,6 +62,7 @@ set ruler
 
 set t_Co=256
 
+set mouse=a
 set autoread
 set gdefault
 set showcmd
@@ -80,6 +87,8 @@ set nocompatible
 set wildmenu
 set wildmode=list:full
 
+set completeopt=longest
+set complete=".,w,b,u,t,i,d"
 set noswapfile
 set nobackup
 set nowritebackup
@@ -102,8 +111,8 @@ nnoremap k gk
 xnoremap j gj
 xnoremap k gk
 
-nmap J 5j
-nmap K 5k
+nmap J 5<C-E>
+nmap K 5<C-Y>
 xmap J 5j
 xmap K 5k
 
@@ -125,6 +134,3 @@ nnoremap <leader>o :only<CR>
 nnoremap <silent> <C-g> :TlistToggle<CR>
 nnoremap <silent> <C-f> :NERDTreeToggle<CR>
 nnoremap <silent> <Space> i_<Esc>r
-
-inoremap <C-n> <C-x><C-o>
-inoremap <C-p> <C-x><C-p>
