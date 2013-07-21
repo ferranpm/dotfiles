@@ -12,7 +12,17 @@
 set $mod Mod1
 set $win Mod4
 
-exec "~/.i3/start"
+# set wallpaper
+exec feh --bg-scale ~/Pictures/Wallpapers/ISS.jpg
+# set keymap mod
+exec xmodmap ~/dotfiles/Xmodmap
+# set resources
+exec xrdb ~/.Xresources
+# open apps
+exec firefox
+# start urxvt on workspace 2
+exec --no-startup-id i3-msg 'workspace 2; exec urxvt; workspace 1'
+exec urxvt -title RSS -g 65x25 -e newsbeuter
 
 focus_follows_mouse no
 
@@ -28,13 +38,13 @@ bindsym $win+f exec urxvt -title ranger -e python3 /usr/bin/ranger
 bindsym $win+n exec urxvt -title RSS -g 65x25 -e newsbeuter
 bindsym $win+e exec setxkbmap es
 bindsym $win+u exec setxkbmap us
-bindsym $win+c exec xmodmap ~/.Xmodmap
+bindsym $win+c exec xmodmap ~/dotfiles/Xmodmap
 bindsym $win+p exec systemctl poweroff
 bindsym $win+Up exec amixer set Master 1%+
 bindsym $win+Down exec amixer set Master 1%-
 bindsym Print exec scrot
 
-assign [class="Firefox"] 2
+assign [class="Firefox"] 1
 assign [class="Qbittorrent"] 5
 assign [class="Rhythmbox"] 5
 assign [title="Vimpc"] 3
