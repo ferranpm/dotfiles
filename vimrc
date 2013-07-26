@@ -1,9 +1,5 @@
 call pathogen#infect()
 
-" C and C++ completion
-let g:clang_library_path='/usr/lib/llvm/'
-let g:clang_use_librar=1
-
 " QuickBuf
 let g:qb_hotkey='<F2>'
 
@@ -42,7 +38,17 @@ let g:acp_behaviorPythonOmniLength = 0
 let g:acp_ignorecaseOption = 0
 let g:acp_completeoptPreview = 0
 
-let mapleader=','
+" C and C++
+let g:clang_library_path='/usr/lib/llvm/'
+let g:clang_use_librar=1
+
+" Ruby
+autocmd FileType ruby set omnifunc=rubycomplete#Complete 
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_classes_in_global = 1
+
+" Java
+" autocmd FileType java set omnifunc=javacomplete#Complete
 
 set cursorline
 if has("gui_running")
@@ -52,6 +58,8 @@ else
   highlight CursorLine cterm=bold ctermfg=None guibg=None guifg=None
   colorscheme lucius
 endif
+
+let mapleader=','
 
 syntax on
 filetype plugin indent on
@@ -88,7 +96,7 @@ set wildmenu
 set wildmode=list:full
 
 set completeopt=longest
-set complete=".,w,b,u,t,i,d"
+" set complete=".,w,b,u,t,i,d"
 set noswapfile
 set nobackup
 set nowritebackup
@@ -103,8 +111,6 @@ set foldlevelstart=99
 " Tancar la finestra d'ajuda de Omni-Completion
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-
-" autocmd FileType java set omnifunc=javacomplete#Complete
 
 nnoremap j gj
 nnoremap k gk
@@ -126,6 +132,10 @@ nmap <C-h> gT
 
 nmap <down> ddp
 nmap <up> ddkP
+
+inoremap <leader>c <C-x><C-o>
+imap <C-n> <down>
+imap <C-p> <up>
 
 nnoremap <leader>. :update<CR>
 nnoremap <leader>e :q<CR>
