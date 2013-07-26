@@ -13,16 +13,16 @@ set $mod Mod1
 set $win Mod4
 
 # set wallpaper
-exec feh --bg-scale ~/Pictures/Wallpapers/ISS.jpg
+exec --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/ISS.jpg
 # set keymap mod
-exec xmodmap ~/dotfiles/Xmodmap
+exec --no-startup-id xmodmap ~/dotfiles/Xmodmap
 # set resources
-exec xrdb ~/.Xresources
+exec --no-startup-id xrdb ~/.Xresources
 # open apps
-exec firefox
+exec --no-startup-id firefox
 # start urxvt on workspace 2
 exec --no-startup-id i3-msg 'workspace 2; exec urxvt; workspace 1'
-exec urxvt -title RSS -g 65x25 -e newsbeuter
+exec --no-startup-id urxvt -title RSS -g 65x25 -e newsbeuter
 
 focus_follows_mouse no
 
