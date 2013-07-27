@@ -11,7 +11,7 @@ plugins=(git archlinux cp gnu-utils)
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/usr/bin/vendor_perl:/usr/bin/core_perl:.
+export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/usr/bin/vendor_perl:/usr/bin/core_perl:~/.gem/ruby/2.0.0/bin:.
 export PYTHONSTARTUP=$HOME/.pythonrc
 export SHELL=/usr/bin/zsh
 export EDITOR=/usr/bin/vim
@@ -28,5 +28,3 @@ alias cal="cal -3"
 alias rss="newsbeuter -r"
 alias diff="diff -yEbwB --suppress-common-lines"
 alias grep="grep --color=always"
-
-fortune -a | cowsay -n
