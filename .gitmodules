@@ -28,7 +28,7 @@
   ignore = dirty
 [submodule "vim/bundle/HTML5"]
 	path = vim/bundle/HTML5
-	url = https://github.com/vim-scripts/html5.vim
+	url = https://github.com/othree/html5.vim
   ignore = dirty
 [submodule "vim/bundle/MatchIt"]
 	path = vim/bundle/MatchIt
