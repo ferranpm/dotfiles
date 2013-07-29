@@ -3,6 +3,7 @@
 DIR=$(pwd)
 FILES='
 conkyrc
+gitconfig
 i3
 oh-my-zsh/custom
 vim
