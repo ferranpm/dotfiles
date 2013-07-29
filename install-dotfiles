@@ -4,6 +4,7 @@ DIR=$(pwd)
 FILES='
 conkyrc
 i3
+oh-my-zsh/custom
 vim
 vimrc
 xinitrc
@@ -12,10 +13,8 @@ Xresources
 zshrc
 '
 
-mkdir -p ~/dotfiles_old
-
 for file in $FILES
 do
-  mv ~/.$file ~/dotfiles_old
-  ln --force -s $DIR/$file ~/.$file
+  rm -v -rf ~/.$file ~/dotfiles_old
+  ln -v -s $DIR/$file ~/.$file
 done
