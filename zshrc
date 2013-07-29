@@ -7,7 +7,7 @@ CASE_SENSITIVE="true"
 DISABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(git archlinux cp gnu-utils)
+plugins=(git archlinux cp gnu-utils vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
