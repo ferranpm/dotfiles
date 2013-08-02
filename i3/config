@@ -19,7 +19,7 @@ exec --no-startup-id xmodmap ~/dotfiles/Xmodmap
 # set resources
 exec --no-startup-id xrdb ~/.Xresources
 # open apps
-exec --no-startup-id firefox
+exec --no-startup-id i3-msg 'workspace 1; exec firefox; workspace 1'
 # start urxvt on workspace 2
 exec --no-startup-id i3-msg 'workspace 2; exec urxvt; workspace 1'
 exec --no-startup-id urxvt -title RSS -g 65x25 -e newsbeuter
@@ -44,7 +44,6 @@ bindsym $win+Up exec amixer set Master 1%+
 bindsym $win+Down exec amixer set Master 1%-
 bindsym Print exec scrot
 
-assign [class="Firefox"] 1
 assign [class="Qbittorrent"] 5
 assign [class="Rhythmbox"] 5
 assign [title="Vimpc"] 3
