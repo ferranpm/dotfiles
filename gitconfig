@@ -3,8 +3,9 @@
 	name = Ferran Pelayo Monfort
 
 [core]
-	editor = vim
+  editor = vim
   pager = less -R
+  autocrlf = input
 
 [color]
   diff = auto

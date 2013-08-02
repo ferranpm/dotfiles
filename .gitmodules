@@ -2,10 +2,6 @@
 	path = vim/bundle/AirLine
 	url = https://github.com/bling/vim-airline
   ignore = dirty
-[submodule "vim/bundle/AutoComplPop"]
-	path = vim/bundle/AutoComplPop
-	url = https://github.com/vim-scripts/AutoComplPop
-  ignore = dirty
 [submodule "vim/bundle/MultipleCursors"]
 	path = vim/bundle/MultipleCursors
 	url = https://github.com/terryma/vim-multiple-cursors
@@ -50,3 +46,6 @@
 	path = vim/bundle/UltiSnips
 	url = https://github.com/SirVer/ultisnips
   ignore = dirty
+[submodule "vim/bundle/AutoComplPop"]
+	path = vim/bundle/AutoComplPop
+	url = https://github.com/vim-scripts/AutoComplPop
