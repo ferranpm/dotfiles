@@ -6,7 +6,7 @@ let g:qb_hotkey='<F2>'
 " CtrlP
 let g:ctrlp_show_hidden=1
 let g:ctrlp_max_height=100
-let g:ctrlp_max_files=2500
+let g:ctrlp_max_files=300
 let g:ctrlp_by_filename=1
 
 " TagList
@@ -32,15 +32,13 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-" AutocomplPop
-let g:acp_behaviorKeywordLength = -1
-let g:acp_behaviorPythonOmniLength = 0
-let g:acp_ignorecaseOption = 0
-let g:acp_completeoptPreview = 0
-
 " C and C++
 let g:clang_library_path='/usr/lib/llvm/'
 let g:clang_use_librar=1
+let g:clang_complete_auto=1
+let g:clang_snippets=1
+let g:clang_snippets_engine="ultisnips"
+let g:clang_close_preview=1
 
 " Ruby
 autocmd FileType ruby set omnifunc=rubycomplete#Complete 
@@ -109,8 +107,8 @@ set foldmethod=indent
 set foldlevelstart=99
 
 " Tancar la finestra d'ajuda de Omni-Completion
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+" autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+" autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 nnoremap j gj
 nnoremap k gk
@@ -130,12 +128,11 @@ nmap gl <C-w>l
 nmap <C-l> gt
 nmap <C-h> gT
 
+imap <C-n> <C-x><C-o>
+imap <C-p> <C-x><C-p>
+
 nmap <down> ddp
 nmap <up> ddkP
-
-inoremap <leader>c <C-x><C-o>
-imap <C-n> <down>
-imap <C-p> <up>
 
 nnoremap <leader>. :update<CR>
 nnoremap <leader>e :q<CR>
