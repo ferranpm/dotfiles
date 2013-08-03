@@ -1,30 +1,113 @@
-###############
-## OH-MY-ZSH ##
-###############
-ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="blinks"
-CASE_SENSITIVE="true"
-DISABLE_CORRECTION="true"
-COMPLETION_WAITING_DOTS="true"
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(git archlinux cp gnu-utils vi-mode)
+PROMPT='
+%{$fg[green]%}%n%{$fg[blue]%}@%{$fg[cyan]%}%m%{$fg[blue]%}:%{$fg[yellow]%}%~ $(git_prompt)
+$(vi_prompt)%{$fg_bold[cyan]%}>%{$reset_color%} '
 
-source $ZSH/oh-my-zsh.sh
+autoload -U colors && colors
+autoload -U compinit && compinit
 
-export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/usr/bin/vendor_perl:/usr/bin/core_perl:~/.gem/ruby/2.0.0/bin:.
-export PYTHONSTARTUP=$HOME/.pythonrc
+setopt prompt_subst   # substitute params in prompt
+setopt noflowcontrol  # Turn off terminal driver flow control (CTRL+S/CTRL+Q)
+
+############
+## ZSTYLE ##
+############
+# zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
+zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
+zstyle ':completion:*:hosts' hosts $hosts
+zstyle ':completion:*' users off
+zstyle ':completion::complete:*' use-cache 1
+zstyle ':completion::complete:*' cache-path $ZSH/cache/
+zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
+
+##############
+## BINDKEYS ##
+##############
+bindkey -v
+bindkey '^P' up-line-or-search
+bindkey '^N' down-line-or-search
+bindkey '^S' history-incremental-search-backward
+bindkey "\e[3~" delete-char
+
+###############
+## VARIABLES ##
+###############
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=50000
+SAVEHIST=10000
+ZLS_COLORS=$LS_COLORS
+
+#############
+## EXPORTS ##
+#############
 export SHELL=/usr/bin/zsh
+export ZSH=$HOME/.zsh
 export EDITOR=/usr/bin/vim
+export PAGER=/usr/bin/less
+export GREP_OPTIONS='--color=always'
 
-unsetopt correct_all
-
-# Turn off terminal driver flow control (CTRL+S/CTRL+Q)
-setopt noflowcontrol
-stty -ixon -ixoff
-
+#############
+## ALIASES ##
+#############
+# ls
+alias ls="ls --color=auto"
 alias l="ls -lh"
 alias ll="l -A"
+
+# Pacman
+alias pacupg="sudo pacman -Syu"
+alias pacin="sudo pacman -S"
+alias pacre="sudo pacman -Rns"
+
+# git
+alias gst="git status"
+alias gc="git commit"
+alias ga="git add"
+
+# misc
 alias cal="cal -3"
 alias rss="newsbeuter -r"
 alias diff="diff -yEbwB --suppress-common-lines"
-alias grep="grep --color=always"
+
+###############
+## FUNCTIONS ##
+###############
+
+git_prompt() {
+  if git rev-parse --git-dir >/dev/null 2>&1; then
+    ref=$(git symbolic-ref HEAD 2>/dev/null || git name-rev --name-only --no-undefined --always HEAD)
+    ref=${ref#refs/heads/}
+    if ! git diff-index --quiet HEAD 2>/dev/null; then
+      ref="$ref %{$fg[cyan]%}*"
+    fi
+    echo "%{$reset_color%}[%{$fg[red]%}$ref%{$reset_color%}]"
+  fi
+}
+
+# Ensures that $terminfo values are valid and updates editor information when
+# the keymap changes.
+function zle-keymap-select zle-line-init zle-line-finish {
+  # The terminal must be in application mode when ZLE is active for $terminfo
+  # values to be valid.
+  if (( ${+terminfo[smkx]} )); then
+    printf '%s' ${terminfo[smkx]}
+  fi
+  if (( ${+terminfo[rmkx]} )); then
+    printf '%s' ${terminfo[rmkx]}
+  fi
+
+  zle reset-prompt
+  zle -R
+}
+
+zle -N zle-line-init
+zle -N zle-line-finish
+zle -N zle-keymap-select
+
+function vi_prompt() {
+  MODE_INDICATOR="[CMD]"
+  echo "${${KEYMAP/vicmd/$MODE_INDICATOR}/(main|viins)/}"
+}
