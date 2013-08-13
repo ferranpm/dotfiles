@@ -15,28 +15,17 @@ Xft.rgba: rgb
 *.scrollWithBuffer: true
 *.urlLauncher: firefox
 
-*.keysym.Home:      \033[1~
-*.keysym.End:       \033[4~
-*.keysym.C-Up:      \033[1;5A
-*.keysym.C-Down:    \033[1;5B
-*.keysym.C-Right:   \033[1;5C
-*.keysym.C-Left:    \033[1;5D
-*.keysym.C-Prior:   \033[5;5~
-*.keysym.C-Next:    \033[6;5~
-
 !!!!!!!!!!!!!!!!!!!!
 !! URxvt specific !!
 !!!!!!!!!!!!!!!!!!!!
-URxvt.termName: rxvt-unicode
-URxvt.font: xft:DejaVu Sans Mono:size=9
-! URxvt.transparent: true
-! URxvt.shading: 130
-! URxvt.depth: 32
-
-!!!!!!!!!!!!!!!!!!!!
-!! XTerm specific !!
-!!!!!!!!!!!!!!!!!!!!
-XTerm.faceName: DejaVu Sans Mono:size=9
+URxvt.keysym.C-3: command:\033]710;xft: DejaVu Sans Mono:size=3\007
+URxvt.keysym.C-4: command:\033]710;xft: DejaVu Sans Mono:size=7\007
+URxvt.keysym.C-5: command:\033]710;xft: DejaVu Sans Mono:size=9\007
+URxvt.keysym.C-6: command:\033]710;xft: DejaVu Sans Mono:size=10\007
+URxvt.keysym.C-7: command:\033]710;xft: DejaVu Sans Mono:size=11\007
+URxvt.keysym.C-8: command:\033]710;xft: DejaVu Sans Mono:size=13\007
+URxvt.keysym.C-9: command:\033]710;xft: DejaVu Sans Mono:size=17\007
+URxvt.font: xft:DejaVu Sans Mono:size=10
 
 !!!!!!!!!!!!!!!!!!!
 !! Xpdf specific !!
