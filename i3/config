@@ -22,20 +22,20 @@ exec --no-startup-id xrdb ~/.Xresources
 exec --no-startup-id i3-msg 'workspace 1; exec firefox; workspace 1'
 # start urxvt on workspace 2
 exec --no-startup-id i3-msg 'workspace 2; exec urxvt; workspace 1'
-exec --no-startup-id urxvt -title RSS -g 65x25 -e newsbeuter
+exec --no-startup-id urxvt -title RSS -e newsbeuter
 
 focus_follows_mouse no
 
 new_window pixel 2
  
-client.focused          #80A070 #606F50 #EEEEEE #374727
-client.focused_inactive #333333 #5F676A #EEEEEE #374727
+client.focused          #EEEEEE #DDDDDD #111111 #AAAAAA
+client.focused_inactive #AAAAAA #000000 #AAAAAA #999999
  
 bindsym $win+i exec firefox
 bindsym $win+r exec rhythmbox
 bindsym $win+m exec urxvt -title Vimpc -e /usr/bin/vimpc
 bindsym $win+f exec urxvt -title ranger -e python3 /usr/bin/ranger
-bindsym $win+n exec urxvt -title RSS -g 65x25 -e newsbeuter
+bindsym $win+n exec urxvt -title RSS -e newsbeuter
 bindsym $win+e exec setxkbmap es
 bindsym $win+u exec setxkbmap us
 bindsym $win+c exec xmodmap ~/dotfiles/Xmodmap
@@ -165,9 +165,9 @@ bar {
   status_command conky
   font xft:DejaVu Sans Mono 12
   colors {
-    focused_workspace  #80A070 #606F50 #EEEEEE
-    active_workspace   #333333 #5f676a #EEEEEE
-    inactive_workspace #333333 #5F676A #EEEEEE
+    focused_workspace  #000000 #000000 #EEEEEE
+    active_workspace   #000000 #000000 #AAAAAA
+    inactive_workspace #000000 #000000 #444444
     urgent_workspace   #2f343a #900000 #EEEEEE
   }
 }
