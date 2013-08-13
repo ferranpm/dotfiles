@@ -1,6 +1,6 @@
 PROMPT='
-%{$fg[green]%}%n%{$fg[blue]%}@%{$fg[cyan]%}%m%{$fg[blue]%}:%{$fg[yellow]%}%~ $(git_prompt)
-$(vi_prompt)%{$fg_bold[cyan]%}>%{$reset_color%} '
+%{$fg[green]%}%n%{$fg[blue]%}@%{$fg[cyan]%}%m%{$fg[blue]%}:%{$fg[yellow]%}%~$(git_prompt)$(vi_prompt)
+%{$fg_bold[cyan]%}>%{$reset_color%} '
 
 autoload -U colors && colors
 autoload -U compinit && compinit
@@ -30,7 +30,11 @@ bindkey -v
 bindkey '^P' up-line-or-search
 bindkey '^N' down-line-or-search
 bindkey '^S' history-incremental-search-backward
-bindkey "\e[3~" delete-char
+bindkey '^[[Z' reverse-menu-complete
+bindkey '^?' backward-delete-char
+bindkey '^[[3~' delete-char
+bindkey '^[[1;5C' forward-word
+bindkey '^[[1;5D' backward-word
 
 ###############
 ## VARIABLES ##
@@ -47,7 +51,7 @@ export SHELL=/usr/bin/zsh
 export ZSH=$HOME/.zsh
 export EDITOR=/usr/bin/vim
 export PAGER=/usr/bin/less
-export GREP_OPTIONS='--color=always'
+export GREP_OPTIONS='--color=auto'
 
 #############
 ## ALIASES ##
@@ -61,9 +65,11 @@ alias ll="l -A"
 alias pacupg="sudo pacman -Syu"
 alias pacin="sudo pacman -S"
 alias pacre="sudo pacman -Rns"
+alias pacse="pacsearch"
 
 # git
 alias gst="git status"
+alias gd="git diff"
 alias gc="git commit"
 alias ga="git add"
 
@@ -83,7 +89,7 @@ git_prompt() {
     if ! git diff-index --quiet HEAD 2>/dev/null; then
       ref="$ref %{$fg[cyan]%}*"
     fi
-    echo "%{$reset_color%}[%{$fg[red]%}$ref%{$reset_color%}]"
+    echo " %{$reset_color%}[%{$fg[red]%}$ref%{$reset_color%}]"
   fi
 }
 
@@ -108,6 +114,6 @@ zle -N zle-line-finish
 zle -N zle-keymap-select
 
 function vi_prompt() {
-  MODE_INDICATOR="[CMD]"
+  MODE_INDICATOR=" %{$reset_color%}[%{$fg[red]%}CMD%{$reset_color%}]"
   echo "${${KEYMAP/vicmd/$MODE_INDICATOR}/(main|viins)/}"
 }
