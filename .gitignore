@@ -1,1 +1,4 @@
 .netrwhist
+newsbeuter/*
+!newsbeuter/urls
+!newsbeuter/config

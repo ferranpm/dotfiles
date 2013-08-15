@@ -1,0 +1,15 @@
+color listfocus white black
+color info white default
+
+refresh-on-startup yes
+
+auto-reload yes
+reload-time 30
+
+browser firefox %s
+
+bind-key h quit
+bind-key j down
+bind-key k up
+bind-key l open
+
