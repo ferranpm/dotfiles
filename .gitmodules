@@ -1,5 +1,5 @@
-[submodule "vim/bundle/AirLine"]
-	path = vim/bundle/AirLine
+[submodule "vim/bundle/Airline"]
+	path = vim/bundle/Airline
 	url = https://github.com/bling/vim-airline
   ignore = dirty
 [submodule "vim/bundle/MultipleCursors"]
@@ -14,25 +14,13 @@
 	path = vim/bundle/NERDtree
 	url = https://github.com/vim-scripts/The-NERD-tree
   ignore = dirty
-[submodule "vim/bundle/ClangComplete"]
-	path = vim/bundle/ClangComplete
-	url = https://github.com/vim-scripts/clang-complete
-  ignore = dirty
 [submodule "vim/bundle/CtrlP"]
 	path = vim/bundle/CtrlP
 	url = https://github.com/vim-scripts/ctrlp.vim
   ignore = dirty
-[submodule "vim/bundle/HTML5"]
-	path = vim/bundle/HTML5
-	url = https://github.com/othree/html5.vim
-  ignore = dirty
 [submodule "vim/bundle/MatchIt"]
 	path = vim/bundle/MatchIt
 	url = https://github.com/vim-scripts/matchit.zip
-  ignore = dirty
-[submodule "vim/bundle/php-HTML"]
-	path = vim/bundle/php-HTML
-	url = https://github.com/vim-scripts/php.vim-html-enhanced
   ignore = dirty
 [submodule "vim/bundle/tComment"]
 	path = vim/bundle/tComment
@@ -46,6 +34,3 @@
 	path = vim/bundle/UltiSnips
 	url = https://github.com/SirVer/ultisnips
   ignore = dirty
-[submodule "vim/bundle/AutoComplPop"]
-	path = vim/bundle/AutoComplPop
-	url = https://github.com/vim-scripts/AutoComplPop
