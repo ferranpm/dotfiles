@@ -52,6 +52,7 @@ export ZSH=$HOME/.zsh
 export EDITOR=/usr/bin/vim
 export PAGER=/usr/bin/less
 export GREP_OPTIONS='--color=auto'
+export LESS='-R'
 
 #############
 ## ALIASES ##
@@ -72,6 +73,8 @@ alias gst="git status"
 alias gd="git diff"
 alias gc="git commit"
 alias ga="git add"
+alias gl="git log"
+alias gr="git rm"
 
 # misc
 alias cal="cal -3"
