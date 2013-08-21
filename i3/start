@@ -1,0 +1,20 @@
+#!/usr/bin/bash
+
+# Set Wallpaper
+feh --bg-scale ~/Pictures/Wallpapers/ISS.jpg
+
+# Set special keys
+xmodmap ~/dotfiles/Xmodmap
+
+# Set Xresources
+xrdb ~/.Xresources
+
+i3-msg workspace 3
+i3-msg exec 'urxvt -e newsbeuter' && sleep 0.1
+i3-msg exec 'urxvt -e vimpc' && sleep 1
+i3-msg focus left && sleep 0.1
+i3-msg split v && sleep 0.1
+i3-msg exec 'urxvt -e python3 /usr/bin/ranger' && sleep 0.1
+
+i3-msg 'workspace 2; exec urxvt'
+i3-msg 'workspace 1; exec firefox'

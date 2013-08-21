@@ -1,0 +1,31 @@
+order += "disk /"
+order += "cpu_temperature 0"
+order += "ethernet enp3s0"
+order += "tztime local"
+
+general {
+  output_format = "i3bar"
+  colors = false
+  interval = 5
+}
+
+ethernet enp3s0 {
+  # if you use %speed, i3status requires the cap_net_admin capability
+  format_up = "E: %ip"
+  format_down = "E: down"
+}
+
+
+tztime local {
+  format = "%Y-%m-%d %H:%M"
+}
+
+cpu_temperature 0 {
+  format = "T: %degrees °C"
+  path = "/sys/devices/platform/coretemp.0/temp1_input"
+}
+
+disk "/" {
+  format = "%free"
+}
+
