@@ -33,20 +33,11 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " C and C++
-let g:clang_library_path='/usr/lib/llvm/'
 let g:clang_use_librar=1
 let g:clang_complete_auto=1
 let g:clang_snippets=1
 let g:clang_snippets_engine="ultisnips"
 let g:clang_close_preview=1
-
-" Ruby
-autocmd FileType ruby set omnifunc=rubycomplete#Complete 
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_classes_in_global = 1
-
-" Java
-" autocmd FileType java set omnifunc=javacomplete#Complete
 
 set cursorline
 if has("gui_running")
@@ -62,7 +53,7 @@ let mapleader=','
 syntax on
 filetype plugin indent on
 
-set background=light
+set background=dark
 set number
 set ruler
 
@@ -115,10 +106,10 @@ nnoremap k gk
 xnoremap j gj
 xnoremap k gk
 
-nmap J 5<C-E>
-nmap K 5<C-Y>
-xmap J 5j
-xmap K 5k
+nmap J 10j
+nmap K 10k
+xmap J 10j
+xmap K 10k
 
 nmap gh <C-w>h
 nmap gj <C-w>j
