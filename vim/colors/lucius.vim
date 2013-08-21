@@ -12,7 +12,8 @@ let colors_name="lucius"
 
 " == Normal color ==
 hi Normal           guifg=#e0e0e0           guibg=#202020
-hi Normal           ctermfg=253             ctermbg=234
+" hi Normal           ctermfg=253             ctermbg=234
+hi Normal           ctermfg=253             ctermbg=none
 
 
 " == Comments ==
@@ -155,17 +156,17 @@ hi Title            ctermfg=74                                      cterm=none
 
 " == Ignore ==
 " left blank, hidden
-hi Ignore           guifg=bg
-hi Ignore           ctermfg=bg
+" hi Ignore           guifg=bg
+" hi Ignore           ctermfg=bg
 
 
 " == Text Selection ==
 " character under the cursor
-hi Cursor           guifg=bg                guibg=#a3e3ed
-hi Cursor           ctermfg=bg              ctermbg=153
+" hi Cursor           guifg=bg                guibg=#a3e3ed
+" hi Cursor           ctermfg=bg              ctermbg=153
 " like cursor, but used when in IME mode
-hi CursorIM         guifg=bg                guibg=#96cdcd
-hi CursorIM         ctermfg=bg              ctermbg=116
+" hi CursorIM         guifg=bg                guibg=#96cdcd
+" hi CursorIM         ctermfg=bg              ctermbg=116
 " cursor column
 hi CursorColumn     guifg=NONE              guibg=#404448           gui=none
 hi CursorColumn     ctermfg=NONE            ctermbg=236             cterm=none
