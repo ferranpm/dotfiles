@@ -1,0 +1,6 @@
+alias gst="git status"
+alias gd="git diff"
+alias gc="git commit"
+alias ga="git add"
+alias gl="git log"
+alias gr="git rm"

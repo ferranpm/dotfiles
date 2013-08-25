@@ -5,18 +5,18 @@ FILES='
 conkyrc
 gitconfig
 i3
-oh-my-zsh/custom
 newsbeuter
 vim
 vimrc
 xinitrc
 Xmodmap
 Xresources
+zsh
 zshrc
 '
 
 for file in $FILES
 do
-  rm -v -rf ~/.$file ~/dotfiles_old
+  rm -v -rf ~/.$file
   ln -v -s $DIR/$file ~/.$file
 done
