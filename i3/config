@@ -74,7 +74,7 @@ font xft:DejaVu Sans Mono 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+Q kill
@@ -149,6 +149,9 @@ bindsym $mod+Shift+E exit
 bar {
   status_command i3status -c ~/.i3/status
   font xft:DejaVu Sans Mono 12
+  mode hide
+  hidden_state hide
+  modifier Mod4
   colors {
     focused_workspace  #000000 #000000 #EEEEEE
     active_workspace   #000000 #000000 #AAAAAA

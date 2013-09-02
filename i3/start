@@ -16,5 +16,5 @@ i3-msg focus left && sleep 0.1
 i3-msg split v && sleep 0.1
 i3-msg exec 'urxvt -e python3 /usr/bin/ranger' && sleep 0.1
 
-i3-msg 'workspace 2; exec urxvt'
-i3-msg 'workspace 1; exec firefox'
+i3-msg 'workspace 2; exec firefox'
+i3-msg 'workspace 1; exec urxvt'
