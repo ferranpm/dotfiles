@@ -6,7 +6,7 @@ let g:qb_hotkey='<F2>'
 " CtrlP
 let g:ctrlp_show_hidden=1
 let g:ctrlp_max_height=100
-let g:ctrlp_max_files=300
+let g:ctrlp_max_files=100
 let g:ctrlp_by_filename=1
 
 " TagList
@@ -39,7 +39,53 @@ let g:clang_snippets=1
 let g:clang_snippets_engine="ultisnips"
 let g:clang_close_preview=1
 
+" Python-mode
+let pymode_folding=0
+
+" Basic configuration
+let mapleader=','
+set mouse=a
+set scrolloff=10
+set encoding=utf-8
+set showbreak=↪
+set nocompatible
+set number
+set ruler
+set autoread
+set showcmd
+set showmode
+syntax on
+filetype plugin indent on
+
+" Indentation
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set smarttab
+set autoindent
+
+" Search & Replace
+set incsearch
+set ignorecase
+set smartcase
 set cursorline
+set gdefault
+
+" Backups 
+set noswapfile
+set nobackup
+set nowritebackup
+
+" Status Line / Menu
+set statusline=%F%m%r%h%w\ type=%Y\ x=%l\ y=%v\ %p%%\ %{strftime(\"%d/%m/%y\ -\%H:%M\")}
+set wildignore+=.git/*,.gitignore,*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__
+set laststatus=2
+set wildmode=list:full
+set wildmenu
+
+" Colors
+set t_Co=256
+set background=dark
 if has("gui_running")
   highlight CursorLine cterm=bold ctermbg=black
   colorscheme gruvbox
@@ -48,58 +94,11 @@ else
   colorscheme lucius
 endif
 
-let mapleader=','
-
-syntax on
-filetype plugin indent on
-
-set background=dark
-set number
-set ruler
-
-set t_Co=256
-
-set mouse=a
-set autoread
-set gdefault
-set showcmd
-set showmode
-set incsearch
-set ignorecase
-set smartcase
-set nohlsearch
-set scrolloff=10
-
-set encoding=utf-8
-
-set expandtab
-set smarttab
-set tabstop=2
-set autoindent
-set shiftwidth=2
-
-set laststatus=2
-set nocompatible
-
-set wildmenu
-set wildmode=list:full
-
-set completeopt=longest
-" set complete=".,w,b,u,t,i,d"
-set noswapfile
-set nobackup
-set nowritebackup
-
-set statusline=%F%m%r%h%w\ type=%Y\ x=%l\ y=%v\ %p%%\ %{strftime(\"%d/%m/%y\ -\%H:%M\")}
-set wildignore+=.git/*,.gitignore,*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar
-
-set showbreak=↪
-set foldmethod=indent
-set foldlevelstart=99
-
 " Tancar la finestra d'ajuda de Omni-Completion
-" autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-" autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+autocmd BufRead *.less set ft=css
 
 nnoremap j gj
 nnoremap k gk
@@ -124,6 +123,8 @@ imap <C-p> <C-x><C-p>
 
 nmap <down> ddp
 nmap <up> ddkP
+
+nnoremap <CR> o<Esc>
 
 nnoremap <leader>. :update<CR>
 nnoremap <leader>e :q<CR>
