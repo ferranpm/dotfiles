@@ -15,9 +15,9 @@ Xft.rgba: rgb
 *.scrollWithBuffer: true
 *.urlLauncher: firefox
 
-!!!!!!!!!!!!!!!!!!!!
-!! URxvt specific !!
-!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!
+!! URxvt !!
+!!!!!!!!!!!
 URxvt.keysym.C-3: command:\033]710; xft:DejaVu Sans Mono:size=4\007
 URxvt.keysym.C-4: command:\033]710; xft:DejaVu Sans Mono:size=6\007
 URxvt.keysym.C-5: command:\033]710; xft:DejaVu Sans Mono:size=8\007
@@ -29,9 +29,14 @@ URxvt.font:xft:DejaVu Sans Mono:size=10
 URxvt.transparent: true
 URxvt.shading: 20
 
-!!!!!!!!!!!!!!!!!!!
-!! Xpdf specific !!
-!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!
+!! XTerm !!
+!!!!!!!!!!!
+XTerm*faceName: DejaVu Sans Mono:size=10
+
+!!!!!!!!!!
+!! Xpdf !!
+!!!!!!!!!!
 Xpdf.geometry: 800x800
 Xpdf.initialZoom: width
 
