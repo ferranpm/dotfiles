@@ -8,35 +8,39 @@ let g:ctrlp_show_hidden=1
 let g:ctrlp_max_height=100
 let g:ctrlp_max_files=100
 let g:ctrlp_by_filename=1
+let g:ctrlp_working_path_mode='rc'
+let g:ctrlp_use_caching=1
 
 " TagList
-let Tlist_Auto_Highlight_Tag = 0
+let Tlist_Auto_Highlight_Tag=0
 let Tlist_Close_On_Select=1
 let Tlist_Compact_Format=1
 let Tlist_GainFocus_On_ToggleOpen=1
-let Tlist_Highlight_Tag_On_BufEnter = 0
+let Tlist_Highlight_Tag_On_BufEnter=0
 let Tlist_Show_One_File=1
-let Tlist_Sort_Type = "name"
+let Tlist_Sort_Type='name'
 let Tlist_WinWidth=75
 
 " NERDTree
 let NERDTreeWinSize=75
 let NERDTreeQuitOnOpen=1
+let NERDTreeChDirMode=2
 
 " AirLine
 let g:airline_left_sep=''
 let g:airline_right_sep=''
+let g:airline_theme='powerlineish'
 
 " UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsJumpForwardTrigger='<tab>'
+let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
 
 " C and C++
 let g:clang_use_librar=1
 let g:clang_complete_auto=1
 let g:clang_snippets=1
-let g:clang_snippets_engine="ultisnips"
+let g:clang_snippets_engine='ultisnips'
 let g:clang_close_preview=1
 
 " Python-mode
@@ -54,6 +58,7 @@ set ruler
 set autoread
 set showcmd
 set showmode
+set wildignore+=.git/*,.gitignore,*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__
 syntax on
 filetype plugin indent on
 
@@ -76,23 +81,23 @@ set noswapfile
 set nobackup
 set nowritebackup
 
-" Status Line / Menu
-set statusline=%F%m%r%h%w\ type=%Y\ x=%l\ y=%v\ %p%%\ %{strftime(\"%d/%m/%y\ -\%H:%M\")}
-set wildignore+=.git/*,.gitignore,*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__
+" Status Line
 set laststatus=2
+
+" Menu
 set wildmode=list:full
 set wildmenu
 
 " Colors
 set t_Co=256
 set background=dark
-if has("gui_running")
-  highlight CursorLine cterm=bold ctermbg=black
-  colorscheme gruvbox
-else 
-  highlight CursorLine cterm=bold ctermfg=None guibg=None guifg=None
-  colorscheme lucius
-endif
+colorscheme lucius
+highlight CursorLine cterm=bold ctermfg=None guibg=None guifg=None
+highlight TabLine ctermfg=12 ctermbg=232
+highlight TabLineSel ctermfg=22 ctermbg=148
+highlight TabLineFill ctermbg=237
+highlight Normal ctermfg=253 ctermbg=none
+highlight Comment ctermfg=65 cterm=none
 
 " Tancar la finestra d'ajuda de Omni-Completion
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
