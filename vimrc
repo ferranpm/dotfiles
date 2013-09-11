@@ -92,12 +92,12 @@ set wildmenu
 set t_Co=256
 set background=dark
 colorscheme lucius
-highlight CursorLine cterm=bold ctermfg=None guibg=None guifg=None
+highlight CursorLine cterm=Bold
+highlight Normal ctermfg=253 ctermbg=None
+highlight Comment ctermfg=65
 highlight TabLine ctermfg=12 ctermbg=232
 highlight TabLineSel ctermfg=22 ctermbg=148
 highlight TabLineFill ctermbg=237
-highlight Normal ctermfg=253 ctermbg=none
-highlight Comment ctermfg=65 cterm=none
 
 " Tancar la finestra d'ajuda de Omni-Completion
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
