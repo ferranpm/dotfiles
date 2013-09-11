@@ -1,4 +1,6 @@
 .netrwhist
+zsh/cache
+
 newsbeuter/*
 !newsbeuter/urls
 !newsbeuter/config
