@@ -32,7 +32,8 @@ URxvt.shading: 20
 !!!!!!!!!!!
 !! XTerm !!
 !!!!!!!!!!!
-XTerm*faceName: DejaVu Sans Mono:size=10
+XTerm*.faceName: DejaVu Sans Mono:size=10
+XTerm*.scrollTtyOutput: true
 
 !!!!!!!!!!
 !! Xpdf !!

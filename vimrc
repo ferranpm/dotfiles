@@ -8,7 +8,7 @@ let g:ctrlp_show_hidden=1
 let g:ctrlp_max_height=100
 let g:ctrlp_max_files=100
 let g:ctrlp_by_filename=1
-let g:ctrlp_working_path_mode='rc'
+let g:ctrlp_working_path_mode='rwc'
 let g:ctrlp_use_caching=1
 
 " TagList
@@ -45,6 +45,7 @@ let g:clang_close_preview=1
 
 " Python-mode
 let pymode_folding=0
+let pymode_doc=0
 
 " Basic configuration
 let mapleader=','
@@ -65,7 +66,6 @@ filetype plugin indent on
 " Indentation
 set tabstop=2
 set shiftwidth=2
-set expandtab
 set smarttab
 set autoindent
 
@@ -130,6 +130,7 @@ nmap <down> ddp
 nmap <up> ddkP
 
 nnoremap <CR> o<Esc>
+nnoremap <BS> O<Esc>
 
 nnoremap <leader>. :update<CR>
 nnoremap <leader>e :q<CR>
