@@ -30,7 +30,15 @@
 	path = vim/bundle/TagList
 	url = https://github.com/vim-scripts/taglist.vim
   ignore = dirty
-[submodule "vim/bundle/UltiSnips"]
-	path = vim/bundle/UltiSnips
-	url = https://github.com/SirVer/ultisnips
-  ignore = dirty
+[submodule "vim/bundle/fugitive"]
+	path = vim/bundle/fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "vim/bundle/tlib"]
+	path = vim/bundle/tlib
+	url = https://github.com/tomtom/tlib_vim.git
+[submodule "vim/bundle/vim-addon-mw-utils"]
+	path = vim/bundle/vim-addon-mw-utils
+	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
+[submodule "vim/bundle/SnipMate"]
+	path = vim/bundle/SnipMate
+	url = https://github.com/garbas/vim-snipmate.git

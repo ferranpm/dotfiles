@@ -31,21 +31,11 @@ let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_theme='powerlineish'
 
-" UltiSnips
-let g:UltiSnipsExpandTrigger='<tab>'
-let g:UltiSnipsJumpForwardTrigger='<tab>'
-let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
-
 " C and C++
 let g:clang_use_librar=1
 let g:clang_complete_auto=1
 let g:clang_snippets=1
-let g:clang_snippets_engine='ultisnips'
 let g:clang_close_preview=1
-
-" Python-mode
-let pymode_folding=0
-let pymode_doc=0
 
 " Basic configuration
 let mapleader=','
