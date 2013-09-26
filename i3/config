@@ -23,9 +23,9 @@ client.focused_inactive #AAAAAA #111111 #AAAAAA #999999
  
 bindsym $win+i exec firefox
 bindsym $win+r exec rhythmbox
-bindsym $win+m exec urxvt -title Vimpc -e /usr/bin/vimpc
-bindsym $win+f exec urxvt -title ranger -e python3 /usr/bin/ranger
-bindsym $win+n exec urxvt -title RSS -e newsbeuter
+bindsym $win+m exec urxvtc -title CMUS -e /usr/bin/cmus
+bindsym $win+f exec urxvtc -title ranger -e python3 /usr/bin/ranger
+bindsym $win+n exec urxvtc -title RSS -e newsbeuter
 bindsym $win+e exec setxkbmap es
 bindsym $win+u exec setxkbmap us
 bindsym $win+c exec xmodmap ~/dotfiles/Xmodmap
@@ -35,8 +35,9 @@ bindsym $win+Down exec amixer set Master 1%-
 bindsym Print exec scrot
 
 assign [class="Qbittorrent"] 5
+assign [class="transmission"] 5
 assign [class="Rhythmbox"] 5
-assign [title="Vimpc"] 3
+assign [title="CMUS"] 3
 assign [class="Pidgin"] 3
 assign [class="Skype"] 3
 assign [class="Steam"] 3
@@ -74,13 +75,14 @@ font xft:DejaVu Sans Mono 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec urxvtc
 
 # kill focused window
 bindsym $mod+Shift+Q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec i3-dmenu-desktop
+bindsym $mod+d exec dmenu_run
+# bindsym $mod+d exec i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
