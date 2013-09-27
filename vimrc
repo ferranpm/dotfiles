@@ -1,4 +1,27 @@
-call pathogen#infect()
+filetype off
+
+set runtimepath+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" My Bundles here:
+
+" original repos on github
+Bundle 'bling/vim-airline'
+Bundle 'garbas/vim-snipmate.git'
+Bundle 'gmarik/vundle' 
+Bundle 'kien/ctrlp.vim'
+Bundle 'MarcWeber/vim-addon-mw-utils.git'
+Bundle 'scrooloose/nerdtree'
+Bundle 'tek/vim-quickbuf'
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'tomtom/tlib_vim.git'
+Bundle 'tpope/vim-fugitive'
+
+" vim-scripts repos
+Bundle 'taglist.vim'
+
+filetype on
 
 " QuickBuf
 let g:qb_hotkey='<F2>'
@@ -39,6 +62,8 @@ let g:clang_close_preview=1
 
 " Basic configuration
 let mapleader=','
+filetype plugin indent on
+syntax on
 set mouse=a
 set scrolloff=10
 set encoding=utf-8
@@ -50,8 +75,6 @@ set autoread
 set showcmd
 set showmode
 set wildignore+=.git/*,.gitignore,*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__
-syntax on
-filetype plugin indent on
 
 " Indentation
 set tabstop=2
