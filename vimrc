@@ -9,8 +9,11 @@ call vundle#rc()
 Bundle 'bling/vim-airline'
 Bundle 'garbas/vim-snipmate.git'
 Bundle 'gmarik/vundle' 
+Bundle 'jonathanfilip/vim-lucius'
 Bundle 'kien/ctrlp.vim'
 Bundle 'MarcWeber/vim-addon-mw-utils.git'
+Bundle 'othree/html5.vim'
+Bundle 'Rip-Rip/clang_complete'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tek/vim-quickbuf'
 Bundle 'terryma/vim-multiple-cursors'
@@ -20,11 +23,12 @@ Bundle 'tpope/vim-fugitive'
 
 " vim-scripts repos
 Bundle 'taglist.vim'
+Bundle 'php.vim-html-enhanced'
 
 filetype on
 
 " QuickBuf
-let g:qb_hotkey='<F2>'
+let g:quickbuf_map='<F2>'
 
 " CtrlP
 let g:ctrlp_show_hidden=1
