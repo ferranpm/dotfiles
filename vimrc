@@ -116,12 +116,6 @@ highlight TabLine ctermfg=12 ctermbg=232
 highlight TabLineSel ctermfg=22 ctermbg=148
 highlight TabLineFill ctermbg=237
 
-" Tancar la finestra d'ajuda de Omni-Completion
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-
-autocmd BufRead *.less set ft=css
-
 nnoremap j gj
 nnoremap k gk
 xnoremap j gj
@@ -153,6 +147,4 @@ nnoremap <leader>. :update<CR>
 nnoremap <leader>e :q<CR>
 nnoremap <leader>E :qa<CR>
 nnoremap <leader>o :only<CR>
-nnoremap <silent> <C-g> :TlistToggle<CR>
-nnoremap <silent> <C-f> :NERDTreeToggle<CR>
 nnoremap <silent> <Space> i_<Esc>r
