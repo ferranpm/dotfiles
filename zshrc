@@ -26,7 +26,7 @@ SAVEHIST=10000
 export SHELL=/usr/bin/zsh
 export EDITOR=/usr/bin/vim
 export PAGER=/usr/bin/less
-export GREP_OPTIONS='--color=auto'
+export GREP_OPTIONS='--color=always'
 export LESS='-R'
 
 ## ZSTYLE ##
@@ -51,8 +51,6 @@ bindkey '^[[2~' delete-char
 bindkey '^[[3~' delete-char
 bindkey '^[[7~' beginning-of-line
 bindkey '^[[8~' end-of-line
-bindkey '^L' forward-word
-bindkey '^H' backward-word
 bindkey '^S' insert-sudo
 
 ## ALIASES ##
