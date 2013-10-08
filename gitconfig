@@ -21,3 +21,13 @@
 
 [web]
 	browser = firefox
+
+[alias]
+	c = commit
+	co = checkout
+	d = diff
+	f = fetch
+	l = log
+	m = merge
+	p = push
+	s = status
