@@ -1,31 +1,5 @@
-filetype off
-
-set runtimepath+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" My Bundles here:
-
-" original repos on github
-Bundle 'bling/vim-airline'
-Bundle 'garbas/vim-snipmate.git'
-Bundle 'gmarik/vundle' 
-Bundle 'jonathanfilip/vim-lucius'
-Bundle 'kien/ctrlp.vim'
-Bundle 'MarcWeber/vim-addon-mw-utils.git'
-Bundle 'othree/html5.vim'
-Bundle 'Rip-Rip/clang_complete'
-Bundle 'scrooloose/nerdtree'
-Bundle 'tek/vim-quickbuf'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'tomtom/tlib_vim.git'
-Bundle 'tpope/vim-fugitive'
-
-" vim-scripts repos
-Bundle 'taglist.vim'
-Bundle 'php.vim-html-enhanced'
-
-filetype on
+runtime bundle/pathogen/autoload/pathogen.vim
+execute pathogen#infect()
 
 " QuickBuf
 let g:quickbuf_map='<F2>'
@@ -37,21 +11,6 @@ let g:ctrlp_max_files=100
 let g:ctrlp_by_filename=1
 let g:ctrlp_working_path_mode='rwc'
 let g:ctrlp_use_caching=1
-
-" TagList
-let Tlist_Auto_Highlight_Tag=0
-let Tlist_Close_On_Select=1
-let Tlist_Compact_Format=1
-let Tlist_GainFocus_On_ToggleOpen=1
-let Tlist_Highlight_Tag_On_BufEnter=0
-let Tlist_Show_One_File=1
-let Tlist_Sort_Type='name'
-let Tlist_WinWidth=75
-
-" NERDTree
-let NERDTreeWinSize=75
-let NERDTreeQuitOnOpen=1
-let NERDTreeChDirMode=2
 
 " AirLine
 let g:airline_left_sep=''
