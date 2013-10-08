@@ -1,6 +1,6 @@
 PROMPT='
-%{$fg[green]%}%n%{$fg[blue]%}@%{$fg[cyan]%}%m%{$fg[blue]%}:%{$fg[yellow]%}%~$(git_prompt)$(vi_prompt)
-%{$fg_bold[cyan]%}>%{$reset_color%} '
+%{$fg[green]%}%n%{$fg[blue]%}%{$reset_color%} in %{$fg[blue]%}%{$fg[red]%}%~ %{$reset_color%}at %{$fg[cyan]%}%m$(git_prompt)$(vi_prompt)
+%{$fg_bold[cyan]%}%(!.#.>)%{$reset_color%} '
 
 autoload -U colors && colors
 autoload -U compinit
@@ -44,20 +44,21 @@ zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-dir
 bindkey -v
 bindkey -M vicmd '/' history-incremental-search-backward
 bindkey '^F' history-incremental-search-backward
-bindkey '^P' up-line-or-search
 bindkey '^N' down-line-or-search
-bindkey '^[[Z' reverse-menu-complete
+bindkey '^P' up-line-or-search
+bindkey '^S' insert-sudo
 bindkey '^[[2~' delete-char
 bindkey '^[[3~' delete-char
 bindkey '^[[7~' beginning-of-line
 bindkey '^[[8~' end-of-line
-bindkey '^S' insert-sudo
+bindkey '^[[Z' reverse-menu-complete
 
 ## ALIASES ##
 alias cal="cal -3"
 alias rss="newsbeuter -r"
 alias diff="diff -yEbwB --suppress-common-lines"
-alias g="git status"
+alias g="git"
+alias gs="git status"
 alias gd="git diff"
 alias gf="git fetch"
 alias gm="git merge"
@@ -66,6 +67,9 @@ alias gc="git commit"
 alias ga="git add"
 alias gr="git rm"
 alias gl="git log"
+alias ls="ls --color=auto"
+alias l="ls -lh"
+alias ll="l -A"
 if [[ -x /usr/bin/pacman ]]; then
 	alias pacupg="sudo pacman -Syu"
 	alias pacin="sudo pacman -S"
@@ -77,9 +81,6 @@ elif [[ -x /usr/bin/aptitude ]]; then
 	alias aptre="sudo apt-get remove --purge"
 	alias aptse="aptitude search"
 fi
-alias ls="ls --color=auto"
-alias l="ls -lh"
-alias ll="l -A"
 
 ## FUNCTIONS ##
 function insert-sudo() {
@@ -110,6 +111,6 @@ function git_prompt() {
 		# if ! git diff-index --quiet HEAD 2>/dev/null; then
 		#   ref="$ref %{$fg[cyan]%}*"
 		# fi
-		echo " %{$reset_color%}[%{$fg[red]%}$ref%{$reset_color%}]"
+		echo " %{$reset_color%}[%{$fg[yellow]%}$ref%{$reset_color%}]"
 	fi
 }
