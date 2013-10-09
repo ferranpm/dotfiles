@@ -42,6 +42,7 @@ set autoread
 set showcmd
 set showmode
 set wildignore+=.git/*,.gitignore,*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__
+set autochdir
 
 " Indentation
 set tabstop=2
