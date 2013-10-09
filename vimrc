@@ -14,18 +14,11 @@ let g:ctrlp_by_filename=1
 let g:ctrlp_working_path_mode='rwc'
 let g:ctrlp_use_caching=1
 
-" AirLine
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:airline_theme='powerlineish'
-
 " C and C++ (clang_complete)
 let g:clang_use_librar=1
 let g:clang_complete_auto=1
 let g:clang_snippets=1
 let g:clang_close_preview=1
-
-" Python (jedi-vim)
 
 " Basic configuration
 let mapleader=','
@@ -74,13 +67,9 @@ set t_Co=256
 set background=dark
 try
 	colorscheme lucius
+	highlight CursorLine cterm=Bold
+	highlight Normal ctermbg=None
 endtry
-highlight CursorLine cterm=Bold
-highlight Normal ctermfg=253 ctermbg=None
-highlight Comment ctermfg=65
-highlight TabLine ctermfg=12 ctermbg=232
-highlight TabLineSel ctermfg=22 ctermbg=148
-highlight TabLineFill ctermbg=237
 
 nnoremap j gj
 nnoremap k gk
