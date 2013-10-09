@@ -1,5 +1,7 @@
-runtime bundle/pathogen/autoload/pathogen.vim
-execute pathogen#infect()
+try
+	runtime bundle/pathogen/autoload/pathogen.vim
+	execute pathogen#infect()
+endtry
 
 " QuickBuf
 let g:quickbuf_map='<F2>'
@@ -17,11 +19,13 @@ let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_theme='powerlineish'
 
-" C and C++
+" C and C++ (clang_complete)
 let g:clang_use_librar=1
 let g:clang_complete_auto=1
 let g:clang_snippets=1
 let g:clang_close_preview=1
+
+" Python (jedi-vim)
 
 " Basic configuration
 let mapleader=','
@@ -67,7 +71,9 @@ set wildmenu
 " Colors
 set t_Co=256
 set background=dark
-colorscheme lucius
+try
+	colorscheme lucius
+endtry
 highlight CursorLine cterm=Bold
 highlight Normal ctermfg=253 ctermbg=None
 highlight Comment ctermfg=65
