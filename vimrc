@@ -24,22 +24,24 @@ let g:clang_close_preview=1
 let mapleader=','
 filetype plugin indent on
 syntax on
-set mouse=a
-set scrolloff=10
+set autochdir
+set autoread
+set cursorline
 set encoding=utf-8
-set showbreak=↪
+set mouse=a
 set nocompatible
 set number
 set ruler
-set autoread
+set scrolloff=10
+set showbreak=↪
 set showcmd
 set showmode
 set wildignore+=.git/*,.gitignore,*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__
-set autochdir
 
 " Indentation
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set smarttab
 set autoindent
 
@@ -47,7 +49,6 @@ set autoindent
 set incsearch
 set ignorecase
 set smartcase
-set cursorline
 set gdefault
 
 " Backups 
@@ -71,35 +72,54 @@ try
 	highlight Normal ctermbg=None
 endtry
 
+function! MakeTags()
+	let filetype = &filetype
+	let extension = expand('%:e')
+	let cmd='ctags --recurse --languages='.filetype.' *.'.extension
+	echo cmd
+	let resp = system(cmd)
+	if resp
+		echo resp
+	endif
+endfunction
+
+nmap <F8> :call MakeTags()<CR>
+
 nnoremap j gj
 nnoremap k gk
 xnoremap j gj
 xnoremap k gk
 
-nmap J 10j
-nmap K 10k
-xmap J 10j
-xmap K 10k
+" nmap J 10j
+" nmap K 10k
+" xmap J 10j
+" xmap K 10k
 
-nmap gh <C-w>h
-nmap gj <C-w>j
-nmap gk <C-w>k
-nmap gl <C-w>l
+nnoremap gh <C-w>h
+nnoremap gj <C-w>j
+nnoremap gk <C-w>k
+nnoremap gl <C-w>l
 
-nmap <C-l> gt
-nmap <C-h> gT
+nnoremap <C-l> gt
+nnoremap <C-h> gT
 
-imap <C-n> <C-x><C-o>
-imap <C-p> <C-x><C-p>
+inoremap <C-n> <C-x><C-o>
+inoremap <C-p> <C-x><C-p>
 
-nmap <down> ddp
-nmap <up> ddkP
+nnoremap <down> ddp
+nnoremap <up> ddkP
+
+vnoremap > >gv
+vnoremap < <gv
 
 nnoremap <CR> o<Esc>
 nnoremap <BS> O<Esc>
 
+nnoremap <silent> <Space> i_<Esc>r
+nnoremap <silent> l <Space>
+nnoremap <silent> h <BS>
+
 nnoremap <leader>. :update<CR>
 nnoremap <leader>e :q<CR>
-nnoremap <leader>E :qa<CR>
+nnoremap <leader>E :qa!<CR>
 nnoremap <leader>o :only<CR>
-nnoremap <silent> <Space> i_<Esc>r
