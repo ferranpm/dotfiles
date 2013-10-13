@@ -11,14 +11,8 @@ let g:ctrlp_show_hidden=1
 let g:ctrlp_max_height=100
 let g:ctrlp_max_files=100
 let g:ctrlp_by_filename=1
-let g:ctrlp_working_path_mode='rwc'
+let g:ctrlp_working_path_mode='rawc'
 let g:ctrlp_use_caching=1
-
-" C and C++ (clang_complete)
-let g:clang_use_librar=1
-let g:clang_complete_auto=1
-let g:clang_snippets=1
-let g:clang_close_preview=1
 
 " Basic configuration
 let mapleader=','
@@ -75,7 +69,7 @@ endtry
 function! MakeTags()
 	let filetype = &filetype
 	let extension = expand('%:e')
-	let cmd='ctags --recurse --languages='.filetype.' *.'.extension
+	let cmd='ctags --recurse --languages='.filetype.' *'
 	echo cmd
 	let resp = system(cmd)
 	if resp
@@ -90,10 +84,10 @@ nnoremap k gk
 xnoremap j gj
 xnoremap k gk
 
-" nmap J 10j
-" nmap K 10k
-" xmap J 10j
-" xmap K 10k
+nmap J 10j
+nmap K 10k
+xmap J 10j
+xmap K 10k
 
 nnoremap gh <C-w>h
 nnoremap gj <C-w>j
