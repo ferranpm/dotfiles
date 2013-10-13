@@ -16,7 +16,7 @@ exec ~/.i3/start
 
 focus_follows_mouse no
 
-new_window pixel 2
+new_window pixel 1
  
 client.focused          #EEEEEE #AAAAAA #111111 #AAAAAA
 client.focused_inactive #AAAAAA #111111 #AAAAAA #999999
@@ -35,26 +35,17 @@ bindsym $win+Down exec amixer set Master 1%-
 bindsym Print exec scrot
 
 assign [class="Qbittorrent"] 5
-assign [class="transmission"] 5
 assign [class="Rhythmbox"] 5
-assign [title="CMUS"] 3
-assign [class="Pidgin"] 3
 assign [class="Skype"] 3
 assign [class="Steam"] 3
-assign [class="urpial"] 3
-assign [title="RSS"] 3
+assign [class="Thunderbird"] 3
 
-for_window [class="Evince"] floating enable
-for_window [class="GoL"] floating enable
 for_window [class="MPlayer"] floating enable
 for_window [class="Nvidia-settings"] floating enable
-for_window [class="Pidgin"] floating enable
 for_window [class="Ristretto"] floating enable
 for_window [class="Skype"] floating enable
 for_window [class="Steam"] floating enable
 for_window [class="Thunar"] floating enable
-for_window [class="Turpial"] floating enable
-for_window [class="Xpdf"] floating enable
 for_window [class="feh"] floating enable
 
 workspace 1 output HDMI-0
