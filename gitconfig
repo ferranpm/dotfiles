@@ -3,14 +3,15 @@
 	name = Ferran Pelayo Monfort
 
 [core]
-  editor = vim
-  pager = less -R
-  autocrlf = input
+	editor = vim
+	pager = less -R
+	autocrlf = input
+	excludesfile = ~/.cvsignore
 
 [color]
-  diff = auto
-  status = auto
-  branch = auto
+	diff = auto
+	status = auto
+	branch = auto
 	ui = true
 
 [merge]
@@ -23,11 +24,14 @@
 	browser = firefox
 
 [alias]
+	b = branch
 	c = commit
 	co = checkout
 	d = diff
 	f = fetch
-	l = log
+	l = log --pretty=format:'%C(yellow)%h %Cred%ad %C(yellow)%an%Cgreen%d %Creset%s' --date=short --graph --all
+	lo = log --pretty=format:'%C(yellow)%h %Cred%ad %C(yellow)%an%Cgreen%d %Creset%s' --date=short --graph
 	m = merge
 	p = push
 	s = status
+	v = describe --abbrev=0
