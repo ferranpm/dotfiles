@@ -55,25 +55,27 @@ bindkey '^[[Z' reverse-menu-complete
 
 ## ALIASES ##
 alias cal="cal -3"
-alias rss="newsbeuter -r"
 alias diff="diff -yEbwB --suppress-common-lines"
 alias g="git"
-alias gs="git status"
+alias ga="git add"
+alias gc="git commit"
 alias gd="git diff"
 alias gf="git fetch"
+alias gl="git l"
 alias gm="git merge"
 alias gp="git push"
-alias gc="git commit"
-alias ga="git add"
 alias gr="git rm"
-alias gl="git l"
-alias ls="ls --color=auto"
+alias gs="git status"
 alias l="ls -lh"
 alias ll="l -A"
+alias ls="ls --color=auto"
+alias rss="newsbeuter -r"
+alias vimpc="mpd ; vimpc"
 if [[ -x /usr/bin/pacman ]]; then
 	alias pacupg="sudo pacman -Syu"
 	alias pacin="sudo pacman -S"
 	alias pacre="sudo pacman -Rns"
+	alias pacro="sudo pacman -Qtdq > /dev/null && sudo pacman -Rns \$(pacman -Qtdq | sed -e ':a;N;\$!ba;s/\n/ /g')" # Erase orphaned packages
 	alias pacse="pacsearch"
 elif [[ -x /usr/bin/aptitude ]]; then
 	alias aptupg="sudo apt-get update && sudo apt-get upgrade"
