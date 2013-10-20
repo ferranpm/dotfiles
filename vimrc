@@ -69,7 +69,7 @@ endtry
 function! MakeTags()
 	let filetype = &filetype
 	let extension = expand('%:e')
-	let cmd='ctags --recurse --languages='.filetype.' *'
+	let cmd='ctags --append --recurse --languages='.filetype.' *'
 	echo cmd
 	let resp = system(cmd)
 	if resp
@@ -84,10 +84,10 @@ nnoremap k gk
 xnoremap j gj
 xnoremap k gk
 
-nmap J 10j
-nmap K 10k
-xmap J 10j
-xmap K 10k
+nmap J 5j
+nmap K 5k
+xmap J 5j
+xmap K 5k
 
 nnoremap gh <C-w>h
 nnoremap gj <C-w>j
@@ -100,8 +100,10 @@ nnoremap <C-h> gT
 inoremap <C-n> <C-x><C-o>
 inoremap <C-p> <C-x><C-p>
 
-nnoremap <down> ddp
-nnoremap <up> ddkP
+nnoremap <up> :move .-2<CR>
+nnoremap <down> :move .+1<CR>
+vnoremap <up> :move .-2<CR>gv
+vnoremap <down> :move '>+<CR>gv
 
 vnoremap > >gv
 vnoremap < <gv
