@@ -23,6 +23,7 @@ HISTSIZE=50000
 SAVEHIST=10000
 
 ## EXPORTS ##
+export PATH=~/bin/:$PATH
 export SHELL=/usr/bin/zsh
 export EDITOR=/usr/bin/vim
 export PAGER=/usr/bin/less
@@ -72,11 +73,12 @@ alias ls="ls --color=auto"
 alias rss="newsbeuter -r"
 alias vimpc="mpd ; vimpc"
 if [[ -x /usr/bin/pacman ]]; then
+	alias pacman="pacman --color=always"
 	alias pacupg="sudo pacman -Syu"
 	alias pacin="sudo pacman -S"
 	alias pacre="sudo pacman -Rns"
 	alias pacro="sudo pacman -Qtdq > /dev/null && sudo pacman -Rns \$(pacman -Qtdq | sed -e ':a;N;\$!ba;s/\n/ /g')" # Erase orphaned packages
-	alias pacse="pacsearch"
+	alias pacse="pacman -Ss"
 elif [[ -x /usr/bin/aptitude ]]; then
 	alias aptupg="sudo apt-get update && sudo apt-get upgrade"
 	alias aptin="sudo apt-get install"
