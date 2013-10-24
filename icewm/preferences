@@ -1,0 +1,94 @@
+# Focus and Behavior
+ClickToFocus = 1
+RaiseOnFocus = 1
+FocusOnClickClient = 1
+RaiseOnClickClient = 1
+RaiseOnClickTitleBar = 1
+RaiseOnClickButton = 1
+RaiseOnClickFrame = 1
+PassFirstClickToClient = 1
+AutoRaise = 0
+StrongPointerFocus = 0
+FocusOnMap = 1
+FocusOnMapTransient = 1
+FocusOnAppRaise = 1
+PointerColormap = 0
+SizeMaximized = 0
+MinimizeToDesktop = 0
+QuickSwitch = 1
+QuickSwitchToMinimized = 1
+QuickSwitchToAllWorkspaces = 1
+ShowMoveSizeStatus = 1
+ShowWorkspaceStatusAfterSwitch = 1
+ShowWorkspaceStatusAfterActivation = 1
+WarpPointer = 0
+OpaqueMove = 1
+OpaqueResize = 0
+Win95Keys = 0
+ManualPlacement = 0
+IgnoreNoFocusHint = 0
+MenuMouseTracking = 0
+SnapMove = 1
+#SnapDistance
+EdgeSwitch = 0
+AutoReloadMenus = 1
+ShowThemesMenu = 0
+ShowHelp = 0
+MsgBoxDefaultAction = 0
+#UseRootButtons
+#ButtonRaiseMask
+EdgeResistance = 10000
+
+# Task Bar
+ShowTaskBar = 1
+TaskBarAtTop = 0
+TaskBarKeepBelow = 0
+TaskBarAutoHide = 0
+TaskBarShowStartMenu = 1
+TaskBarShowWindowListMenu = 0
+TaskBarShowWorkspaces = 1
+TaskBarShowAllWindows = 0
+TaskBarShowClock = 1
+TaskBarShowMailboxStatus = 0
+TaskBarMailboxStatusBeepOnNewMail = 0
+TaskBarMailboxStatusCountMessages = 0
+#MailBoxPath
+TaskBarDoubleHeight = 0
+TaskBarShowCPUStatus = 1
+TimeFormat = "%H:%M"
+#DateFormat
+#UseMouseWheel
+#DelayPointerFocus
+
+# Timings
+ClickMotionDistance = 5
+MultiClickTime = 400
+AutoRaiseDelay = 400
+AutoHideDelay = 300
+ToolTipDelay = 5000
+ToolTipTime = 60000
+#ScrollBarStartDelay
+#ScrollBarDelay
+#AutoScrollStartDelay
+#AutoScrollDelay
+
+# Workspaces
+WorkspaceNames=" 1 ", " 2 ", " 3 "
+
+# Paths
+#LibPath
+IconPath="/usr/share/icons":"/usr/share/pixmaps"
+#LibPath
+
+# Programs
+#ClockCommand
+#MailCommand
+#LockCommand
+#RunCommand
+#WinMenuItems
+ShutdownCommand="systemctl poweroff"
+RebootCommand="systemctl reboot"
+
+DesktopBackgroundCenter=1
+SupportSemitransparency=1
+DesktopBackgroundImage="~/.icewm/background"

@@ -1,0 +1,3 @@
+prog "urxvt" gnome/32x32/apps/xfce-terminal.png /usr/bin/urxvt
+prog "firefox" hicolor/32x32/apps/firefox.png /usr/bin/firefox
+prog "thunar" gnome/32x32/apps/file-manager.png /usr/bin/thunar

@@ -1,0 +1,14 @@
+menu "Games" game {
+	prog "Steam" hicolor/32x32/apps/steam.png /usr/bin/steam
+	prog "Nuclear Pizza War" nuclearpizzawar.png /usr/bin/steam
+}
+
+menu "Internet" internet {
+	prog "Firefox" hicolor/32x32/apps/firefox.png /usr/bin/firefox
+	prog "Thunderbird" /usr/share/icewm/mailbox/mail.xpm /usr/bin/thunderbird
+}
+
+menu "System" sys {
+	prog "urxvt" gnome/32x32/apps/xfce-terminal.png /usr/bin/urxvt
+	prog "Thunar" gnome/32x32/apps/file-manager.png /usr/bin/thunar
+}
