@@ -91,4 +91,4 @@ RebootCommand="systemctl reboot"
 
 DesktopBackgroundCenter=1
 SupportSemitransparency=1
-DesktopBackgroundImage="~/.icewm/background"
+DesktopBackgroundImage=~/.icewm/background

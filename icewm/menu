@@ -1,14 +1,17 @@
 menu "Games" game {
-	prog "Steam" hicolor/32x32/apps/steam.png /usr/bin/steam
-	prog "Nuclear Pizza War" nuclearpizzawar.png /usr/bin/steam
+	prog "Steam" steam.png /usr/bin/steam
+	prog "Nuclear Pizza War" nuclearpizzawar.png /usr/bin/java -jar /usr/local/games/NPW.jar
+	prog "Endless Nuclear Kittens" endlessnuclearkittens.png /usr/bin/java -Djava.library.path=/usr/share/lwjgl/native/linux -jar /usr/local/games/ENK.jar
 }
 
 menu "Internet" internet {
 	prog "Firefox" hicolor/32x32/apps/firefox.png /usr/bin/firefox
 	prog "Thunderbird" /usr/share/icewm/mailbox/mail.xpm /usr/bin/thunderbird
+	prog "qBittorrent" /usr/local/share/pixmaps/qbittorrent.png /usr/local/bin/qbittorrent
+	prog "Skype" skype.png /usr/bin/skype
 }
 
 menu "System" sys {
-	prog "urxvt" gnome/32x32/apps/xfce-terminal.png /usr/bin/urxvt
-	prog "Thunar" gnome/32x32/apps/file-manager.png /usr/bin/thunar
+	prog "Urxvt" gnome/32x32/apps/xfce-terminal.png /usr/bin/urxvt
+	prog "Pcmanfm" gnome/32x32/apps/file-manager.png /usr/bin/pcmanfm
 }
