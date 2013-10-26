@@ -16,12 +16,13 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 # Set Wallpaper
-feh --bg-scale $Wallpaper
-
+feh --bg-scale $Wallpaper &
 # Set Xresources
-xrdb $Xresources
-
-urxvtd -q -o -f
+xrdb $Xresources &
+# Start urxvt daemon
+urxvtd -q -o -f &
+# Start xscreensaver
+xscreensaver -no-splash &
 
 if [ -z $1 ]; then
 	exec $DefaultWM
