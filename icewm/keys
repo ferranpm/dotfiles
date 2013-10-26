@@ -1,6 +1,6 @@
 key "Alt+Return" urxvt
 key "Alt+d" dmenu_run
-key "Print" import output.png
+key "Print" import screenshot.png
 key "Super+f" urxvt -e ranger
-key "Super+Up" amixer set Master 1+
-key "Super+Down" amixer set Master 1-
+key 0x1008ff13 amixer set Master 2%+
+key 0x1008ff11 amixer set Master 2%-
