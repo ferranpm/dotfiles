@@ -1,5 +1,8 @@
 menu "Games" applications-games.png {
-	prog "steam" steam.png steam
+	prog "Steam" steam.png steam
+	prog "Nuclear Pizza War" NPW.png java -jar /usr/local/games/NPW.jar
+	prog "Minecraft" minecraft.png java -jar /usr/local/games/Minecraft.jar
+	prog "Endless Nuclear Kitten" ENK.png java -Djava.library.path=/usr/share/lwjgl/native/linux -jar /usr/local/games/ENK.jar
 }
 
 menu "Internet" applications-internet.png {
