@@ -542,7 +542,8 @@ ShutdownCommand="systemctl poweroff"
 RebootCommand="systemctl reboot"
 
 #  Command to run on CPU status
-CPUStatusCommand="x-terminal-emulator -name top -title Process\ Status -e top"
+# CPUStatusCommand="x-terminal-emulator -name top -title Process\ Status -e top"
+CPUStatusCommand="urxvtc -title Process\ Status -e top"
 
 #  WM_CLASS to allow runonce for CPUStatusCommand
 CPUStatusClassHint="top.XTerm"
