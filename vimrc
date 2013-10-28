@@ -82,18 +82,28 @@ endfunction
 
 nmap <F8> :call MakeTags()<CR>
 
+function! Number()
+	set norelativenumber
+	set number
+endfunction
+
+function! RelativeNumber()
+	set relativenumber
+	set number
+endfunction
+
 function! NumberToggle()
 	if(&relativenumber == 1)
-		set norelativenumber
+		call Number()
 	else
-		set relativenumber
+		call RelativeNumber()
 	endif
 endfunc
 
 nnoremap <C-c> :call NumberToggle()<cr>
 
-autocmd InsertEnter * set norelativenumber
-autocmd InsertLeave * set relativenumber
+autocmd InsertEnter * call Number()
+autocmd InsertLeave * call RelativeNumber()
 
 nnoremap j gj
 nnoremap k gk
