@@ -25,6 +25,7 @@ set encoding=utf-8
 set mouse=a
 set nocompatible
 set number
+set relativenumber
 set ruler
 set scrolloff=10
 set showbreak=↪
@@ -78,6 +79,16 @@ function! MakeTags()
 endfunction
 
 nmap <F8> :call MakeTags()<CR>
+
+function! NumberToggle()
+	if(&relativenumber == 1)
+		set norelativenumber
+	else
+		set relativenumber
+	endif
+endfunc
+
+nnoremap <C-c> :call NumberToggle()<cr>
 
 nnoremap j gj
 nnoremap k gk
