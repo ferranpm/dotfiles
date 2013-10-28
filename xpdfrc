@@ -1,0 +1,44 @@
+continuousView yes
+textEncoding UTF-8
+textEOL unix
+psFile "| lpr"
+urlCommand "firefox %s"
+
+bind space any pageDown
+bind shift-space any pageUp
+bind pgdn any pageDown
+bind pgup any pageUp
+bind d any pageDown
+bind u any pageUp
+
+bind mousePress4 any scrollUpPrevPage(100)
+bind mousePress5 any scrollDownNextPage(100)
+
+bind j any scrollDownNextPage(100)
+bind k any scrollUpPrevPage(100)
+bind J any scrollDownNextPage(250)
+bind K any scrollUpPrevPage(250)
+
+bind h any scrollLeft(100)
+bind l any scrollRight(100)
+
+bind p any nextPage
+bind n any prevPage
+
+bind / any find
+
+bind ctrl-w any zoomFitWidth
+bind ctrl-p any zoomFitPage
+
+bind + any zoomIn
+bind = any zoomPercent(100)
+bind - any zoomOut
+
+bind f any toggleFullScreenMode
+
+bind g any gotoPage(1)
+bind G any gotoLastPage
+
+bind c any toggleContinuousMode
+
+bind : any focusToPageNum
