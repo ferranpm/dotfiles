@@ -31,6 +31,8 @@ set scrolloff=10
 set showbreak=↪
 set showcmd
 set showmode
+set timeoutlen=500
+set ttimeoutlen=0
 set wildignore+=.git/*,.gitignore,*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__
 
 " Indentation
@@ -89,6 +91,9 @@ function! NumberToggle()
 endfunc
 
 nnoremap <C-c> :call NumberToggle()<cr>
+
+autocmd InsertEnter * set norelativenumber
+autocmd InsertLeave * set relativenumber
 
 nnoremap j gj
 nnoremap k gk
