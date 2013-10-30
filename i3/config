@@ -25,7 +25,6 @@ assign [class="Skype"] 3
 assign [class="Steam"] 3
 assign [class="Thunderbird"] 3
 
-for_window [class="Exit"] floating enable
 for_window [class="MPlayer"] floating enable
 for_window [class="Nvidia-settings"] floating enable
 for_window [class="Ristretto"] floating enable
@@ -33,6 +32,7 @@ for_window [class="Skype"] floating enable
 for_window [class="Steam"] floating enable
 for_window [class="Thunar"] floating enable
 for_window [class="feh"] floating enable
+for_window [title="^exit$"] floating enable
 
 # workspace 1 output HDMI-0
 # workspace 3 output HDMI-0
