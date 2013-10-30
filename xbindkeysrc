@@ -1,0 +1,35 @@
+"urxvtc"
+	Alt + Return
+
+"urxvtc -e vim"
+	Mod4 + v
+
+"urxvtc -e python3 /usr/bin/ranger"
+	Mod4 + f
+
+"dmenu_run -fn DejaVu"
+	Alt + d
+
+"firefox"
+	Mod4 + i
+
+"setxkbmap es"
+	Mod4 + e
+
+"setxkbmap us"
+	Mod4 + u
+
+"xmodmap ~/dotfiles/Xmodmap"
+	Mod4 + c
+
+"~/dotfiles/exit"
+	Alt + Shift + e
+
+"amixer set Master 1%+"
+	Mod4 + Up
+
+"amixer set Master 1%-"
+	Mod4 + Down
+
+"import ~/screenshot.png"
+	Print

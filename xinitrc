@@ -24,6 +24,8 @@ urxvtd -q -o -f &
 # Start xscreensaver
 xscreensaver -no-splash &
 
+xbindkeys
+
 if [ -z $1 ]; then
 	exec $DefaultWM
 else

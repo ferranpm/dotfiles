@@ -9,30 +9,15 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
-set $win Mod4
-
 exec ~/.i3/start
-
+floating_modifier $mod
 focus_follows_mouse no
+font xft:DejaVu Sans Mono 12
+new_window pixel 3
+set $mod Mod1
 
-new_window pixel 1
- 
 client.focused          #EEEEEE #AAAAAA #111111 #AAAAAA
 client.focused_inactive #AAAAAA #111111 #AAAAAA #999999
- 
-bindsym $win+i exec firefox
-bindsym $win+r exec rhythmbox
-bindsym $win+m exec urxvtc -title CMUS -e /usr/bin/cmus
-bindsym $win+f exec urxvtc -title ranger -e python3 /usr/bin/ranger
-bindsym $win+n exec urxvtc -title RSS -e newsbeuter
-bindsym $win+e exec setxkbmap es
-bindsym $win+u exec setxkbmap us
-bindsym $win+c exec xmodmap ~/dotfiles/Xmodmap
-bindsym $win+p exec systemctl poweroff
-bindsym $win+Up exec amixer set Master 1%+
-bindsym $win+Down exec amixer set Master 1%-
-bindsym Print exec scrot
 
 assign [class="Qbittorrent"] 5
 assign [class="Rhythmbox"] 5
@@ -40,6 +25,7 @@ assign [class="Skype"] 3
 assign [class="Steam"] 3
 assign [class="Thunderbird"] 3
 
+for_window [class="Exit"] floating enable
 for_window [class="MPlayer"] floating enable
 for_window [class="Nvidia-settings"] floating enable
 for_window [class="Ristretto"] floating enable
@@ -59,21 +45,8 @@ for_window [class="feh"] floating enable
 # workspace 8 output VGA-0
 # workspace 10 output VGA-0
 
-# font for window titles. ISO 10646 = Unicode
-font xft:DejaVu Sans Mono 12
-
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
-# start a terminal
-bindsym $mod+Return exec urxvtc
-
 # kill focused window
 bindsym $mod+Shift+Q kill
-
-# start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
-# bindsym $mod+d exec i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
@@ -134,8 +107,6 @@ bindsym $mod+Shift+0 move container to workspace 10
 bindsym $mod+Shift+C reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+R restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+E exit
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
