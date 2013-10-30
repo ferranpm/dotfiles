@@ -131,7 +131,7 @@ AutoRaise=0 # 0/1
 DelayPointerFocus=1 # 0/1
 
 #  Support win95 keyboard keys (Penguin/Meta/Win_L,R shows menu)
-Win95Keys=1 # 0/1
+Win95Keys=0 # 0/1
 
 #  Treat Super/Win modifier as Ctrl+Alt
 ModSuperIsCtrlAlt=1 # 0/1
@@ -341,13 +341,13 @@ ShowHelp=0 # 0/1
 ShowLogoutSubMenu=1 # 0/1
 
 #  Show the about menu item
-ShowAbout=1 # 0/1
+ShowAbout=0 # 0/1
 
 #  Show the run menu item
-ShowRun=1 # 0/1
+ShowRun=0 # 0/1
 
 #  Show the window menu item
-ShowWindowList=1 # 0/1
+ShowWindowList=0 # 0/1
 
 #  Allow to switch a window to fullscreen
 AllowFullscreen=1 # 0/1
@@ -748,10 +748,10 @@ KeySysWorkspace11="Alt+Ctrl+bracketleft"
 KeySysWorkspace12="Alt+Ctrl+bracketright"
 
 #  
-KeySysWorkspace1TakeWin="Alt+Ctrl+Shift+1"
+KeySysWorkspace1TakeWin="Alt+Shift+1"
 
 #  
-KeySysWorkspace2TakeWin="Alt+Ctrl+Shift+2"
+KeySysWorkspace2TakeWin="Alt+Shift+2"
 
 #  
 KeySysWorkspace3TakeWin="Alt+Ctrl+Shift+3"
