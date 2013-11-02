@@ -18,7 +18,6 @@ let g:ctrlp_use_caching=1
 let mapleader=','
 filetype plugin indent on
 syntax on
-set autochdir
 set autoread
 set cursorline
 set encoding=utf-8
