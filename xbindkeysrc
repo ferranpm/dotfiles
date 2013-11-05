@@ -10,7 +10,7 @@
 "urxvtc -e irb"
 	Mod4 + r
 
-"urxvtc -e python3 /usr/bin/ranger"
+"urxvtc -e /usr/bin/ranger"
 	Mod4 + f
 
 "dmenu_run -fn DejaVu"
@@ -28,7 +28,7 @@
 "setxkbmap us"
 	Mod4 + u
 
-"xmodmap ~/dotfiles/Xmodmap"
+"xmodmap ~/dotfiles/Return"
 	Mod4 + c
 
 "urxvtc -title exit -geometry 40x20+0+400 -e ~/dotfiles/exit"

@@ -10,7 +10,7 @@ stty -ixon
 setopt prompt_subst   # substitute params in prompt
 setopt noflowcontrol  # Turn off terminal driver flow control (CTRL+S/CTRL+Q)
 setopt APPEND_HISTORY 
-setopt SHARE_HISTORY 
+# setopt SHARE_HISTORY 
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_REDUCE_BLANKS
@@ -24,7 +24,7 @@ SAVEHIST=10000
 KEYTIMEOUT=1
 
 ## EXPORTS ##
-export PATH=~/bin/:$PATH
+export PATH=~/bin/:~/.gem/ruby/2.0.0/bin:$PATH
 export SHELL=/usr/bin/zsh
 export EDITOR=/usr/bin/vim
 export PAGER=/usr/bin/less
