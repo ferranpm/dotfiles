@@ -130,6 +130,9 @@ nnoremap <down> :move .+1<CR>
 vnoremap <up> :move .-2<CR>gv
 vnoremap <down> :move '>+<CR>gv
 
+nnoremap <silent> <right> :bn<CR>
+nnoremap <silent> <left> :bp<CR>
+
 vnoremap > >gv
 vnoremap < <gv
 
