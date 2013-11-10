@@ -7,7 +7,7 @@ echo 'c) Cancel'
 
 read -n 1 op
 
-case $op
+case $op in
 	's')
 		systemctl poweroff
 		;;
@@ -15,7 +15,7 @@ case $op
 		systemctl poweroff
 		;;
 	'l')
-		wm_proc=$(ps -e | grep -e i3 -e icewm-session | awk '{print $1}')
+		wm_proc=$(ps -e | grep -e i3$ -e icewm-session | awk '{print $1}')
 		kill -9 $wm_proc
 		;;
 	'c')
