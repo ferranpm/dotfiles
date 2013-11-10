@@ -109,10 +109,10 @@ nnoremap k gk
 xnoremap j gj
 xnoremap k gk
 
-nmap J 5j
-nmap K 5k
-xmap J 5j
-xmap K 5k
+nmap <silent> J 5j
+nmap <silent> K 5k
+xmap <silent> J 5j
+xmap <silent> K 5k
 
 nnoremap gh <C-w>h
 nnoremap gj <C-w>j
