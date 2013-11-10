@@ -7,13 +7,14 @@ autoload -U compinit
 compinit
 
 stty -ixon
-setopt prompt_subst   # substitute params in prompt
+setopt append_history 
+setopt extended_glob
+setopt hist_ignore_all_dups
+setopt hist_ignore_dups
+setopt hist_reduce_blanks
+setopt hist_verify
 setopt noflowcontrol  # Turn off terminal driver flow control (CTRL+S/CTRL+Q)
-setopt APPEND_HISTORY 
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_REDUCE_BLANKS
-setopt HIST_VERIFY
+setopt prompt_subst   # substitute params in prompt
 
 ## VARIABLES ##
 HISTFILE=$HOME/.zsh_history
