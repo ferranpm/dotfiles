@@ -16,7 +16,7 @@ font xft:DejaVu Sans Mono 12
 new_window pixel 3
 set $mod Mod1
 
-client.focused          #EEEEEE #AAAAAA #111111 #AAAAAA
+client.focused          #999999 #6c4e46 #111111 #6c4e46
 client.focused_inactive #AAAAAA #111111 #AAAAAA #999999
 
 assign [class="Qbittorrent"] 5
@@ -33,17 +33,6 @@ for_window [class="Steam"] floating enable
 for_window [class="Thunar"] floating enable
 for_window [class="feh"] floating enable
 for_window [title="^exit$"] floating enable
-
-# workspace 1 output HDMI-0
-# workspace 3 output HDMI-0
-# workspace 5 output HDMI-0
-# workspace 7 output HDMI-0
-# workspace 9 output HDMI-0
-# workspace 2 output VGA-0
-# workspace 4 output VGA-0
-# workspace 6 output VGA-0
-# workspace 8 output VGA-0
-# workspace 10 output VGA-0
 
 # kill focused window
 bindsym $mod+Shift+Q kill

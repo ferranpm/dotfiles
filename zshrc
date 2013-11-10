@@ -10,7 +10,6 @@ stty -ixon
 setopt prompt_subst   # substitute params in prompt
 setopt noflowcontrol  # Turn off terminal driver flow control (CTRL+S/CTRL+Q)
 setopt APPEND_HISTORY 
-# setopt SHARE_HISTORY 
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_REDUCE_BLANKS
@@ -71,6 +70,8 @@ alias gs="git status"
 alias l="ls -lh"
 alias ll="l -A"
 alias ls="ls --color=auto"
+alias pmount="udisks --mount"
+alias pumount="umount"
 alias rss="newsbeuter -r"
 alias vimpc="mpd ; vimpc"
 if [[ -x /usr/bin/pacman ]]; then

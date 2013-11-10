@@ -18,13 +18,6 @@ Xft.rgba: rgb
 !!!!!!!!!!!
 !! URxvt !!
 !!!!!!!!!!!
-! URxvt.keysym.C-3: command:\033]710; xft:DejaVu Sans Mono:size=4\007
-! URxvt.keysym.C-4: command:\033]710; xft:DejaVu Sans Mono:size=6\007
-! URxvt.keysym.C-5: command:\033]710; xft:DejaVu Sans Mono:size=8\007
-! URxvt.keysym.C-6: command:\033]710; xft:DejaVu Sans Mono:size=10\007
-! URxvt.keysym.C-7: command:\033]710; xft:DejaVu Sans Mono:size=12\007
-! URxvt.keysym.C-8: command:\033]710; xft:DejaVu Sans Mono:size=14\007
-! URxvt.keysym.C-9: command:\033]710; xft:DejaVu Sans Mono:size=16\007
 URxvt.font:xft:DejaVu Sans Mono:size=10
 URxvt.transparent: true
 URxvt.shading: 30
@@ -32,7 +25,7 @@ URxvt.shading: 30
 !!!!!!!!!!
 !! Xpdf !!
 !!!!!!!!!!
-Xpdf.geometry: 800x800
+Xpdf.geometry: 900x900
 Xpdf.initialZoom: width
 
 !!!!!!!!!!!!

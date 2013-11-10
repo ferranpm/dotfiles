@@ -9,6 +9,7 @@ menu "Internet" applications-internet.png {
 	prog "Firefox" firefox.png firefox
 	prog "Thunderbird" /usr/share/icewm/mailbox/mail.xpm thunderbird
 	prog "qBittorrent" /usr/local/share/pixmaps/qbittorrent.png qbittorrent
+	prog "Skype" skype.png /usr/bin/skype
 }
 
 menu "Office" applications-office.png {
