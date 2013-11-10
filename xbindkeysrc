@@ -31,7 +31,7 @@
 "xmodmap ~/dotfiles/Return"
 	Mod4 + c
 
-"urxvtc -title exit -geometry 40x20+0+400 -e ~/dotfiles/exit"
+"urxvtc -title exit -geometry 20x10+0+0 -e ~/dotfiles/exit"
 	Control + Alt + e
 
 "amixer set Master 1%+"
