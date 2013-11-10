@@ -73,19 +73,12 @@ alias ls="ls --color=auto"
 alias pmount="udisks --mount"
 alias pumount="umount"
 alias rss="newsbeuter -r"
-if [[ -x /usr/bin/pacman ]]; then
-	alias pacman="pacman --color=always"
-	alias pacupg="sudo pacman -Syu"
-	alias pacin="sudo pacman -S"
-	alias pacre="sudo pacman -Rns"
-	alias pacro="sudo pacman -Qtdq > /dev/null && sudo pacman -Rns \$(pacman -Qtdq | sed -e ':a;N;\$!ba;s/\n/ /g')" # Erase orphaned packages
-	alias pacse="pacman -Ss"
-elif [[ -x /usr/bin/aptitude ]]; then
-	alias aptupg="sudo apt-get update && sudo apt-get upgrade"
-	alias aptin="sudo apt-get install"
-	alias aptre="sudo apt-get remove --purge"
-	alias aptse="aptitude search"
-fi
+alias pacman="pacman --color=always"
+alias pacupg="sudo pacman -Syu"
+alias pacin="sudo pacman -S"
+alias pacre="sudo pacman -Rns"
+alias pacro="sudo pacman -Qtdq > /dev/null && sudo pacman -Rns \$(pacman -Qtdq | sed -e ':a;N;\$!ba;s/\n/ /g')" # Erase orphaned packages
+alias pacse="pacman -Ss"
 
 ## FUNCTIONS ##
 function insert-sudo() {
