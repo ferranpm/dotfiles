@@ -40,7 +40,6 @@ zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm 
 zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
 zstyle ':completion:*:hosts' hosts $hosts
 zstyle ':completion:*' users off
-zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
 
 ## BINDKEYS ##
 bindkey -v
@@ -74,7 +73,6 @@ alias ls="ls --color=auto"
 alias pmount="udisks --mount"
 alias pumount="umount"
 alias rss="newsbeuter -r"
-alias vimpc="mpd ; vimpc"
 if [[ -x /usr/bin/pacman ]]; then
 	alias pacman="pacman --color=always"
 	alias pacupg="sudo pacman -Syu"
