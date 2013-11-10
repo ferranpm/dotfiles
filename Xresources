@@ -2,64 +2,62 @@ Xft.dpi: 96
 Xft.antialias: true
 Xft.rgba: rgb
 
-*.scrollBar: false
-*.loginShell: true
-*.saveLines: 512
-*.geometry: 100x35
-*.xftAntialias: true
-*.jumpScroll: true
-*.cursorBlink: true
-*.borderless: false
-*.scrollTtyOutput: false
-*.scrollTtyKeypress: true
-*.scrollWithBuffer: true
-*.urlLauncher: firefox
-
 !!!!!!!!!!!
 !! URxvt !!
 !!!!!!!!!!!
-URxvt.font:xft:DejaVu Sans Mono:size=10
+URxvt.scrollBar: false
+URxvt.loginShell: true
+URxvt.saveLines: 512
+URxvt.geometry: 100x35
+URxvt.xftAntialias: true
+URxvt.jumpScroll: true
+URxvt.cursorBlink: true
+URxvt.borderless: false
+URxvt.scrollTtyOutput: false
+URxvt.scrollTtyKeypress: true
+URxvt.scrollWithBuffer: true
+URxvt.urlLauncher: firefox
+
+URxvt.font: xft:DejaVu Sans Mono:size=10
 URxvt.transparent: true
 URxvt.shading: 30
+
+URxvt.foreground: #DADADA
+URxvt.background: #1C1C1C
+
+URxvt.colorBD:      #ffffff
+URxvt.borderColor:  #151515
+URxvt.cursorColor:  #ff8939
+URxvt.cursorColor2: #151515
+
+! Black
+URxvt.color0:     #2B2B2B
+URxvt.color8:     #404040
+! Red
+URxvt.color1:     #E84F4F
+URxvt.color9:     #D23D3D
+! Green
+URxvt.color2:     #B8D68C
+URxvt.color10:    #A0CF5D
+! Yellow
+URxvt.color3:     #E1AA5D
+URxvt.color11:    #F39D21
+! Blue
+URxvt.color4:     #7DC1CF
+URxvt.color12:    #4E9FB1
+! Magenta
+URxvt.color5:     #9B64FB
+URxvt.color13:    #8542FF
+! Cyan
+URxvt.color6:     #6D878D
+URxvt.color14:    #42717B
+! White
+URxvt.color7:     #dddddd
+URxvt.color15:    #dddddd
 
 !!!!!!!!!!
 !! Xpdf !!
 !!!!!!!!!!
 Xpdf.geometry: 900x900
 Xpdf.initialZoom: width
-
-!!!!!!!!!!!!
-!! COLORS !!
-!!!!!!!!!!!!
-*.foreground: #DADADA
-*.background: #1C1C1C
-
-*.borderColor:        #151515
-*.colorBD:            #ffffff
-*.cursorColor:        #ff8939
-*.cursorColor2:       #151515
-
-! black
-*.color0:     #2B2B2B
-*.color8:     #404040
-!red
-*.color1:     #E84F4F
-*.color9:     #D23D3D
-!green
-*.color2:     #B8D68C
-*.color10:    #A0CF5D
-!yellow
-*.color3:     #E1AA5D
-*.color11:    #F39D21
-!blue
-*.color4:     #7DC1CF
-*.color12:    #4E9FB1
-!magenta
-*.color5:     #9B64FB
-*.color13:    #8542FF
-!cyan
-*.color6:     #6D878D
-*.color14:    #42717B
-!white
-*.color7:     #dddddd
-*.color15:    #dddddd
+Xpdf*fontList: -misc-dejavu sans light-extralight-r-normal--0-0-0-0-p-0-ascii-0
