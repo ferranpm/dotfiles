@@ -25,4 +25,5 @@ menu "Utilities" applications-utilities.png {
 
 menu "System" applications-system.png {
 	prog "Urxvt" xfce-terminal.png urxvt
+	prog "Urxvt client" xfce-terminal.png urxvtc
 }
