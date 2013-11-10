@@ -12,7 +12,7 @@ case $op in
 		systemctl poweroff
 		;;
 	'r')
-		systemctl poweroff
+		systemctl reboot
 		;;
 	'l')
 		wm_proc=$(ps -e | grep -e i3$ -e icewm-session | awk '{print $1}')
