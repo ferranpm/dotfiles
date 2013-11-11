@@ -99,7 +99,7 @@ function! NumberToggle()
 	endif
 endfunc
 
-nnoremap <C-c> :call NumberToggle()<cr>
+nnoremap <silent> <C-c> :call NumberToggle()<cr>
 
 autocmd InsertEnter * call Number()
 autocmd InsertLeave * call RelativeNumber()
