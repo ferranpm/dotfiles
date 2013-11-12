@@ -1,6 +1,2 @@
-.netrwhist
-zsh/cache
-
-newsbeuter/*
-!newsbeuter/urls
-!newsbeuter/config
+vim/.netrwhist
+vim/bundle/*
