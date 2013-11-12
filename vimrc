@@ -122,9 +122,6 @@ nnoremap gl <C-w>l
 nnoremap <C-l> gt
 nnoremap <C-h> gT
 
-inoremap <C-n> <C-x><C-o>
-inoremap <C-p> <C-x><C-p>
-
 nnoremap <up> :move .-2<CR>
 nnoremap <down> :move .+1<CR>
 vnoremap <up> :move .-2<CR>gv
