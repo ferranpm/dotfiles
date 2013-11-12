@@ -26,6 +26,7 @@ bind p any nextPage
 bind n any prevPage
 
 bind / any find
+bind ctrl-n any findNext
 
 bind ctrl-w any zoomFitWidth
 bind ctrl-p any zoomFitPage
