@@ -1,7 +1,8 @@
-try
+let pathogen=expand("~/.vim/bundle/pathogen/autoload/pathogen.vim")
+if filereadable(pathogen)
 	runtime bundle/pathogen/autoload/pathogen.vim
 	execute pathogen#infect()
-endtry
+endif
 
 " QuickBuf
 let g:quickbuf_map='<F2>'
@@ -19,9 +20,7 @@ let mapleader=','
 filetype plugin indent on
 syntax on
 set autoread
-set cursorline
 set encoding=utf-8
-set mouse=a
 set nocompatible
 set number
 set relativenumber
@@ -64,8 +63,10 @@ set t_Co=256
 set background=dark
 try
 	colorscheme lucius
+	set cursorline
 	highlight CursorLine cterm=Bold
 	highlight Normal ctermbg=None
+catch
 endtry
 
 function! MakeTags()
