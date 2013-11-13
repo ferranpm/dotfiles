@@ -4,9 +4,6 @@ if filereadable(pathogen)
 	execute pathogen#infect()
 endif
 
-" QuickBuf
-let g:quickbuf_map='<F2>'
-
 " CtrlP
 let g:ctrlp_show_hidden=1
 let g:ctrlp_max_height=100

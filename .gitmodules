@@ -4,9 +4,6 @@
 [submodule "vim/bundle/lucius"]
 	path = vim/bundle/lucius
 	url = https://github.com/jonathanfilip/vim-lucius
-[submodule "vim/bundle/quickbuf"]
-	path = vim/bundle/quickbuf
-	url = https://github.com/tek/vim-quickbuf
 [submodule "vim/bundle/multiple-cursors"]
 	path = vim/bundle/multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors
