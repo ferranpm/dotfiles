@@ -50,6 +50,7 @@ set nowritebackup
 
 " Status Line
 set laststatus=2
+set statusline=%<%F%h%m%r%w%y\ (%l/%L,\ %c)\ %p%%
 
 " Menu
 set wildmode=list:full
@@ -61,8 +62,11 @@ set background=dark
 try
 	colorscheme lucius
 	set cursorline
-	highlight CursorLine cterm=Bold
 	highlight Normal ctermbg=None
+	highlight CursorLine cterm=Bold
+	highlight StatusLine ctermbg=157
+	autocmd InsertEnter * highlight StatusLine ctermbg=45
+	autocmd InsertLeave * highlight StatusLine ctermbg=157
 catch
 endtry
 
