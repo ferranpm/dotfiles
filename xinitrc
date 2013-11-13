@@ -26,6 +26,8 @@ xscreensaver -no-splash &
 
 xbindkeys
 
+firefox &
+
 if [ -z $1 ]; then
 	exec $DefaultWM
 else

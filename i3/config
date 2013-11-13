@@ -9,7 +9,6 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-exec ~/.i3/start
 floating_modifier $mod
 focus_follows_mouse no
 font xft:DejaVu Sans Mono 12
