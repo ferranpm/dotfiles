@@ -31,11 +31,12 @@ set ttimeoutlen=0
 set wildignore+=.git/*,.gitignore,*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__
 
 " Indentation
-set tabstop=4
-set softtabstop=4
+set autoindent
+set expandtab
 set shiftwidth=4
 set smarttab
-set autoindent
+set softtabstop=4
+set tabstop=4
 
 " Search & Replace
 set incsearch
