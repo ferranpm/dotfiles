@@ -18,7 +18,7 @@ URxvt.scrollTtyKeypress: true
 URxvt.scrollWithBuffer: true
 URxvt.urlLauncher: firefox
 
-URxvt.font: xft:DejaVu Sans Mono:size=10
+URxvt.font: xft:Inconsolata:size=12:antialias=true
 URxvt.transparent: true
 URxvt.shading: 30
 
