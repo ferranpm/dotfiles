@@ -11,3 +11,4 @@ map <C-H> gT
 map J 5j
 map K 5k
 map ,e :quitall<CR>
+map q :quitall<CR>
