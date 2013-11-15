@@ -1,0 +1,13 @@
+crossfade 0
+set ignorecase
+set smartcase
+set nomouse
+set window library
+set windows library,browse,playlist
+set stoponquit
+
+map <C-L> gt
+map <C-H> gT
+map J 5j
+map K 5k
+map ,e :quitall<CR>
