@@ -15,6 +15,9 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 	unset f
 fi
 
+setxkbmap us
+xmodmap ~/dotfiles/Return
+
 feh --bg-scale $Wallpaper &
 firefox &
 mpd &
