@@ -15,18 +15,13 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 	unset f
 fi
 
-# Set Wallpaper
 feh --bg-scale $Wallpaper &
-# Set Xresources
-xrdb $Xresources &
-# Start urxvt daemon
-urxvtd -q -o -f &
-# Start xscreensaver
-xscreensaver -no-splash &
-
-xbindkeys
-
 firefox &
+mpd &
+urxvtd -q -o -f &
+xbindkeys &
+xrdb $Xresources &
+xscreensaver -no-splash &
 
 if [ -z $1 ]; then
 	exec $DefaultWM
