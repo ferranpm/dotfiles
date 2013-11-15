@@ -13,10 +13,11 @@ let g:ctrlp_working_path_mode='rawc'
 let g:ctrlp_use_caching=1
 
 " Basic configuration
-let mapleader=','
 filetype plugin indent on
+let mapleader=','
 syntax on
 set autoread
+set cursorline
 set encoding=utf-8
 set nocompatible
 set number
@@ -39,14 +40,14 @@ set softtabstop=4
 set tabstop=4
 
 " Search & Replace
-set incsearch
-set ignorecase
-set smartcase
 set gdefault
+set ignorecase
+set incsearch
+set smartcase
 
-" Backups 
-set noswapfile
+" Backups
 set nobackup
+set noswapfile
 set nowritebackup
 
 " Status Line
@@ -54,19 +55,20 @@ set laststatus=2
 set statusline=%<%F%h%m%r%w%y\ (%l/%L,\ %c)\ %p%%
 
 " Menu
-set wildmode=list:full
 set wildmenu
+set wildmode=list:full
 
 " Colors
-set t_Co=256
-set background=dark
 try
 	colorscheme lucius
-	set cursorline
-	highlight Normal ctermbg=None
-	highlight CursorLine cterm=Bold
 catch
 endtry
+set t_Co=256
+set background=dark
+highlight Normal ctermbg=None
+highlight CursorLine cterm=Bold
+highlight ExtraWhitespace ctermbg=93
+match ExtraWhitespace /\s\+\%#\@<!$/
 
 function! MakeTags()
 	let filetype = &filetype
@@ -79,7 +81,7 @@ function! MakeTags()
 	endif
 endfunction
 
-nmap <F8> :call MakeTags()<CR>
+nmap <F8> :call MakeTags()<cr>
 
 function! Number()
 	set norelativenumber
@@ -122,25 +124,25 @@ nnoremap gl <C-w>l
 nnoremap <C-l> gt
 nnoremap <C-h> gT
 
-nnoremap <up> :move .-2<CR>
-nnoremap <down> :move .+1<CR>
-vnoremap <up> :move .-2<CR>gv
-vnoremap <down> :move '>+<CR>gv
+nnoremap <up> :move .-2<cr>
+nnoremap <down> :move .+1<cr>
+vnoremap <up> :move .-2<cr>gv
+vnoremap <down> :move '>+<cr>gv
 
-nnoremap <silent> <right> :bn<CR>
-nnoremap <silent> <left> :bp<CR>
+nnoremap <silent> <right> :bn<cr>
+nnoremap <silent> <left> :bp<cr>
 
 vnoremap > >gv
 vnoremap < <gv
 
-nnoremap <CR> o<Esc>
-nnoremap <BS> O<Esc>
+nnoremap <cr> o<Esc>
+nnoremap <bs> O<Esc>
 
 nnoremap <silent> <Space> i_<Esc>r
 nnoremap <silent> l <Space>
-nnoremap <silent> h <BS>
+nnoremap <silent> h <bs>
 
-nnoremap <leader>. :update<CR>
-nnoremap <leader>e :q<CR>
-nnoremap <leader>E :qa!<CR>
-nnoremap <leader>o :only<CR>
+nnoremap <leader>. :update<cr>
+nnoremap <leader>e :q<cr>
+nnoremap <leader>E :qa!<cr>
+nnoremap <leader>o :only<cr>
