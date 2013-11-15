@@ -65,9 +65,6 @@ try
 	set cursorline
 	highlight Normal ctermbg=None
 	highlight CursorLine cterm=Bold
-	highlight StatusLine ctermbg=157
-	autocmd InsertEnter * highlight StatusLine ctermbg=45
-	autocmd InsertLeave * highlight StatusLine ctermbg=157
 catch
 endtry
 
