@@ -7,7 +7,7 @@ autoload -U compinit
 compinit
 
 stty -ixon
-setopt append_history 
+setopt append_history
 setopt extended_glob
 setopt hist_ignore_all_dups
 setopt hist_ignore_dups
