@@ -4,6 +4,12 @@ if filereadable(pathogen)
 	execute pathogen#infect()
 endif
 
+" Lightline
+let g:lightline = {}
+let g:lightline.enable = {}
+let g:lightline.enable.statusline = 0
+let g:lightline.enable.tabline = 1
+
 " CtrlP
 let g:ctrlp_show_hidden=1
 let g:ctrlp_max_height=100
@@ -24,7 +30,7 @@ set number
 set relativenumber
 set ruler
 set scrolloff=10
-set showbreak=↪
+set showbreak=>
 set showcmd
 set showmode
 set timeoutlen=500
@@ -52,7 +58,7 @@ set nowritebackup
 
 " Status Line
 set laststatus=2
-set statusline=%<%F%h%m%r%w%y\ (%l/%L,\ %c)\ %p%%
+set statusline=%F\ %h%r%w%y\ (%l/%L,\ %c)\ %p%%%=%m
 
 " Menu
 set wildmenu
