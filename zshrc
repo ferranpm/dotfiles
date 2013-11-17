@@ -2,6 +2,17 @@ PROMPT='
 %{$fg[green]%}%n%{$fg[blue]%}%{$reset_color%} in %{$fg[blue]%}%{$fg[red]%}%~ %{$reset_color%}at %{$fg[cyan]%}%m$(git_prompt)$(vi_prompt)
 %{$fg_bold[cyan]%}%(!.#.>)%{$reset_color%} '
 
+export DIRSTACKFILE=~/.zdirs
+export DIRSTACKSIZE=8
+export GREP_OPTIONS='--color=always'
+export HISTFILE=$HOME/.zhistory
+export HISTSIZE=50000
+export KEYTIMEOUT=1
+export LESS='-R'
+export PATH=~/bin/:~/.gem/ruby/2.0.0/bin:$PATH
+export SAVEHIST=10000
+export ZLS_COLORS=$LS_COLORS
+
 stty -ixon
 
 autoload -U colors && colors
