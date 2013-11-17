@@ -7,7 +7,7 @@
 "urxvtc -e bpython"
     Mod4 + p
 
-"urxvtc -e irb"
+"urxvtc -e pry"
     Mod4 + r
 
 "urxvtc -e /usr/bin/ranger"
