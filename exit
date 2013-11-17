@@ -1,9 +1,9 @@
 #!/bin/bash
 
-echo 's) Shutdown'
-echo 'r) Reboot'
-echo 'l) Logout'
-echo 'c) Cancel'
+echo ' s) Shutdown'
+echo ' r) Reboot'
+echo ' l) Logout'
+echo ' c) Cancel'
 
 read -n 1 op
 
