@@ -23,15 +23,6 @@ setopt PUSHD_SILENT
 setopt PUSHD_TOHOME
 setopt VI
 
-## VARIABLES ##
-DIRSTACKFILE=~/.zsh_dirs
-DIRSTACKSIZE=8
-HISTFILE=$HOME/.zsh_history
-HISTSIZE=50000
-KEYTIMEOUT=1
-SAVEHIST=10000
-ZLS_COLORS=$LS_COLORS
-
 ## ZSTYLE ##
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' users off
