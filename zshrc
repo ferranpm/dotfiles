@@ -32,14 +32,6 @@ KEYTIMEOUT=1
 SAVEHIST=10000
 ZLS_COLORS=$LS_COLORS
 
-## EXPORTS ##
-export EDITOR=/usr/bin/vim
-export GREP_OPTIONS='--color=always'
-export LESS='-R'
-export PAGER=/usr/bin/less
-export PATH=~/bin/:~/.gem/ruby/2.0.0/bin:$PATH
-export SHELL=/usr/bin/zsh
-
 ## ZSTYLE ##
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' users off
