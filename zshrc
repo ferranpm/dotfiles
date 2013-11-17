@@ -63,6 +63,7 @@ bindkey '^[[Z' reverse-menu-complete
 bindkey -M vicmd '/' history-incremental-search-backward
 
 ## ALIASES ##
+alias ack="ack --color"
 alias cal="cal -3"
 alias cd=" cd"
 alias diff="diff -yEbwB --suppress-common-lines"
