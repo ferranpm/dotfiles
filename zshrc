@@ -105,6 +105,10 @@ insert-sudo() {
 }
 zle -N insert-sudo
 
+chpwd() {
+    print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
+}
+
 # VI
 zle-keymap-select() {
     zle reset-prompt
