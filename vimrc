@@ -58,7 +58,7 @@ set nowritebackup
 
 " Status Line
 set laststatus=2
-set statusline=%F\ %h%r%w%y\ (%l/%L,\ %c)\ %p%%%=%m
+set statusline=%f\ %h%r%w%y\ (%l/%L,\ %c)\ %p%%%=%m
 
 " Menu
 set wildmenu
