@@ -1,44 +1,44 @@
 "urxvtc"
-	Alt + Return
+    Alt + Return
 
 "urxvtc -e vim"
-	Mod4 + v
+    Mod4 + v
 
 "urxvtc -e bpython"
-	Mod4 + p
+    Mod4 + p
 
 "urxvtc -e irb"
-	Mod4 + r
+    Mod4 + r
 
 "urxvtc -e /usr/bin/ranger"
-	Mod4 + f
+    Mod4 + f
 
 "dmenu_run -fn Inconsolata"
-	Alt + d
+    Alt + d
 
 "firefox"
-	Mod4 + i
+    Mod4 + i
 
 "thunderbird"
-	Mod4 + m
+    Mod4 + m
 
 "setxkbmap es"
-	Mod4 + e
+    Mod4 + e
 
 "setxkbmap us"
-	Mod4 + u
+    Mod4 + u
 
 "xmodmap ~/dotfiles/Return"
-	Mod4 + c
+    Mod4 + c
 
-"urxvtc -title exit -geometry 13x5+0+0 -e ~/dotfiles/exit"
-	Control + Alt + e
+"urxvtc -title exit -geometry 13x6+0+0 -e ~/dotfiles/exit"
+    Control + Alt + e
 
 "amixer set Master 1%+"
-	Mod4 + Up
+    Mod4 + Up
 
 "amixer set Master 1%-"
-	Mod4 + Down
+    Mod4 + Down
 
 "import ~/screenshot.png"
-	Print
+    Print
