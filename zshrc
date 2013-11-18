@@ -49,12 +49,10 @@ bindkey '^F' history-incremental-pattern-search-backward
 bindkey '^N' down-line-or-search
 bindkey '^P' up-line-or-search
 bindkey '^S' insert-sudo
-bindkey '^[[2~' delete-char
 bindkey '^[[3~' delete-char
 bindkey '^[[7~' beginning-of-line
 bindkey '^[[8~' end-of-line
 bindkey '^[[Z' reverse-menu-complete
-bindkey -M vicmd '/' history-incremental-search-backward
 
 ## ALIASES ##
 alias ack="ack --color"
