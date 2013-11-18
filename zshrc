@@ -45,7 +45,7 @@ zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-dir
 zstyle ':completion:*:hosts' hosts $hosts
 
 ## BINDKEYS ##
-bindkey '^F' history-incremental-search-backward
+bindkey '^F' history-incremental-pattern-search-backward
 bindkey '^N' down-line-or-search
 bindkey '^P' up-line-or-search
 bindkey '^S' insert-sudo
