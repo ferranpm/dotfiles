@@ -91,8 +91,9 @@ fi
 
 ## FUNCTIONS ##
 insert-sudo() {
-    zle beginning-of-line;
-    zle -U "sudo ";
+    sudo="sudo "
+    BUFFER="$sudo$BUFFER"
+    CURSOR=$(expr $CURSOR + $(expr length $sudo))
 }
 zle -N insert-sudo
 
