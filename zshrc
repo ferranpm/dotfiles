@@ -46,6 +46,7 @@ zstyle ':completion:*:hosts' hosts $hosts
 
 ## BINDKEYS ##
 bindkey '^F' history-incremental-pattern-search-backward
+bindkey '^M' check-line
 bindkey '^N' down-line-or-search
 bindkey '^P' up-line-or-search
 bindkey '^S' insert-sudo
@@ -100,6 +101,14 @@ zle -N insert-sudo
 chpwd() {
     print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
 }
+
+check-line() {
+    if [ "$BUFFER" = "" ]; then
+        return
+    fi
+    zle accept-line
+}
+zle -N check-line
 
 # VI
 zle-keymap-select() {
