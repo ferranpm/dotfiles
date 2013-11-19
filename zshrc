@@ -45,15 +45,18 @@ zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-dir
 zstyle ':completion:*:hosts' hosts $hosts
 
 ## BINDKEYS ##
-bindkey '^F' history-incremental-pattern-search-backward
-bindkey '^M' check-line
-bindkey '^N' down-line-or-search
-bindkey '^P' up-line-or-search
-bindkey '^S' insert-sudo
-bindkey '^[[3~' delete-char
-bindkey '^[[7~' beginning-of-line
-bindkey '^[[8~' end-of-line
-bindkey '^[[Z' reverse-menu-complete
+bindkey -a '/' history-incremental-pattern-search-backward
+bindkey -a '?' history-incremental-pattern-search-forward
+bindkey -a 'n' down-line-or-search
+bindkey -a 'p' up-line-or-search
+bindkey -v '^[[3~' delete-char
+bindkey -v '^[[7~' beginning-of-line
+bindkey -v '^[[8~' end-of-line
+bindkey -v '^[[Z' reverse-menu-complete
+bindkey -v '^m' check-line
+bindkey -v '^n' down-line-or-search
+bindkey -v '^p' up-line-or-search
+bindkey -v '^s' insert-sudo
 
 ## ALIASES ##
 alias ack="ack --color"
