@@ -117,8 +117,10 @@ zle-keymap-select() {
 zle -N zle-keymap-select
 
 vi_prompt() {
-    INDICATOR="%{$reset_color%}[$fg[magenta]X%{$reset_color%}]"
-    echo " ${${KEYMAP/vicmd/$INDICATOR}/(main|viins)/}"
+    INDICATOR=" %{$reset_color%}[$fg[magenta]X%{$reset_color%}]"
+    if [ "$KEYMAP" = "vicmd" ]; then
+        echo $INDICATOR
+    fi
 }
 
 # GIT
