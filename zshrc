@@ -53,6 +53,7 @@ bindkey -v '^[[3~' delete-char
 bindkey -v '^[[7~' beginning-of-line
 bindkey -v '^[[8~' end-of-line
 bindkey -v '^[[Z' reverse-menu-complete
+bindkey -v '^k' kill-buffer
 bindkey -v '^m' check-line
 bindkey -v '^n' down-line-or-search
 bindkey -v '^p' up-line-or-search
