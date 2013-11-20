@@ -106,6 +106,21 @@ chpwd() {
     print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
 }
 
+extract() {
+    file=$1
+    filename=$(basename "$file")
+    extension="${filename#*.}"
+    echo "extracting: $extension"
+    case $extension in
+        'zip')
+            unzip $file
+            ;;
+        'tar.gz')
+            tar -xzvf $file
+            ;;
+    esac
+}
+
 check-line() {
     if [ "$BUFFER" = "" ]; then
         return
