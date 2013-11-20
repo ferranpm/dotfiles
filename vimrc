@@ -1,15 +1,18 @@
 let pathogen=expand("~/.vim/bundle/pathogen/autoload/pathogen.vim")
 if filereadable(pathogen)
-	runtime bundle/pathogen/autoload/pathogen.vim
-	execute pathogen#infect()
+    runtime bundle/pathogen/autoload/pathogen.vim
+    execute pathogen#infect()
 endif
 
 " Lightline
 let g:lightline = {}
-let g:lightline.enable = {}
-let g:lightline.enable.statusline = 0
-let g:lightline.enable.tabline = 1
-
+let g:lightline.component = {
+            \ 'lineinfo': '(%l/%L, %c) %p%%'
+            \ }
+let g:lightline.active = {
+            \ 'left': [['relativepath'], ['filetype', 'readonly'], ['lineinfo']],
+            \ 'right': [['modified']]
+            \ }
 " CtrlP
 let g:ctrlp_show_hidden=1
 let g:ctrlp_max_height=100
@@ -58,7 +61,7 @@ set nowritebackup
 
 " Status Line
 set laststatus=2
-set statusline=%f\ %h%r%w%y\ (%l/%L,\ %c)\ %p%%%=%m
+set statusline=%f\ %y%h%r%w\ (%l/%L,\ %c)\ %p%%%=%m
 
 " Menu
 set wildmenu
@@ -66,7 +69,7 @@ set wildmode=list:full
 
 " Colors
 try
-	colorscheme lucius
+    colorscheme lucius
 catch
 endtry
 set t_Co=256
@@ -77,34 +80,34 @@ highlight ExtraWhitespace ctermbg=93
 match ExtraWhitespace /\s\+\%#\@<!$/
 
 function! MakeTags()
-	let filetype = &filetype
-	let extension = expand('%:e')
-	let cmd='ctags --append --recurse --languages='.filetype.' *'
-	echo cmd
-	let resp = system(cmd)
-	if resp
-		echo resp
-	endif
+    let filetype = &filetype
+    let extension = expand('%:e')
+    let cmd='ctags --append --recurse --languages='.filetype.' *'
+    echo cmd
+    let resp = system(cmd)
+    if resp
+        echo resp
+    endif
 endfunction
 
 nmap <F8> :call MakeTags()<cr>
 
 function! Number()
-	set norelativenumber
-	set number
+    set norelativenumber
+    set number
 endfunction
 
 function! RelativeNumber()
-	set relativenumber
-	set number
+    set relativenumber
+    set number
 endfunction
 
 function! NumberToggle()
-	if(&relativenumber == 1)
-		call Number()
-	else
-		call RelativeNumber()
-	endif
+    if(&relativenumber == 1)
+        call Number()
+    else
+        call RelativeNumber()
+    endif
 endfunc
 
 nnoremap <silent> <C-c> :call NumberToggle()<cr>
