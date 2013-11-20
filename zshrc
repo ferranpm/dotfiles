@@ -19,6 +19,7 @@ autoload -U colors && colors
 autoload -U compinit && compinit
 
 setopt APPEND_HISTORY
+setopt AUTO_CD
 setopt AUTO_PUSHD
 setopt EXTENDED_GLOB
 setopt HIST_IGNORE_ALL_DUPS
