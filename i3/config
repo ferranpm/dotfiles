@@ -12,10 +12,10 @@
 floating_modifier $mod
 focus_follows_mouse no
 font xft:Inconsolata 12
-new_window pixel 3
+new_window pixel 1
 set $mod Mod1
 
-client.focused          #999999 #6c4e46 #111111 #6c4e46
+client.focused          #999999 #afd700 #111111 #afd700
 client.focused_inactive #AAAAAA #111111 #AAAAAA #999999
 
 assign [class="Qbittorrent"] 5
@@ -105,9 +105,11 @@ bar {
   hidden_state hide
   modifier Mod4
   colors {
-    focused_workspace  #000000 #000000 #EEEEEE
-    active_workspace   #000000 #000000 #AAAAAA
-    inactive_workspace #000000 #000000 #444444
-    urgent_workspace   #2f343a #900000 #EEEEEE
+    background #000000
+    statusline #d3d7cf
+    focused_workspace   #333333 #000000 #edd400
+    active_workspace    #000000 #000000 #AAAAAA
+    inactive_workspace  #000000 #000000 #444444
+    urgent_workspace    #afd700 #900000 #EEEEEE
   }
 }
