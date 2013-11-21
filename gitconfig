@@ -1,37 +1,41 @@
 [user]
-	email = ferran.pel.mon@gmail.com
-	name = Ferran Pelayo Monfort
+    name = Ferran Pelayo Monfort
+    email = ferran.pel.mon@gmail.com
 
 [core]
-	editor = vim
-	pager = less -R
-	autocrlf = input
-	excludesfile = ~/.cvsignore
+    editor = vim
+    pager = less -R
+    autocrlf = input
+    excludesfile = ~/.cvsignore
 
 [color]
-	diff = auto
-	status = auto
-	branch = auto
-	ui = true
+    diff = auto
+    status = auto
+    branch = auto
+    ui = true
 
 [merge]
-	tool = vimdiff
+    tool = vimdiff
 
 [push]
-	default = current
+    default = current
 
 [web]
-	browser = firefox
+    browser = firefox
 
 [alias]
-	b = branch
-	c = commit
-	co = checkout
-	d = diff
-	f = fetch
-	l = log --pretty=format:'%C(yellow)%h %Cred%ad %C(yellow)%an%Cgreen%d %Creset%s' --date=short --graph --all
-	lo = log --pretty=format:'%C(yellow)%h %Cred%ad %C(yellow)%an%Cgreen%d %Creset%s' --date=short --graph
-	m = merge
-	p = push
-	s = status
-	v = describe --abbrev=0
+    b = branch
+    c = commit
+    co = checkout
+    d = diff
+    f = fetch
+    l = log --pretty=format:'%C(yellow)%h %Cred%ad %C(yellow)%an%Cgreen%d %Creset%s' --date=short --graph
+    lo = log --pretty=format:'%C(yellow)%h %Cred%ad %C(yellow)%an%Cgreen%d %Creset%s' --date=short --graph --all
+    m = merge
+    p = push
+    s = status
+    v = describe --abbrev=0
+    a = add
+    ap = add -p
+    dc = diff --cached
+    r = rm
