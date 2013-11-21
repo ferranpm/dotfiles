@@ -2,8 +2,6 @@ PROMPT='
 %{$fg[green]%}%n%{$fg[blue]%}%{$reset_color%} in %{$fg[blue]%}%{$fg[red]%}%~ %{$reset_color%}at %{$fg[cyan]%}%m$(git_prompt)$(vi_prompt)
 %{$fg_bold[cyan]%}%(!.#.>)%{$reset_color%} '
 
-export DIRSTACKFILE=~/.zdirs
-export DIRSTACKSIZE=8
 export GREP_OPTIONS='--color=always'
 export HISTFILE=$HOME/.zhistory
 export HISTSIZE=50000
@@ -36,14 +34,10 @@ setopt PUSHD_TOHOME
 setopt VI
 
 ## ZSTYLE ##
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' users off
-zstyle ':completion:*' verbose yes
-zstyle ':completion:*:*:*:*:*' menu select
-zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
-zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
-zstyle ':completion:*:hosts' hosts $hosts
+zstyle ':completion:*' list-colors ""
+zstyle ':completion:*' menu "select"
+zstyle ':completion:*' verbose "yes"
+zstyle ':completion:*:*:kill:*:processes' command "ps -u `whoami` -o pid,comm"
 
 ## BINDKEYS ##
 bindkey -a '/' history-incremental-pattern-search-backward
@@ -54,6 +48,7 @@ bindkey -v '^[[3~' delete-char
 bindkey -v '^[[7~' beginning-of-line
 bindkey -v '^[[8~' end-of-line
 bindkey -v '^[[Z' reverse-menu-complete
+bindkey -v '^f' history-incremental-pattern-search-backward
 bindkey -v '^k' kill-buffer
 bindkey -v '^m' check-line
 bindkey -v '^n' down-line-or-search
@@ -89,12 +84,6 @@ alias pacre="sudo pacman -Rns"
 alias pacro="sudo pacman -Qtdq > /dev/null && sudo pacman -Rns \$(pacman -Qtdq | sed -e ':a;N;\$!ba;s/\n/ /g')" # Erase orphaned packages
 alias pacse="pacman -Ss"
 
-## SNIPPETS ##
-if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
-    dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
-    [[ -d $dirstack[1] ]] && cd $dirstack[1] && cd $OLDPWD
-fi
-
 ## FUNCTIONS ##
 insert-sudo() {
     sudo="sudo "
@@ -102,10 +91,6 @@ insert-sudo() {
     CURSOR=$(expr $CURSOR + $(expr length $sudo))
 }
 zle -N insert-sudo
-
-chpwd() {
-    print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
-}
 
 extract() {
     file=$1
