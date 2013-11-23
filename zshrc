@@ -40,19 +40,25 @@ zstyle ':completion:*' verbose "yes"
 zstyle ':completion:*:*:kill:*:processes' command "ps -u `whoami` -o pid,comm"
 
 ## BINDKEYS ##
+bindkey -v '^f' history-incremental-pattern-search-backward
 bindkey -a '/' history-incremental-pattern-search-backward
 bindkey -a '?' history-incremental-pattern-search-forward
 bindkey -a 'n' down-line-or-search
 bindkey -a 'p' up-line-or-search
 bindkey -v '^[[3~' delete-char
+bindkey -a '^[[3~' delete-char
 bindkey -v '^[[7~' beginning-of-line
+bindkey -a '^[[7~' beginning-of-line
 bindkey -v '^[[8~' end-of-line
+bindkey -a '^[[8~' end-of-line
 bindkey -v '^[[Z' reverse-menu-complete
-bindkey -v '^f' history-incremental-pattern-search-backward
 bindkey -v '^k' kill-buffer
 bindkey -v '^m' check-line
+bindkey -a '^m' check-line
 bindkey -v '^n' down-line-or-search
+bindkey -a 'j' down-line-or-search
 bindkey -v '^p' up-line-or-search
+bindkey -a 'k' up-line-or-search
 bindkey -v '^s' insert-sudo
 
 ## ALIASES ##
@@ -81,7 +87,7 @@ alias pacman="pacman --color=always"
 alias pacupg="sudo pacman -Syu"
 alias pacin="sudo pacman -S"
 alias pacre="sudo pacman -Rns"
-alias pacro="sudo pacman -Qtdq > /dev/null && sudo pacman -Rns \$(pacman -Qtdq | sed -e ':a;N;\$!ba;s/\n/ /g')" # Erase orphaned packages
+alias pacro="pacman -Qtd > /dev/null && sudo pacman -Rns \$(pacman -Qtdq | sed -e ':a;N;\$!ba;s/\n/ /g')" # Erase orphaned packages
 alias pacse="pacman -Ss"
 
 ## FUNCTIONS ##
