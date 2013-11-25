@@ -5,6 +5,11 @@ set nomouse
 set window library
 set windows library,browse,playlist
 set stoponquit
+set incsearch
+set nohlsearch
+
+repeat
+random
 
 map <C-L> gt
 map <C-H> gT
