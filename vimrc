@@ -69,7 +69,7 @@ set wildmode=list:full
 
 " Colors
 try
-    colorscheme lucius
+    colorscheme seoul256
 catch
 endtry
 set t_Co=256

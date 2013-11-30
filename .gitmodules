@@ -22,3 +22,6 @@
 	path = vim/bundle/lightline
 	url = https://github.com/itchyny/lightline.vim
     ignore = dirty
+[submodule "vim/bundle/seoul"]
+	path = vim/bundle/seoul
+	url = https://github.com/junegunn/seoul256.vim
