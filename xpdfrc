@@ -1,6 +1,7 @@
 continuousView yes
 textEncoding UTF-8
 textEOL unix
+initialZoom 150
 psFile "| lpr"
 urlCommand "firefox %s"
 

@@ -11,9 +11,11 @@ set nohlsearch
 repeat
 random
 
-map <C-L> gt
-map <C-H> gT
+map i gt
+map u gT
+
 map J 5j
 map K 5k
+
 map ,e :quitall<CR>
 map q :quitall<CR>
