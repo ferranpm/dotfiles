@@ -1,8 +1,8 @@
-let pathogen=expand("~/.vim/bundle/pathogen/autoload/pathogen.vim")
-if filereadable(pathogen)
+try
     runtime bundle/pathogen/autoload/pathogen.vim
     execute pathogen#infect()
-endif
+catch
+endtry
 
 " Lightline
 let g:lightline = {}
@@ -147,6 +147,7 @@ vnoremap < <gv
 nnoremap <cr> o<Esc>
 nnoremap <bs> O<Esc>
 
+nnoremap Y y$
 nnoremap <silent> <Space> i_<Esc>r
 nnoremap <silent> l <Space>
 nnoremap <silent> h <bs>
