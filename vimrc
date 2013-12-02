@@ -13,6 +13,7 @@ let g:lightline.active = {
             \ 'left': [['relativepath'], ['filetype', 'readonly'], ['lineinfo']],
             \ 'right': [['modified']]
             \ }
+
 " CtrlP
 let g:ctrlp_show_hidden=1
 let g:ctrlp_max_height=100
@@ -147,10 +148,11 @@ vnoremap < <gv
 nnoremap <cr> o<Esc>
 nnoremap <bs> O<Esc>
 
-nnoremap Y y$
-nnoremap <silent> <Space> i_<Esc>r
 nnoremap <silent> l <Space>
 nnoremap <silent> h <bs>
+
+nnoremap Y y$
+nnoremap <silent> <Space> i_<Esc>r
 
 nnoremap <leader>. :update<cr>
 nnoremap <leader>e :q<cr>
