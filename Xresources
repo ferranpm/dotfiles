@@ -1,7 +1,7 @@
 !!!!!!!!!!!
 !! URxvt !!
 !!!!!!!!!!!
-URxvt*termName: screen-256color
+URxvt*termName: xterm
 URxvt.scrollBar: false
 URxvt.loginShell: true
 URxvt.saveLines: 512
