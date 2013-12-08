@@ -105,13 +105,13 @@ zle -N insert-sudo
 extract() {
     file=$1
     filename=$(basename "$file")
-    extension="${filename#*.}"
+    extension="${filename##*.}"
     echo "extracting: $extension"
     case $extension in
         'zip')
             unzip $file
             ;;
-        'tar.gz')
+        'gz')
             tar -xzvf $file
             ;;
     esac
