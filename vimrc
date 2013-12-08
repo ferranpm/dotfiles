@@ -99,8 +99,8 @@ function! Number()
 endfunction
 
 function! RelativeNumber()
-    set relativenumber
     set number
+    set relativenumber
 endfunction
 
 function! NumberToggle()
