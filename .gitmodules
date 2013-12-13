@@ -2,10 +2,6 @@
 	path = vim/bundle/pathogen
 	url = https://github.com/tpope/vim-pathogen
     ignore = dirty
-[submodule "vim/bundle/lucius"]
-	path = vim/bundle/lucius
-	url = https://github.com/jonathanfilip/vim-lucius
-    ignore = dirty
 [submodule "vim/bundle/multiple-cursors"]
 	path = vim/bundle/multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors
@@ -22,6 +18,6 @@
 	path = vim/bundle/lightline
 	url = https://github.com/itchyny/lightline.vim
     ignore = dirty
-[submodule "vim/bundle/seoul"]
-	path = vim/bundle/seoul
-	url = https://github.com/junegunn/seoul256.vim
+[submodule "vim/bundle/colors"]
+	path = vim/bundle/colors
+	url = http://github.com/ferranpm/vim-colors

@@ -70,15 +70,9 @@ set wildmode=list:full
 
 " Colors
 try
-    colorscheme seoul256
+    colorscheme seoul
 catch
 endtry
-set t_Co=256
-set background=dark
-highlight Normal ctermbg=None
-highlight CursorLine cterm=Bold
-highlight ExtraWhitespace ctermbg=93
-match ExtraWhitespace /\s\+\%#\@<!$/
 
 function! MakeTags()
     let filetype = &filetype
