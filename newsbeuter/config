@@ -1,7 +1,7 @@
 color listfocus black white
 color info black white
 
-refresh-on-startup no
+refresh-on-startup yes
 
 auto-reload yes
 reload-time 30
