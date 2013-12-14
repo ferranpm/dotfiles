@@ -18,17 +18,6 @@ export SHELL=/usr/bin/zsh
 export WALLPAPER=~/Pictures/Wallpapers/beksinski_bones.png
 export XRESOURCES=~/.Xresources
 
-setxkbmap us
-xmodmap ~/dotfiles/Return
-
-feh --bg-scale $WALLPAPER &
-firefox &
-mpd &
-urxvtd -q -o -f &
-xbindkeys &
-xrdb $XRESOURCES &
-xscreensaver -no-splash &
-
 if [ -z $1 ]; then
 	exec $DEFAULTWM
 else

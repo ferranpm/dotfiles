@@ -9,6 +9,8 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+exec ~/bin/start
+
 floating_modifier $mod
 focus_follows_mouse no
 font xft:Inconsolata 12
