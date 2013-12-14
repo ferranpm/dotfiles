@@ -31,7 +31,7 @@
 "setxkbmap us && xmodmap ~/dotfiles/Return"
     Mod4 + c
 
-"urxvtc -title exit -geometry 13x6+0+0 -e ~/dotfiles/exit"
+"urxvtc -title exit -geometry 13x6+0+0 -e ~/bin/exit"
     Control + Alt + e
 
 "amixer set Master 1%+"
