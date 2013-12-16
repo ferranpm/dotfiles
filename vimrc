@@ -7,11 +7,12 @@ endtry
 " Lightline
 let g:lightline = {}
 let g:lightline.component = {
-            \ 'lineinfo': '(%l/%L, %c) %p%%'
+            \ 'lineinfo': '(%l/%L, %c) %p%%',
+            \ 'cwd': '%{getcwd()}'
             \ }
 let g:lightline.active = {
             \ 'left': [['relativepath'], ['filetype', 'readonly'], ['lineinfo']],
-            \ 'right': [['modified']]
+            \ 'right': [['modified'], ['cwd']]
             \ }
 
 " CtrlP
@@ -62,7 +63,7 @@ set nowritebackup
 
 " Status Line
 set laststatus=2
-set statusline=%f\ %y%h%r%w\ (%l/%L,\ %c)\ %p%%%=%m
+set statusline=%f\ %y%h%r%w\ (%l/%L,\ %c)\ %p%%%=%{getcwd()}%m
 
 " Menu
 set wildmenu
@@ -152,3 +153,16 @@ nnoremap <leader>. :update<cr>
 nnoremap <leader>e :q<cr>
 nnoremap <leader>E :qa!<cr>
 nnoremap <leader>o :only<cr>
+
+function! Pipe(cmd)
+    redir => message
+    silent execute a:cmd
+    redir END
+    vnew
+    silent put=message
+    set nomodified
+endfunction
+
+command! -nargs=+ -complete=command Pipe call Pipe(<q-args>)
+
+command! ClearWhiteSpace :%s/ *$\|<tab>*$/
