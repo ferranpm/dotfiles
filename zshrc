@@ -81,10 +81,10 @@ alias gs="git status"
 alias l="ls -lh"
 alias ll="l -A"
 alias ls=" ls --color=auto"
-alias mdades="mount ~/Raco/dades"
-alias udades="umount.davfs ~/Raco/dades"
-alias massig="mount ~/Raco/assig"
-alias uassig="umount.davfs ~/Raco/assig"
+alias dades_mount="mount ~/Raco/dades"
+alias dades_umount="umount.davfs ~/Raco/dades"
+alias assig_mount="mount ~/Raco/assig"
+alias assig_umount="umount.davfs ~/Raco/assig"
 alias pmount="udisks --mount"
 alias pumount="umount"
 alias pacman="pacman --color=always"
@@ -102,19 +102,48 @@ insert-sudo() {
 }
 zle -N insert-sudo
 
-extract() {
-    file=$1
-    filename=$(basename "$file")
-    extension="${filename##*.}"
-    echo "extracting: $extension"
-    case $extension in
-        'zip')
-            unzip $file
-            ;;
-        'gz')
-            tar -xzvf $file
-            ;;
-    esac
+extract () {
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)
+                tar xvjf $1
+                ;;
+            *.tar.gz)
+                tar xvzf $1
+                ;;
+            *.bz2)
+                bunzip2 $1
+                ;;
+            *.rar)
+                unrar x $1
+                ;;
+            *.gz)
+                gunzip $1
+                ;;
+            *.tar)
+                tar xvf $1
+                ;;
+            *.tbz2)
+                tar xvjf $1
+                ;;
+            *.tgz)
+                tar xvzf $1
+                ;;
+            *.zip)
+                unzip $1
+                ;;
+            *.Z)
+                uncompress $1
+                ;;
+            *.7z)
+                7z x $1
+                ;;
+            *)
+                echo "don't know how to extract '$1'..." ;;
+        esac
+    else
+        echo "'$1' is not a valid file!"
+    fi
 }
 
 check-line() {
