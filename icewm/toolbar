@@ -1,4 +1,0 @@
-prog "urxvt" xfce-terminal.png urxvt
-prog "pcmanfm" file-manager.png pcmanfm
-prog "firefox" firefox.png firefox
-prog "steam" steam.png steam
