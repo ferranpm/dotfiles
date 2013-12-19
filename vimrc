@@ -14,6 +14,7 @@ let g:lightline.active = {
             \ 'left': [['relativepath'], ['filetype', 'readonly'], ['lineinfo']],
             \ 'right': [['modified'], ['cwd']]
             \ }
+let g:lightline.inactive = g:lightline.active
 
 " CtrlP
 let g:ctrlp_show_hidden=1
