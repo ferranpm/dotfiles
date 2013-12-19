@@ -122,6 +122,11 @@ nmap <silent> K 5k
 xmap <silent> J 5j
 xmap <silent> K 5k
 
+nnoremap { k{<Space>0
+vnoremap { k{<Space>0
+nnoremap } j}<BS>0
+vnoremap } j}<BS>0
+
 nnoremap gh <C-w>h
 nnoremap gj <C-w>j
 nnoremap gk <C-w>k
