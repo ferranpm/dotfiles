@@ -1,3 +1,5 @@
+color listnormal_unread red black
+color listfocus_unread black red
 color listfocus black white
 color info black white
 
