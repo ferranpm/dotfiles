@@ -1,5 +1,5 @@
 order += "cpu_temperature 0"
-order += "ethernet eth0"
+order += "wireless wlan0"
 order += "tztime local"
 
 general {
@@ -8,10 +8,10 @@ general {
   interval = 5
 }
 
-ethernet eth0 {
+wireless wlan0 {
   # if you use %speed, i3status requires the cap_net_admin capability
-  format_up = "E: %ip"
-  format_down = "E: down"
+  format_up = "W: %ip"
+  format_down = "W: down"
 }
 
 
