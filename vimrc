@@ -1,6 +1,8 @@
+" Pathogen
+let g:pathogen_disabled = []
 try
     runtime bundle/pathogen/autoload/pathogen.vim
-    execute pathogen#infect()
+    call pathogen#infect()
 catch
 endtry
 
@@ -68,7 +70,7 @@ set statusline=%f\ %y%h%r%w\ (%l/%L,\ %c)\ %p%%%=%{getcwd()}%m
 
 " Menu
 set wildmenu
-set wildmode=list:full
+set wildmode=longest:list,full
 
 " Colors
 try
@@ -146,8 +148,8 @@ nnoremap <silent> <left> :bp<cr>
 vnoremap > >gv
 vnoremap < <gv
 
-nnoremap <cr> o<Esc>
-nnoremap <bs> O<Esc>
+nnoremap <leader>n o<Esc>
+nnoremap <leader>N O<Esc>
 
 nnoremap <silent> l <Space>
 nnoremap <silent> h <bs>
