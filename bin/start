@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+
+setxkbmap us &
+xmodmap ~/dotfiles/Return &
+
+feh --bg-scale $WALLPAPER &
+firefox &
+mpd &
+urxvtd -q -o -f &
+xbindkeys &
+xrdb $XRESOURCES &
+xscreensaver -no-splash &
