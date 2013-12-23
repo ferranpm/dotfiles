@@ -93,6 +93,8 @@ alias pacin="sudo pacman -S"
 alias pacre="sudo pacman -Rns"
 alias pacro="pacman -Qtd > /dev/null && sudo pacman -Rns \$(pacman -Qtdq | sed -e ':a;N;\$!ba;s/\n/ /g')" # Erase orphaned packages
 alias pacse="pacman -Ss"
+alias vimrc="vim ~/.vimrc"
+alias zshrc="vim ~/.zshrc"
 
 ## FUNCTIONS ##
 insert-sudo() {
