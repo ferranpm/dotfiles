@@ -73,6 +73,7 @@ set wildmenu
 set wildmode=longest:list,full
 
 " Colors
+call matchadd('ColorColumn', '\%81v', 100)
 try
     colorscheme seoul
 catch
