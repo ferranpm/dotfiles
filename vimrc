@@ -114,20 +114,14 @@ nnoremap <silent> <C-c> :call NumberToggle()<cr>
 autocmd InsertEnter * call Number()
 autocmd InsertLeave * call RelativeNumber()
 
-nnoremap j gj
-nnoremap k gk
-xnoremap j gj
-xnoremap k gk
+noremap j gj
+noremap k gk
 
-nmap <silent> J 5j
-nmap <silent> K 5k
-xmap <silent> J 5j
-xmap <silent> K 5k
+map <silent> J 5j
+map <silent> K 5k
 
-nnoremap { k{<Space>0
-vnoremap { k{<Space>0
-nnoremap } j}<BS>0
-vnoremap } j}<BS>0
+noremap { k{<Space>0
+noremap { k{<Space>0
 
 nnoremap gh <C-w>h
 nnoremap gj <C-w>j
@@ -148,8 +142,11 @@ nnoremap <silent> <left> :bp<cr>
 vnoremap > >gv
 vnoremap < <gv
 
-nnoremap <leader>n o<Esc>
-nnoremap <leader>N O<Esc>
+nnoremap ; :
+nnoremap : ;
+
+nnoremap <leader>l o<Esc>
+nnoremap <leader>L O<Esc>
 
 nnoremap <silent> l <Space>
 nnoremap <silent> h <bs>
@@ -159,7 +156,6 @@ nnoremap <silent> <Space> i_<Esc>r
 
 nnoremap <leader>. :update<cr>
 nnoremap <leader>e :q<cr>
-nnoremap <leader>E :qa!<cr>
 nnoremap <leader>o :only<cr>
 
 function! Pipe(cmd)
