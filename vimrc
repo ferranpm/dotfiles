@@ -159,11 +159,11 @@ nnoremap <leader>e :q<cr>
 nnoremap <leader>o :only<cr>
 
 function! Pipe(cmd)
-    redir => message
+    redir @+>
     silent execute a:cmd
     redir END
     vnew
-    silent put=message
+    silent 0put +
     set nomodified
 endfunction
 
