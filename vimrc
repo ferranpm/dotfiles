@@ -121,8 +121,11 @@ noremap k gk
 map <silent> J 5j
 map <silent> K 5k
 
-noremap { k{<Space>0
-noremap { k{<Space>0
+noremap { k{<Space>
+noremap } }<Space>
+
+noremap [ {)
+noremap ] }k
 
 nnoremap gh <C-w>h
 nnoremap gj <C-w>j
