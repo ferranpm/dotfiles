@@ -20,18 +20,13 @@ set $mod Mod1
 client.focused          #999999 #afd700 #111111 #afd700
 client.focused_inactive #AAAAAA #111111 #AAAAAA #999999
 
-assign [class="Qbittorrent"] 5
-assign [class="Rhythmbox"] 5
+assign [class="transmission"] 5
 assign [class="Skype"] 3
 assign [class="Steam"] 3
-assign [class="Thunderbird"] 3
 
 for_window [class="MPlayer"] floating enable
-for_window [class="Nvidia-settings"] floating enable
-for_window [class="Ristretto"] floating enable
 for_window [class="Skype"] floating enable
 for_window [class="Steam"] floating enable
-for_window [class="Thunar"] floating enable
 for_window [class="feh"] floating enable
 for_window [title="^exit$"] floating enable
 
