@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+cd
+
 setxkbmap us
 xmodmap ~/dotfiles/Return &
 
