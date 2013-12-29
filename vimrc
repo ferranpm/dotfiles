@@ -146,8 +146,8 @@ nnoremap <silent> <left> :bp<cr>
 vnoremap > >gv
 vnoremap < <gv
 
-nnoremap ; :
-nnoremap : ;
+noremap ; :
+noremap : ;
 
 nnoremap <leader>l o<Esc>
 nnoremap <leader>L O<Esc>
