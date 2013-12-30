@@ -74,10 +74,12 @@ set wildmode=longest:list,full
 
 " Colors
 call matchadd('ColorColumn', '\%81v', 100)
-try
-    colorscheme seoul
-catch
-endtry
+if exists("$DISPLAY")
+    try
+        colorscheme seoul
+    catch
+    endtry
+endif
 
 function! MakeTags()
     let filetype = &filetype
