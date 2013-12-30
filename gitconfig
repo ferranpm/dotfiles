@@ -27,7 +27,7 @@
     b = branch
     c = commit
     co = checkout
-    d = diff
+    d = difftool
     f = fetch
     l = log --pretty=format:'%C(yellow)%h %Cred%ad %C(yellow)%an%Cgreen%d %Creset%s' --date=short --graph
     lo = log --pretty=format:'%C(yellow)%h %Cred%ad %C(yellow)%an%Cgreen%d %Creset%s' --date=short --graph --all
