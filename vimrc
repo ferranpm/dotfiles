@@ -161,10 +161,10 @@ noremap h <bs>
 nnoremap Y y$
 nnoremap <Space> i_<Esc>r
 
-nnoremap <leader>. :update<cr>
-nnoremap <leader>e :q<cr>
-nnoremap <leader>q :qa<cr>
-nnoremap <leader>o :only<cr>
+nnoremap <silent> <leader>. :update<cr>
+nnoremap <silent> <leader>e :q<cr>
+nnoremap <silent> <leader>q :qa<cr>
+nnoremap <silent> <leader>o :only<cr>
 
 function! Pipe(cmd)
     redir @+>
