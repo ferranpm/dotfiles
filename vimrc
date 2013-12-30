@@ -33,6 +33,7 @@ syntax on
 set autoread
 set cursorline
 set encoding=utf-8
+set mouse=n
 set nocompatible
 set number
 set relativenumber
