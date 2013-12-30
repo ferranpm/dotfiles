@@ -120,8 +120,8 @@ autocmd InsertLeave * call RelativeNumber()
 noremap j gj
 noremap k gk
 
-map <silent> J 5j
-map <silent> K 5k
+map J 5j
+map K 5k
 
 noremap { k{<Space>
 noremap } }<Space>
@@ -137,10 +137,10 @@ nnoremap gl <C-w>l
 nnoremap <C-l> gt
 nnoremap <C-h> gT
 
-nnoremap <up> :move .-2<cr>
-nnoremap <down> :move .+1<cr>
-vnoremap <up> :move .-2<cr>gv
-vnoremap <down> :move '>+<cr>gv
+nnoremap <silent> <up> :move .-2<cr>
+nnoremap <silent> <down> :move .+1<cr>
+vnoremap <silent> <up> :move .-2<cr>gv
+vnoremap <silent> <down> :move '>+<cr>gv
 
 nnoremap <silent> <right> :bn<cr>
 nnoremap <silent> <left> :bp<cr>
@@ -154,14 +154,15 @@ noremap : ;
 nnoremap <leader>l o<Esc>
 nnoremap <leader>L O<Esc>
 
-nnoremap <silent> l <Space>
-nnoremap <silent> h <bs>
+noremap l <Space>
+noremap h <bs>
 
 nnoremap Y y$
-nnoremap <silent> <Space> i_<Esc>r
+nnoremap <Space> i_<Esc>r
 
 nnoremap <leader>. :update<cr>
 nnoremap <leader>e :q<cr>
+nnoremap <leader>q :qa<cr>
 nnoremap <leader>o :only<cr>
 
 function! Pipe(cmd)
