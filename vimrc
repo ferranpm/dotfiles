@@ -161,6 +161,9 @@ noremap h <bs>
 nnoremap Y y$
 nnoremap <Space> i_<Esc>r
 
+nnoremap <leader>b :ls<CR>:buffer 
+nnoremap <leader>c :ls<CR>:bwipeout 
+
 nnoremap <silent> <leader>. :update<cr>
 nnoremap <silent> <leader>e :q<cr>
 nnoremap <silent> <leader>q :qa<cr>
