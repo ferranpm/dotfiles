@@ -15,7 +15,7 @@ export DEFAULTWM=startkde
 export EDITOR=/usr/bin/vim
 export PAGER=/usr/bin/less
 export SHELL=/usr/bin/zsh
-export WALLPAPER=~/Pictures/Wallpapers/beksinski_bones.png
+export WALLPAPER=~/Pictures/Wallpapers/FlyingWhalesPainting.jpg
 export XRESOURCES=~/.Xresources
 
 if [ -z $1 ]; then
