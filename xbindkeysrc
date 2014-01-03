@@ -28,5 +28,18 @@
 "amixer set Master 1%-"
     Mod4 + Down
 
+"mpc toggle"
+    Mod4 + p
+
+"mpc stop"
+    Mod4 + s
+
+"mpc next"
+    Mod4 + period
+
+"mpc prev"
+    Mod4 + comma
+
 "import ~/screenshot.png"
     Print
+
