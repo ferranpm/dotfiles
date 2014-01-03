@@ -1,15 +1,6 @@
 "urxvtc"
     Alt + Return
 
-"urxvtc -e vim"
-    Mod4 + v
-
-"urxvtc -e bpython"
-    Mod4 + p
-
-"urxvtc -e pry"
-    Mod4 + r
-
 "urxvtc -e /usr/bin/ranger"
     Mod4 + f
 
@@ -18,9 +9,6 @@
 
 "firefox"
     Mod4 + i
-
-"thunderbird"
-    Mod4 + m
 
 "setxkbmap es"
     Mod4 + e
