@@ -6,26 +6,28 @@ echo ' l) Logout'
 echo ' b) Lock'
 echo ' c) Cancel'
 
-read -n 1 op
+while [[ $op != @('s'|'r'|'l'|'b'|'c') ]]; do
+    read -sn 1 op
+done
 
 case $op in
-	's')
-		systemctl poweroff
-		;;
-	'r')
-		systemctl reboot
-		;;
-	'l')
-		wm_proc=$(ps -e | grep -e i3$ -e startkde$ | awk '{print $1}')
-		kill -9 $wm_proc
-		;;
+    's')
+        systemctl poweroff
+        ;;
+    'r')
+        systemctl reboot
+        ;;
+    'l')
+        wm_proc=$(ps -e | grep -e i3$ -e startkde$ | awk '{print $1}')
+        kill -9 $wm_proc
+        ;;
     'b')
         i3lock -ni $WALLPAPER
         ;;
-	'c')
-		echo 'Bye'
-		;;
-	*)
-		echo 'Not an option'
-		;;
+    'c')
+        echo 'Bye'
+        ;;
+    *)
+        echo 'Not an option'
+        ;;
 esac
