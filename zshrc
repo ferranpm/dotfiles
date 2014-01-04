@@ -2,6 +2,9 @@ PROMPT='
 %{$fg[green]%}%n%{$fg[blue]%}%{$reset_color%} in %{$fg[blue]%}%{$fg[red]%}%~ %{$reset_color%}at %{$fg[cyan]%}%m$(git_prompt)$(vi_prompt)
 %{$fg_bold[cyan]%}%(!.#.>)%{$reset_color%} '
 
+stty -ixon
+
+## EXPORTS ##
 export GREP_OPTIONS='--color=always'
 export HISTFILE=$HOME/.zhistory
 export HISTSIZE=50000
@@ -20,11 +23,10 @@ export PAGER="/bin/sh -c \"                         \
     -c 'noremap b <C-U>'                            \
     -\""
 
-stty -ixon
-
 autoload -U colors && colors
 autoload -U compinit && compinit
 
+## OPTS ##
 setopt APPEND_HISTORY
 setopt AUTO_CD
 setopt AUTO_PUSHD
