@@ -28,10 +28,9 @@ let g:ctrlp_use_caching=1
 
 " Basic configuration
 filetype plugin indent on
-let mapleader=','
 syntax on
+let mapleader=','
 set autoread
-set cursorline
 set encoding=utf-8
 set mouse=n
 set nocompatible
@@ -44,6 +43,7 @@ set showcmd
 set showmode
 set timeoutlen=500
 set ttimeoutlen=0
+set viewoptions=folds,cursor
 set wildignore+=.git/*,.gitignore,*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__
 
 " Indentation
@@ -60,6 +60,10 @@ set ignorecase
 set incsearch
 set smartcase
 
+" Folds
+set foldcolumn=1
+set foldlevel=0
+
 " Backups
 set nobackup
 set noswapfile
@@ -75,51 +79,23 @@ set wildmode=longest:list,full
 
 " Colors
 call matchadd('ColorColumn', '\%81v', 100)
-if exists("$DISPLAY")
-    try
+try
+    if exists("$DISPLAY")
         colorscheme seoul
-    catch
-    endtry
-endif
-
-function! MakeTags()
-    let filetype = &filetype
-    let extension = expand('%:e')
-    let cmd='ctags --append --recurse --languages='.filetype.' *'
-    echo cmd
-    let resp = system(cmd)
-    if resp
-        echo resp
-    endif
-endfunction
-
-nmap <F8> :call MakeTags()<cr>
-
-function! Number()
-    set norelativenumber
-    set number
-endfunction
-
-function! RelativeNumber()
-    set number
-    set relativenumber
-endfunction
-
-function! NumberToggle()
-    if(&relativenumber == 1)
-        call Number()
     else
-        call RelativeNumber()
+        colorscheme torte
     endif
-endfunc
+catch
+endtry
 
-nnoremap <silent> <C-c> :call NumberToggle()<cr>
+autocmd BufWinLeave ?* mkview
+autocmd BufWinEnter ?* silent loadview
 
-autocmd InsertEnter * call Number()
-autocmd InsertLeave * call RelativeNumber()
+autocmd InsertEnter * :set number norelativenumber
+autocmd InsertLeave * :set number relativenumber
 
-noremap j gj
-noremap k gk
+command! -nargs=+ -complete=command Pipe call Pipe(<q-args>)
+command! ClearWhiteSpace :%s/ *$\|<tab>*$/
 
 map J 5j
 map K 5k
@@ -127,8 +103,8 @@ map K 5k
 noremap { k{<Space>
 noremap } }<Space>
 
-noremap [ {)
-noremap ] }k
+noremap <C-k> {)
+noremap <C-j> }k
 
 nnoremap gh <C-w>h
 nnoremap gj <C-w>j
@@ -155,14 +131,16 @@ noremap : ;
 nnoremap <leader>l o<Esc>
 nnoremap <leader>L O<Esc>
 
-noremap l <Space>
-noremap h <bs>
-
 nnoremap Y y$
 nnoremap <Space> i_<Esc>r
 
 nnoremap <leader>b :ls<CR>:buffer 
 nnoremap <leader>c :ls<CR>:bwipeout 
+
+nnoremap <F1> :set relativenumber! relativenumber?<cr>
+nnoremap <F3> :set hlsearch! hlsearch?<cr>
+nnoremap <F8> :set spell! spell?<cr>
+nnoremap <F12> :call MakeTags()<cr>
 
 nnoremap <silent> <leader>. :update<cr>
 nnoremap <silent> <leader>e :q<cr>
@@ -178,6 +156,13 @@ function! Pipe(cmd)
     set nomodified
 endfunction
 
-command! -nargs=+ -complete=command Pipe call Pipe(<q-args>)
-
-command! ClearWhiteSpace :%s/ *$\|<tab>*$/
+function! MakeTags()
+    let filetype = &filetype
+    let extension = expand('%:e')
+    let cmd='ctags --append --recurse --languages='.filetype.' *'
+    echo cmd
+    let resp = system(cmd)
+    if resp
+        echo resp
+    endif
+endfunction
