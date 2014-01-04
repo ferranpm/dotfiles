@@ -22,7 +22,6 @@ let g:lightline.inactive = g:lightline.active
 let g:ctrlp_show_hidden=1
 let g:ctrlp_max_height=100
 let g:ctrlp_max_files=100
-let g:ctrlp_by_filename=1
 let g:ctrlp_working_path_mode='rawc'
 let g:ctrlp_use_caching=1
 
@@ -114,13 +113,13 @@ nnoremap gl <C-w>l
 nnoremap <C-l> gt
 nnoremap <C-h> gT
 
-nnoremap <silent> <up> :move .-2<cr>
+nnoremap <silent> <up>   :move .-2<cr>
 nnoremap <silent> <down> :move .+1<cr>
-vnoremap <silent> <up> :move .-2<cr>gv
+vnoremap <silent> <up>   :move .-2<cr>gv
 vnoremap <silent> <down> :move '>+<cr>gv
 
 nnoremap <silent> <right> :bn<cr>
-nnoremap <silent> <left> :bp<cr>
+nnoremap <silent> <left>  :bp<cr>
 
 vnoremap > >gv
 vnoremap < <gv
@@ -134,18 +133,21 @@ nnoremap <leader>L O<Esc>
 nnoremap Y y$
 nnoremap <Space> i_<Esc>r
 
-nnoremap <leader>b :ls<CR>:buffer 
-nnoremap <leader>c :ls<CR>:bwipeout 
-
 nnoremap <F1> :set relativenumber! relativenumber?<cr>
 nnoremap <F3> :set hlsearch! hlsearch?<cr>
 nnoremap <F8> :set spell! spell?<cr>
 nnoremap <F12> :call MakeTags()<cr>
 
-nnoremap <silent> <leader>. :update<cr>
-nnoremap <silent> <leader>e :q<cr>
-nnoremap <silent> <leader>q :qa<cr>
-nnoremap <silent> <leader>o :only<cr>
+ noremap             	<leader>c :yank +<cr>
+ noremap             	<leader>v :put +<cr>
+ noremap             	<leader>p :put *<cr>
+nnoremap                <leader>f :e <C-r>=expand(getcwd()).'/'<cr>
+nnoremap            	<leader>o :only<cr>
+nnoremap                <leader>bc :ls<cr>:bwipeout 
+nnoremap                <leader>bs :ls<cr>:buffer 
+nnoremap    <silent>	<leader>. :update<cr>
+nnoremap    <silent>	<leader>e :quit<cr>
+nnoremap    <silent>	<leader>q :qall<cr>
 
 function! Pipe(cmd)
     redir @+>
