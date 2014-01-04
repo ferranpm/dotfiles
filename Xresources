@@ -15,11 +15,9 @@ URxvt.scrollTtyKeypress: true
 URxvt.scrollWithBuffer: true
 URxvt.urlLauncher: firefox
 URxvt.font: xft:Inconsolata:size=12
-URxvt.transparent: true
-URxvt.shading: 15
 
 URxvt.foreground: #DADADA
-URxvt.background: #1C1C1C
+URxvt.background: #111111
 
 URxvt.colorBD:      #ffffff
 URxvt.borderColor:  #151515
