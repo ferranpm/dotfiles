@@ -14,10 +14,3 @@
 	path = vim/bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim
     ignore = dirty
-[submodule "vim/bundle/lightline"]
-	path = vim/bundle/lightline
-	url = https://github.com/itchyny/lightline.vim
-    ignore = dirty
-[submodule "vim/bundle/colors"]
-	path = vim/bundle/colors
-	url = http://github.com/ferranpm/vim-colors

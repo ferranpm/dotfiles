@@ -6,18 +6,6 @@ try
 catch
 endtry
 
-" Lightline
-let g:lightline = {}
-let g:lightline.component = {
-            \ 'lineinfo': '(%l/%L, %c) %p%%',
-            \ 'cwd': '%{getcwd()}'
-            \ }
-let g:lightline.active = {
-            \ 'left': [['relativepath'], ['filetype', 'readonly'], ['lineinfo']],
-            \ 'right': [['modified'], ['cwd']]
-            \ }
-let g:lightline.inactive = g:lightline.active
-
 " CtrlP
 let g:ctrlp_show_hidden=1
 let g:ctrlp_max_height=100
@@ -132,7 +120,6 @@ vnoremap < <gv
 
 noremap ; :
 noremap : ;
-
 
 nnoremap Y y$
 nnoremap <Space> i_<Esc>r
