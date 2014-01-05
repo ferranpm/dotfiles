@@ -1,6 +1,7 @@
 vim/.netrwhist
 vim/bundle/*
 vim/view/*
+vim/spell/*
 
 *cache*
 *history*
