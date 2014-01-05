@@ -40,6 +40,6 @@
 "mpc prev"
     Mod4 + comma
 
-"import ~/screenshot.png"
+"import ~/$(date +%Y-%m-%d-%H%M%S).png"
     Print
 
