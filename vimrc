@@ -162,7 +162,7 @@ endfunction
 
 function! MakeTags()
     let extension = expand('%:e')
-    let cmd='ctags.sh $(find $(pwd) -name "*.'.extension.'")'
+    let cmd='ctags.sh $(find $(pwd) -maxdepth 3 -name "*.'.extension.'")'
     echo cmd
-    system(cmd)
+    call system(cmd)
 endfunction
