@@ -14,7 +14,8 @@ URxvt.scrollTtyOutput: false
 URxvt.scrollTtyKeypress: true
 URxvt.scrollWithBuffer: true
 URxvt.urlLauncher: firefox
-URxvt.font: xft:Inconsolata:size=12
+! URxvt.font: xft:Inconsolata:size=10
+URxvt.font: xft:Monospace:size=9
 
 URxvt.foreground: #DADADA
 URxvt.background: #111111
