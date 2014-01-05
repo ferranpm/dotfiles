@@ -42,8 +42,11 @@ set showcmd
 set showmode
 set timeoutlen=500
 set ttimeoutlen=0
-set viewoptions=folds,cursor
 set wildignore+=.git/*,.gitignore,*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__
+
+" Windows & splits
+set splitright
+set nosplitbelow
 
 " Indentation
 set autoindent
@@ -60,8 +63,10 @@ set incsearch
 set smartcase
 
 " Folds
+set foldmethod=indent
+set foldnestmax=1
 set foldcolumn=1
-set foldlevel=0
+set foldlevel=1
 
 " Backups
 set nobackup
@@ -87,13 +92,11 @@ try
 catch
 endtry
 
-autocmd BufWinLeave ?* mkview
-autocmd BufWinEnter ?* silent loadview
-
 autocmd InsertEnter * :set number norelativenumber
 autocmd InsertLeave * :set number relativenumber
 
 command! -nargs=+ -complete=command Pipe call Pipe(<q-args>)
+command! -nargs=+ -complete=shellcmd Shell call Shell(<q-args>)
 command! ClearWhiteSpace :%s/ *$\|<tab>*$/
 
 map J 5j
@@ -121,14 +124,15 @@ vnoremap <silent> <down> :move '>+<cr>gv
 nnoremap <silent> <right> :bn<cr>
 nnoremap <silent> <left>  :bp<cr>
 
+noremap <C-left> 5<c-w>>
+noremap <C-right> 5<c-w><
+
 vnoremap > >gv
 vnoremap < <gv
 
 noremap ; :
 noremap : ;
 
-nnoremap <leader>l o<Esc>
-nnoremap <leader>L O<Esc>
 
 nnoremap Y y$
 nnoremap <Space> i_<Esc>r
@@ -141,10 +145,15 @@ nnoremap <F12> :call MakeTags()<cr>
  noremap             	<leader>c :yank +<cr>
  noremap             	<leader>v :put +<cr>
  noremap             	<leader>p :put *<cr>
+nnoremap                <leader>l o<Esc>
+nnoremap                <leader>L O<Esc>
 nnoremap                <leader>f :e <C-r>=expand(getcwd()).'/'<cr>
+nnoremap                <leader>fe zMzvzz
+nnoremap                <leader>fo zR
+nnoremap                <leader>fc zM
+nnoremap                <leader>bc :ls!<cr>:bwipeout 
+nnoremap                <leader>bs :ls!<cr>:buffer 
 nnoremap            	<leader>o :only<cr>
-nnoremap                <leader>bc :ls<cr>:bwipeout 
-nnoremap                <leader>bs :ls<cr>:buffer 
 nnoremap    <silent>	<leader>. :update<cr>
 nnoremap    <silent>	<leader>e :quit<cr>
 nnoremap    <silent>	<leader>q :qall<cr>
@@ -158,13 +167,15 @@ function! Pipe(cmd)
     set nomodified
 endfunction
 
+function! Shell(cmd)
+    vnew
+    execute 'read !'.a:cmd
+    set nomodified
+endfunction
+
 function! MakeTags()
-    let filetype = &filetype
     let extension = expand('%:e')
-    let cmd='ctags --append --recurse --languages='.filetype.' *'
+    let cmd='ctags.sh $(find $(pwd) -name "*.'.extension.'")'
     echo cmd
-    let resp = system(cmd)
-    if resp
-        echo resp
-    endif
+    system(cmd)
 endfunction
