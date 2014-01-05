@@ -27,7 +27,4 @@ case $op in
     'c')
         echo 'Bye'
         ;;
-    *)
-        echo 'Not an option'
-        ;;
 esac
