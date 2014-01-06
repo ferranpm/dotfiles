@@ -86,7 +86,7 @@ highlight	Todo
             \ cterm=None	ctermfg=161 	ctermbg=235
 
 highlight	ColorColumn
-            \ cterm=None	ctermfg=16  	ctermbg=175
+            \ cterm=None	ctermfg=none  	ctermbg=235
 highlight	Conceal
             \ cterm=None	ctermfg=238 	ctermbg=237
 highlight	Cursor
