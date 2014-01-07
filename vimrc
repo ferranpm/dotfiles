@@ -7,11 +7,11 @@ catch
 endtry
 
 " CtrlP
-let g:ctrlp_show_hidden=1
+let g:ctrlp_show_hidden=0
 let g:ctrlp_max_height=100
 let g:ctrlp_max_files=100
 let g:ctrlp_working_path_mode='rawc'
-let g:ctrlp_use_caching=1
+let g:ctrlp_use_caching=0
 
 " Basic configuration
 filetype plugin indent on
