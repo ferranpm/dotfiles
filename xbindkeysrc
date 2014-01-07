@@ -4,7 +4,7 @@
 "urxvtc -e /usr/bin/ranger"
     Mod4 + f
 
-"dmenu_run -fn Inconsolata"
+"dmenu_run -fn Monospace:size=9"
     Alt + d
 
 "firefox"

@@ -13,7 +13,7 @@ exec --no-startup-id ~/bin/start
 
 floating_modifier $mod
 focus_follows_mouse no
-font xft:Inconsolata 12
+font xft:Monospace 9
 new_window pixel 1
 set $mod Mod1
 
@@ -97,7 +97,7 @@ bindsym $mod+Shift+R restart
 # finds out, if available)
 bar {
   status_command i3status -c ~/.i3/status
-  font xft:Inconsolata 12
+  font xft:Monospace 9
   mode hide
   hidden_state hide
   modifier Mod4
