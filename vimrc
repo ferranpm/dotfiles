@@ -90,11 +90,8 @@ command! ClearWhiteSpace :%s/ *$\|<tab>*$/
 map J 5j
 map K 5k
 
-noremap { k{<Space>
-noremap } }<Space>
-
-noremap <C-k> {)
-noremap <C-j> }k
+noremap <C-k> k{j
+noremap <C-j> j}k
 
 nnoremap gh <C-w>h
 nnoremap gj <C-w>j
