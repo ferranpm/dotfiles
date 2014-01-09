@@ -1,0 +1,12 @@
+set editor="vim"
+set folder="imaps://imap.gmail.com:993"
+set from="ferran.pel.mon@gmail.com"
+set imap_user="ferran.pel.mon@gmail.com"
+set move=no
+set postponed="+[Gmail]/Drafts"
+set realname="Ferran Pelayo Monfort"
+set smtp_url="smtp://ferran.pel.mon@smtp.gmail.com:587"
+set spoolfile="+INBOX"
+
+set sig_dashes=yes
+set signature="~/.mutt/signature"
