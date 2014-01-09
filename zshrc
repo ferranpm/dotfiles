@@ -6,7 +6,7 @@ stty -ixon
 
 ## EXPORTS ##
 export GREP_OPTIONS='--color=always'
-export HISTFILE=$HOME/.zhistory
+export HISTFILE=$HOME/.zshhistory
 export HISTSIZE=50000
 export KEYTIMEOUT=1
 export LESS='-R'
@@ -24,7 +24,7 @@ export PAGER="/bin/sh -c \"                         \
     -\""
 
 autoload -U colors && colors
-autoload -U compinit && compinit
+autoload -U compinit && compinit -d .zshcompdump
 
 ## OPTS ##
 setopt APPEND_HISTORY
