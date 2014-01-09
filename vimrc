@@ -86,6 +86,7 @@ autocmd InsertLeave * :set number relativenumber
 command! -nargs=+ -complete=command Pipe call Pipe(<q-args>)
 command! -nargs=+ -complete=shellcmd Shell call Shell(<q-args>)
 command! ClearWhiteSpace :%s/ *$\|<tab>*$/
+command! Vimrc :e ~/.vimrc
 
 map J 5j
 map K 5k
@@ -109,9 +110,6 @@ vnoremap <silent> <down> :move '>+<cr>gv
 nnoremap <silent> <right> :bn<cr>
 nnoremap <silent> <left>  :bp<cr>
 
-noremap <C-left> 5<c-w>>
-noremap <C-right> 5<c-w><
-
 vnoremap > >gv
 vnoremap < <gv
 
@@ -123,20 +121,22 @@ nnoremap <Space> i_<Esc>r
 
 nnoremap <F1> :set relativenumber! relativenumber?<cr>
 nnoremap <F3> :set hlsearch! hlsearch?<cr>
+nnoremap <F5> :set cursorline! cursorline?<cr>
 nnoremap <F8> :set spell! spell?<cr>
 nnoremap <F12> :call MakeTags()<cr>
 
  noremap             	<leader>c :yank +<cr>
  noremap             	<leader>v :put +<cr>
  noremap             	<leader>p :put *<cr>
+ noremap             	<leader>j :join<cr>
 nnoremap                <leader>l o<Esc>
 nnoremap                <leader>L O<Esc>
-nnoremap                <leader>f :e <C-r>=expand(getcwd()).'/'<cr>
 nnoremap                <leader>fe zMzvzz
 nnoremap                <leader>fo zR
 nnoremap                <leader>fc zM
 nnoremap                <leader>bc :ls!<cr>:bwipeout 
 nnoremap                <leader>bs :ls!<cr>:buffer 
+nnoremap    <silent>    <leader>bk :call BufferKill()<cr>
 nnoremap            	<leader>o :only<cr>
 nnoremap    <silent>	<leader>. :update<cr>
 nnoremap    <silent>	<leader>e :quit<cr>
@@ -167,4 +167,8 @@ function! MakeTags(...)
     let cmd='ctags $(find $(pwd) -maxdepth '.depth.' -name "*.'.extension.'")'
     echo cmd
     call system(cmd)
+endfunction
+
+function! BufferKill()
+    " TODO: Kills all unused buffers
 endfunction
