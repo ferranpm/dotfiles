@@ -62,9 +62,10 @@ URxvt.color15:    #dddddd
 !!!!!!!!!!!
 !! XTerm !!
 !!!!!!!!!!!
-XTerm*faceName: xft:Inconsolata:size=12
+XTerm*faceName: xft:Monospace:size=9
 XTerm*foreground: #DADADA
 XTerm*background: #1C1C1C
+XTerm*scrollBar: false
 
 !!!!!!!!!!
 !! Xpdf !!
