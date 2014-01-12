@@ -10,7 +10,7 @@
 "firefox"
     Mod4 + i
 
-"setxkbmap es"
+"setxkbmap es && xmodmap ~/dotfiles/Return"
     Mod4 + e
 
 "setxkbmap us"
