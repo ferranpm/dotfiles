@@ -1,12 +1,121 @@
+## GENERAL OPTIONS ##
+set allow_ansi
 set editor="vim"
+set fast_reply
 set folder="imaps://imap.gmail.com:993"
 set from="ferran.pel.mon@gmail.com"
 set imap_user="ferran.pel.mon@gmail.com"
+set index_format="%4C %Z %(%b %d %H:%M) %-15.15F %s"
+set menu_scroll
+set meta_key
+set mime_forward=ask-no
 set move=no
+set noconfirmappend
+set nopgp_autosign
+set nopipe_decode
+set nouse_domain
+set nouse_from
+set nowait_key
+set pgp_replysign
+set pgp_replysignencrypted
+set pgp_timeout=900
 set postponed="+[Gmail]/Drafts"
 set realname="Ferran Pelayo Monfort"
+set reverse_name
+set reverse_realname
+set sendmail_wait=1
+set sig_dashes
+set signature="~/.mutt/signature"
 set smtp_url="smtp://ferran.pel.mon@smtp.gmail.com:587"
+set sort=threads
+set sort_aux=date-received
+set sort_browser=reverse-date
 set spoolfile="+INBOX"
 
-set sig_dashes=yes
-set signature="~/.mutt/signature"
+## HEADERS ##
+unhdr_order *
+hdr_order Date: Delivery-date: To: Envelope-to: Delivered-To: X-Original-To: Cc: Bcc: From From: Reply-To: X-Disposition-Notification-To: Mail-Followup-To: X-URL: Organization: Organisation: X-MimeOLE User-Agent: X-HTTP-UserAgent: X-Mailer: X-Newsreader: X-Editor: X-Operating-System: Subject: X-Spam-Status:
+
+## BINDINGS ##
+bind generic < previous-line
+bind generic > next-line
+
+bind index j next-thread
+bind index k previous-thread
+
+## COLORS ##
+color normal        white black
+color attachment    brightwhite black
+color hdrdefault    cyan black
+color indicator     black cyan
+color markers       brightblack black
+color quoted        green black
+color signature     cyan black
+color tilde         blue black
+color tree          red black
+
+# Headers colors
+color header    brightblue      black   ^(Delivered-|X-Original-|Envelope-)?To:
+color header    brightblue      black   ^Bcc:
+color header    brightblue      black   ^Cc:
+color header    brightgreen     black   ^From
+color header    brightgreen     black   From:|-from:
+color header    brightgreen     black   Return-[Pp]ath:
+color header    brightgreen     black   ^(X-)?Sender:
+color header    brightgreen     black   ^Reply-To:
+color header    brightgreen     black   ^Mail-Followup-To:
+color header    brightgreen     black   ^X-Disposition-Notification-To:
+color header    brightgreen     black   ^X-URL:
+color header    magenta         black   ^Date:
+color header    magenta         black   ^Delivery-date:
+color header    magenta         black   ^Posted:
+color header    magenta         black   ^NNTP-Posting-Date:
+color header    brightcyan      black   ^Subject:
+color header    brightwhite     black   ^X-All-Your-Base-Are-Belong-To:
+color header    green           black   ^Received:
+color header    green           black   ^Message-ID:
+color header    green           black   ^References:
+color header    green           black   ^In-Reply-To:
+color header    green           black   ^Organi[sz]ation:
+color header    green           black   ^X-Trace:
+color header    green           black   ^Injection-Info:
+color header    yellow          black   ^X-Spam-
+color header    red             black   ^Status:
+color header    red             black   ^Content-Length:
+color header    red             black   ^Lines:
+color header    brightyellow    black   ^(X-)?Mime
+color header    brightyellow    black   ^(Old-)?Content-(Type|Disposition|Transfer-Encoding):
+color header    brightyellow    black   ^User-Agent:
+color header    brightyellow    black   ^X-Mailer[A-Za-z-]*:
+color header    brightyellow    black   ^X-Editor:
+color header    brightyellow    black   ^X-Operating-System:
+color header    brightyellow    black   ^X-Newsreader:
+color header    brightyellow    black   ^X-Accept-Language:
+color header    brightyellow    black   ^X-MSMail-
+color header    brightyellow    black   ^(X-)?Priority:
+color header    brightyellow    black   ^(X-)?Priority:
+color header    brightyellow    black   ^X-HTTP-UserAgent:
+color header    brightblack     black   ^X-HotPOP-Delivered-To:
+color header    brightblack     black   ^X-Face:
+mono  header    bold                    ^From:
+mono  header    bold                    ^To:
+mono  header    bold                    ^Cc:
+mono  header    bold                    ^Subject:
+mono  header    bold                    ^X-All-Your-Base-Are-Belong-To:
+
+# Email highlighting
+color body      brightmagenta   black   "[-a-z_0-9%.]+@[-a-z_0-9.]*[-a-z_0-9]"
+mono  body      bold                    "[-a-z_0-9%.]+@[-a-z_0-9.]*[-a-z_0-9]"
+
+# Bad PGP signature
+color body      brightwhite     red     "Bad signature from.*"
+mono  body      bold                    "Bad signature from.*"
+
+# Formatting
+color body      brightwhite     black   "(^| |\t)\\*[a-z0-9]([a-z0-9-]* ){,3}[a-z0-9,.!?-]*\\*"
+color body      brightyellow    black "(^| |\t)_[a-z0-9]([a-z0-9-]* ){,6}[a-z0-9,.!?-]+_"
+color body      brightyellow    black "(^| |\t)_[a-z0-9][a-z0-9,.!?_-]*_"
+
+# Misc
+color body      brightblack     black   "^[-_=*]{3,}\n"
+color body      yellow          black   "^SPAM:"
