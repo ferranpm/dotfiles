@@ -160,8 +160,9 @@ function! MakeTags(...)
     else
         let depth=1
     endif
+    let path = expand('%:p:h')
     let extension = expand('%:e')
-    let cmd='ctags $(find $(pwd) -maxdepth '.depth.' -name "*.'.extension.'")'
+    let cmd='ctags $(find '.path.' -maxdepth '.depth.' -name "*.'.extension.'")'
     echo cmd
     call system(cmd)
 endfunction
