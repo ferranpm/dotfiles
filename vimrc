@@ -63,7 +63,7 @@ set nowritebackup
 
 " Status Line
 set laststatus=2
-set statusline=%f\ %y%h%r%w\ (%l/%L,\ %c)\ %p%%%=%{getcwd()}%m
+set statusline=%f\ %y%h%r%w\ (%l/%L,\ %c)\ %p%%%=%m\ %{getcwd()}
 
 " Menu
 set wildmenu
@@ -86,18 +86,12 @@ autocmd InsertLeave * :set number relativenumber
 command! -nargs=+ -complete=command Pipe call Pipe(<q-args>)
 command! -nargs=+ -complete=shellcmd Shell call Shell(<q-args>)
 command! ClearWhiteSpace :%s/ *$\|<tab>*$/
-command! Vimrc :e ~/.vimrc
 
 map J 5j
 map K 5k
 
 noremap <C-k> k{j
 noremap <C-j> j}k
-
-nnoremap gh <C-w>h
-nnoremap gj <C-w>j
-nnoremap gk <C-w>k
-nnoremap gl <C-w>l
 
 nnoremap <C-l> gt
 nnoremap <C-h> gT
@@ -123,7 +117,7 @@ nnoremap <F1> :set relativenumber! relativenumber?<cr>
 nnoremap <F3> :set hlsearch! hlsearch?<cr>
 nnoremap <F5> :set cursorline! cursorline?<cr>
 nnoremap <F8> :set spell! spell?<cr>
-nnoremap <F12> :call MakeTags()<cr>
+nnoremap <F12> :call MakeTags(2)<cr>
 
  noremap             	<leader>c :yank +<cr>
  noremap             	<leader>v :put +<cr>
@@ -139,7 +133,7 @@ nnoremap                <leader>bs :ls!<cr>:buffer
 nnoremap    <silent>    <leader>bk :call BufferKill()<cr>
 nnoremap            	<leader>o :only<cr>
 nnoremap    <silent>	<leader>. :update<cr>
-nnoremap    <silent>	<leader>e :quit<cr>
+nnoremap    <silent>	<leader>e :bwipeout<cr>
 nnoremap    <silent>	<leader>q :qall<cr>
 
 function! Pipe(cmd)
