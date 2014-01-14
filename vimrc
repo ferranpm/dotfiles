@@ -83,6 +83,9 @@ endtry
 autocmd InsertEnter * :set number norelativenumber
 autocmd InsertLeave * :set number relativenumber
 
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
 command! -nargs=+ -complete=command Pipe call Pipe(<q-args>)
 command! -nargs=+ -complete=shellcmd Shell call Shell(<q-args>)
 command! ClearWhiteSpace :%s/ *$\|<tab>*$/
