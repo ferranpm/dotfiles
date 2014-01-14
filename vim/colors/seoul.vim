@@ -132,13 +132,13 @@ highlight	MoreMsg
 highlight	NonText
             \ cterm=None	ctermfg=101 	ctermbg=None
 highlight	Pmenu
-            \ cterm=None	ctermfg=238 	ctermbg=224
+            \ cterm=None	ctermfg=243 	ctermbg=235
 highlight	PmenuSel
-            \ cterm=None	ctermfg=252 	ctermbg=89
+            \ cterm=None	ctermfg=252 	ctermbg=238
 highlight	PmenuSbar
-            \ cterm=None	ctermfg=None	ctermbg=65
+            \ cterm=None	ctermfg=None	ctermbg=232
 highlight	PmenuThumb
-            \ cterm=None	ctermfg=None	ctermbg=23
+            \ cterm=None	ctermfg=None	ctermbg=234
 highlight	Question
             \ cterm=None	ctermfg=179 	ctermbg=None
 highlight	Search
