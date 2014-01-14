@@ -167,5 +167,13 @@ function! MakeTags(...)
 endfunction
 
 function! BufferKill()
-    " TODO: Kills all unused buffers
+    let l:buffers = range(1, bufnr('$'))
+    let l:n = 1
+    while l:n <= len(l:buffers)
+        if bufexists(l:n) && !bufloaded(l:n)
+            execute 'bwipeout '.l:n
+        endif
+        let l:n += 1
+    endwhile
+    echo 'Unloaded buffers killed!'
 endfunction
