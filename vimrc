@@ -151,6 +151,8 @@ endfunction
 function! Shell(cmd)
     vnew
     execute 'read !'.a:cmd
+    call cursor(1, 1)
+    execute 'delete'
     set nomodified
 endfunction
 
