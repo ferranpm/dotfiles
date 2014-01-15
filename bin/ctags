@@ -1,6 +1,7 @@
 #!/usr/bin/sh
 
 ctags=/usr/bin/ctags
+flags=-R\ --append
 
 for f in $*; do
     case $f in
@@ -8,9 +9,9 @@ for f in $*; do
             gcc -M $* | \
                 sed -e 's/[\\ ]/\n/g' | \
                 sed -e '/^$/d' -e '/\.o:[ \t]*$/d' | \
-                $ctags -L - --append
+                $ctags $flags -L -
             ;;
         *)
-            $ctags --append $f
+            $ctags $flags $f
     esac
 done

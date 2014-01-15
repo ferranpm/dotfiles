@@ -83,6 +83,9 @@ endtry
 autocmd InsertEnter * :set number norelativenumber
 autocmd InsertLeave * :set number relativenumber
 
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
 command! -nargs=+ -complete=command Pipe call Pipe(<q-args>)
 command! -nargs=+ -complete=shellcmd Shell call Shell(<q-args>)
 command! ClearWhiteSpace :%s/ *$\|<tab>*$/
@@ -148,6 +151,8 @@ endfunction
 function! Shell(cmd)
     vnew
     execute 'read !'.a:cmd
+    call cursor(1, 1)
+    execute 'delete'
     set nomodified
 endfunction
 
@@ -157,12 +162,21 @@ function! MakeTags(...)
     else
         let depth=1
     endif
+    let path = expand('%:p:h')
     let extension = expand('%:e')
-    let cmd='ctags $(find $(pwd) -maxdepth '.depth.' -name "*.'.extension.'")'
+    let cmd='ctags $(find '.path.' -maxdepth '.depth.' -name "*.'.extension.'")'
     echo cmd
     call system(cmd)
 endfunction
 
 function! BufferKill()
-    " TODO: Kills all unused buffers
+    let l:buffers = range(1, bufnr('$'))
+    let l:n = 1
+    while l:n <= len(l:buffers)
+        if bufexists(l:n) && !bufloaded(l:n)
+            execute 'bwipeout '.l:n
+        endif
+        let l:n += 1
+    endwhile
+    echo 'Unloaded buffers killed!'
 endfunction

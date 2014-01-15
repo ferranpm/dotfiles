@@ -5,7 +5,7 @@ PROMPT='
 stty -ixon
 
 ## EXPORTS ##
-export GREP_OPTIONS='--color=always'
+export GREP_OPTIONS='--color=auto'
 export HISTFILE=$HOME/.zshhistory
 export HISTSIZE=50000
 export KEYTIMEOUT=1
@@ -36,12 +36,14 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY
+setopt INC_APPEND_HISTORY
 setopt NO_FLOW_CONTROL
 setopt PROMPT_SUBST
 setopt PUSHD_IGNORE_DUPS
 setopt PUSHD_MINUS
 setopt PUSHD_SILENT
 setopt PUSHD_TOHOME
+setopt SHARE_HISTORY
 setopt VI
 
 ## ZSTYLE ##
@@ -98,7 +100,7 @@ alias dades_mount="mount ~/Raco/dades"
 alias dades_umount="umount.davfs ~/Raco/dades"
 alias assig_mount="mount ~/Raco/assig"
 alias assig_umount="umount.davfs ~/Raco/assig"
-alias pmount="udisks --mount"
+alias pmount="udisksctl mount -b"
 alias pumount="umount"
 alias pacman="pacman --color=always"
 alias pacupg="sudo pacman -Syu"

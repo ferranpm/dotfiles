@@ -1,16 +1,20 @@
+!!!!!!!!!!!!!
+!! General !!
+!!!!!!!!!!!!!
+*cursorBlink: true
+*geometry: 100x35
+*jumpScroll: true
+*loginShell: true
+*saveLines: 512
+*scrollBar: false
+*scrollTtyOutput: false
+*termName: xterm
+
 !!!!!!!!!!!
 !! URxvt !!
 !!!!!!!!!!!
-URxvt*termName: xterm
-URxvt.scrollBar: false
-URxvt.loginShell: true
-URxvt.saveLines: 512
-URxvt.geometry: 100x35
 URxvt.xftAntialias: true
-URxvt.jumpScroll: true
-URxvt.cursorBlink: true
 URxvt.borderless: false
-URxvt.scrollTtyOutput: false
 URxvt.scrollTtyKeypress: true
 URxvt.scrollWithBuffer: true
 URxvt.urlLauncher: firefox
@@ -26,49 +30,52 @@ URxvt.keysym.C-5: command:\033]710;xft:Monospace:size=9\007
 URxvt.keysym.C-6: command:\033]710;xft:Monospace:size=11\007
 URxvt.keysym.C-7: command:\033]710;xft:Monospace:size=13\007
 
-URxvt.foreground: #DADADA
-URxvt.background: #111111
-
-URxvt.colorBD:      #ffffff
-URxvt.borderColor:  #151515
-URxvt.cursorColor:  #ff8939
-URxvt.cursorColor2: #151515
-
-! Black
-URxvt.color0:     #2B2B2B
-URxvt.color8:     #404040
-! Red
-URxvt.color1:     #E84F4F
-URxvt.color9:     #D23D3D
-! Green
-URxvt.color2:     #B8D68C
-URxvt.color10:    #A0CF5D
-! Yellow
-URxvt.color3:     #E1AA5D
-URxvt.color11:    #F39D21
-! Blue
-URxvt.color4:     #7DC1CF
-URxvt.color12:    #4E9FB1
-! Magenta
-URxvt.color5:     #9B64FB
-URxvt.color13:    #8542FF
-! Cyan
-URxvt.color6:     #6D878D
-URxvt.color14:    #42717B
-! White
-URxvt.color7:     #dddddd
-URxvt.color15:    #dddddd
-
 !!!!!!!!!!!
 !! XTerm !!
 !!!!!!!!!!!
 XTerm*faceName: xft:Monospace:size=9
-XTerm*foreground: #DADADA
-XTerm*background: #1C1C1C
-XTerm*scrollBar: false
+XTerm*fastScroll: True
 
 !!!!!!!!!!
 !! Xpdf !!
 !!!!!!!!!!
 Xpdf.geometry: 900x900
 Xpdf*fontList: -misc-dejavu sans light-extralight-r-normal--0-0-0-0-p-0-ascii-0
+Xpdf*foreground: #333333
+Xpdf*background: #AAAAAA
+
+!!!!!!!!!!!!
+!! Colors !!
+!!!!!!!!!!!!
+*foreground: #DADADA
+*background: #111111
+
+*colorBD:      #ffffff
+*borderColor:  #151515
+*cursorColor:  #ff8939
+*cursorColor2: #151515
+
+! Black
+*color0:     #2B2B2B
+*color8:     #404040
+! Red
+*color1:     #E84F4F
+*color9:     #D23D3D
+! Green
+*color2:     #B8D68C
+*color10:    #A0CF5D
+! Yellow
+*color3:     #E1AA5D
+*color11:    #F39D21
+! Blue
+*color4:     #7DC1CF
+*color12:    #4E9FB1
+! Magenta
+*color5:     #9B64FB
+*color13:    #8542FF
+! Cyan
+*color6:     #6D878D
+*color14:    #42717B
+! White
+*color7:     #dddddd
+*color15:    #dddddd
