@@ -21,6 +21,7 @@ set pgp_replysignencrypted
 set pgp_timeout=900
 set postponed="+[Gmail]/Drafts"
 set realname="Ferran Pelayo Monfort"
+set record="~/.mutt/sent"
 set reverse_name
 set reverse_realname
 set sendmail_wait=1
