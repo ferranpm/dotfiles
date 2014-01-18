@@ -1,0 +1,21 @@
+" vim: set ft=vim:
+
+noremap <C-l> gt
+noremap <C-h> gT
+noremap K gt
+noremap J gT
+noremap gn :tabnew<Return>
+noremap x :tabclose<Return>
+
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
+noremap ; :
+noremap : ;
+
+noremap d <C-d>
+noremap u <C-u>
+
+noremap j 5j
+noremap k 5k
+
