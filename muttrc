@@ -1,5 +1,6 @@
 ## GENERAL OPTIONS ##
 set allow_ansi
+set alias_file="~/.mutt/aliases"
 set editor="vim"
 set fast_reply
 set folder="imaps://imap.gmail.com:993"
@@ -32,17 +33,40 @@ set sort=threads
 set sort_aux=date-received
 set sort_browser=reverse-date
 set spoolfile="+INBOX"
+set use_from
+
+## BINDINGS ##
+bind generic j next-entry
+bind generic k previous-entry
+
+bind index J next-thread
+bind index K previous-thread
+
+bind index "^" imap-fetch-mail
+
+bind index <Esc>n next-new
+
+bind index l display-message
+
+bind pager j next-line
+bind pager k previous-line
+
+bind pager ^N next-entry
+bind pager ^P previous-entry
+
+bind pager d half-down
+bind pager u half-up
+
+bind pager h exit
+
+## MACROS ##
+macro index ,ci cimaps://imap.gmail.com:993/INBOX\n
+macro index ,ck cimaps://imap.gmail.com:993/kernelnewbies\n
+macro index ,cu cimaps://imap.gmail.com:993/UNI\n
 
 ## HEADERS ##
 unhdr_order *
 hdr_order Date: Delivery-date: To: Envelope-to: Delivered-To: X-Original-To: Cc: Bcc: From From: Reply-To: X-Disposition-Notification-To: Mail-Followup-To: X-URL: Organization: Organisation: X-MimeOLE User-Agent: X-HTTP-UserAgent: X-Mailer: X-Newsreader: X-Editor: X-Operating-System: Subject: X-Spam-Status:
-
-## BINDINGS ##
-bind generic < previous-line
-bind generic > next-line
-
-bind index j next-thread
-bind index k previous-thread
 
 ## COLORS ##
 color normal        white black
