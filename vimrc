@@ -173,7 +173,7 @@ function! BufferKill()
     let l:buffers = range(1, bufnr('$'))
     let l:n = 1
     while l:n <= len(l:buffers)
-        if bufexists(l:n) && !bufloaded(l:n)
+        if bufexists(l:n) && !bufloaded(l:n) && !buflisted(l:n)
             execute 'bwipeout '.l:n
         endif
         let l:n += 1
