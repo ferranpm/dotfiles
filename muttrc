@@ -35,6 +35,8 @@ set sort_browser=reverse-date
 set spoolfile="+INBOX"
 set use_from
 
+source $alias_file
+
 ## BINDINGS ##
 bind generic j next-entry
 bind generic k previous-entry
