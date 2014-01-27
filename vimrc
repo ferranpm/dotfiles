@@ -80,8 +80,10 @@ try
 catch
 endtry
 
-autocmd InsertEnter * :set number norelativenumber
-autocmd InsertLeave * :set number relativenumber
+autocmd! InsertEnter * set number norelativenumber
+autocmd! InsertLeave * set number relativenumber
+
+autocmd! BufWritePost .vimrc so %
 
 command! -nargs=+ -complete=command Pipe call Pipe(<q-args>)
 command! -nargs=+ -complete=shellcmd Shell call Shell(<q-args>)
