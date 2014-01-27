@@ -21,6 +21,11 @@ URxvt.font: xft:Monospace:size=9
 URxvt.keysym.M-Up: command:\033]710;xft:Monospace:size=13\007
 URxvt.keysym.M-Down: command:\033]710;xft:Monospace:size=9\007
 
+URxvt.perl-ext: default,url-select
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher: /usr/bin/firefox -new-tab
+URxvt.url-select.underline: true
+
 !!!!!!!!!!!
 !! XTerm !!
 !!!!!!!!!!!
