@@ -1,9 +1,9 @@
 " vim: set ft=vim:
 
-noremap <C-l> gt
-noremap <C-h> gT
-noremap K gt
-noremap J gT
+noremap J :tabprevious<Return>
+noremap K :tabnext<Return>
+noremap <C-S-j> :tabmove -1<Return>
+noremap <C-S-k> :tabmove +1<Return>
 noremap gn :tabnew<Return>
 noremap x :tabclose<Return>
 
