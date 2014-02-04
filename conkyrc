@@ -1,0 +1,11 @@
+background no
+out_to_console yes
+out_to_x no
+override_utf8_locale yes
+pad_percents 3
+short_units yes
+total_run_times 0
+update_interval 1
+
+TEXT
+${exec mpc current} | ${battery BAT0} | ${addr wlan0} | ${time %a %d %b %H:%M}
