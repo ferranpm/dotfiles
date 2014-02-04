@@ -1,8 +1,8 @@
 " Pathogen
 let g:pathogen_disabled = []
 try
-    runtime bundle/pathogen/autoload/pathogen.vim
-    call pathogen#infect()
+  runtime bundle/pathogen/autoload/pathogen.vim
+  call pathogen#infect()
 catch
 endtry
 
@@ -17,8 +17,11 @@ let g:ctrlp_use_caching=0
 filetype plugin indent on
 syntax on
 let mapleader=','
+set autowrite
 set autoread
 set encoding=utf-8
+set list
+set listchars=tab:\|\ ,
 set mouse=n
 set nocompatible
 set number
@@ -39,10 +42,10 @@ set nosplitbelow
 " Indentation
 set autoindent
 set expandtab
-set shiftwidth=4
+set shiftwidth=2
 set smarttab
-set softtabstop=4
-set tabstop=4
+set softtabstop=2
+set tabstop=2
 
 " Search & Replace
 set gdefault
@@ -72,13 +75,19 @@ set wildmode=longest:list,full
 " Colors
 call matchadd('ColorColumn', '\%81v', 100)
 try
-    if exists("$DISPLAY")
-        colorscheme seoul
-    else
-        colorscheme torte
-    endif
+  if exists("$DISPLAY")
+    colorscheme seoul
+  else
+    colorscheme torte
+  endif
 catch
 endtry
+
+" GUI specific
+if has('gui_running')
+  set guioptions-=m
+  set guioptions-=T
+endif
 
 autocmd! InsertEnter * set number norelativenumber
 autocmd! InsertLeave * set number relativenumber
@@ -121,10 +130,10 @@ nnoremap <F5> :set cursorline! cursorline?<cr>
 nnoremap <F8> :set spell! spell?<cr>
 nnoremap <F12> :call MakeTags(2)<cr>
 
- noremap             	<leader>c :yank +<cr>
- noremap             	<leader>v :put +<cr>
- noremap             	<leader>p :put *<cr>
- noremap             	<leader>j :join<cr>
+ noremap                <leader>c :yank +<cr>
+ noremap                <leader>v :put +<cr>
+ noremap                <leader>p :put *<cr>
+ noremap                <leader>j :join<cr>
 nnoremap                <leader>l o<Esc>
 nnoremap                <leader>L O<Esc>
 nnoremap                <leader>fe zMzvzz
@@ -133,49 +142,49 @@ nnoremap                <leader>fc zM
 nnoremap                <leader>bc :ls!<cr>:bwipeout 
 nnoremap                <leader>bs :ls!<cr>:buffer 
 nnoremap    <silent>    <leader>bk :call BufferKill()<cr>
-nnoremap            	<leader>o :only<cr>
-nnoremap    <silent>	<leader>. :update<cr>
-nnoremap    <silent>	<leader>e :bwipeout<cr>
-nnoremap    <silent>	<leader>q :qall<cr>
+nnoremap                <leader>o :only<cr>
+nnoremap    <silent>    <leader>. :update<cr>
+nnoremap    <silent>    <leader>e :bwipeout<cr>
+nnoremap    <silent>    <leader>q :qall<cr>
 
 function! Pipe(cmd)
-    redir @+>
-    silent execute a:cmd
-    redir END
-    vnew
-    silent 0put +
-    set nomodified
+  redir @+>
+  silent execute a:cmd
+  redir END
+  vnew
+  silent 0put +
+  set nomodified
 endfunction
 
 function! Shell(cmd)
-    vnew
-    execute 'read !'.a:cmd
-    call cursor(1, 1)
-    execute 'delete'
-    set nomodified
+  vnew
+  execute 'read !'.a:cmd
+  call cursor(1, 1)
+  execute 'delete'
+  set nomodified
 endfunction
 
 function! MakeTags(...)
-    if a:0 > 0
-        let depth=a:1
-    else
-        let depth=1
-    endif
-    let path = expand('%:p:h')
-    let extension = expand('%:e')
-    let cmd='ctags $(find '.path.' -maxdepth '.depth.' -name "*.'.extension.'")'
-    echo cmd
-    call system(cmd)
+  if a:0 > 0
+    let depth=a:1
+  else
+    let depth=1
+  endif
+  let path = expand('%:p:h')
+  let extension = expand('%:e')
+  let cmd='ctags $(find '.path.' -maxdepth '.depth.' -name "*.'.extension.'")'
+  echo cmd
+  call system(cmd)
 endfunction
 
 function! BufferKill()
-    let l:buffers = range(1, bufnr('$'))
-    let l:n = 1
-    while l:n <= len(l:buffers)
-        if bufexists(l:n) && !bufloaded(l:n) && !buflisted(l:n)
-            execute 'bwipeout '.l:n
-        endif
-        let l:n += 1
-    endwhile
-    echo 'Unloaded buffers killed!'
+  let l:buffers = range(1, bufnr('$'))
+  let l:n = 1
+  while l:n <= len(l:buffers)
+    if bufexists(l:n) && !bufloaded(l:n) && !buflisted(l:n)
+      execute 'bwipeout '.l:n
+    endif
+    let l:n += 1
+  endwhile
+  echo 'Unloaded buffers killed!'
 endfunction
