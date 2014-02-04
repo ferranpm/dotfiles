@@ -8,4 +8,4 @@ total_run_times 0
 update_interval 1
 
 TEXT
-${exec mpc current} | ${battery BAT0} | ${addr wlan0} | ${time %a %d %b %H:%M}
+${exec mpc current} | ${addr wlan0} | ${time %a %d %b %H:%M}
