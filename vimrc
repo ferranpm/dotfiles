@@ -97,6 +97,7 @@ autocmd! BufWritePost .vimrc so %
 command! -nargs=+ -complete=command Pipe call Pipe(<q-args>)
 command! -nargs=+ -complete=shellcmd Shell call Shell(<q-args>)
 command! ClearWhiteSpace :%s/ *$\|<tab>*$/
+command! SudoW :w !sudo tee %
 
 map J 5j
 map K 5k
