@@ -75,7 +75,7 @@ set wildmode=longest:list,full
 " Colors
 call matchadd('ColorColumn', '\%81v', 100)
 try
-  if exists("$DISPLAY")
+  if exists("$DISPLAY") && !has('gui_running')
     colorscheme seoul
   else
     colorscheme torte
