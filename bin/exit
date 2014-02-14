@@ -12,6 +12,7 @@ done
 
 case $op in
     's')
+        mpc -q stop
         systemctl poweroff
         ;;
     'r')
