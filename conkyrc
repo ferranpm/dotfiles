@@ -8,4 +8,4 @@ total_run_times 0
 update_interval 1
 
 TEXT
-${exec mpc current} | ${addr wlan0} | ${time %a %d %b %H:%M}
+$if_mpd_playing $mpd_artist - $mpd_title |$endif ${battery_percent}% | $nodename: ${if_up wlan0}${addr wlan0}$endif${if_up eth0}${addr eth0}$endif | ${time %a %d %b %H:%M}
