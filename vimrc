@@ -131,6 +131,7 @@ nnoremap <F3> :set hlsearch! hlsearch?<cr>
 nnoremap <F4> :set spell! spell?<cr>
 nnoremap <F5> :make<cr>
 nnoremap <F6> :!rsync -avz -e ssh ~/SO2/zeos/ alumne@172.16.47.128:~/zeos/<cr><cr>
+nnoremap <F7> :execute "!make ".expand("%:r")." && ./".expand("%:r")<cr>
 nnoremap <F12> :call MakeTags(2)<cr>
 
  noremap                <leader>c :yank +<cr>
