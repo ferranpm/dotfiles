@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+find ~/Music/ -iregex ".*\.\(png\|jpg\|nfo\|m3u\|gif\|txt\)$"
+find ~/Music/ -iregex ".*\.\(png\|jpg\|nfo\|m3u\|gif\|txt\)$" -exec rm --verbose --interactive=once {} +
