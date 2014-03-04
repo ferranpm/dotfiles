@@ -169,6 +169,7 @@ function! Shell(cmd)
 endfunction
 
 function! MakeTags(...)
+  call system("rm tags")
   if a:0 > 0
     let depth=a:1
   else
