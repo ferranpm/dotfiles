@@ -42,10 +42,10 @@ set nosplitbelow
 " Indentation
 set autoindent
 set expandtab
-set shiftwidth=2
+set shiftwidth=4
 set smarttab
-set softtabstop=2
-set tabstop=2
+set softtabstop=4
+set tabstop=4
 
 " Search & Replace
 set gdefault
@@ -130,7 +130,7 @@ nnoremap <F2> :set cursorline! cursorline?<cr>
 nnoremap <F3> :set hlsearch! hlsearch?<cr>
 nnoremap <F4> :set spell! spell?<cr>
 nnoremap <F5> :make<cr>
-nnoremap <F6> :!rsync -avz -e ssh ~/SO2/zeos/ alumne@172.16.47.128:~/zeos/<cr><cr>
+nnoremap <F6> :!rsync -avz -e ssh ~/SO2/zeos/ alumne@172.16.47.129:~/zeos/<cr><cr>
 nnoremap <F7> :execute "!make ".expand("%:r")." && ./".expand("%:r")<cr>
 nnoremap <F12> :call MakeTags(2)<cr>
 
@@ -176,8 +176,12 @@ function! MakeTags(...)
     let depth=1
   endif
   let path = expand('%:p:h')
-  let extension = expand('%:e')
-  let cmd='ctags $(find '.path.' -maxdepth '.depth.' -name "*.'.extension.'")'
+  if expand('%') == "Makefile"
+    let extension = "Makefile"
+  else
+    let extension = '*.'.expand('%:e')
+  endif
+  let cmd='ctags $(find '.path.' -maxdepth '.depth.' -name "'.extension.'")'
   echo cmd
   call system(cmd)
 endfunction
