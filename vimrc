@@ -1,8 +1,8 @@
 " Pathogen
 let g:pathogen_disabled = []
 try
-  runtime bundle/pathogen/autoload/pathogen.vim
-  call pathogen#infect()
+    runtime bundle/pathogen/autoload/pathogen.vim
+    call pathogen#infect()
 catch
 endtry
 
@@ -42,10 +42,10 @@ set nosplitbelow
 " Indentation
 set autoindent
 set expandtab
-set shiftwidth=2
+set shiftwidth=4
 set smarttab
-set softtabstop=2
-set tabstop=2
+set softtabstop=4
+set tabstop=4
 
 " Search & Replace
 set gdefault
@@ -72,21 +72,20 @@ set statusline=%f\ %y%h%r%w\ (%l/%L,\ %c)\ %p%%%=%m\ %{getcwd()}
 set wildmenu
 set wildmode=longest:list,full
 
-" Colors
+" Colors & GUI
 call matchadd('ColorColumn', '\%81v', 100)
-try
-  if exists("$DISPLAY") && !has('gui_running')
-    colorscheme seoul
-  else
-    colorscheme torte
-  endif
-catch
-endtry
-
-" GUI specific
 if has('gui_running')
-  set guioptions-=m
-  set guioptions-=T
+    set guioptions-=m
+    set guioptions-=T
+    if has('gui_gtk2')
+    elseif has('gui_win32')
+        set guifont=Consolas:h11
+        colorscheme zellner
+    endif
+elseif has('$DISPLAY')
+    colorscheme seoul
+else
+    colorscheme torte
 endif
 
 autocmd! InsertEnter * set number norelativenumber
@@ -134,10 +133,10 @@ nnoremap <F6> :!rsync -avz -e ssh ~/SO2/zeos/ alumne@172.16.47.128:~/zeos/<cr><c
 nnoremap <F7> :execute "!make ".expand("%:r")." && ./".expand("%:r")<cr>
 nnoremap <F12> :call MakeTags(2)<cr>
 
- noremap                <leader>c :yank +<cr>
- noremap                <leader>v :put +<cr>
- noremap                <leader>p :put *<cr>
- noremap                <leader>j :join<cr>
+noremap                <leader>c :yank +<cr>
+noremap                <leader>v :put +<cr>
+noremap                <leader>p :put *<cr>
+noremap                <leader>j :join<cr>
 nnoremap                <leader>l o<Esc>
 nnoremap                <leader>L O<Esc>
 nnoremap                <leader>fe zMzvzz
@@ -152,44 +151,44 @@ nnoremap    <silent>    <leader>e :bwipeout<cr>
 nnoremap    <silent>    <leader>q :qall<cr>
 
 function! Pipe(cmd)
-  redir @+>
-  silent execute a:cmd
-  redir END
-  vnew
-  silent 0put +
-  set nomodified
+    redir @+>
+    silent execute a:cmd
+    redir END
+    vnew
+    silent 0put +
+    set nomodified
 endfunction
 
 function! Shell(cmd)
-  vnew
-  execute 'read !'.a:cmd
-  call cursor(1, 1)
-  execute 'delete'
-  set nomodified
+    vnew
+    execute 'read !'.a:cmd
+    call cursor(1, 1)
+    execute 'delete'
+    set nomodified
 endfunction
 
 function! MakeTags(...)
-  call system("rm tags")
-  if a:0 > 0
-    let depth=a:1
-  else
-    let depth=1
-  endif
-  let path = expand('%:p:h')
-  let extension = expand('%:e')
-  let cmd='ctags $(find '.path.' -maxdepth '.depth.' -name "*.'.extension.'")'
-  echo cmd
-  call system(cmd)
+    call system("rm tags")
+    if a:0 > 0
+        let depth=a:1
+    else
+        let depth=1
+    endif
+    let path = expand('%:p:h')
+    let extension = expand('%:e')
+    let cmd='ctags $(find '.path.' -maxdepth '.depth.' -name "*.'.extension.'")'
+    echo cmd
+    call system(cmd)
 endfunction
 
 function! BufferKill()
-  let l:buffers = range(1, bufnr('$'))
-  let l:n = 1
-  while l:n <= len(l:buffers)
-    if bufexists(l:n) && !bufloaded(l:n) && !buflisted(l:n)
-      execute 'bwipeout '.l:n
-    endif
-    let l:n += 1
-  endwhile
-  echo 'Unloaded buffers killed!'
+    let l:buffers = range(1, bufnr('$'))
+    let l:n = 1
+    while l:n <= len(l:buffers)
+        if bufexists(l:n) && !bufloaded(l:n) && !buflisted(l:n)
+            execute 'bwipeout '.l:n
+        endif
+        let l:n += 1
+    endwhile
+    echo 'Unloaded buffers killed!'
 endfunction
