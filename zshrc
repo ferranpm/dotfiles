@@ -13,15 +13,6 @@ export LESS='-R'
 export PATH=.:~/.gem/ruby/2.1.0/bin:~/bin:$PATH
 export SAVEHIST=10000
 export ZLS_COLORS=$LS_COLORS
-export PAGER="/bin/sh -c \"                         \
-    col -b -x | vim -R                              \
-    -c 'set ft=man noma nomod nolist nonu nornu'    \
-    -c 'noremap q :q<CR>'                           \
-    -c 'noremap d <C-D>'                            \
-    -c 'noremap <SPACE> <C-D>'                      \
-    -c 'noremap u <C-U>'                            \
-    -c 'noremap b <C-U>'                            \
-    -\""
 
 autoload -U colors && colors
 autoload -U compinit && compinit -d .zshcompdump

@@ -1,4 +1,15 @@
 #!/usr/bin/env bash
 
-find ~/Music/ -iregex ".*\.\(png\|jpg\|nfo\|m3u\|gif\|txt\)$"
-find ~/Music/ -iregex ".*\.\(png\|jpg\|nfo\|m3u\|gif\|txt\)$" -exec rm --verbose --interactive=once {} +
+music_unwanted=(png jpg jpeg nfo m3u gif txt)
+unwanted=""
+first=true
+for ext in ${music_unwanted[@]}; do
+if $first; then
+    first=false
+    unwanted="$ext"
+else
+    unwanted="$unwanted\|$ext"
+fi
+done
+find ~/Music/ -iregex ".*\.\($unwanted\)$"
+find ~/Music/ -iregex ".*\.\($unwanted\)$" -exec rm --verbose --interactive=once {} +
