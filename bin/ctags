@@ -6,7 +6,7 @@ flags=-R\ --append
 for f in $*; do
     case $f in
         *.c)
-            gcc -M $* | \
+            gcc -M $f | \
                 sed -e 's/[\\ ]/\n/g' | \
                 sed -e '/^$/d' -e '/\.o:[ \t]*$/d' | \
                 $ctags $flags -L -
