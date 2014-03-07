@@ -17,7 +17,6 @@ let g:ctrlp_use_caching=0
 filetype plugin indent on
 syntax on
 let mapleader=','
-set autowrite
 set autoread
 set encoding=utf-8
 set list
