@@ -1,15 +1,40 @@
-#!/usr/bin/env bash
+#!/usr/bin/sh
 
-music_unwanted=(png jpg jpeg nfo m3u gif txt)
-unwanted=""
-first=true
-for ext in ${music_unwanted[@]}; do
-if $first; then
-    first=false
-    unwanted="$ext"
-else
-    unwanted="$unwanted\|$ext"
-fi
-done
-find ~/Music/ -iregex ".*\.\($unwanted\)$"
-find ~/Music/ -iregex ".*\.\($unwanted\)$" -exec rm --verbose --interactive=once {} +
+make_iregex() {
+    # Converts a list of unwanted extensions to the string prepared
+    # for the -regex on find command
+    # (jpg png gif) => ".*\.\(jpg\|png\|gif\)$"
+    first=true
+    for ext in $*; do
+        if $first; then
+            first=false
+            iregex="$ext"
+        else
+            iregex="$iregex\|$ext"
+        fi
+    done
+    iregex=".*\.\($iregex\)$"
+    echo $iregex
+}
+
+clean_folder() {
+    # Searches for the files with the extensions given in args $2 to the last
+    # in the folder given in $1 and removes them
+    # $1    => Folder to search in
+    # $2-$* => Extensions to remove
+    folder=$1
+    args=()
+    count=0
+    for arg in $*; do
+        if [[ "$arg" != "$folder" ]]; then
+            args[$count]=$arg
+            count=$(expr $count + 1)
+        fi
+    done
+    iregex=$(make_iregex ${args[*]})
+    eval "find $folder -iregex \"$iregex\""
+    eval "find $folder -iregex \"$iregex\" -exec rm --verbose --interactive=once {} +"
+}
+
+clean_folder "~/Music/" png jpg jpeg nfo m3u gif txt
+clean_folder "~/Torrents" txt torrent jpg nfo
