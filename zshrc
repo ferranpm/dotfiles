@@ -67,7 +67,6 @@ bindkey -v '^s' insert-sudo
 
 ## ALIASES ##
 alias ack="ack --color"
-alias remote_sync="rsync --update --progress --recursive --modify-window=86400 -e ssh"
 alias cal="cal -3 -m"
 alias cd=" cd"
 alias diff="diff -yEbwB --suppress-common-lines"
