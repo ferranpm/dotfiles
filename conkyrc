@@ -10,23 +10,23 @@ update_interval 1
 TEXT
 # MPD Config
 $if_mpd_playing\
-▶: \
+▶ \
 $else\
-■: \
+■ \
 $endif\
 $mpd_artist - $mpd_title | \
 # Volume
-♫: ${exec amixer get Master | grep '%' | sed -e 's/.*\[\([0-9]*%\)\].*/\1/'} | \
+♫ ${exec amixer get Master | grep '%' | sed -e 's/.*\[\([0-9]*%\)\].*/\1/'} | \
 # Battery
 # TODO: check if exists (for destop)
 Bat: ${battery_percent}% | \
 # Network
 Host: $nodename | \
 ${if_up wlan0}\
-${addr wlan0}(wlan0) | \
+${addr wlan0} (wlan0) | \
 $endif\
 ${if_up eth0}\
-${addr eth0}(eth0) | \
+${addr eth0} (eth0) | \
 $endif\
 # Time
 ${time %a %d %b %H:%M}
