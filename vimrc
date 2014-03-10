@@ -123,14 +123,14 @@ noremap : ;
 nnoremap Y y$
 nnoremap <Space> i_<Esc>r
 
-nnoremap <F1> :set relativenumber! relativenumber?<cr>
-nnoremap <F2> :set cursorline! cursorline?<cr>
-nnoremap <F3> :set hlsearch! hlsearch?<cr>
-nnoremap <F4> :set spell! spell?<cr>
-nnoremap <F5> :make<cr>
-nnoremap <F6> :!rsync -avz -e ssh ~/SO2/zeos/ alumne@172.16.47.129:~/zeos/<cr><cr>
-nnoremap <F7> :execute "!make ".expand("%:r")." && ./".expand("%:r")<cr>
-nnoremap <F12> :call MakeTags(2)<cr>
+nnoremap <F1>   :set relativenumber! relativenumber?<cr>
+nnoremap <F2>   :set cursorline! cursorline?<cr>
+nnoremap <F3>   :set hlsearch! hlsearch?<cr>
+nnoremap <F4>   :set spell! spell?<cr>
+nnoremap <F5>   :w<cr>:make<cr>
+nnoremap <F6>   :w<cr>:!rsync -avz -e ssh ~/SO2/zeos/ alumne@172.16.47.129:~/zeos/<cr><cr>
+nnoremap <F7>   :w<cr>:execute "!make ".expand("%:r")." && ./".expand("%:r")<cr>
+nnoremap <F12>  :w<cr>:call MakeTags(2)<cr>
 
 noremap                <leader>c :yank +<cr>
 noremap                <leader>v :put +<cr>
