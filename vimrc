@@ -81,7 +81,7 @@ if has('gui_running')
     if has('gui_gtk2')
         set guifont=Monospace
     elseif has('gui_win32')
-        set guifont=Consolas:h11
+        set guifont=Consolas:h9
     endif
 else
     colorscheme seoul
