@@ -75,7 +75,7 @@ set wildmode=longest:list,full
 call matchadd('ColorColumn', '\%81v', 100)
 if has('gui_running')
     colorscheme zellner
-    hi StatusLine guibg=blue guifg=gold
+    hi StatusLine guibg=grey guifg=black
     set guioptions-=m
     set guioptions-=T
     if has('gui_gtk2')
