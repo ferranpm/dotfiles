@@ -24,7 +24,6 @@ set listchars=tab:\|\ ,
 set mouse=n
 set nocompatible
 set number
-set relativenumber
 set ruler
 set scrolloff=10
 set showbreak=>
@@ -87,9 +86,6 @@ if has('gui_running')
 else
     colorscheme seoul
 endif
-
-autocmd! InsertEnter * set number norelativenumber
-autocmd! InsertLeave * set number relativenumber
 
 autocmd! BufWritePost .vimrc so %
 
