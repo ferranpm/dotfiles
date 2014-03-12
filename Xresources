@@ -30,8 +30,9 @@ URxvt.url-select.underline: true
 !! XTerm !!
 !!!!!!!!!!!
 XTerm*faceName: xft:Monospace:size=10
-XTerm*fastScroll: True
+XTerm*fastScroll: true
 XTerm*backarrowKey: false
+XTerm*scrollKey: true
 
 !!!!!!!!!!
 !! Xpdf !!
