@@ -186,3 +186,7 @@ git_prompt() {
         echo " %{$reset_color%}[%{$fg[yellow]%}$ref%{$reset_color%}]"
     fi
 }
+
+rm_tr_white () {
+    find . -not \( -name .svn -prune -o -name .git -prune \) -type f -print0 | xargs -0 sed -i -e "s/[[:space:]]*$//"
+}
