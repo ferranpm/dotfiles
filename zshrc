@@ -44,26 +44,28 @@ zstyle ':completion:*' verbose "yes"
 zstyle ':completion:*:*:kill:*:processes' command "ps -u `whoami` -o pid,comm"
 
 ## BINDKEYS ##
-bindkey -v '^f' history-incremental-pattern-search-backward
-bindkey -a '/' history-incremental-pattern-search-backward
-bindkey -a '?' history-incremental-pattern-search-forward
-bindkey -a 'n' down-line-or-search
-bindkey -a 'p' up-line-or-search
-bindkey -v '^[[3~' delete-char
-bindkey -a '^[[3~' delete-char
-bindkey -v '^[[7~' beginning-of-line
-bindkey -a '^[[7~' beginning-of-line
-bindkey -v '^[[8~' end-of-line
-bindkey -a '^[[8~' end-of-line
-bindkey -v '^[[Z' reverse-menu-complete
-bindkey -v '^k' kill-buffer
-bindkey -v '^m' check-line
-bindkey -a '^m' check-line
-bindkey -v '^n' down-line-or-search
-bindkey -a 'j' down-line-or-search
-bindkey -v '^p' up-line-or-search
-bindkey -a 'k' up-line-or-search
-bindkey -v '^s' insert-sudo
+bindkey -v '^[[7~'  beginning-of-line
+bindkey -a '^[[7~'  beginning-of-line
+bindkey -v '^m'     check-line
+bindkey -a '^m'     check-line
+bindkey -v '^[[3~'  delete-char
+bindkey -a '^[[3~'  delete-char
+bindkey -v '^[[B'   down-line-or-history
+bindkey -a 'n'      down-line-or-search
+bindkey -v '^n'     down-line-or-search
+bindkey -a 'j'      down-line-or-search
+bindkey -v '^[[8~'  end-of-line
+bindkey -a '^[[8~'  end-of-line
+bindkey -v '^f'     history-incremental-pattern-search-backward
+bindkey -a '/'      history-incremental-pattern-search-backward
+bindkey -a '?'      history-incremental-pattern-search-forward
+bindkey -v '^s'     insert-sudo
+bindkey -v '^k'     kill-buffer
+bindkey -v '^[[Z'   reverse-menu-complete
+bindkey -v '^[[A'   up-line-or-history
+bindkey -a 'p'      up-line-or-search
+bindkey -v '^p'     up-line-or-search
+bindkey -a 'k'      up-line-or-search
 
 ## ALIASES ##
 alias ack="ack --color"
