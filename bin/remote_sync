@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 
 echo "First rsync:"
-rsync --update --progress --recursive --modify-window=86400 -e ssh $1 $2
+rsync --update --progress --archive --size-only -e ssh $1 $2
 echo "Second rsync:"
-rsync --update --progress --recursive --modify-window=86400 -e ssh $2 $1
+rsync --update --progress --archive --size-only -e ssh $2 $1
