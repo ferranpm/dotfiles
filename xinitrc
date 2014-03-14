@@ -11,7 +11,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 	unset f
 fi
 
-export DEFAULTWM=startkde
+export DEFAULTWM=i3
 export EDITOR=/usr/bin/vim
 export PAGER=/usr/bin/less
 export SHELL=/usr/bin/zsh
