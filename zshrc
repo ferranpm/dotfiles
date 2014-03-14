@@ -102,6 +102,7 @@ alias pacin="sudo pacman -S"
 alias pacre="sudo pacman -Rns"
 alias pacro="pacman -Qtd > /dev/null && sudo pacman -Rns \$(pacman -Qtdq | sed -e ':a;N;\$!ba;s/\n/ /g')" # Erase orphaned packages
 alias pacse="pacman -Ss"
+alias scan='iwlist wlan0 scanning | grep "ESSID" | sed -e "s/\ *ESSID:\"\(.*\)\"/\1/"'
 alias vimrc="vim ~/.vimrc"
 alias zshrc="vim ~/.zshrc"
 
