@@ -15,7 +15,7 @@ export SAVEHIST=10000
 export ZLS_COLORS=$LS_COLORS
 
 autoload -U colors && colors
-autoload -U compinit && compinit -d .zshcompdump
+autoload -U compinit && compinit -d ~/.zshcompdump
 
 ## OPTS ##
 setopt APPEND_HISTORY
