@@ -15,11 +15,11 @@
 #   · Removes all '·'
 #   · Replaces all whitespaces to underscores '_'
 #   · Removes all tildes
-# 
+#
 # These rules should be applied in all my personal files, directories and
 # all configuration files that I can change its name (discarding those
 # named by operating system).
-# 
+#
 # The arguments accepted are paths to directories or files, whether they are
 # relative or absolut. If an argument is a path to any directory, this script
 # formats its name and the names of their contents recursively. Soft-links are
@@ -59,7 +59,7 @@ function format () {
 
 
 if [ $# -eq 0 ] ; then
-    usage   
+    usage
 fi
 
 BAK_IFS=$IFS
@@ -120,7 +120,7 @@ for arg in "$@" ; do
         bak_arg_leaf="$(basename "${bak_arg}")"
         bak_arg_leaf="$(format "${bak_arg_leaf}")"
         fmt_bak_arg="${bak_arg_parent}/${bak_arg_leaf}"
-        
+
         if [ $DBG -eq 0 ] ; then
             mv "${bak_arg}" "${fmt_bak_arg}" &> /dev/null
         else
