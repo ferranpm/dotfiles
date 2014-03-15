@@ -72,7 +72,6 @@ set wildmenu
 set wildmode=longest:list,full
 
 " Colors & GUI
-call matchadd('ColorColumn', '\%81v', 100)
 if has('gui_running')
     colorscheme zellner
     hi StatusLine guibg=grey guifg=black
