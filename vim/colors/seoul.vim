@@ -182,15 +182,13 @@ highlight	Tooltip
             \ cterm=None	ctermfg=None	ctermbg=None
 
 highlight   TrilingWhitespace
-            \ cterm=None    ctermfg=None    ctermbg=93
-call matchadd('TrilingWhitespace', '\s\+\%#\@<!$')
+            \ cterm=None	ctermfg=None	ctermbg=93
+call matchadd('TrilingWhitespace', '\s\+\%#\@<!$', 50)
 
 highlight IndentWhiteSpaces
-            \ cterm=undercurl ctermfg=235
-call matchadd('IndentWhiteSpaces', '^ \+')
+            \ cterm=undercurl	ctermfg=235	ctermbg=None
+call matchadd('IndentWhiteSpaces', '^ \+', 40)
 
 highlight RightMargin
-            \ cterm=None	ctermfg=none  	ctermbg=235
-call matchadd('RightMargin', '\%81v')
-
-
+            \ cterm=None	ctermfg=none	ctermbg=235
+call matchadd('RightMargin', '\%81v', 30)
