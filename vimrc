@@ -175,7 +175,11 @@ function! MakeTags(...)
     else
         let extension = '*.'.expand('%:e')
     endif
-    let cmd='ctags $(find '.path.' -maxdepth '.depth.' -name "'.extension.'")'
+    if depth > 0
+        let cmd='ctags $(find '.path.' -maxdepth '.depth.' -name "'.extension.'")'
+    else
+        let cmd = 'ctags '.expand('%')
+    endif
     echo cmd
     call system(cmd)
 endfunction
