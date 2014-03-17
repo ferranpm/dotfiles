@@ -90,8 +90,8 @@ autocmd! BufWritePost .vimrc so %
 
 command! -nargs=+ -complete=command Pipe call Pipe(<q-args>)
 command! -nargs=+ -complete=shellcmd Shell call Shell(<q-args>)
-command! ClearWhiteSpace :%s/ *$\|<tab>*$/
-command! SudoW :w !sudo tee %
+
+cmap ww %!sudo tee > /dev/null %
 
 map J 5j
 map K 5k
@@ -128,10 +128,11 @@ nnoremap <F6>   :w<cr>:!rsync -avz -e ssh ~/SO2/zeos/ alumne@so2:~/zeos/<cr><cr>
 nnoremap <F7>   :w<cr>:execute "!make ".expand("%:r")." && ./".expand("%:r")<cr>
 nnoremap <F12>  :w<cr>:call MakeTags(2)<cr>
 
-noremap                <leader>c :yank +<cr>
-noremap                <leader>v :put +<cr>
-noremap                <leader>p :put *<cr>
-noremap                <leader>j :join<cr>
+ noremap                <leader>s :let p=getpos('.')<cr>:%s/\s\+$//<cr>:call setpos('.',p)<cr>
+ noremap                <leader>c :yank +<cr>
+ noremap                <leader>v :put +<cr>
+ noremap                <leader>p :put *<cr>
+ noremap                <leader>j :join<cr>
 nnoremap                <leader>l o<Esc>
 nnoremap                <leader>L O<Esc>
 nnoremap                <leader>fe zMzvzz
