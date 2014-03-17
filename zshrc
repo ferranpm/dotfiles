@@ -1,6 +1,6 @@
 PROMPT='
 %{$fg[green]%}%n%{$fg[blue]%}%{$reset_color%} in %{$fg[blue]%}%{$fg[red]%}%~ %{$reset_color%}at %{$fg[cyan]%}%m$(git_prompt)$(vi_prompt)
-%{$fg_bold[cyan]%}%(!.#.>)%{$reset_color%} '
+%{$fg_bold[cyan]%}%(!.#.»)%{$reset_color%} '
 
 stty -ixon
 
@@ -103,6 +103,7 @@ alias pacre="sudo pacman -Rns"
 alias pacro="pacman -Qtd > /dev/null && sudo pacman -Rns \$(pacman -Qtdq | sed -e ':a;N;\$!ba;s/\n/ /g')" # Erase orphaned packages
 alias pacse="pacman -Ss"
 alias scan='iwlist wlan0 scanning | grep "ESSID" | sed -e "s/\ *ESSID:\"\(.*\)\"/\1/"'
+alias TODO="vim ~/TODO"
 alias vimrc="vim ~/.vimrc"
 alias zshrc="vim ~/.zshrc"
 
@@ -191,5 +192,5 @@ git_prompt() {
 }
 
 rm_tr_white () {
-    find . -not \( -name .svn -prune -o -name .git -prune \) -type f -print0 | xargs -0 sed -i -e "s/[[:space:]]*$//"
+    find . -not \( -name .svn -prune -o -name .git -prune -o -name '*.a' \) -type f -print0 | xargs -0 sed -i -e "s/[[:space:]]*$//"
 }
