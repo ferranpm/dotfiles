@@ -1,5 +1,9 @@
 mutt/sent
 
+ranger/bookmarks
+ranger/colorschemes
+ranger/tagged
+
 vim/.netrwhist
 vim/bundle/*
 vim/view/*

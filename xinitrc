@@ -17,6 +17,7 @@ export PAGER=/usr/bin/less
 export SHELL=/usr/bin/zsh
 export WALLPAPER=~/Pictures/Wallpapers/1920x1080_FlyingWhalesPainting.png
 export XRESOURCES=~/.Xresources
+export RANGER_LOAD_DEFAULT_RC=FALSE
 
 if [ -z $1 ]; then
 	exec $DEFAULTWM
