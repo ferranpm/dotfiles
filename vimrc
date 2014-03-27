@@ -77,13 +77,17 @@ if has('gui_running')
     hi StatusLine guibg=grey guifg=black
     set guioptions-=m
     set guioptions-=T
-    if has('gui_gtk2')
+    if has('unix')
         set guifont=Monospace
-    elseif has('gui_win32')
+    elseif has('win32')
         set guifont=Consolas:h9
     endif
 else
-    colorscheme seoul
+    if has('unix')
+        colorscheme seoul
+    else
+        colorscheme default
+    endif
 endif
 
 autocmd! BufWritePost .vimrc so %
