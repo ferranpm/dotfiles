@@ -20,7 +20,7 @@ set $mod Mod1
 client.focused          #999999 #afd700 #111111 #afd700
 client.focused_inactive #AAAAAA #111111 #AAAAAA #999999
 
-assign [class="ransmission-gtk"] 5
+assign [class="transmission"] 5
 assign [class="Skype"] 3
 assign [class="Steam"] 3
 assign [class="Vmplayer"] 10
