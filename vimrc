@@ -137,6 +137,7 @@ nnoremap <F12>  :w<cr>:call MakeTags(2)<cr>
  noremap                <leader>v :put +<cr>
  noremap                <leader>p :put *<cr>
  noremap                <leader>j :join<cr>
+nnoremap                <leader>g :Git 
 nnoremap                <leader>t :tag 
 nnoremap                <leader>l o<Esc>
 nnoremap                <leader>L O<Esc>
