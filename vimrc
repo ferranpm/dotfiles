@@ -6,6 +6,10 @@ try
 catch
 endtry
 
+" UltiSnips
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
 " CtrlP
 let g:ctrlp_show_hidden=0
 let g:ctrlp_max_height=100
