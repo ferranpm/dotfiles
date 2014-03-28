@@ -97,11 +97,12 @@ command! -nargs=+ -complete=shellcmd Shell call Shell(<q-args>)
 
 cmap ww %!sudo tee > /dev/null %
 
-map J 5j
-map K 5k
+nmap J 5j
+nmap K 5k
+xmap J 5j
+xmap K 5k
 
-noremap <C-k> k{j
-noremap <C-j> j}k
+inoremap <C-o> <C-x><C-o>
 
 nnoremap <C-l> gt
 nnoremap <C-h> gT
@@ -132,23 +133,23 @@ nnoremap <F6>   :w<cr>:!rsync -avz -e ssh ~/SO2/zeos/ alumne@so2:~/zeos/<cr><cr>
 nnoremap <F7>   :w<cr>:execute "!make ".expand("%:r")." && ./".expand("%:r")<cr>
 nnoremap <F12>  :w<cr>:call MakeTags(2)<cr>
 
- noremap                <leader>s :let p=getpos('.')<cr>:%s/\s\+$//<cr>:call setpos('.',p)<cr>
  noremap                <leader>c :yank +<cr>
- noremap                <leader>v :put +<cr>
- noremap                <leader>p :put *<cr>
  noremap                <leader>j :join<cr>
-nnoremap                <leader>g :Git 
-nnoremap                <leader>t :tag 
-nnoremap                <leader>l o<Esc>
+ noremap                <leader>p :put *<cr>
+ noremap                <leader>s :let p=getpos('.')<cr>:%s/\s\+$//<cr>:call setpos('.',p)<cr>
+ noremap                <leader>v :put +<cr>
 nnoremap                <leader>L O<Esc>
-nnoremap                <leader>fe zMzvzz
-nnoremap                <leader>fo zR
-nnoremap                <leader>fc zM
 nnoremap                <leader>bc :ls!<cr>:bwipeout 
 nnoremap                <leader>bs :ls!<cr>:buffer 
-nnoremap    <silent>    <leader>bk :call BufferKill()<cr>
+nnoremap                <leader>fc zM
+nnoremap                <leader>fe zMzvzz
+nnoremap                <leader>fo zR
+nnoremap                <leader>g :Git 
+nnoremap                <leader>l o<Esc>
 nnoremap                <leader>o :only<cr>
+nnoremap                <leader>t :tag 
 nnoremap    <silent>    <leader>. :update<cr>
+nnoremap    <silent>    <leader>bk :call BufferKill()<cr>
 nnoremap    <silent>    <leader>e :bwipeout<cr>
 nnoremap    <silent>    <leader>q :qall<cr>
 
