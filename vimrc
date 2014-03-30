@@ -23,6 +23,7 @@ syntax on
 let mapleader=','
 set autoread
 set encoding=utf-8
+set grepprg=ack
 set list
 set listchars=tab:\|\ ,
 set mouse=n
