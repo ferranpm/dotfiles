@@ -183,7 +183,7 @@ nnoremap                <leader>bs :ls!<cr>:buffer
 nnoremap                <leader>fc zM
 nnoremap                <leader>fe zMzvzz
 nnoremap                <leader>fo zR
-nnoremap                <leader>g :Git 
+nnoremap                <leader>g :!git 
 nnoremap                <leader>l o<Esc>
 nnoremap                <leader>o :only<cr>
 nnoremap                <leader>t :tag 
