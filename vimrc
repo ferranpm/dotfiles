@@ -1,31 +1,35 @@
-" Pathogen
+" vim:foldmethod=marker
+
+" Pathogen {{{
 let g:pathogen_disabled = []
 try
     runtime bundle/pathogen/autoload/pathogen.vim
     call pathogen#infect()
 catch
 endtry
+" }}}
 
-" UltiSnips
+" UltiSnips {{{
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" }}}
 
-" CtrlP
+" CtrlP {{{
 let g:ctrlp_show_hidden=0
 let g:ctrlp_max_height=100
 let g:ctrlp_max_files=100
 let g:ctrlp_working_path_mode='rawc'
 let g:ctrlp_use_caching=0
+" }}}
 
-" Basic configuration
-filetype plugin indent on
+" Basic configuration {{{
+filetype plugin on
+filetype indent on
 syntax on
 let mapleader=','
 set autoread
 set encoding=utf-8
 set grepprg=ack
-set list
-set listchars=tab:\|\ ,
 set mouse=n
 set nocompatible
 set number
@@ -37,46 +41,67 @@ set showmode
 set timeoutlen=500
 set ttimeoutlen=0
 set wildignore+=.git/*,.gitignore,*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__
+" }}}
 
-" Windows & splits
+" Windows & splits {{{
 set splitright
 set nosplitbelow
+" }}}
 
-" Indentation
+" Indentation {{{
 set autoindent
 set expandtab
+set list
+set listchars=tab:\|\ ,trail:·
 set shiftwidth=4
+set smartindent
 set smarttab
 set softtabstop=4
 set tabstop=4
+" }}}
 
-" Search & Replace
+" Search & Replace {{{
 set gdefault
 set ignorecase
 set incsearch
 set smartcase
+" }}}
 
-" Folds
+" Folds {{{
 set foldmethod=indent
 set foldnestmax=1
 set foldcolumn=1
-set foldlevel=1
+set foldlevel=0
 set foldtext=NeatFoldText()
+" }}}
 
-" Backups
+" Backups {{{
 set nobackup
 set noswapfile
 set nowritebackup
+" }}}
 
-" Status Line
+" Status Line {{{
 set laststatus=2
 set statusline=%f\ %y%h%r%w\ (%l/%L,\ %c)\ %p%%%=%m\ %{getcwd()}
+" }}}
 
-" Menu
+" Menu {{{
 set wildmenu
 set wildmode=longest:list,full
+" }}}
 
-" Colors & GUI
+" Persistent Undo {{{
+" Keep undo history across sessions, by storing in file.
+" Only works all the time.
+if has('persistent_undo')
+    silent !mkdir ~/.vim/backups > /dev/null 2>&1
+    set undodir=~/.vim/backups
+    set undofile
+endif
+" }}}
+
+" Colors & GUI {{{
 if has('gui_running')
     colorscheme zellner
     hi StatusLine guibg=grey guifg=black
@@ -94,12 +119,18 @@ else
         colorscheme default
     endif
 endif
+" }}}
 
-autocmd! BufWritePost .vimrc so %
+" Autocommands {{{
+autocmd! BufWritePost .vimrc so % | set foldmethod=marker
+" }}}
 
+" Commands {{{
 command! -nargs=+ -complete=command Pipe call Pipe(<q-args>)
 command! -nargs=+ -complete=shellcmd Shell call Shell(<q-args>)
+" }}}
 
+" Mappings {{{
 cmap ww %!sudo tee > /dev/null %
 
 nmap J 5j
@@ -129,6 +160,7 @@ noremap : ;
 nnoremap Y y$
 nnoremap <Space> i_<Esc>r
 
+" Function keys {{{2
 nnoremap <F1>   :set relativenumber! relativenumber?<cr>
 nnoremap <F2>   :set cursorline! cursorline?<cr>
 nnoremap <F3>   :set hlsearch! hlsearch?<cr>
@@ -137,7 +169,9 @@ nnoremap <F5>   :w<cr>:make<cr>
 nnoremap <F6>   :w<cr>:!rsync -avz -e ssh ~/SO2/zeos/ alumne@so2:~/zeos/<cr><cr>
 nnoremap <F7>   :w<cr>:execute "!make ".expand("%:r")." && ./".expand("%:r")<cr>
 nnoremap <F12>  :w<cr>:call MakeTags(2)<cr>
+" }}}
 
+" Leader {{{2
  noremap                <leader>c :yank +<cr>
  noremap                <leader>j :join<cr>
  noremap                <leader>p :put *<cr>
@@ -157,8 +191,11 @@ nnoremap    <silent>    <leader>. :update<cr>
 nnoremap    <silent>    <leader>bk :call BufferKill()<cr>
 nnoremap    <silent>    <leader>e :bwipeout<cr>
 nnoremap    <silent>    <leader>q :qall<cr>
+" }}}
+" }}}
 
-function! Pipe(cmd)
+" Functions {{{
+function! Pipe(cmd) " {{{2
     redir @+>
     silent execute a:cmd
     redir END
@@ -166,16 +203,18 @@ function! Pipe(cmd)
     silent 0put +
     set nomodified
 endfunction
+" }}}
 
-function! Shell(cmd)
+function! Shell(cmd) " {{{2
     vnew
     execute 'read !'.a:cmd
     call cursor(1, 1)
     execute 'delete'
     set nomodified
 endfunction
+" }}}
 
-function! MakeTags(...)
+function! MakeTags(...) " {{{2
     call system("rm tags")
     if a:0 > 0
         let depth=a:1
@@ -196,8 +235,9 @@ function! MakeTags(...)
     echo cmd
     call system(cmd)
 endfunction
+" }}}
 
-function! BufferKill()
+function! BufferKill() " {{{2
     let l:count = 0
     for b in range(1, bufnr('$'))
         if bufexists(b) && !bufloaded(b)
@@ -207,8 +247,9 @@ function! BufferKill()
     endfor
     echo "Deleted " . l:count . " buffers"
 endfunction
+" }}}
 
-function! NeatFoldText() "{{{2
+function! NeatFoldText() " {{{2
     let line = ' ' . substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
     let lines_count = v:foldend - v:foldstart + 1
     let lines_count_text = '| ' . printf("%10s", lines_count . ' lines') . ' |'
@@ -218,3 +259,5 @@ function! NeatFoldText() "{{{2
     let foldtextlength = strlen(substitute(foldtextstart . foldtextend, '.', 'x', 'g')) + &foldcolumn
     return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
 endfunction
+" }}}
+" }}}

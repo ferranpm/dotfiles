@@ -8,6 +8,7 @@ vim/.netrwhist
 vim/bundle/*
 vim/view/*
 vim/spell/*
+vim/backups
 
 *cache*
 *history*
