@@ -1,4 +1,4 @@
-" vim:foldmethod=marker
+" vim:foldmethod=marker:foldlevel=0
 
 " Pathogen {{{
 let g:pathogen_disabled = []
@@ -71,7 +71,7 @@ set smartcase
 set foldmethod=indent
 set foldnestmax=1
 set foldcolumn=1
-set foldlevel=0
+set foldlevel=1
 set foldtext=NeatFoldText()
 " }}}
 
@@ -122,7 +122,7 @@ endif
 " }}}
 
 " Autocommands {{{
-autocmd! BufWritePost .vimrc so % | set foldmethod=marker
+autocmd! BufWritePost .vimrc so % | set foldmethod=marker | set foldlevel=0
 " }}}
 
 " Commands {{{

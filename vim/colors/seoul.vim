@@ -181,9 +181,9 @@ highlight	Scrollbar
 highlight	Tooltip
             \ cterm=None	ctermfg=None	ctermbg=None
 
-highlight   TrilingWhitespace
-            \ cterm=None	ctermfg=None	ctermbg=93
-call matchadd('TrilingWhitespace', '\s\+\%#\@<!$', 50)
+" highlight   TrilingWhitespace
+"             \ cterm=None	ctermfg=None	ctermbg=93
+" call matchadd('TrilingWhitespace', '\s\+\%#\@<!$', 50)
 
 highlight IndentWhiteSpaces
             \ cterm=undercurl	ctermfg=235	ctermbg=None
