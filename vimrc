@@ -9,6 +9,12 @@ catch
 endtry
 " }}}
 
+" Netrw {{{
+let g:netrw_banner=0
+let g:netrw_liststyle=3
+let g:netrw_keepdir=1
+" }}}
+
 " UltiSnips {{{
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
@@ -91,16 +97,6 @@ set wildmenu
 set wildmode=longest:list,full
 " }}}
 
-" Persistent Undo {{{
-" Keep undo history across sessions, by storing in file.
-" Only works all the time.
-if has('persistent_undo')
-    silent !mkdir ~/.vim/backups > /dev/null 2>&1
-    set undodir=~/.vim/backups
-    set undofile
-endif
-" }}}
-
 " Colors & GUI {{{
 if has('gui_running')
     colorscheme zellner
@@ -128,11 +124,10 @@ autocmd! BufWritePost .vimrc so % | set foldmethod=marker | set foldlevel=0
 " Commands {{{
 command! -nargs=+ -complete=command Pipe call Pipe(<q-args>)
 command! -nargs=+ -complete=shellcmd Shell call Shell(<q-args>)
+command! Sudo %!sudo tee > /dev/null %
 " }}}
 
 " Mappings {{{
-cmap ww %!sudo tee > /dev/null %
-
 nmap J 5j
 nmap K 5k
 xmap J 5j
@@ -158,7 +153,10 @@ noremap ; :
 noremap : ;
 
 nnoremap Y y$
+
 nnoremap <Space> i_<Esc>r
+
+nnoremap - :Explore<cr>
 
 " Function keys {{{2
 nnoremap <F1>   :set relativenumber! relativenumber?<cr>
@@ -189,8 +187,9 @@ nnoremap                <leader>o :only<cr>
 nnoremap                <leader>t :tag 
 nnoremap    <silent>    <leader>. :update<cr>
 nnoremap    <silent>    <leader>bk :call BufferKill()<cr>
-nnoremap    <silent>    <leader>e :bwipeout<cr>
-nnoremap    <silent>    <leader>q :qall<cr>
+nnoremap    <silent>    <leader>e :bdelete<cr>
+nnoremap    <silent>    <leader>q :q<cr>
+nnoremap    <silent>    <leader>Q :qall<cr>
 " }}}
 " }}}
 
@@ -261,3 +260,4 @@ function! NeatFoldText() " {{{2
 endfunction
 " }}}
 " }}}
+
