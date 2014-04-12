@@ -7,6 +7,7 @@ let s:comments = {
             \ 'html':   [ '<!--', '-->' ],
             \ 'sh':     [ '# ', '' ],
             \ 'php':    [ '// ', '' ],
+            \ 'default':[ '# ', '' ]
             \ }
 
 function! ToggleCommentLine(line)
@@ -15,8 +16,8 @@ function! ToggleCommentLine(line)
         let l:c_start = s:comments[&ft][0]
         let l:c_end = s:comments[&ft][1]
     else
-        echo 'No comment symbols in s:comments'
-        return
+        let l:c_start = s:comments['default'][0]
+        let l:c_end = s:comments['default'][1]
     endif
     let l:str = getline(a:line)
     if search('^ *'.escape(l:c_start, '*'), 'bc' , a:line) == 0
