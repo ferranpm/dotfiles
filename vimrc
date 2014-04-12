@@ -166,7 +166,7 @@ nnoremap <F4>   :set spell! spell?<cr>
 nnoremap <F5>   :w<cr>:make<cr>
 nnoremap <F6>   :w<cr>:!rsync -avz -e ssh ~/SO2/zeos/ alumne@so2:~/zeos/<cr><cr>
 nnoremap <F7>   :w<cr>:execute "!make ".expand("%:r")." && ./".expand("%:r")<cr>
-nnoremap <F12>  :w<cr>:call MakeTags(2)<cr>
+nnoremap <F12>  :call system('rm tags')<cr>:call system('ctags --tag-relative -R --exclude=.git')<cr>
 " }}}
 
 " Leader {{{2
@@ -210,29 +210,6 @@ function! Shell(cmd) " {{{2
     call cursor(1, 1)
     execute 'delete'
     set nomodified
-endfunction
-" }}}
-
-function! MakeTags(...) " {{{2
-    call system("rm tags")
-    if a:0 > 0
-        let depth=a:1
-    else
-        let depth=1
-    endif
-    let path = expand('%:p:h')
-    if expand('%') == "Makefile"
-        let extension = "Makefile"
-    else
-        let extension = '*.'.expand('%:e')
-    endif
-    if depth > 0
-        let cmd='ctags $(find '.path.' -maxdepth '.depth.' -name "'.extension.'")'
-    else
-        let cmd = 'ctags '.expand('%')
-    endif
-    echo cmd
-    call system(cmd)
 endfunction
 " }}}
 
