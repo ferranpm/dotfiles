@@ -25,13 +25,14 @@ assign [class="Skype"] 3
 assign [class="Steam"] 3
 assign [class="Vmplayer"] 10
 
-for_window [title="^IDI*"] floating enable
-for_window [title="PANIC"] floating enable
 for_window [class="Bochs"] floating enable
 for_window [class="MPlayer"] floating enable
 for_window [class="Skype"] floating enable
 for_window [class="Steam"] floating enable
 for_window [class="feh"] floating enable
+for_window [class="qemu*"] floating enable
+for_window [title="PANIC"] floating enable
+for_window [title="^IDI*"] floating enable
 for_window [title="^exit$"] floating enable
 
 # kill focused window
