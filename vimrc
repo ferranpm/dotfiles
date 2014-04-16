@@ -39,6 +39,7 @@ set grepprg=ack
 set mouse=n
 set nocompatible
 set number
+set relativenumber
 set ruler
 set scrolloff=10
 set showbreak=>
@@ -119,6 +120,8 @@ endif
 
 " Autocommands {{{
 autocmd! BufWritePost .vimrc so % | set foldmethod=marker | set foldlevel=0
+autocmd! InsertEnter * set norelativenumber
+autocmd! InsertLeave * set relativenumber
 " }}}
 
 " Commands {{{
