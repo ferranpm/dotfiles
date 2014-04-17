@@ -34,6 +34,7 @@ filetype indent on
 syntax on
 let mapleader=','
 set autoread
+set backspace=2
 set encoding=utf-8
 set grepprg=ack
 set mouse=n
