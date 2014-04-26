@@ -13,3 +13,6 @@
 [submodule "vim/bundle/ultisnips"]
 	path = vim/bundle/ultisnips
 	url = https://github.com/vim-scripts/UltiSnips
+[submodule "vim/bundle/tcomment"]
+	path = vim/bundle/tcomment
+	url = http://github.com/vim-scripts/tComment
