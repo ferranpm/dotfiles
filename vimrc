@@ -121,8 +121,8 @@ endif
 
 " Autocommands {{{
 autocmd! BufWritePost .vimrc so % | set foldmethod=marker | set foldlevel=0
-autocmd! InsertEnter * set norelativenumber
-autocmd! InsertLeave * set relativenumber
+autocmd! InsertEnter * set norelativenumber | set number
+autocmd! InsertLeave * set number | set relativenumber
 " }}}
 
 " Commands {{{
