@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/usr/bin/env bash
 
 make_iregex() {
     # Converts a list of unwanted extensions to the string prepared

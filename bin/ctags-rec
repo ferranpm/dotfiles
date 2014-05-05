@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/usr/bin/env bash
 
 ctags=/usr/bin/ctags
 flags=-R\ --append

@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/usr/bin/env bash
 
 echo "First rsync:"
 rsync --update --progress --archive --size-only -e ssh $1 $2
