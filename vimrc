@@ -179,13 +179,13 @@ nnoremap <F12>  :call system('rm tags')<cr>:call system('ctags --tag-relative -R
  noremap                <leader>p :put *<cr>
  noremap                <leader>s :let p=getpos('.')<cr>:%s/\s\+$//<cr>:call setpos('.',p)<cr>
  noremap                <leader>v :put +<cr>
-nnoremap                <leader>L O<Esc>
 nnoremap                <leader>bc :ls!<cr>:bwipeout 
 nnoremap                <leader>bs :ls!<cr>:buffer 
 nnoremap                <leader>fc zM
 nnoremap                <leader>fe zMzvzz
 nnoremap                <leader>fo zR
 nnoremap                <leader>g :!git 
+nnoremap                <leader>L O<Esc>
 nnoremap                <leader>l o<Esc>
 nnoremap                <leader>m {jlrXdapGp
 nnoremap                <leader>o :only<cr>
