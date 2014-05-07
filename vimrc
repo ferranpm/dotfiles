@@ -39,6 +39,7 @@ set encoding=utf-8
 set grepprg=ack
 set mouse=n
 set nocompatible
+set nowrap
 set number
 set relativenumber
 set ruler
@@ -46,6 +47,7 @@ set scrolloff=10
 set showbreak=>
 set showcmd
 set showmode
+set title
 set timeoutlen=500
 set ttimeoutlen=0
 set wildignore+=.git/*,.gitignore,*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__
@@ -121,9 +123,11 @@ endif
 " }}}
 
 " Autocommands {{{
-autocmd! BufWritePost .vimrc so % | set foldmethod=marker | set foldlevel=0
-autocmd! InsertEnter * set norelativenumber | set number
-autocmd! InsertLeave * set number | set relativenumber
+if has("autocmd")
+    autocmd! BufWritePost .vimrc so % | set foldmethod=marker | set foldlevel=0
+    autocmd! InsertEnter * set norelativenumber
+    autocmd! InsertLeave * set relativenumber
+endif
 " }}}
 
 " Commands {{{
@@ -180,6 +184,7 @@ nnoremap <F12>  :call system('rm tags')<cr>:call system('ctags --tag-relative -R
  noremap                <leader>p :put *<cr>
  noremap                <leader>s :let p=getpos('.')<cr>:%s/\s\+$//<cr>:call setpos('.',p)<cr>
  noremap                <leader>v :put +<cr>
+nnoremap                <leader>L O<Esc>
 nnoremap                <leader>bc :ls!<cr>:bwipeout 
 nnoremap                <leader>bs :ls!<cr>:buffer 
 nnoremap                <leader>fc zM
@@ -243,4 +248,3 @@ function! NeatFoldText() " {{{2
 endfunction
 " }}}
 " }}}
-
