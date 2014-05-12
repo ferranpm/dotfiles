@@ -109,6 +109,7 @@ if has('gui_running')
         set guifont=Monospace
     elseif has('win32')
         set guifont=Consolas:h9
+        set showtabline=2
     endif
 else
     if has('unix')
