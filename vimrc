@@ -101,8 +101,8 @@ set wildmode=longest:list,full
 
 " Colors & GUI {{{
 if has('gui_running')
-    colorscheme zellner
-    hi StatusLine guibg=grey guifg=black
+    set background=dark
+    colorscheme gui_lucius
     set guioptions-=m
     set guioptions-=T
     if has('unix')
