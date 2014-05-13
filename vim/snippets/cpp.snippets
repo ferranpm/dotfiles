@@ -8,14 +8,9 @@ snippet fori
 		${3:/* code */}
 	}${0}
 snippet class
-	#ifndef `toupper(expand("%:t:r"))`_H
-	#define `toupper(expand("%:t:r"))`_H
-	
 	class ${1:`expand("%:t:r")`} : public ${2:QObject} {
-		${3:Q_OBJECT}
-		public:
-			$1();${0}
-		private:
+	${3:Q_OBJECT}
+	public:
+		$1();${0}
+	private:
 	};
-	
-	#endif // `toupper(expand("%:t:r"))`_H
