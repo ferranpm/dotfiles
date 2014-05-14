@@ -142,6 +142,9 @@ nmap K 5k
 xmap J 5j
 xmap K 5k
 
+vmap Q gq
+nmap Q gqap
+
 inoremap <C-o> <C-x><C-o>
 
 nnoremap <C-l> gt

@@ -10,12 +10,12 @@ export HISTFILE=$HOME/.zshhistory
 export HISTSIZE=50000
 export KEYTIMEOUT=1
 export LESS='-R'
-export PATH=.:~/bin:$PATH
+export PATH=.:$HOME/bin:$HOME/.gem/ruby/2.1.0/bin:$PATH
 export SAVEHIST=10000
 export ZLS_COLORS=$LS_COLORS
 
 autoload -U colors && colors
-autoload -U compinit && compinit -d ~/.zshcompdump
+autoload -U compinit && compinit -d $HOME/.zshcompdump
 
 ## OPTS ##
 setopt APPEND_HISTORY
@@ -90,10 +90,10 @@ alias l="ls -lh"
 alias ll="l -A"
 alias ls=" ls --color=auto"
 alias mountc="mount | column -t"
-alias dades_mount="mount ~/Raco/dades"
-alias dades_umount="umount.davfs ~/Raco/dades"
-alias assig_mount="mount ~/Raco/assig"
-alias assig_umount="umount.davfs ~/Raco/assig"
+alias dades_mount="mount $HOME/Raco/dades"
+alias dades_umount="umount.davfs $HOME/Raco/dades"
+alias assig_mount="mount $HOME/Raco/assig"
+alias assig_umount="umount.davfs $HOME/Raco/assig"
 alias pmount="udisksctl mount -b"
 alias pumount="umount"
 alias pacman="pacman --color=always"
@@ -103,9 +103,9 @@ alias pacre="sudo pacman -Rns"
 alias pacro="pacman -Qtd > /dev/null && sudo pacman -Rns \$(pacman -Qtdq | sed -e ':a;N;\$!ba;s/\n/ /g')" # Erase orphaned packages
 alias pacse="pacman -Ss"
 alias scan='iwlist wlan0 scanning | grep "ESSID" | sed -e "s/\ *ESSID:\"\(.*\)\"/\1/"'
-alias TODO="vim ~/TODO"
-alias vimrc="vim ~/.vimrc"
-alias zshrc="vim ~/.zshrc"
+alias TODO="vim $HOME/TODO"
+alias vimrc="vim $HOME/.vimrc"
+alias zshrc="vim $HOME/.zshrc"
 
 ## FUNCTIONS ##
 insert-sudo() {
