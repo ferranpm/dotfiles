@@ -1,34 +1,32 @@
-" vim:foldmethod=marker:foldlevel=0
-
-" Pathogen {{{
+" Pathogen
 let g:pathogen_disabled = []
 try
     runtime bundle/pathogen/autoload/pathogen.vim
     call pathogen#infect()
 catch
 endtry
-" }}}
 
-" Netrw {{{
+
+" Netrw
 let g:netrw_banner=0
 let g:netrw_liststyle=1
 let g:netrw_keepdir=1
-" }}}
 
-" UltiSnips {{{
+
+" UltiSnips
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-" }}}
 
-" CtrlP {{{
+
+" CtrlP
 let g:ctrlp_show_hidden=0
 let g:ctrlp_max_height=100
 let g:ctrlp_max_files=100
 let g:ctrlp_working_path_mode='rawc'
 let g:ctrlp_use_caching=0
-" }}}
 
-" Basic configuration {{{
+
+" Basic configuration
 filetype plugin on
 filetype indent on
 syntax on
@@ -51,14 +49,14 @@ set title
 set timeoutlen=500
 set ttimeoutlen=0
 set wildignore+=.git/*,.gitignore,*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__
-" }}}
 
-" Windows & splits {{{
+
+" Windows & splits
 set splitright
 set nosplitbelow
-" }}}
 
-" Indentation {{{
+
+" Indentation
 set autoindent
 set expandtab
 set list
@@ -68,40 +66,40 @@ set smartindent
 set smarttab
 set softtabstop=4
 set tabstop=4
-" }}}
 
-" Search & Replace {{{
+
+" Search & Replace
 set gdefault
 set ignorecase
 set incsearch
 set smartcase
-" }}}
 
-" Folds {{{
+
+" Folds
 set foldmethod=indent
 set foldnestmax=1
 set foldcolumn=1
 set foldlevel=1
 set foldtext=NeatFoldText()
-" }}}
 
-" Backups {{{
+
+" Backups
 set nobackup
 set noswapfile
 set nowritebackup
-" }}}
 
-" Status Line {{{
+
+" Status Line
 set laststatus=2
 set statusline=%f\ %y%h%r%w\ (%l/%L,\ %c)\ %p%%%=%m\ %{getcwd()}
-" }}}
 
-" Menu {{{
+
+" Menu
 set wildmenu
 set wildmode=longest:list,full
-" }}}
 
-" Colors & GUI {{{
+
+" Colors & GUI
 if has('gui_running')
     set background=dark
     colorscheme gui_lucius
@@ -120,23 +118,22 @@ else
         colorscheme default
     endif
 endif
-" }}}
 
-" Autocommands {{{
+
+" Autocommands
 if has("autocmd")
-    autocmd! BufWritePost .vimrc so % | set foldmethod=marker | set foldlevel=0
     autocmd! InsertEnter * set norelativenumber
     autocmd! InsertLeave * set relativenumber
 endif
-" }}}
 
-" Commands {{{
+
+" Commands
 command! -nargs=+ -complete=command Pipe call Pipe(<q-args>)
 command! -nargs=+ -complete=shellcmd Shell call Shell(<q-args>)
 command! Sudo %!sudo tee > /dev/null %
-" }}}
 
-" Mappings {{{
+
+" Mappings
 nmap J 5j
 nmap K 5k
 xmap J 5j
@@ -170,7 +167,7 @@ nnoremap <Space> i_<Esc>r
 
 nnoremap - :Explore<cr>
 
-" Function keys {{{2
+" Function keys 2
 nnoremap <F1>   :set relativenumber! relativenumber?<cr>
 nnoremap <F2>   :set cursorline! cursorline?<cr>
 nnoremap <F3>   :set hlsearch! hlsearch?<cr>
@@ -179,36 +176,37 @@ nnoremap <F5>   :w<cr>:make<cr>
 nnoremap <F6>   :w<cr>:!rsync -avz -e ssh ~/SO2/zeos/ alumne@so2:~/zeos/<cr><cr>
 nnoremap <F7>   :w<cr>:execute "!make ".expand("%:r")." && ./".expand("%:r")<cr>
 nnoremap <F12>  :call system('rm tags')<cr>:call system('ctags --tag-relative -R --exclude=.git')<cr>
-" }}}
 
-" Leader {{{2
+
+" Leader 2
  noremap                <leader>c :yank +<cr>
  noremap                <leader>j :join<cr>
  noremap                <leader>p :put *<cr>
  noremap                <leader>s :let p=getpos('.')<cr>:%s/\s\+$//<cr>:call setpos('.',p)<cr>
  noremap                <leader>v :put +<cr>
-nnoremap                <leader>L O<Esc>
-nnoremap                <leader>bc :ls!<cr>:bwipeout 
-nnoremap                <leader>bs :ls!<cr>:buffer 
+nnoremap                <leader>bc :ls!<cr>:bwipeout
+nnoremap                <leader>bs :ls!<cr>:buffer
 nnoremap                <leader>fc zM
 nnoremap                <leader>fe zMzvzz
 nnoremap                <leader>fo zR
-nnoremap                <leader>g :!git 
+nnoremap                <leader>g :!git
+nnoremap                <leader>h :tab h
+nnoremap                <leader>L O<Esc>
 nnoremap                <leader>L O<Esc>
 nnoremap                <leader>l o<Esc>
 nnoremap                <leader>m {jlrXdapGp
 nnoremap                <leader>o :only<cr>
-nnoremap                <leader>t :tag 
+nnoremap                <leader>t :tag
 nnoremap    <silent>    <leader>. :update<cr>
 nnoremap    <silent>    <leader>bk :call BufferKill()<cr>
 nnoremap    <silent>    <leader>e :bdelete<cr>
 nnoremap    <silent>    <leader>q :q<cr>
 nnoremap    <silent>    <leader>Q :qall<cr>
-" }}}
-" }}}
 
-" Functions {{{
-function! Pipe(cmd) " {{{2
+
+
+" Functions
+function! Pipe(cmd) " 2
     redir @+>
     silent execute a:cmd
     redir END
@@ -216,18 +214,18 @@ function! Pipe(cmd) " {{{2
     silent 0put +
     set nomodified
 endfunction
-" }}}
 
-function! Shell(cmd) " {{{2
+
+function! Shell(cmd) " 2
     vnew
     execute 'read !'.a:cmd
     call cursor(1, 1)
     execute 'delete'
     set nomodified
 endfunction
-" }}}
 
-function! BufferKill() " {{{2
+
+function! BufferKill() " 2
     let l:count = 0
     for b in range(1, bufnr('$'))
         if bufexists(b) && !bufloaded(b)
@@ -237,9 +235,9 @@ function! BufferKill() " {{{2
     endfor
     echo "Deleted " . l:count . " buffers"
 endfunction
-" }}}
 
-function! NeatFoldText() " {{{2
+
+function! NeatFoldText() " 2
     let line = ' ' . substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
     let lines_count = v:foldend - v:foldstart + 1
     let lines_count_text = '| ' . printf("%10s", lines_count . ' lines') . ' |'
@@ -249,5 +247,3 @@ function! NeatFoldText() " {{{2
     let foldtextlength = strlen(substitute(foldtextstart . foldtextend, '.', 'x', 'g')) + &foldcolumn
     return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
 endfunction
-" }}}
-" }}}
