@@ -35,6 +35,7 @@ set autoread
 set backspace=2
 set encoding=utf-8
 set grepprg=ack
+set isfname-==
 set mouse=n
 set nocompatible
 set nowrap
