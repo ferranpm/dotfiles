@@ -9,8 +9,8 @@ snippet fori
 	}${0}
 snippet class
 	class ${1:`expand("%:t:r")`} : public ${2:QObject} {
-	${3:Q_OBJECT}
-	public:
-		$1();${0}
-	private:
+		${3:Q_OBJECT}
+		public:
+			$1();${0}
+		private:
 	};
