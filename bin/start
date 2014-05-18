@@ -5,10 +5,10 @@ cd
 setxkbmap us
 xmodmap ~/dotfiles/Return &
 
-feh --bg-scale $WALLPAPER &
+feh --bg-scale $HOME/Pictures/Wallpapers/1920x1080_WhaleHighway.png &
 firefox &
 mpd &
 urxvtd -q -o -f &
 xbindkeys &
-xrdb $XRESOURCES &
+xrdb $HOME/.Xresources &
 xscreensaver -no-splash &
