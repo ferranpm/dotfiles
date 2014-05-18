@@ -5,7 +5,7 @@ flags=-R\ --append
 
 for f in $*; do
     case $f in
-        *.c)
+        *.c | *.cpp)
             gcc -M $f -Iinclude | \
                 sed -e 's/[\\ ]/\n/g' | \
                 sed -e '/^$/d' -e '/\.o:[ \t]*$/d' | \
