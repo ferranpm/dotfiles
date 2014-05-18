@@ -94,11 +94,13 @@ if has('gui_running')
     colorscheme gui_lucius
     set guioptions-=m
     set guioptions-=T
+    set columns=120
+    set lines=9999
+    set showtabline=2
     if has('unix')
         set guifont=Monospace
     elseif has('win32')
         set guifont=Consolas:h9
-        set showtabline=2
     endif
 else
     if has('unix')
