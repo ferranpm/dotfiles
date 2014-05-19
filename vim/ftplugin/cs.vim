@@ -1,0 +1,1 @@
+setlocal omnifunc=OmniSharp#Complete

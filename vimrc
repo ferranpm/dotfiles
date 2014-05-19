@@ -29,6 +29,7 @@ syntax on
 let mapleader=','
 set autoread
 set backspace=2
+set completeopt=menuone
 set encoding=utf-8
 set grepprg=ack
 set isfname-==
@@ -129,7 +130,7 @@ xmap J 5j
 xmap K 5k
 vmap Q gq
 nmap Q gqap
-inoremap <C-o> <C-x><C-o>
+inoremap <C-o> <C-x><C-o><C-p>
 nnoremap <C-l> gt
 nnoremap <C-h> gT
 nnoremap <silent> <up>   :move .-2<cr>
