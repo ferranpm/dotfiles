@@ -35,7 +35,7 @@ set grepprg=ack
 set isfname-==
 set mouse=n
 set nocompatible
-set nowrap
+set wrap
 set number
 set relativenumber
 set ruler
