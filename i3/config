@@ -22,6 +22,7 @@ client.focused_inactive #AAAAAA #111111 #AAAAAA #999999
 
 assign [class="transmission"] 5
 assign [class="torrent"] 5
+assign [class="hunderbird"] 7
 assign [class="Skype"] 3
 assign [class="Steam"] 3
 assign [class="Vmplayer"] 10
