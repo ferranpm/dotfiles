@@ -12,8 +12,8 @@ let g:netrw_liststyle=1
 let g:netrw_keepdir=1
 
 " UltiSnips
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger='<tab>'
+let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
 
 " CtrlP
 let g:ctrlp_show_hidden=0
@@ -29,24 +29,26 @@ syntax on
 let mapleader=','
 set autoread
 set backspace=2
-set completeopt=menuone
 set encoding=utf-8
 set grepprg=ack
 set isfname-==
 set mouse=n
 set nocompatible
-set wrap
+set scrolloff=10
+set timeoutlen=500
+set ttimeoutlen=0
+set wildignore+=.git/*,.gitignore,*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__
+
+" Indicators
+set completeopt=menuone
 set number
 set relativenumber
 set ruler
-set scrolloff=10
 set showbreak=>
 set showcmd
 set showmode
 set title
-set timeoutlen=500
-set ttimeoutlen=0
-set wildignore+=.git/*,.gitignore,*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__
+set titlestring=%t%(\ %M%)%(\ (%{expand(\'%:~:.:h\')})%)%(\ %a%)
 
 " Windows & splits
 set splitright
@@ -91,8 +93,11 @@ set wildmode=longest:list,full
 
 " Colors & GUI
 if has('gui_running')
+    try
+        colorscheme lucius
+    catch
+    endtry
     set background=dark
-    colorscheme gui_lucius
     set guioptions-=m
     set guioptions-=T
     set columns=120
@@ -112,7 +117,7 @@ else
 endif
 
 " Autocommands
-if has("autocmd")
+if has('autocmd')
     autocmd! InsertEnter * set norelativenumber
     autocmd! InsertLeave * set relativenumber
     autocmd! FileType * setlocal formatoptions=ql
@@ -126,37 +131,48 @@ command! Sudo %!sudo tee > /dev/null %
 " Mappings
 nmap J 5j
 nmap K 5k
+
 xmap J 5j
 xmap K 5k
+
 vmap Q gq
 nmap Q gqap
+
 inoremap <C-o> <C-x><C-o><C-p>
+
 nnoremap <C-l> gt
 nnoremap <C-h> gT
+
 nnoremap <silent> <up>   :move .-2<cr>
 nnoremap <silent> <down> :move .+1<cr>
 vnoremap <silent> <up>   :move .-2<cr>gv
 vnoremap <silent> <down> :move '>+<cr>gv
+
 nnoremap <silent> <right> :bn<cr>
 nnoremap <silent> <left>  :bp<cr>
+
 vnoremap > >gv
 vnoremap < <gv
+
 noremap ; :
 noremap : ;
+
 nnoremap Y y$
+
 nnoremap <Space> i_<Esc>r
+
 nnoremap - :Explore<cr>
-" Function keys 2
+
+" Function keys mappings
 nnoremap <F1>   :set relativenumber! relativenumber?<cr>
 nnoremap <F2>   :set cursorline! cursorline?<cr>
 nnoremap <F3>   :set hlsearch! hlsearch?<cr>
 nnoremap <F4>   :set spell! spell?<cr>
 nnoremap <F5>   :w<cr>:make<cr>
 nnoremap <F6>   :w<cr>:!rsync -avz -e ssh ~/SO2/zeos/ alumne@so2:~/zeos/<cr><cr>
-nnoremap <F7>   :w<cr>:execute "!make ".expand("%:r")." && ./".expand("%:r")<cr>
 nnoremap <F12>  :call system('rm tags')<cr>:call system('ctags --tag-relative -R --exclude=.git')<cr>
 
-" Leader 2
+" Leader mappings
  noremap                <leader>c :yank +<cr>
  noremap                <leader>j :join<cr>
  noremap                <leader>p :put *<cr>
@@ -182,7 +198,7 @@ nnoremap    <silent>    <leader>q :q<cr>
 nnoremap    <silent>    <leader>Q :qall<cr>
 
 " Functions
-function! Pipe(cmd) " 2
+function! Pipe(cmd)
     redir @+>
     silent execute a:cmd
     redir END
@@ -191,7 +207,7 @@ function! Pipe(cmd) " 2
     set nomodified
 endfunction
 
-function! Shell(cmd) " 2
+function! Shell(cmd)
     vnew
     execute 'read !'.a:cmd
     call cursor(1, 1)
@@ -199,7 +215,7 @@ function! Shell(cmd) " 2
     set nomodified
 endfunction
 
-function! BufferKill() " 2
+function! BufferKill()
     let l:count = 0
     for b in range(1, bufnr('$'))
         if bufexists(b) && !bufloaded(b)
@@ -207,13 +223,13 @@ function! BufferKill() " 2
             let l:count += 1
         endif
     endfor
-    echo "Deleted " . l:count . " buffers"
+    echo 'Deleted ' . l:count . ' buffers'
 endfunction
 
-function! NeatFoldText() " 2
+function! NeatFoldText()
     let line = ' ' . substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
     let lines_count = v:foldend - v:foldstart + 1
-    let lines_count_text = '| ' . printf("%10s", lines_count . ' lines') . ' |'
+    let lines_count_text = '| ' . printf('%10s', lines_count . ' lines') . ' |'
     let foldchar = matchstr(&fillchars, 'fold:\zs.')
     let foldtextstart = strpart('+' . repeat(foldchar, v:foldlevel*2) . line, 0, (winwidth(0)*2)/3)
     let foldtextend = lines_count_text . repeat(foldchar, 8)
