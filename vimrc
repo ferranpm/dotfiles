@@ -110,9 +110,10 @@ if has('gui_running')
     endif
 else
     if has('unix')
-        colorscheme seoul
-    else
-        colorscheme default
+        try
+            colorscheme seoul
+        catch
+        endtry
     endif
 endif
 
