@@ -2,7 +2,7 @@ set t_Co=256
 
 highlight Normal        cterm=None ctermfg=250  ctermbg=None
 
-highlight Comment       cterm=None ctermfg=65   ctermbg=None
+highlight Comment       cterm=None ctermfg=240  ctermbg=None
 
 highlight Constant      cterm=None ctermfg=73   ctermbg=None
 highlight String        cterm=None ctermfg=109  ctermbg=None
@@ -46,9 +46,9 @@ highlight Ignore        cterm=None ctermfg=238  ctermbg=237
 
 highlight Error         cterm=None ctermfg=252  ctermbg=52
 
-highlight Todo          cterm=None ctermfg=161  ctermbg=235
+highlight Todo          cterm=None ctermfg=9    ctermbg=235
 
-highlight ColorColumn   cterm=None ctermfg=none ctermbg=235
+highlight ColorColumn   cterm=None ctermfg=None ctermbg=235
 highlight Conceal       cterm=None ctermfg=238  ctermbg=237
 highlight Cursor        cterm=None ctermfg=None ctermbg=None
 highlight CursorIM      cterm=None ctermfg=None ctermbg=None
