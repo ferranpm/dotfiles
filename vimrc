@@ -127,6 +127,7 @@ endif
 " Commands
 command! -nargs=+ -complete=command Pipe call Pipe(<q-args>)
 command! -nargs=+ -complete=shellcmd Shell call Shell(<q-args>)
+command! -nargs=1 -complete=help Help if &filetype=="help" | help <args> | else | tab help <args> | endif
 command! Sudo %!sudo tee > /dev/null %
 
 " Mappings
@@ -185,7 +186,7 @@ nnoremap                <leader>fc zM
 nnoremap                <leader>fe zMzvzz
 nnoremap                <leader>fo zR
 nnoremap                <leader>g :!git 
-nnoremap                <leader>h :tab help 
+nnoremap                <leader>h :Help 
 nnoremap                <leader>L O<Esc>
 nnoremap                <leader>L O<Esc>
 nnoremap                <leader>l o<Esc>
