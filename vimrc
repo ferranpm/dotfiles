@@ -190,7 +190,6 @@ nnoremap                <leader>fo zR
 nnoremap                <leader>g :!git 
 nnoremap                <leader>h :Help 
 nnoremap                <leader>L O<Esc>
-nnoremap                <leader>L O<Esc>
 nnoremap                <leader>l o<Esc>
 nnoremap                <leader>m {jlrXdapGp
 nnoremap                <leader>o :only<cr>
