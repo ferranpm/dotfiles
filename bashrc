@@ -9,7 +9,7 @@ PS1='[\u@\h \w]$(__git_ps1 " (%s)")\n\$ '
 set -o vi
 
 ## ALIASES ##
-alias diff="diff -yEbwB --suppress-common-lines"
+alias diff="diff -ybwB --suppress-common-lines"
 alias g="git"
 alias ga="git add"
 alias gap="git add -p"
