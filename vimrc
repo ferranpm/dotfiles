@@ -121,7 +121,7 @@ endif
 
 " Autocommands
 if has('autocmd')
-    autocmd! InsertEnter * set norelativenumber
+    autocmd! InsertEnter * set norelativenumber number
     autocmd! InsertLeave * set relativenumber
     autocmd! FileType * setlocal formatoptions=ql
 endif
