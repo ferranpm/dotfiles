@@ -15,4 +15,4 @@
 	url = https://github.com/vim-scripts/UltiSnips
 [submodule "vim/bundle/tcomment"]
 	path = vim/bundle/tcomment
-	url = http://github.com/vim-scripts/tComment
+	url = https://github.com/tomtom/tcomment_vim
