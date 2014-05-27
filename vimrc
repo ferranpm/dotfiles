@@ -1,5 +1,7 @@
 " Pathogen
-let g:pathogen_disabled = []
+if !has("python")
+    let g:pathogen_disabled = ["ultisnips", "Omnisharp"]
+endif
 try
     runtime bundle/pathogen/autoload/pathogen.vim
     call pathogen#infect()
