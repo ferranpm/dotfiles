@@ -100,6 +100,14 @@ if has('gui_running')
     catch
     endtry
     set background=dark
+" Highlights
+highlight WhiteOnRed ctermfg=255 ctermbg=196 guifg=#ffffff guibg=#ff0000
+highlight IndentWhiteSpaces cterm=undercurl ctermfg=235 gui=underline guifg=#262626
+highlight TrilingWhitespace ctermbg=199 guibg=#ff00af
+highlight RightMargin ctermbg=93 guibg=#8700ff
+call matchadd('RightMargin', '\%81v', 30)
+call matchadd('TrilingWhitespace', '\s\+\%#\@<!$', 70)
+call matchadd('IndentWhiteSpaces', '^ \+', 100)
     set guioptions-=m
     set guioptions-=T
     set columns=120

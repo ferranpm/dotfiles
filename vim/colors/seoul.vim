@@ -1,4 +1,4 @@
-set t_Co=256
+highlight clear
 
 highlight Normal        cterm=None ctermfg=250  ctermbg=None
 
@@ -96,12 +96,3 @@ highlight WildMenu      cterm=Bold ctermfg=95   ctermbg=237
 highlight Menu          cterm=None ctermfg=None ctermbg=None
 highlight Scrollbar     cterm=None ctermfg=None ctermbg=None
 highlight Tooltip       cterm=None ctermfg=None ctermbg=None
-
-" highlight   TrilingWhitespace cterm=None	ctermfg=None	ctermbg=93
-" call matchadd('TrilingWhitespace', '\s\+\%#\@<!$', 50)
-
-highlight IndentWhiteSpaces cterm=undercurl ctermfg=235 ctermbg=None
-call matchadd('IndentWhiteSpaces', '^ \+', 40)
-
-highlight RightMargin cterm=None ctermfg=none ctermbg=235
-call matchadd('RightMargin', '\%81v', 30)
