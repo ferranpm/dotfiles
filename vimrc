@@ -93,13 +93,20 @@ set statusline=%f\ %y%h%r%w\ (%l/%L,\ %c)\ %p%%%=%m\ %{getcwd()}
 set wildmenu
 set wildmode=longest:list,full
 
-" Colors & GUI
-if has('gui_running')
-    try
+" Colors
+set t_Co=256
+set background=dark
+try
+    if has("gui_running")
         colorscheme lucius
-    catch
-    endtry
-    set background=dark
+    else
+        if has("unix")
+            colorscheme xoria256
+        endif
+    endif
+catch
+endtry
+
 " Highlights
 highlight WhiteOnRed ctermfg=255 ctermbg=196 guifg=#ffffff guibg=#ff0000
 highlight IndentWhiteSpaces cterm=undercurl ctermfg=235 gui=underline guifg=#262626
@@ -108,6 +115,9 @@ highlight RightMargin ctermbg=93 guibg=#8700ff
 call matchadd('RightMargin', '\%81v', 30)
 call matchadd('TrilingWhitespace', '\s\+\%#\@<!$', 70)
 call matchadd('IndentWhiteSpaces', '^ \+', 100)
+
+" GUI
+if has('gui_running')
     set guioptions-=m
     set guioptions-=T
     set columns=120
@@ -117,13 +127,6 @@ call matchadd('IndentWhiteSpaces', '^ \+', 100)
         set guifont=Monospace
     elseif has('win32')
         set guifont=Consolas:h9
-    endif
-else
-    if has('unix')
-        try
-            colorscheme seoul
-        catch
-        endtry
     endif
 endif
 
