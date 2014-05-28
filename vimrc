@@ -39,6 +39,7 @@ set nocompatible
 set scrolloff=10
 set timeoutlen=500
 set ttimeoutlen=0
+set virtualedit=block
 set wildignore+=.git/*,.gitignore,*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__
 
 " Indicators
