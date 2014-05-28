@@ -155,6 +155,9 @@ vnoremap <silent> <down> :move '>+<cr>gv
 nnoremap <silent> <right> :bn<cr>
 nnoremap <silent> <left>  :bp<cr>
 
+nnoremap n n:call HLNext(0.2)<cr>
+nnoremap N N:call HLNext(0.2)<cr>
+
 vnoremap > >gv
 vnoremap < <gv
 
@@ -238,4 +241,18 @@ function! NeatFoldText()
     let foldtextend = lines_count_text . repeat(foldchar, 8)
     let foldtextlength = strlen(substitute(foldtextstart . foldtextend, '.', 'x', 'g')) + &foldcolumn
     return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
+endfunction
+
+function! HLNext(blinktime)
+    let [bufnum, lnum, col, off] = getpos('.')
+    let target_pat = '\c\%#'.@/
+    let blinks = 2
+    for n in range(1, blinks)
+        let red = matchadd('WhiteOnRed', target_pat, 100)
+        redraw
+        execute 'sleep '.float2nr(a:blinktime/(2*blinks)*1000).'m'
+        call matchdelete(red)
+        redraw
+        execute 'sleep '.float2nr(a:blinktime/(2*blinks)*1000).'m'
+    endfor
 endfunction
