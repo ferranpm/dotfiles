@@ -1,4 +1,4 @@
 -R
 --exclude=.svn
 --exclude=.git
---c-kinds=+cdefglmnpstuvx
+--c-kinds=+l
