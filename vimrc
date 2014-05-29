@@ -167,8 +167,8 @@ vnoremap <silent> <down> :move '>+<cr>gv
 nnoremap <silent> <right> :bn<cr>
 nnoremap <silent> <left>  :bp<cr>
 
-nnoremap n n:call HLNext(0.2)<cr>
-nnoremap N N:call HLNext(0.2)<cr>
+nnoremap <silent> n n:call HLNext(0.2)<cr>
+nnoremap <silent> N N:call HLNext(0.2)<cr>
 
 vnoremap > >gv
 vnoremap < <gv
