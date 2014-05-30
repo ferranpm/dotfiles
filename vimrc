@@ -141,7 +141,7 @@ endif
 " Commands
 command! -nargs=+ -complete=command Pipe call Pipe(<q-args>)
 command! -nargs=+ -complete=shellcmd Shell call Shell(<q-args>)
-command! -nargs=1 -complete=help Help if &filetype=="help" | help <args> | else | tab help <args> | endif
+command! -nargs=1 -complete=help Help if &ft=~"help" | help <args> | else | tab help <args> | endif
 command! Sudo %!sudo tee > /dev/null %
 
 " Mappings
@@ -192,11 +192,11 @@ nnoremap <F6>   :w<cr>:!rsync -avz -e ssh ~/SO2/zeos/ alumne@so2:~/zeos/<cr><cr>
 nnoremap <F12>  :call system('rm tags')<cr>:call system('ctags --tag-relative -R --exclude=.git')<cr>
 
 " Leader mappings
- noremap                <leader>c :yank +<cr>
+ noremap                <leader>c "+y
  noremap                <leader>j :join<cr>
  noremap                <leader>p :put *<cr>
  noremap                <leader>s :let p=getpos('.')<cr>:%s/\s\+$//<cr>:call setpos('.',p)<cr>
- noremap                <leader>v :put +<cr>
+ noremap                <leader>v "+p
 nnoremap                <leader>bc :ls!<cr>:bwipeout
 nnoremap                <leader>bs :ls!<cr>:buffer
 nnoremap                <leader>fc zM
