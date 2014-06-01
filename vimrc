@@ -154,6 +154,7 @@ vmap Q gq
 nmap Q gqap
 
 inoremap <C-o> <C-x><C-o><C-p>
+inoremap <C-j> <esc>O
 
 nnoremap <C-l> gt
 nnoremap <C-h> gT
