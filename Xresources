@@ -8,7 +8,6 @@
 *saveLines: 512
 *scrollBar: false
 *scrollTtyOutput: false
-*termName: xterm
 
 !!!!!!!!!!!
 !! URxvt !!
@@ -33,6 +32,7 @@ XTerm*faceName: xft:Monospace:size=9
 XTerm*fastScroll: true
 XTerm*backarrowKey: false
 XTerm*scrollKey: true
+XTerm*backarrowKeyIsErase: true
 
 !!!!!!!!!!
 !! Xpdf !!
