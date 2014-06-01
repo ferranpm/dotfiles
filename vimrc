@@ -140,7 +140,7 @@ endif
 command! -nargs=+ -complete=command Pipe call Pipe(<q-args>)
 command! -nargs=+ -complete=shellcmd Shell call Shell(<q-args>)
 command! -nargs=1 -complete=help Help if &ft=~"help" | help <args> | else | tab help <args> | endif
-command! Sudo %!sudo tee > /dev/null %
+command! SudoWrite call SudoWriteCmd()
 
 " Mappings
 nmap J 5j
@@ -266,4 +266,9 @@ function! HLNext(blinktime)
         redraw
         execute 'sleep '.float2nr(a:blinktime/(2*blinks)*1000).'m'
     endfor
+endfunction
+
+function! SudoWriteCmd() abort
+  execute (has('gui_running') ? '' : 'silent') 'write !env SUDO_EDITOR=tee sudo -e % >/dev/null'
+  let &modified = v:shell_error
 endfunction
