@@ -44,6 +44,9 @@ zstyle ':completion:*' verbose "yes"
 zstyle ':completion:*:*:kill:*:processes' command "ps -u `whoami` -o pid,comm"
 
 ## BINDKEYS ##
+bindkey -v '^[[1;5D' backward-word
+bindkey -v '^[[1;5C' forward-word
+bindkey -v '^[[1;5D' backward-word
 bindkey -v '^[[7~'  beginning-of-line
 bindkey -a '^[[7~'  beginning-of-line
 bindkey -v '^m'     check-line

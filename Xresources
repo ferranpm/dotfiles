@@ -28,11 +28,17 @@ URxvt.url-select.underline: true
 !!!!!!!!!!!
 !! XTerm !!
 !!!!!!!!!!!
+XTerm*backarrowKey: false
+XTerm*backarrowKeyIsErase: true
+XTerm*bellIsUrgent: true
+XTerm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
 XTerm*faceName: xft:Monospace:size=9
 XTerm*fastScroll: true
-XTerm*backarrowKey: false
+XTerm*fullscreen: never
 XTerm*scrollKey: true
-XTerm*backarrowKeyIsErase: true
+XTerm*translations: #override Shift <Btn1Up>: exec-formatted("firefox '%t'", PRIMARY)
+XTerm*utf8: true
+XTerm*visualbell: true
 
 !!!!!!!!!!
 !! Xpdf !!
