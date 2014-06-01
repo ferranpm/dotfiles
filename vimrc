@@ -100,7 +100,7 @@ try
     if has('gui_running')
         set background=dark
         colorscheme lucius
-    elseif match($TERM, '\m.*rxvt.*') >= 0
+    elseif match($TERM, '\m.*rxvt.*') != 0
         colorscheme xoria256
     endif
 catch

@@ -1,7 +1,7 @@
-"xterm"
+"urxvtc"
     Alt + Return
 
-"xterm -e /usr/bin/ranger"
+"urxvtc -e /usr/bin/ranger"
     Mod4 + f
 
 "dmenu_run -fn Monospace:size=9"
@@ -19,7 +19,7 @@
 "setxkbmap us && xmodmap ~/dotfiles/Return"
     Mod4 + c
 
-"xterm -title exit -geometry 13x6+0+0 -e ~/bin/exit"
+"urxvtc -title exit -geometry 13x6+0+0 -e ~/bin/exit"
     Control + Alt + e
 
 "amixer set Master 1%+"
