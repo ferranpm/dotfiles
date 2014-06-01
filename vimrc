@@ -95,14 +95,13 @@ set wildmenu
 set wildmode=longest:list,full
 
 " Colors
-set t_Co=256
 try
-    if has("gui_running")
+    colorscheme default
+    if has('gui_running')
+        set background=dark
         colorscheme lucius
-    else
-        if has("unix")
-            colorscheme xoria256
-        endif
+    elseif match($TERM, '\m.*rxvt.*') >= 0
+        colorscheme xoria256
     endif
 catch
 endtry
