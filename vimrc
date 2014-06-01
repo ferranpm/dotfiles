@@ -96,7 +96,6 @@ set wildmode=longest:list,full
 
 " Colors
 set t_Co=256
-set background=dark
 try
     if has("gui_running")
         colorscheme lucius
