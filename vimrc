@@ -190,7 +190,7 @@ nnoremap <F3>   :set hlsearch! hlsearch?<cr>
 nnoremap <F4>   :set spell! spell?<cr>
 nnoremap <F5>   :w<cr>:make<cr>
 nnoremap <F6>   :w<cr>:!rsync -avz -e ssh ~/SO2/zeos/ alumne@so2:~/zeos/<cr><cr>
-nnoremap <F12>  :call system('rm tags')<cr>:call system('ctags --tag-relative -R --exclude=.git')<cr>
+nnoremap <F12>  :call system('ctags')<cr>
 
 " Leader mappings
  noremap                <leader>c "+y

@@ -1,4 +1,5 @@
 -R
+--tag-relative
 --exclude=.svn
 --exclude=.git
 --c-kinds=+l
