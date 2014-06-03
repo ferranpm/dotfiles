@@ -37,6 +37,17 @@ for_window [title="PANIC"] floating enable
 for_window [title="^IDI*"] floating enable
 for_window [title="^exit$"] floating enable
 
+workspace 1 output LVDS
+workspace 2 output HDMI-0
+workspace 3 output LVDS
+workspace 4 output HDMI-0
+workspace 5 output LVDS
+workspace 6 output HDMI-0
+workspace 7 output LVDS
+workspace 8 output HDMI-0
+workspace 9 output LVDS
+workspace 10 output HDMI-0
+
 # kill focused window
 bindsym $mod+Shift+Q kill
 
