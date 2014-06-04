@@ -143,6 +143,9 @@ command! -nargs=+ -complete=command Pipe call Pipe(<q-args>)
 command! -nargs=+ -complete=shellcmd Shell call Shell(<q-args>)
 command! -nargs=1 -complete=help Help if &ft=~"help" | help <args> | else | tab help <args> | endif
 command! SudoWrite call SudoWriteCmd()
+command! UnderscoreToUpperCamelCase %s#\m\(\%(\<\l\+\)\%(_\)\@=\)\|_\(\l\)#\u\1\2
+command! UnderscoreToLowerCamelCase %s#\m_\(\l\)#\u\1
+command! CamelCaseToUnderscore %s#\m\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+\)\(\u\)#\l\1_\l\2
 
 " Mappings
 nmap J 5j
