@@ -20,6 +20,9 @@ URxvt.font: xft:Monospace:size=9
 URxvt.keysym.M-Up: command:\033]710;xft:Monospace:size=13\007
 URxvt.keysym.M-Down: command:\033]710;xft:Monospace:size=9\007
 
+URxvt.keysym.M-C-l: command:\033]10;#0F0F0F\007\033]11;#FFFFFF\007\033]12;#ff8939\007\033]4;0;#2B2B2B\007\033]4;8;#404040\007\033]4;1;#E84F4F\007\033]4;9;#D23D3D\007\033]4;2;#78964C\007\033]4;10;#A0CF5D\007\033]4;3;#E1AA5D\007\033]4;11;#F39D21\007\033]4;4;#7DC1CF\007\033]4;12;#4E9FB1\007\033]4;5;#9B64FB\007\033]4;13;#8542FF\007\033]4;6;#6D878D\007\033]4;14;#42717B\007\033]4;7;#dddddd\007\033]4;15;#dddddd\007
+URxvt.keysym.M-C-d: command:\033]10;#DADADA\007\033]11;#111111\007\033]12;#ff8939\007\033]4;0;#2B2B2B\007\033]4;8;#404040\007\033]4;1;#E84F4F\007\033]4;9;#D23D3D\007\033]4;2;#B8D68C\007\033]4;10;#A0CF5D\007\033]4;3;#E1AA5D\007\033]4;11;#F39D21\007\033]4;4;#7DC1CF\007\033]4;12;#4E9FB1\007\033]4;5;#9B64FB\007\033]4;13;#8542FF\007\033]4;6;#6D878D\007\033]4;14;#42717B\007\033]4;7;#dddddd\007\033]4;15;#dddddd\007
+
 URxvt.perl-ext: default,url-select
 URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.url-select.launcher: /usr/bin/firefox -new-tab
