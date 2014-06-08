@@ -58,7 +58,6 @@ Xpdf*background: #AAAAAA
 XTerm*foreground: #0F0F0F
 XTerm*background: #FFFFFF
 
-XTerm*colorBD:      #ffffff
 XTerm*borderColor:  #151515
 XTerm*cursorColor:  #ff8939
 XTerm*cursorColor2: #151515
@@ -94,7 +93,6 @@ XTerm*color15:    #dddddd
 URxvt*foreground: #DADADA
 URxvt*background: #111111
 
-URxvt*colorBD:      #ffffff
 URxvt*borderColor:  #151515
 URxvt*cursorColor:  #ff8939
 URxvt*cursorColor2: #151515
