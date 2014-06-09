@@ -32,7 +32,7 @@ let mapleader=','
 set autoread
 set backspace=2
 set encoding=utf-8
-set grepprg=ack
+set grepprg=ack\ -i
 set isfname-==
 set mouse=n
 set nocompatible
@@ -146,6 +146,7 @@ command! SudoWrite call SudoWriteCmd()
 command! -nargs=? UnderscoreToUpperCamelCase <args>s#\m\(\%(\<\l\+\)\%(_\)\@=\)\|_\(\l\)#\u\1\2
 command! -nargs=? UnderscoreToLowerCamelCase <args>s#\m_\(\l\)#\u\1
 command! -nargs=? CamelCaseToUnderscore <args>s#\m\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+\)\(\u\)#\l\1_\l\2
+command! -nargs=+ Grep silent grep! <args> | copen | redraw!
 
 " Mappings
 nmap J 5j
@@ -206,7 +207,7 @@ nnoremap                <leader>bs :ls!<cr>:buffer
 nnoremap                <leader>fc zM
 nnoremap                <leader>fe zMzvzz
 nnoremap                <leader>fo zR
-nnoremap                <leader>g :!git 
+nnoremap                <leader>g :Grep 
 nnoremap                <leader>h :Help 
 nnoremap                <leader>L O<Esc>
 nnoremap                <leader>l o<Esc>
