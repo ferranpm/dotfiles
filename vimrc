@@ -174,6 +174,8 @@ nnoremap <silent> <left>  :bp<cr>
 
 nnoremap <silent> n n:call HLNext(0.2)<cr>
 nnoremap <silent> N N:call HLNext(0.2)<cr>
+nnoremap <silent> * *:call HLNext(0.2)<cr>
+nnoremap <silent> # #:call HLNext(0.2)<cr>
 
 vnoremap > >gv
 vnoremap < <gv
