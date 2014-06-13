@@ -5,6 +5,7 @@ PROMPT='
 stty -ixon
 
 ## EXPORTS ##
+export TERM='xterm-256color'
 export GREP_OPTIONS='--color=auto'
 export HISTFILE=$HOME/.zshhistory
 export HISTSIZE=50000
