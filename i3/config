@@ -17,7 +17,7 @@ font xft:Monospace 9
 new_window pixel 5
 set $mod Mod1
 
-client.focused          #999999 #dd5544 #111111 #dd5544
+client.focused          #999999 #dd5555 #111111 #dd5555
 client.focused_inactive #AAAAAA #111111 #AAAAAA #999999
 
 assign [class="transmission"] 5
@@ -114,7 +114,7 @@ bindsym $mod+Shift+R restart
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-  status_command conky
+  status_command /home/ferran/bin/i3status
   font xft:Monospace 9
   mode hide
   hidden_state hide
