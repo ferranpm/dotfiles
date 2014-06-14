@@ -14,10 +14,10 @@ exec --no-startup-id ~/bin/start
 floating_modifier $mod
 focus_follows_mouse no
 font xft:Monospace 9
-new_window pixel 1
+new_window pixel 5
 set $mod Mod1
 
-client.focused          #999999 #afd700 #111111 #afd700
+client.focused          #999999 #dd5544 #111111 #dd5544
 client.focused_inactive #AAAAAA #111111 #AAAAAA #999999
 
 assign [class="transmission"] 5
