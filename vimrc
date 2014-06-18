@@ -147,6 +147,7 @@ command! -nargs=? UnderscoreToUpperCamelCase <args>s#\m\(\%(\<\l\+\)\%(_\)\@=\)\
 command! -nargs=? UnderscoreToLowerCamelCase <args>s#\m_\(\l\)#\u\1
 command! -nargs=? CamelCaseToUnderscore <args>s#\m\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+\)\(\u\)#\l\1_\l\2
 command! -nargs=+ Grep silent grep! <args> | copen | redraw!
+command! -nargs=1 -range Align '<,'>call Align(<f-args>)
 
 " Mappings
 nmap J 5j
@@ -279,4 +280,25 @@ endfunction
 function! SudoWriteCmd() abort
   execute (has('gui_running') ? '' : 'silent') 'write !env SUDO_EDITOR=tee sudo -e % >/dev/null'
   let &modified = v:shell_error
+endfunction
+
+function! Align(string) range
+    let l:cursor_save = getpos('.')
+    let l:max_column = 0
+    for line in range(a:lastline - a:firstline + 1)
+        call cursor(a:firstline + line, 1)
+        call search(a:string, 'c', line('.'))
+        let l:current_column = col('.')
+        if l:current_column > l:max_column
+            let l:max_column = l:current_column
+        endif
+    endfor
+    call setpos('.', l:cursor_save)
+    for line in range(a:lastline - a:firstline + 1)
+        call cursor(a:firstline + line, 1)
+        if search(a:string, 'c', line('.')) != 0
+            exe "normal 200i ".l:max_column."|dwj"
+        endif
+    endfor
+    call setpos('.', l:cursor_save)
 endfunction
