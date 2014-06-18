@@ -27,6 +27,7 @@ assign [class="Skype"] 3
 assign [class="Steam"] 3
 assign [class="Vmplayer"] 10
 
+for_window [class="Dolphin"] floating enable
 for_window [class="Bochs"] floating enable
 for_window [class="MPlayer"] floating enable
 for_window [class="Skype"] floating enable
