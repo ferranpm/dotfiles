@@ -101,7 +101,7 @@ try
         set background=dark
         colorscheme lucius
     else
-        if match($TERM, '\m.*rxvt.*') == 0
+        if &background == "dark"
             colorscheme xoria256
         endif
     endif

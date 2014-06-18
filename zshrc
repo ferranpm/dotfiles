@@ -5,7 +5,7 @@ PROMPT='
 stty -ixon
 
 ## EXPORTS ##
-export TERM='xterm-256color'
+export COLORFGBG="15;0"
 export GREP_OPTIONS='--color=auto'
 export HISTFILE=$HOME/.zshhistory
 export HISTSIZE=50000
@@ -70,6 +70,10 @@ bindkey -v '^[[A'   up-line-or-history
 bindkey -a 'p'      up-line-or-search
 bindkey -v '^p'     up-line-or-search
 bindkey -a 'k'      up-line-or-search
+bindkey -v '^[^W'   set-background-light
+bindkey -a '^[^W'   set-background-light
+bindkey -v '^[^B'   set-background-dark
+bindkey -a '^[^B'   set-background-dark
 
 ## ALIASES ##
 alias ack="ack --color"
@@ -118,6 +122,19 @@ insert-sudo() {
     CURSOR=$(expr $CURSOR + $(expr length $sudo))
 }
 zle -N insert-sudo
+
+
+function set-background-light() {
+    COLORFGBG="0;15"
+    echo -n "\033]10;#0F0F0F\007\033]11;#FFFFFF\007\033]12;#ff8939\007\033]4;0;#2B2B2B\007\033]4;8;#404040\007\033]4;1;#E84F4F\007\033]4;9;#D23D3D\007\033]4;2;#78964C\007\033]4;10;#A0CF5D\007\033]4;3;#E1AA5D\007\033]4;11;#F39D21\007\033]4;4;#7DC1CF\007\033]4;12;#4E9FB1\007\033]4;5;#9B64FB\007\033]4;13;#8542FF\007\033]4;6;#6D878D\007\033]4;14;#42717B\007\033]4;7;#dddddd\007\033]4;15;#dddddd\007"
+}
+zle -N set-background-light
+
+function set-background-dark() {
+    COLORFGBG="15;0"
+    echo -n "\033]10;#DADADA\007\033]11;#111111\007\033]12;#ff8939\007\033]4;0;#2B2B2B\007\033]4;8;#404040\007\033]4;1;#E84F4F\007\033]4;9;#D23D3D\007\033]4;2;#B8D68C\007\033]4;10;#A0CF5D\007\033]4;3;#E1AA5D\007\033]4;11;#F39D21\007\033]4;4;#7DC1CF\007\033]4;12;#4E9FB1\007\033]4;5;#9B64FB\007\033]4;13;#8542FF\007\033]4;6;#6D878D\007\033]4;14;#42717B\007\033]4;7;#dddddd\007\033]4;15;#dddddd\007"
+}
+zle -N set-background-dark
 
 extract () {
     for f in $*; do
