@@ -14,10 +14,10 @@
 !!!!!!!!!!!
 URxvt.borderless: true
 URxvt.externalBorder: 1
-URxvt.font: xft:Monospace:size=10
+URxvt.font: xft:Inconsolata:size=10
 URxvt.internalBorder: 1
-URxvt.keysym.M-Down: command:\033]710;xft:Monospace:size=10\007
-URxvt.keysym.M-Up: command:\033]710;xft:Monospace:size=12\007
+URxvt.keysym.M-Down: command:\033]710;xft:Inconsolata:size=10\007
+URxvt.keysym.M-Up: command:\033]710;xft:Inconsolata:size=12\007
 URxvt.scrollTtyKeypress: true
 URxvt.scrollWithBuffer: true
 URxvt.xftAntialias: true
@@ -34,7 +34,7 @@ XTerm*backarrowKey: false
 XTerm*backarrowKeyIsErase: true
 XTerm*bellIsUrgent: true
 XTerm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
-XTerm*faceName: xft:Monospace:size=10
+XTerm*faceName: xft:Inconsolata:size=10
 XTerm*fastScroll: true
 XTerm*fullscreen: never
 XTerm*internalBorder: 0
