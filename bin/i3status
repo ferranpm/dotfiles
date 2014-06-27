@@ -18,9 +18,11 @@ do
 
     wlan0=$(ip addr show dev wlan0 | grep "inet " | sed -e "s/.*inet \([0-9\.]*\).*/\1/")
     eth0=$(ip addr show dev eth0 | grep "inet " | sed -e "s/.*inet \([0-9\.]*\).*/\1/")
+    usb0=$(ip addr show dev usb0 | grep "inet " | sed -e "s/.*inet \([0-9\.]*\).*/\1/")
     inet="["
     if [[ $wlan0 ]]; then inet="$inet [ wlan0: $wlan0 ]"; fi
     if [[ $eth0 ]]; then inet="$inet [ eth0: $eth0 ]"; fi
+    if [[ $usb0 ]]; then inet="$inet [ usb0: $usb0 ]"; fi
     inet="$inet ]"
 
     echo "$music$volume$battery$inet$date"
