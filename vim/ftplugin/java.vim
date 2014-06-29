@@ -16,4 +16,6 @@ if glob('AndroidManifest.xml') =~ ''
     end
 endif
 
-nnoremap <F5> :!ant debug && adb -s emulator-5554 install -r bin/ShoppingList-debug.apk<cr>
+
+let g:projectName = system('grep "<project name=" build.xml | sed -e "s/ *<project name=\"\(.*\)\" .*$/\1/" | tr -d "\n"')
+nnoremap <F5> :execute "!ant debug && adb install -r bin/".g:projectName."-debug.apk && adb shell am start -n com.pelmon.shoppinglist/com.pelmon.shoppinglist.Main"<cr>
