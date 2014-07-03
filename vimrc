@@ -29,10 +29,10 @@ filetype plugin on
 filetype indent on
 syntax on
 let mapleader=','
+set nowrap
 set autoread
 set backspace=2
 set encoding=utf-8
-set grepprg=ack\ -i
 set isfname-==
 set mouse=n
 set nocompatible
@@ -41,6 +41,11 @@ set timeoutlen=500
 set ttimeoutlen=0
 set virtualedit=block
 set wildignore+=.git/*,.gitignore,*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__
+
+" OS dependent
+if has('unix')
+    set grepprg=ack\ -i
+endif
 
 " Indicators
 set completeopt=menuone
@@ -99,9 +104,9 @@ try
     colorscheme default
     if has('gui_running')
         set background=dark
-        colorscheme lucius
+        colorscheme xoria256
     else
-        if &background == "dark"
+        if has('unix') && &background == "dark"
             colorscheme xoria256
         endif
     endif
@@ -114,8 +119,8 @@ highlight IndentWhiteSpaces cterm=undercurl ctermfg=242 gui=underline guifg=#262
 highlight TrilingWhitespace ctermbg=199 guibg=#ff00af
 highlight RightMargin ctermbg=93 guibg=#8700ff
 call matchadd('RightMargin', '\%81c', 30)
-call matchadd('TrilingWhitespace', '\s\+\%#\@<!$', 70)
-call matchadd('IndentWhiteSpaces', '^ \+', 100)
+" call matchadd('TrilingWhitespace', '\s\+\%#\@<!$', 70)
+" call matchadd('IndentWhiteSpaces', '^ \+', 100)
 
 " GUI
 if has('gui_running')
@@ -207,6 +212,7 @@ nnoremap <F12>  :call system('ctags')<cr>
  noremap                <leader>v "+p
 nnoremap                <leader>bc :ls!<cr>:bwipeout 
 nnoremap                <leader>bs :ls!<cr>:buffer 
+nnoremap                <leader>d :set diff! scrollbind!<cr>:set diff? scrollbind?<cr>
 nnoremap                <leader>fc zM
 nnoremap                <leader>fe zMzvzz
 nnoremap                <leader>fo zR
@@ -219,7 +225,7 @@ nnoremap                <leader>o :only<cr>
 nnoremap                <leader>t :tag 
 nnoremap    <silent>    <leader>. :update<cr>
 nnoremap    <silent>    <leader>bk :call BufferKill()<cr>
-nnoremap    <silent>    <leader>e :bdelete<cr>
+nnoremap    <silent>    <leader>e :close<cr>
 nnoremap    <silent>    <leader>q :q<cr>
 nnoremap    <silent>    <leader>Q :qall<cr>
 
