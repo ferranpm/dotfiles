@@ -1,0 +1,68 @@
+diff --git a/bin/start b/bin/start
+index 7aa57e1..e211a95 100755
+--- a/bin/start
++++ b/bin/start
+@@ -5,7 +5,7 @@ cd
+ setxkbmap us
+ xmodmap ~/dotfiles/Return &
+ 
+-feh --bg-scale $HOME/Pictures/Wallpapers/1920x1080_WhaleHighway.png &
++feh --bg-scale $HOME/Pictures/Wallpapers/1366x768_HighwayWhale.png &
+ firefox &
+ mpd &
+ urxvtd -q -o -f &
+diff --git a/i3/config b/i3/config
+index 08f0d94..6613f81 100644
+--- a/i3/config
++++ b/i3/config
+@@ -38,6 +38,17 @@ for_window [title="PANIC"] floating enable
+ for_window [title="^IDI*"] floating enable
+ for_window [title="^exit$"] floating enable
+ 
++workspace 1 output LVDS
++workspace 2 output HDMI-0
++workspace 3 output LVDS
++workspace 4 output HDMI-0
++workspace 5 output LVDS
++workspace 6 output HDMI-0
++workspace 7 output LVDS
++workspace 8 output HDMI-0
++workspace 9 output LVDS
++workspace 10 output HDMI-0
++
+ # kill focused window
+ bindsym $mod+Shift+Q kill
+ 
+diff --git a/xbindkeysrc b/xbindkeysrc
+index 9aded91..6666ac3 100644
+--- a/xbindkeysrc
++++ b/xbindkeysrc
+@@ -23,22 +23,22 @@
+     Control + Alt + e
+ 
+ "amixer set Master 1%+"
+-    Mod4 + Up
++    0x1008ff13
+ 
+ "amixer set Master 1%-"
+-    Mod4 + Down
++    0x1008ff11
+ 
+ "mpc toggle"
+-    Mod4 + p
++    0x1008ff14
+ 
+ "mpc stop"
+-    Mod4 + s
++    0x1008ff15
+ 
+ "mpc next"
+-    Mod4 + period
++    0x1008ff16
+ 
+ "mpc prev"
+-    Mod4 + comma
++    0x1008ff17
+ 
+ "import ~/$(date +%Y-%m-%d-%H%M%S).png"
+     Print
