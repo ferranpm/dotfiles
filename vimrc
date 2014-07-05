@@ -288,11 +288,11 @@ function! SudoWriteCmd() abort
   let &modified = v:shell_error
 endfunction
 
-function! Align(string) range
+function! MaxColumn(string, startline, endline, column)
     let l:cursor_save = getpos('.')
     let l:max_column = 0
-    for line in range(a:lastline - a:firstline + 1)
-        call cursor(a:firstline + line, 1)
+    for line in range(a:endline - a:startline + 1)
+        call cursor(a:startline + line, a:column)
         call search(a:string, 'c', line('.'))
         let l:current_column = col('.')
         if l:current_column > l:max_column
@@ -300,10 +300,20 @@ function! Align(string) range
         endif
     endfor
     call setpos('.', l:cursor_save)
+    return l:max_column
+endfunction
+
+function! Align(string) range
+    let col = virtcol("'<")
+    let l:cursor_save = getpos('.')
+    let l:max_column = MaxColumn(a:string, a:firstline, a:lastline, col)
     for line in range(a:lastline - a:firstline + 1)
-        call cursor(a:firstline + line, 1)
+        call cursor(a:firstline + line, col)
         if search(a:string, 'c', line('.')) != 0
-            exe "normal 200i ".l:max_column."|dwj"
+            let delta_col = (l:max_column - col('.'))
+            if delta_col > 0
+                exe "normal ".delta_col."i "
+            endif
         endif
     endfor
     call setpos('.', l:cursor_save)
