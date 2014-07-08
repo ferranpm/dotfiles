@@ -175,6 +175,8 @@ nnoremap <silent> <down> :move .+1<cr>
 vnoremap <silent> <up>   :move .-2<cr>gv
 vnoremap <silent> <down> :move '>+<cr>gv
 
+vnoremap <M-/> <Esc>/\%V
+
 nnoremap <silent> <right> :bn<cr>
 nnoremap <silent> <left>  :bp<cr>
 
@@ -221,7 +223,6 @@ nnoremap                <leader>h :Help
 nnoremap                <leader>L O<Esc>
 nnoremap                <leader>l o<Esc>
 nnoremap                <leader>m {jlrXdapGp
-nnoremap                <leader>o :only<cr>
 nnoremap                <leader>t :tag 
 nnoremap    <silent>    <leader>. :update<cr>
 nnoremap    <silent>    <leader>bk :call BufferKill()<cr>
