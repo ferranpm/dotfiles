@@ -167,8 +167,10 @@ nmap Q gqap
 inoremap <C-o> <C-x><C-o><C-p>
 inoremap <C-j> <esc>O
 
-nnoremap <C-l> gt
-nnoremap <C-h> gT
+nnoremap <C-l> <C-w><C-l>
+nnoremap <C-h> <C-w><C-h>
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
 
 nnoremap <silent> <up>   :move .-2<cr>
 nnoremap <silent> <down> :move .+1<cr>
