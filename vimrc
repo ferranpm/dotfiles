@@ -179,8 +179,8 @@ vnoremap <silent> <down> :move '>+<cr>gv
 
 vnoremap <M-/> <Esc>/\%V
 
-nnoremap <silent> <right> :bn<cr>
-nnoremap <silent> <left>  :bp<cr>
+nnoremap <silent> <right> gt
+nnoremap <silent> <left>  gT
 
 nnoremap <silent> n n:call HLNext(0.2)<cr>
 nnoremap <silent> N N:call HLNext(0.2)<cr>
