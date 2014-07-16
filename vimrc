@@ -181,6 +181,8 @@ vnoremap <M-/> <Esc>/\%V
 
 nnoremap <silent> <right> gt
 nnoremap <silent> <left>  gT
+nnoremap <silent> <C-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
+nnoremap <silent> <C-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
 nnoremap <silent> n n:call HLNext(0.2)<cr>
 nnoremap <silent> N N:call HLNext(0.2)<cr>
