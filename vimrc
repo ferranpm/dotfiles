@@ -201,6 +201,8 @@ nnoremap <Space> i_<Esc>r
 
 nnoremap - :Explore<cr>
 
+nnoremap ! :!clear; 
+
 " Function keys mappings
 nnoremap <F1>   :set relativenumber! relativenumber?<cr>
 nnoremap <F2>   :set cursorline! cursorline?<cr>
