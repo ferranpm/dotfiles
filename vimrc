@@ -60,7 +60,7 @@ set titlestring=%t%(\ %M%)%(\ (%{expand(\'%:~:.:h\')})%)%(\ %a%)
 
 " Windows & splits
 set splitright
-set nosplitbelow
+set splitbelow
 
 " Indentation
 set autoindent
