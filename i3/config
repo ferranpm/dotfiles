@@ -104,7 +104,7 @@ bindsym $mod+Shift+R restart
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-  status_command /home/ferran/bin/i3status
+  status_command /home/ferran/bin/status
   font xft:Monospace 9
   mode hide
   hidden_state hide
