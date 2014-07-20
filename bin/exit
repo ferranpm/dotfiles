@@ -19,7 +19,7 @@ case $op in
         systemctl reboot
         ;;
     'l')
-        wm_proc=$(ps -e | grep -e i3$ -e startkde$ | awk '{print $1}')
+        wm_proc=$(ps -e | grep -e i3$ -e startkde$ -e xmonad* | awk '{print $1}')
         kill -9 $wm_proc
         ;;
     'b')
