@@ -36,7 +36,7 @@ main = do
                         workspaces         = [ "1" , "2" , "3", "4" , "5" ],
 
                         -- Hooks
-                        -- startupHook = execScriptHook "~/bin/start",
+                        startupHook = execScriptHook "~/bin/start",
                         layoutHook = smartBorders $ myLayout,
                         logHook = myLogHook dzenLeftBar,
                         manageHook = manageHook defaultConfig <+> manageDocks <+> myManageHook <+> insertPosition End Newer
