@@ -49,8 +49,6 @@ endif
 
 " Indicators
 set completeopt=menuone
-set number
-set relativenumber
 set ruler
 set showbreak=>
 set showcmd
@@ -138,8 +136,6 @@ endif
 
 " Autocommands
 if has('autocmd')
-    autocmd! InsertEnter * set norelativenumber number
-    autocmd! InsertLeave * set relativenumber
     autocmd! FileType * setlocal formatoptions=ql
 endif
 
@@ -204,7 +200,6 @@ nnoremap - :Explore<cr>
 nnoremap ! :!clear; 
 
 " Function keys mappings
-nnoremap <F1>   :set relativenumber! relativenumber?<cr>
 nnoremap <F2>   :set cursorline! cursorline?<cr>
 nnoremap <F3>   :set hlsearch! hlsearch?<cr>
 nnoremap <F4>   :set spell! spell?<cr>
