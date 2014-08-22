@@ -130,7 +130,7 @@ if has('gui_running')
     set lines=9999
     set showtabline=2
     if has('unix')
-        set guifont=Monospace
+        set guifont=Inconsolata
     elseif has('win32')
         set guifont=Consolas:h9
     endif
@@ -219,7 +219,7 @@ nnoremap <F12>  :call system('ctags')<cr>
  noremap                <leader>s :let p=getpos('.')<cr>:%s/\s\+$//<cr>:call setpos('.',p)<cr>
  noremap                <leader>v "+p
 nnoremap                <leader>bc :ls!<cr>:bwipeout 
-nnoremap                <leader>bs :ls!<cr>:buffer 
+nnoremap                <leader>bs :CtrlPBuffer<cr>
 nnoremap                <leader>d :set diff! scrollbind!<cr>:set diff? scrollbind?<cr>
 nnoremap                <leader>fc zM
 nnoremap                <leader>fe zMzvzz
