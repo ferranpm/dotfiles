@@ -8,24 +8,23 @@ import XMonad.Layout.ResizableTile
 -- WINDOW RULES
 import XMonad.ManageHook
 
--- STATUS BAR
-import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.InsertPosition
+import XMonad.Hooks.ManageHelpers
+
+-- KDE INTEGRATION
+import XMonad.Config.Kde
 
 -- KEYBOARD & MOUSE CONFIG
 import XMonad.Util.EZConfig
-
--- STATUS BAR
-import XMonad.Hooks.InsertPosition
-import XMonad.Hooks.ManageDocks
 
 import XMonad.Hooks.Script
 
 import XMonad.Util.Run
 
-main = do
-        dzenLeftBar         <- spawnPipe myXmonadBar
-        dzenRightBar        <- spawnPipe myStatusBar
-        xmonad $ defaultConfig
+import qualified XMonad.StackSet as W
+
+main = xmonad $ kde4Config
                 {
                         -- Basic
                         modMask            = mod1Mask,
@@ -36,33 +35,27 @@ main = do
                         workspaces         = [ "1" , "2" , "3", "4" , "5" ],
 
                         -- Hooks
-                        startupHook = execScriptHook "~/bin/start",
                         layoutHook = smartBorders $ myLayout,
-                        logHook = myLogHook dzenLeftBar,
-                        manageHook = manageHook defaultConfig <+> manageDocks <+> myManageHook <+> insertPosition End Newer
+                        manageHook = manageHook defaultConfig <+> manageDocks <+> myManageHook <+> insertPosition End Newer <+>
+                                        composeOne
+                                        [
+                                                isKDETrayWindow -?> doIgnore,
+                                                transience,
+                                                isFullscreen -?> doFullFloat
+                                        ]
                 }
                 `additionalKeys`
                 [
-                          ((mod1Mask .|. shiftMask, xK_q), kill)
+                        ((mod1Mask .|. shiftMask, xK_q), kill),
+                        ((mod1Mask .|. shiftMask, xK_m), windows W.swapMaster)
                 ]
-
---------------------------------------------------------------------------------
--- DZEN LOG RULES for workspace names, layout image, current program title
---------------------------------------------------------------------------------
-myLogHook h = dynamicLogWithPP ( defaultPP
-        {
-                ppCurrent         = dzenColor color15 background    . pad,
-                ppVisible         = dzenColor color14 background    . pad,
-                ppHidden          = dzenColor color14 background    . pad,
-                ppHiddenNoWindows = dzenColor background background . pad,
-                ppWsSep           = "",
-                ppSep             = "    ",
-                ppOrder           =  \(ws:l:t:_) -> [ws,l, t],
-                ppOutput          =   hPutStrLn h
-        } )
-
-myXmonadBar = "dzen2 -e '' -x '0' -y '0' -h '15' -w '500' -ta 'l' -fg '"++foreground++"' -bg '"++background++"' -fn "++myFont
-myStatusBar = "~/bin/status_bar '"++foreground++"' '"++background++"' "++myFont
+                `removeKeys`
+                [
+                        (mod1Mask .|. shiftMask, xK_slash ),
+                        (mod1Mask              , xK_p     ),
+                        (mod1Mask              , xK_n     ),
+                        (mod1Mask              , xK_Return)
+                ]
 
 --------------------------------------------------------------------------------
 -- DECLARE WORKSPACES RULES
@@ -77,10 +70,14 @@ myLayout = avoidStruts (tiled)
 --------------------------------------------------------------------------------
 -- APPLICATION SPECIFIC RULES
 --------------------------------------------------------------------------------
-myManageHook = composeAll
+myManageHook = composeAll . concat $
         [
-                title =? "exit" --> doFloat
+                [ className   =? c --> doFloat           | c <- myFloats],
+                [ title       =? t --> doFloat           | t <- myOtherFloats]
         ]
+        where
+                myFloats      = ["MPlayer", "Gimp", "Plasma", "Plasma-desktop"]
+                myOtherFloats = ["alsamixer", "exit"]
 --------------------------------------------------------------------------------
 -- VARIABLES
 --------------------------------------------------------------------------------
