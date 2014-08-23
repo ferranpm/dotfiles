@@ -197,14 +197,12 @@ nnoremap <Space> i_<Esc>r
 
 nnoremap - :Explore<cr>
 
-nnoremap ! :!clear; 
-
 " Function keys mappings
+nnoremap <F1>   :!clear; 
 nnoremap <F2>   :set cursorline! cursorline?<cr>
 nnoremap <F3>   :set hlsearch! hlsearch?<cr>
 nnoremap <F4>   :set spell! spell?<cr>
-nnoremap <F5>   :w<cr>:make<cr>
-nnoremap <F6>   :w<cr>:!rsync -avz -e ssh ~/SO2/zeos/ alumne@so2:~/zeos/<cr><cr>
+nnoremap <F5>   :update<cr>:make<cr>
 nnoremap <F12>  :call system('ctags')<cr>
 
 " Leader mappings
@@ -228,8 +226,8 @@ nnoremap                <leader>t :tag
 nnoremap    <silent>    <leader>. :update<cr>
 nnoremap    <silent>    <leader>bk :call BufferKill()<cr>
 nnoremap    <silent>    <leader>e :close<cr>
-nnoremap    <silent>    <leader>q :q<cr>
-nnoremap    <silent>    <leader>Q :qall<cr>
+nnoremap    <silent>    <leader>q :quit<cr>
+nnoremap    <silent>    <leader>Q :quitall<cr>
 
 " Functions
 function! Pipe(cmd)
