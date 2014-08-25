@@ -45,6 +45,8 @@ set wildignore+=.git/*,.gitignore,*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__
 " OS dependent
 if has('unix')
     set grepprg=ack\ -i
+else
+    set makeprg=mingw32-make
 endif
 
 " Indicators
@@ -124,7 +126,7 @@ call matchadd('RightMargin', '\%81c', 30)
 if has('gui_running')
     set guioptions-=m
     set guioptions-=T
-    set columns=120
+    set columns=9999
     set lines=9999
     set showtabline=2
     if has('unix')
@@ -147,7 +149,7 @@ command! SudoWrite call SudoWriteCmd()
 command! -nargs=? UnderscoreToUpperCamelCase <args>s#\m\(\%(\<\l\+\)\%(_\)\@=\)\|_\(\l\)#\u\1\2
 command! -nargs=? UnderscoreToLowerCamelCase <args>s#\m_\(\l\)#\u\1
 command! -nargs=? CamelCaseToUnderscore <args>s#\m\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+\)\(\u\)#\l\1_\l\2
-command! -nargs=+ Grep silent grep! <args> | copen | redraw!
+command! -nargs=+ Grep silent grep! <args> * | copen | redraw!
 command! -nargs=1 -range Align '<,'>call Align(<f-args>)
 
 " Mappings
@@ -198,7 +200,11 @@ nnoremap <Space> i_<Esc>r
 nnoremap - :Explore<cr>
 
 " Function keys mappings
-nnoremap <F1>   :!clear; 
+if has('unix')
+    nnoremap <F1>   :!clear; 
+else
+    nnoremap <F1>   :!
+endif
 nnoremap <F2>   :set cursorline! cursorline?<cr>
 nnoremap <F3>   :set hlsearch! hlsearch?<cr>
 nnoremap <F4>   :set spell! spell?<cr>
@@ -213,6 +219,7 @@ nnoremap <F12>  :call system('ctags')<cr>
  noremap                <leader>v "+p
 nnoremap                <leader>bc :ls!<cr>:bwipeout 
 nnoremap                <leader>bs :CtrlPBuffer<cr>
+nnoremap                <leader>bw :e #<cr>:bwipeout #<cr>
 nnoremap                <leader>d :set diff! scrollbind!<cr>:set diff? scrollbind?<cr>
 nnoremap                <leader>fc zM
 nnoremap                <leader>fe zMzvzz
