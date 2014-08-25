@@ -5,8 +5,7 @@ function! QtCppIndent()
     let declpat='\(;\|{\|}\)\_s*.'
     " If the line is a label, it's a no brainer
     if match(getline(v:lnum),labelpat) != -1
-        return &shiftwidth
-        " return 0
+        return 0
     endif
     " If the line starts with a closing brace, it's also easy: use cindent
     if match(getline(v:lnum),'^\s*}') != -1
@@ -37,7 +36,7 @@ function! QtCppIndent()
     endif
     " Otherwise we adjust so the beginning of the declaration is one
     " shiftwidth in
-    return &shiftwidth + &shiftwidth
+    return &shiftwidth
 endfunc
 
 set indentexpr=QtCppIndent()
