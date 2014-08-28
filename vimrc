@@ -150,6 +150,7 @@ command! -nargs=? UnderscoreToUpperCamelCase <args>s#\m\(\%(\<\l\+\)\%(_\)\@=\)\
 command! -nargs=? UnderscoreToLowerCamelCase <args>s#\m_\(\l\)#\u\1
 command! -nargs=? CamelCaseToUnderscore <args>s#\m\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+\)\(\u\)#\l\1_\l\2
 command! -nargs=+ Grep silent grep! <args> * | copen | redraw!
+command! -nargs=* Make silent make! <args> | copen | redraw!
 command! -nargs=1 -range Align '<,'>call Align(<f-args>)
 
 " Mappings
@@ -169,6 +170,9 @@ nnoremap <C-l> <C-w><C-l>
 nnoremap <C-h> <C-w><C-h>
 nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
+
+nnoremap ]q :cnext<cr>
+nnoremap [q :cprevious<cr>
 
 nnoremap <silent> <up>   :move .-2<cr>
 nnoremap <silent> <down> :move .+1<cr>
@@ -208,7 +212,8 @@ endif
 nnoremap <F2>   :set cursorline! cursorline?<cr>
 nnoremap <F3>   :set hlsearch! hlsearch?<cr>
 nnoremap <F4>   :set spell! spell?<cr>
-nnoremap <F5>   :update<cr>:make<cr>
+nnoremap <F5>   :update<cr>:Make<cr>
+nnoremap <F9>   :Gstatus<cr>
 nnoremap <F12>  :call system('ctags')<cr>
 
 " Leader mappings
