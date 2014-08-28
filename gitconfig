@@ -40,3 +40,9 @@
     ap = add -p
     dc = diff --cached
     r = rm
+
+[sendemail]
+    smtpencryption = tls
+    smtpserver = smtp.gmail.com
+    smtpuser = ferran.pel.mon@gmail.com
+    smtpserverport = 587
