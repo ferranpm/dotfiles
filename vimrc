@@ -233,7 +233,8 @@ nnoremap                <leader>g :Grep
 nnoremap                <leader>h :Help 
 nnoremap                <leader>L O<Esc>
 nnoremap                <leader>l o<Esc>
-nnoremap                <leader>m {jlrXdapGp
+nnoremap                <leader>m; :s/;$/ {\r}\rkVk=
+vnoremap                <leader>m; :s/;$/ {\r}\rgv=
 nnoremap                <leader>t :tag 
 nnoremap    <silent>    <leader>. :update<cr>
 nnoremap    <silent>    <leader>bk :call BufferKill()<cr>
