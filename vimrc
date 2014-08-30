@@ -80,7 +80,8 @@ set incsearch
 set smartcase
 
 " Folds
-set foldmethod=indent
+set foldmethod=syntax
+set foldopen=hor,mark,percent,quickfix,search,tag,undo
 set foldnestmax=1
 set foldcolumn=1
 set foldlevel=1
@@ -174,6 +175,9 @@ nnoremap <C-k> <C-w><C-k>
 nnoremap ]q :cnext<cr>
 nnoremap [q :cprevious<cr>
 
+nnoremap ]t :tnext<cr>
+nnoremap [t :tprevious<cr>
+
 nnoremap <silent> <up>   :move .-2<cr>
 nnoremap <silent> <down> :move .+1<cr>
 vnoremap <silent> <up>   :move .-2<cr>gv
@@ -235,7 +239,8 @@ nnoremap                <leader>L O<Esc>
 nnoremap                <leader>l o<Esc>
 nnoremap                <leader>m; :s/;$/ {\r}\rkVk=
 vnoremap                <leader>m; :s/;$/ {\r}\rgv=
-nnoremap                <leader>t :tag 
+nnoremap                <leader>t :CtrlPTag<cr>
+nnoremap    <silent>    <leader>ms iSigned-off-by: Ferran Pelayo Monfort <ferran.pel.mon@gmail.com><Esc>
 nnoremap    <silent>    <leader>. :update<cr>
 nnoremap    <silent>    <leader>bk :call BufferKill()<cr>
 nnoremap    <silent>    <leader>e :close<cr>
