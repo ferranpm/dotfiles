@@ -11,6 +11,7 @@ export HISTFILE=$HOME/.zshhistory
 export HISTSIZE=50000
 export KEYTIMEOUT=1
 export LESS='-R'
+export NEOVIM_LISTEN_ADDRESS='/tmp/neovim'
 export PATH=$HOME/.gem/ruby/2.1.0/bin/$HOME/bin:$HOME/.gem/ruby/2.1.0/bin:$PATH
 export SAVEHIST=10000
 export ZLS_COLORS=$LS_COLORS
@@ -102,9 +103,10 @@ alias pacre="sudo pacman -Rns"
 alias pacro="pacman -Qtd > /dev/null && sudo pacman -Rns \$(pacman -Qtdq | sed -e ':a;N;\$!ba;s/\n/ /g')" # Erase orphaned packages
 alias pacse="pacman -Ss"
 alias scan='iwlist wlan0 scanning | grep "ESSID" | sed -e "s/\ *ESSID:\"\(.*\)\"/\1/"'
-alias TODO="vim $HOME/TODO"
-alias vimrc="vim $HOME/.vimrc"
-alias zshrc="vim $HOME/.zshrc"
+alias e="nvim"
+alias TODO="e $HOME/TODO"
+alias vimrc="e $HOME/.vimrc"
+alias zshrc="e $HOME/.zshrc"
 
 ## FUNCTIONS ##
 insert-sudo() {
