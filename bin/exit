@@ -3,7 +3,6 @@
 echo ' s) Shutdown'
 echo ' r) Reboot'
 echo ' l) Logout'
-echo ' b) Lock'
 echo ' c) Cancel'
 
 while [[ $op != @('s'|'r'|'l'|'b'|'c') ]]; do
@@ -11,21 +10,8 @@ while [[ $op != @('s'|'r'|'l'|'b'|'c') ]]; do
 done
 
 case $op in
-    's')
-        mpc -q stop
-        systemctl poweroff
-        ;;
-    'r')
-        systemctl reboot
-        ;;
-    'l')
-        wm_proc=$(ps -e | grep -e i3$ -e startkde$ -e xmonad* | awk '{print $1}')
-        kill -9 $wm_proc
-        ;;
-    'b')
-        i3lock -ni $WALLPAPER
-        ;;
-    'c')
-        echo 'Bye'
-        ;;
+    's') systemctl poweroff ;;
+    'r') systemctl reboot ;;
+    'l') killall startkde ;;
+    'c') echo 'Bye' ;;
 esac
