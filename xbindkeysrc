@@ -16,7 +16,7 @@
 "setxkbmap us"
     Mod4 + u
 
-"setxkbmap us && xmodmap ~/dotfiles/Return"
+"setxkbmap us && xmodmap ~/.xmodmap"
     Mod4 + c
 
 "urxvtc -title exit -geometry 13x6+0+0 -e ~/bin/exit"
