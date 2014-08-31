@@ -3,12 +3,8 @@
 cd
 
 setxkbmap us
-xmodmap ~/dotfiles/Return &
+xmodmap ~/.xmodmap &
 
-feh --bg-scale $HOME/Pictures/Wallpapers/1920x1080_WhaleHighway.png &
-firefox &
-mpd &
-urxvtd -q -o -f &
-xbindkeys &
 xrdb $HOME/.Xresources &
-xscreensaver -no-splash &
+
+firefox &
