@@ -36,7 +36,6 @@ setopt PUSHD_IGNORE_DUPS
 setopt PUSHD_MINUS
 setopt PUSHD_SILENT
 setopt PUSHD_TOHOME
-setopt SHARE_HISTORY
 setopt VI
 
 ## ZSTYLE ##
@@ -103,7 +102,7 @@ alias pacre="sudo pacman -Rns"
 alias pacro="pacman -Qtd > /dev/null && sudo pacman -Rns \$(pacman -Qtdq | sed -e ':a;N;\$!ba;s/\n/ /g')" # Erase orphaned packages
 alias pacse="pacman -Ss"
 alias scan='iwlist wlan0 scanning | grep "ESSID" | sed -e "s/\ *ESSID:\"\(.*\)\"/\1/"'
-alias e="nvim"
+alias e="vim"
 alias TODO="e $HOME/TODO"
 alias vimrc="e $HOME/.vimrc"
 alias zshrc="e $HOME/.zshrc"

@@ -16,7 +16,7 @@ XTerm*backarrowKey: false
 XTerm*backarrowKeyIsErase: true
 XTerm*bellIsUrgent: true
 XTerm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
-XTerm*faceName: xft:Inconsolata:size=9
+XTerm*faceName: xft:Inconsolata:size=10
 XTerm*fastScroll: true
 XTerm*fullscreen: never
 XTerm*internalBorder: 0
