@@ -16,14 +16,6 @@
 " For a specific filetype highlighting rules issue :syntax list when a file of
 " that type is opened.
 
-" Initialization {{{
-if &t_Co != 256 && ! has("gui_running")
-  echomsg ""
-  echomsg "err: please use GUI or a 256-color terminal (so that t_Co=256 could be set)"
-  echomsg ""
-  finish
-endif
-
 set background=dark
 
 hi clear
