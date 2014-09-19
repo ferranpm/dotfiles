@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+
+usage() {
+    echo -e "$0 [OPTIONS] package"
+    echo -e "OPTIONS:"
+    echo -e "\t-d, --delete\n\t\tDelete downloaded and uncompressed files"
+    echo -e "\t-s, --search\n\t\tSearch for packages instead of installing"
+    echo -e "\t-p=NAME, --package=NAME\n\t\tSet the package name"
+    exit -1
+}
+
+args=($*)
+base_url=http://aur.archlinux.org/packages
+flag_delete=0
+flag_search=0
+package=""
+
+for i in $args; do
+    case $i in
+        -d|--delete)
+            flag_delete=1
+            ;;
+        -s|--search)
+            flag_search=1
+            ;;
+        -p=*|--package=*)
+            package="${i#*=}"
+            ;;
+    esac
+done
+
+if [[ "$package" = "" ]]; then
+    if [[ $# -lt 1 ]]; then
+        usage
+    else
+        package=${args[$(expr $# - 1)]}
+    fi
+fi
+if [[ $flag_search -eq 1 ]]; then
+    search="$package"
+    search_url="https://aur.archlinux.org/packages/?O=0&C=0&SeB=nd&K=${search}&outdated=&SB=n&SO=a&PP=50&do_Search=Go"
+    curl --silent $search_url |\
+        grep -e "<td><a href=\".*\">.*<\/a><\/td>" |\
+        sed "s/[	 ]*<td><a href=\".*\">\(.*\)<\/a><\/td>/\1/"
+else
+    dir=${package:0:2}
+    url=$base_url/$dir/$package/$package.tar.gz
+
+    wget --continue --no-verbose $url
+    if [[ $? -ne 0 ]]; then
+        exit -1
+    fi
+
+    tar xvzf $package.tar.gz
+
+    cd $package
+
+    makepkg -i
+
+    cd ..
+
+    if [[ $flag_delete -eq 1 ]]; then
+        rm -rf $package $package.tar.gz
+    fi
+fi
+
+exit 0
