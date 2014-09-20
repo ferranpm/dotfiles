@@ -31,7 +31,7 @@ main = xmonad $ kde4Config
                         borderWidth        = 4,
                         focusedBorderColor = "#A55",
                         focusFollowsMouse  = False,
-                        terminal           = "urxvt",
+                        terminal           = "xterm",
                         workspaces         = [ "1" , "2" , "3", "4" , "5" ],
 
                         -- Hooks
