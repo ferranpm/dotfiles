@@ -2,6 +2,7 @@ import XMonad
 
 -- LAYOUTS
 import XMonad.Layout.Spacing
+import XMonad.Layout.Tabbed
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
 
@@ -60,7 +61,7 @@ main = xmonad $ kde4Config
 --------------------------------------------------------------------------------
 -- DECLARE WORKSPACES RULES
 --------------------------------------------------------------------------------
-myLayout = avoidStruts (tiled)
+myLayout = avoidStruts (tiled ||| tabbed shrinkText defaultTheme)
         where
                 tiled    = spacing 10 $ ResizableTall nmaster delta ratio []
                 nmaster  = 1
