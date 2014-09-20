@@ -36,7 +36,7 @@ main = xmonad $ kde4Config
 
                         -- Hooks
                         layoutHook = smartBorders $ myLayout,
-                        manageHook = manageHook defaultConfig <+> manageDocks <+> myManageHook <+> insertPosition End Newer <+>
+                        manageHook = manageHook defaultConfig <+> manageDocks <+> myManageHook <+>
                                         composeOne
                                         [
                                                 isKDETrayWindow -?> doIgnore,
