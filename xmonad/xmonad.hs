@@ -57,6 +57,12 @@ main = xmonad $ kde4Config
                         (mod1Mask              , xK_n     ),
                         (mod1Mask              , xK_Return)
                 ]
+                `removeMouseBindings`
+                [
+                    (mod1Mask, button1),
+                    (mod1Mask, button2),
+                    (mod1Mask, button3)
+                ]
 
 --------------------------------------------------------------------------------
 -- DECLARE WORKSPACES RULES
