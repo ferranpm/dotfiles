@@ -1,0 +1,12 @@
+--style=attach
+--indent=spaces=4
+--indent-switches
+--indent-cases
+--indent-namespaces
+--keep-one-line-statements
+--break-closing-brackets
+--break-elseifs
+--remove-brackets
+--suffix=none
+--recursive
+
