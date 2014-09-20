@@ -3,14 +3,14 @@
 usage() {
     echo -e "$0 [OPTIONS] package"
     echo -e "OPTIONS:"
-    echo -e "\t-d, --delete\n\t\tDelete downloaded and uncompressed files"
+    echo -e "\t-n, --no-delete\n\t\tDo not delete downloaded and uncompressed files"
     echo -e "\t-p, --page\n\t\tWhen using the -s switch, search in this page"
     echo -e "\t-s, --search\n\t\tSearch for packages instead of installing"
     exit -1
 }
 
 base_url="https://aur.archlinux.org/"
-flag_delete=0
+flag_delete=1
 flag_search=0
 args=($@)
 package="${args[$(expr $# - 1)]}"
@@ -23,8 +23,8 @@ fi
 
 for i in $@; do
     case $i in
-        -d|--delete)
-            flag_delete=1
+        -n|--no-delete)
+            flag_delete=0
             ;;
         -s|--search)
             flag_search=1
@@ -39,29 +39,36 @@ if [[ $flag_search -eq 1 ]]; then
     search="$package"
     first=$(expr $page \* $results)
     search_url="${base_url}/packages/?O=${first}&SeB=nd&K=${search}&SB=n&SO=a&PP=${results}&do_Search=Go"
+    page_src=$()
+
+
     curl --silent $search_url |\
-        grep -e "<td><a href=\".*\">.*<\/a><\/td>" |\
-        sed "s/[	 ]*<td><a href=\".*\">\(.*\)<\/a><\/td>/\1/"
+            grep -e "<td><a href=\".*\">.*<\/a><\/td>" -e "<td class=\"wrap\">" |\
+            sed "s/[	 ]*<td><a href=\".*\">\(.*\)<\/a><\/td>/\1/" |\
+            sed "s/[	 ]*<td class=\"wrap\">\(.*\)<\/td>/\t\1/"
+
 else
     path=$(curl --silent ${base_url}/packages/${package}/ | grep "Download tarball" | sed "s/[	 ]*<li><a href=\"\(.*\)\">.*<\/a><\/li>/\1/")
     folder=$(echo $path | sed "s/^\/packages\/.*\/.*\/\(.*\).tar.gz$/\1/")
     url=${base_url}${path}
 
+    echo -e "\nGetting the package..."
     wget --continue --no-verbose $url
     if [[ $? -ne 0 ]]; then
         exit -1
     fi
 
+    echo -e "\nUncompressing..."
     tar xvzf ${folder}.tar.gz
 
     cd $folder
 
+    echo -e "\nBuilding..."
     makepkg -i
 
-    cd ..
-
-    if [[ $flag_delete -eq 1 ]]; then
-        rm -rf $folder ${folder}.tar.gz
+    if [[ $? -eq 0 ]] && [[ $flag_delete -eq 1 ]]; then
+            cd ..
+            rm -rf $folder ${folder}.tar.gz
     fi
 fi
 
