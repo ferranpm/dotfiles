@@ -37,7 +37,7 @@ main = xmonad $ kde4Config
 
                         -- Hooks
                         layoutHook = smartBorders $ myLayout,
-                        manageHook = manageHook defaultConfig <+> manageDocks <+> myManageHook <+>
+                        manageHook = manageHook defaultConfig <+> manageDocks <+> myManageHook <+> insertPosition Master Newer <+>
                                         composeOne
                                         [
                                                 isKDETrayWindow -?> doIgnore,
@@ -69,7 +69,7 @@ main = xmonad $ kde4Config
 --------------------------------------------------------------------------------
 myLayout = avoidStruts (tiled ||| tabbed shrinkText defaultTheme)
         where
-                tiled    = spacing 10 $ ResizableTall nmaster delta ratio []
+                tiled    = spacing 5 $ ResizableTall nmaster delta ratio []
                 nmaster  = 1
                 delta    = 5/100
                 ratio    = toRational (2/(1 + sqrt 5 :: Double))
