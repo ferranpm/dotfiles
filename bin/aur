@@ -43,9 +43,13 @@ if [[ $flag_search -eq 1 ]]; then
 
 
     curl --silent $search_url |\
-            grep -e "<td><a href=\".*\">.*<\/a><\/td>" -e "<td class=\"wrap\">" |\
-            sed "s/[	 ]*<td><a href=\".*\">\(.*\)<\/a><\/td>/\1/" |\
-            sed "s/[	 ]*<td class=\"wrap\">\(.*\)<\/td>/\t\1/"
+        grep \
+            -e "<td><a href=\".*\">.*<\/a><\/td>" \
+            -e "<td class=\"wrap\">" \
+            -e "outdated" |\
+        sed "s/[	 ]*<td><a href=\".*\">\(.*\)<\/a><\/td>/\1/" |\
+        sed "s/[	 ]*<td class=\"wrap\">\(.*\)<\/td>/\t\1/" |\
+        sed "s/[	 ]*<select name='outdated'>/[outdated]/"
 
 else
     path=$(curl --silent ${base_url}/packages/${package}/ | grep "Download tarball" | sed "s/[	 ]*<li><a href=\"\(.*\)\">.*<\/a><\/li>/\1/")
@@ -54,7 +58,8 @@ else
 
     echo -e "\nGetting the package..."
     wget --continue --no-verbose $url
-    if [[ $? -ne 0 ]]; then
+    if [[ $? -ne 0 ]] || [[ ! -f ${folder}.tar.gz ]]; then
+        echo -e "Could not find package"
         exit -1
     fi
 
