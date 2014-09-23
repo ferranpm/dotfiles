@@ -2,6 +2,7 @@
 --indent=spaces=4
 --indent-switches
 --indent-cases
+--indent-col1-comments
 --indent-namespaces
 --keep-one-line-statements
 --break-closing-brackets
