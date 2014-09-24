@@ -6,6 +6,7 @@ stty -ixon
 
 ## EXPORTS ##
 export COLORFGBG="15;0"
+export EDITOR="vim"
 export GREP_OPTIONS='--color=auto'
 export HISTFILE=$HOME/.zshhistory
 export HISTSIZE=50000
@@ -102,7 +103,7 @@ alias pacre="sudo pacman -Rns"
 alias pacro="pacman -Qtd > /dev/null && sudo pacman -Rns \$(pacman -Qtdq | sed -e ':a;N;\$!ba;s/\n/ /g')" # Erase orphaned packages
 alias pacse="pacman -Ss"
 alias scan='iwlist wlan0 scanning | grep "ESSID" | sed -e "s/\ *ESSID:\"\(.*\)\"/\1/"'
-alias e="vim"
+alias e="$EDITOR"
 alias TODO="e $HOME/TODO"
 alias vimrc="e $HOME/.vimrc"
 alias zshrc="e $HOME/.zshrc"
