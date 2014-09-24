@@ -83,7 +83,7 @@ myManageHook = composeAll . concat $
                 [ title       =? t --> doFloat           | t <- myOtherFloats]
         ]
         where
-                myFloats      = ["MPlayer", "Gimp", "Plasma", "Plasma-desktop"]
+                myFloats      = ["MPlayer", "Gimp", "Plasma", "Plasma-desktop", "Klipper", "Kded4"]
                 myOtherFloats = ["alsamixer", "exit"]
 --------------------------------------------------------------------------------
 -- VARIABLES
