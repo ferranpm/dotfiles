@@ -94,7 +94,7 @@ set nowritebackup
 
 " Status Line
 set laststatus=2
-set statusline=%f\ %y%h%r%w\ (%l/%L,\ %c)\ %p%%%=%m\ %{getcwd()}
+set statusline=%f%m\ %y%h%r%w\ (%l/%L,\ %c)\ %p%%\ %=%{substitute(getcwd(),'^'.$HOME,'~','')}
 
 " Menu
 set wildmenu
@@ -102,15 +102,7 @@ set wildmode=longest:list,full
 
 " Colors
 try
-    colorscheme default
-    if has('gui_running')
-        set background=dark
-        colorscheme xoria256
-    else
-        if has('unix') && &background == "dark"
-            colorscheme xoria256
-        endif
-    endif
+    colorscheme xoria256
 catch
 endtry
 
@@ -166,6 +158,8 @@ nmap Q gqap
 
 inoremap <C-o> <C-x><C-o><C-p>
 inoremap <C-j> <esc>O
+
+inoremap { {aAa}k^x$s
 
 nnoremap <C-l> <C-w><C-l>
 nnoremap <C-h> <C-w><C-h>
