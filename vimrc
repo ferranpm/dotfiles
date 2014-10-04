@@ -232,7 +232,7 @@ nnoremap                <leader>g :Grep
 nnoremap                <leader>h :Help 
 nnoremap                <leader>L O<Esc>
 nnoremap                <leader>l o<Esc>
-nnoremap                <leader>m; :s/;$/ {\r}\rkVk=
+nnoremap                <leader>m; :s/;$/ {\r}\rkVk=o
 vnoremap                <leader>m; :s/;$/ {\r}\rgv=
 nnoremap                <leader>t :CtrlPTag<cr>
 nnoremap    <silent>    <leader>. :update<cr>
