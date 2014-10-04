@@ -80,7 +80,8 @@ myLayout = avoidStruts (tiled ||| tabbed shrinkText defaultTheme)
 myManageHook = composeAll . concat $
         [
                 [ className   =? c --> doFloat           | c <- myFloats],
-                [ title       =? t --> doFloat           | t <- myOtherFloats]
+                [ title       =? t --> doFloat           | t <- myOtherFloats],
+                [ className   =? "XTerm" --> insertPosition End Newer ]
         ]
         where
                 myFloats      = ["MPlayer", "Gimp", "Plasma", "Plasma-desktop", "Klipper", "Kded4"]
