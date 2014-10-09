@@ -81,11 +81,12 @@ myManageHook = composeAll . concat $
         [
                 [ className   =? c --> doFloat           | c <- myFloats],
                 [ title       =? t --> doFloat           | t <- myOtherFloats],
-                [ className   =? "XTerm" --> insertPosition End Newer ]
+                [ className   =? l --> insertPosition End Newer | l <- myPosition]
         ]
         where
                 myFloats      = ["MPlayer", "Gimp", "Plasma", "Plasma-desktop", "Klipper", "Kded4"]
                 myOtherFloats = ["alsamixer", "exit"]
+                myPosition    = ["XTerm", "Dolphin"]
 --------------------------------------------------------------------------------
 -- VARIABLES
 --------------------------------------------------------------------------------
