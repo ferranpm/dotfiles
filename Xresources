@@ -34,72 +34,52 @@ Xpdf*fontList: -misc-dejavu sans light-extralight-r-normal--0-0-0-0-p-0-ascii-0
 Xpdf*foreground: #333333
 Xpdf*background: #AAAAAA
 
-!!!!!!!!!!!!!!!!!!!!
-!! XTerm Colors 1 !!
-!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!
+!! XTerm dark !!
+!!!!!!!!!!!!!!!!
 XTerm*foreground: #DADADA
 XTerm*background: #111111
-
 XTerm*borderColor:  #151515
 XTerm*cursorColor:  #ff8939
 XTerm*cursorColor2: #151515
-
-! Black
 XTerm*color0:     #2B2B2B
-XTerm*color8:     #404040
-! Red
 XTerm*color1:     #E84F4F
-XTerm*color9:     #D23D3D
-! Green
 XTerm*color2:     #B8D68C
-XTerm*color10:    #A0CF5D
-! Yellow
 XTerm*color3:     #E1AA5D
-XTerm*color11:    #F39D21
-! Blue
 XTerm*color4:     #7DC1CF
-XTerm*color12:    #4E9FB1
-! Magenta
 XTerm*color5:     #9B64FB
-XTerm*color13:    #8542FF
-! Cyan
 XTerm*color6:     #6D878D
-XTerm*color14:    #42717B
-! White
 XTerm*color7:     #dddddd
+XTerm*color8:     #404040
+XTerm*color9:     #D23D3D
+XTerm*color10:    #A0CF5D
+XTerm*color11:    #F39D21
+XTerm*color12:    #4E9FB1
+XTerm*color13:    #8542FF
+XTerm*color14:    #42717B
 XTerm*color15:    #dddddd
 
-!!!!!!!!!!!!!!!!!!!!
-!! XTerm Colors 2 !!
-!!!!!!!!!!!!!!!!!!!!
+! !!!!!!!!!!!!!!!!
+! ! XTerm light !!
+! !!!!!!!!!!!!!!!!
 ! XTerm*foreground: #0F0F0F
 ! XTerm*background: #FFFFFF
-!
 ! XTerm*borderColor:  #151515
 ! XTerm*cursorColor:  #ff8939
 ! XTerm*cursorColor2: #151515
-!
-! ! Black
 ! XTerm*color0:     #2B2B2B
-! XTerm*color8:     #404040
-! ! Red
 ! XTerm*color1:     #E84F4F
-! XTerm*color9:     #D23D3D
-! ! Green
 ! XTerm*color2:     #78964C
-! XTerm*color10:    #A0CF5D
-! ! Yellow
 ! XTerm*color3:     #E1AA5D
-! XTerm*color11:    #F39D21
-! ! Blue
 ! XTerm*color4:     #7DC1CF
-! XTerm*color12:    #4E9FB1
-! ! Magenta
 ! XTerm*color5:     #9B64FB
-! XTerm*color13:    #8542FF
-! ! Cyan
 ! XTerm*color6:     #6D878D
-! XTerm*color14:    #42717B
-! ! White
 ! XTerm*color7:     #dddddd
+! XTerm*color8:     #404040
+! XTerm*color9:     #D23D3D
+! XTerm*color10:    #A0CF5D
+! XTerm*color11:    #F39D21
+! XTerm*color12:    #4E9FB1
+! XTerm*color13:    #8542FF
+! XTerm*color14:    #42717B
 ! XTerm*color15:    #dddddd
