@@ -8,9 +8,17 @@ snippet fori
 		${3:/* code */}
 	}${0}
 snippet class
-	class ${1:`expand("%:t:r")`} : public ${2:QObject} {
-		${3:Q_OBJECT}
-		public:
-			$1();${0}
-		private:
+	class ${1:`expand("%:t:r")`} {
+	public:
+		$1(${4});${0}
+		~$1();
+	private:
+	};
+snippet classqt
+	class ${1:`expand("%:t:r")`} : public ${2:QWidget} {
+	${3:Q_OBJECT}
+	public:
+		$1(${4:QWidget* parent = 0});${0}
+		~$1();
+	private:
 	};
