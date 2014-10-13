@@ -8,23 +8,24 @@
 *saveLines: 512
 *scrollBar: false
 *scrollTtyOutput: false
+*scrollTtyKeypress: true
 
 !!!!!!!!!!!
-!! XTerm !!
+!! urxvt !!
 !!!!!!!!!!!
-XTerm*backarrowKey: false
-XTerm*backarrowKeyIsErase: true
-XTerm*bellIsUrgent: true
-XTerm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
-XTerm*faceName: xft:Inconsolata:size=10
-XTerm*fastScroll: true
-XTerm*fullscreen: never
-XTerm*internalBorder: 0
-XTerm*scrollKey: true
-XTerm*termName: xterm-256color
-XTerm*translations: #override Shift <Btn1Up>: exec-formatted("firefox '%t'", PRIMARY)
-XTerm*utf8: true
-XTerm*visualbell: true
+urxvt*backarrowKey: false
+urxvt*backarrowKeyIsErase: true
+urxvt*bellIsUrgent: true
+urxvt*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
+urxvt*font: xft:Inconsolata:size=10
+urxvt*fastScroll: true
+urxvt*fullscreen: never
+urxvt*internalBorder: 0
+urxvt*scrollKey: true
+urxvt*termName: xterm-256color
+urxvt*translations: #override Shift <Btn1Up>: exec-formatted("firefox '%t'", PRIMARY)
+urxvt*utf8: true
+urxvt*visualbell: true
 
 !!!!!!!!!!
 !! Xpdf !!
@@ -35,51 +36,51 @@ Xpdf*foreground: #333333
 Xpdf*background: #AAAAAA
 
 !!!!!!!!!!!!!!!!
-!! XTerm dark !!
+!! urxvt dark !!
 !!!!!!!!!!!!!!!!
-XTerm*foreground: #DADADA
-XTerm*background: #111111
-XTerm*borderColor:  #151515
-XTerm*cursorColor:  #ff8939
-XTerm*cursorColor2: #151515
-XTerm*color0:     #2B2B2B
-XTerm*color1:     #E84F4F
-XTerm*color2:     #B8D68C
-XTerm*color3:     #E1AA5D
-XTerm*color4:     #7DC1CF
-XTerm*color5:     #9B64FB
-XTerm*color6:     #6D878D
-XTerm*color7:     #dddddd
-XTerm*color8:     #404040
-XTerm*color9:     #D23D3D
-XTerm*color10:    #A0CF5D
-XTerm*color11:    #F39D21
-XTerm*color12:    #4E9FB1
-XTerm*color13:    #8542FF
-XTerm*color14:    #42717B
-XTerm*color15:    #dddddd
+urxvt*foreground: #DADADA
+urxvt*background: #111111
+urxvt*borderColor:  #151515
+urxvt*cursorColor:  #ff8939
+urxvt*cursorColor2: #151515
+urxvt*color0:     #2B2B2B
+urxvt*color1:     #E84F4F
+urxvt*color2:     #B8D68C
+urxvt*color3:     #E1AA5D
+urxvt*color4:     #7DC1CF
+urxvt*color5:     #9B64FB
+urxvt*color6:     #6D878D
+urxvt*color7:     #dddddd
+urxvt*color8:     #404040
+urxvt*color9:     #D23D3D
+urxvt*color10:    #A0CF5D
+urxvt*color11:    #F39D21
+urxvt*color12:    #4E9FB1
+urxvt*color13:    #8542FF
+urxvt*color14:    #42717B
+urxvt*color15:    #dddddd
 
 ! !!!!!!!!!!!!!!!!
-! ! XTerm light !!
+! ! urxvt light !!
 ! !!!!!!!!!!!!!!!!
-! XTerm*foreground: #0F0F0F
-! XTerm*background: #FFFFFF
-! XTerm*borderColor:  #151515
-! XTerm*cursorColor:  #ff8939
-! XTerm*cursorColor2: #151515
-! XTerm*color0:     #2B2B2B
-! XTerm*color1:     #E84F4F
-! XTerm*color2:     #78964C
-! XTerm*color3:     #E1AA5D
-! XTerm*color4:     #7DC1CF
-! XTerm*color5:     #9B64FB
-! XTerm*color6:     #6D878D
-! XTerm*color7:     #dddddd
-! XTerm*color8:     #404040
-! XTerm*color9:     #D23D3D
-! XTerm*color10:    #A0CF5D
-! XTerm*color11:    #F39D21
-! XTerm*color12:    #4E9FB1
-! XTerm*color13:    #8542FF
-! XTerm*color14:    #42717B
-! XTerm*color15:    #dddddd
+! urxvt*foreground: #0F0F0F
+! urxvt*background: #FFFFFF
+! urxvt*borderColor:  #151515
+! urxvt*cursorColor:  #ff8939
+! urxvt*cursorColor2: #151515
+! urxvt*color0:     #2B2B2B
+! urxvt*color1:     #E84F4F
+! urxvt*color2:     #78964C
+! urxvt*color3:     #E1AA5D
+! urxvt*color4:     #7DC1CF
+! urxvt*color5:     #9B64FB
+! urxvt*color6:     #6D878D
+! urxvt*color7:     #dddddd
+! urxvt*color8:     #404040
+! urxvt*color9:     #D23D3D
+! urxvt*color10:    #A0CF5D
+! urxvt*color11:    #F39D21
+! urxvt*color12:    #4E9FB1
+! urxvt*color13:    #8542FF
+! urxvt*color14:    #42717B
+! urxvt*color15:    #dddddd

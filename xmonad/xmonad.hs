@@ -32,7 +32,7 @@ main = xmonad $ kde4Config
                         borderWidth        = 4,
                         focusedBorderColor = "#A55",
                         focusFollowsMouse  = False,
-                        terminal           = "xterm",
+                        terminal           = "urxvt",
                         workspaces         = [ "1" , "2" , "3", "4" , "5" ],
 
                         -- Hooks
@@ -86,7 +86,7 @@ myManageHook = composeAll . concat $
         where
                 myFloats      = ["MPlayer", "Gimp", "Plasma", "Plasma-desktop", "Klipper", "Kded4"]
                 myOtherFloats = ["alsamixer", "exit"]
-                myPosition    = ["XTerm", "Dolphin"]
+                myPosition    = ["XTerm", "URxvt", "Dolphin"]
 --------------------------------------------------------------------------------
 -- VARIABLES
 --------------------------------------------------------------------------------
