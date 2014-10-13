@@ -1,6 +1,6 @@
 " Pathogen
 if !has("python")
-    let g:pathogen_disabled = ["ultisnips", "Omnisharp"]
+    let g:pathogen_disabled = ["ultisnips"]
 endif
 try
     runtime bundle/pathogen/autoload/pathogen.vim
@@ -101,6 +101,8 @@ set wildmenu
 set wildmode=longest:list,full
 
 " Colors
+set t_Co=256
+set term=xterm-256color
 try
     colorscheme xoria256
 catch
@@ -159,7 +161,11 @@ nmap Q gqap
 inoremap <C-o> <C-x><C-o><C-p>
 inoremap <C-j> <esc>O
 
-inoremap { {aAa}k^x$s
+nnoremap ) <Esc>/[)}"'\]>]<CR>
+nnoremap ( <Esc>?[({"'\[<]<CR>
+vnoremap ) /[)}"'\]>]<CR>
+vnoremap ( ?[({"'\[<]<CR>
+
 
 nnoremap <C-l> <C-w><C-l>
 nnoremap <C-h> <C-w><C-h>
@@ -233,7 +239,6 @@ nnoremap                <leader>h :Help
 nnoremap                <leader>L O<Esc>
 nnoremap                <leader>l o<Esc>
 nnoremap                <leader>m; :s/;$/ {\r}\rkVk=o
-vnoremap                <leader>m; :s/;$/ {\r}\rgv=
 nnoremap                <leader>t :CtrlPTag<cr>
 nnoremap    <silent>    <leader>. :update<cr>
 nnoremap    <silent>    <leader>bk :call BufferKill()<cr>
@@ -241,6 +246,7 @@ nnoremap    <silent>    <leader>e :close<cr>
 nnoremap    <silent>    <leader>ms iSigned-off-by: Ferran Pelayo Monfort <ferran.pel.mon@gmail.com><Esc>
 nnoremap    <silent>    <leader>q :quit<cr>
 nnoremap    <silent>    <leader>Q :quitall<cr>
+vnoremap                <leader>m; :s/;$/ {\r}\rgv=
 
 " Functions
 function! Pipe(cmd)
