@@ -323,7 +323,7 @@ function! MaxColumn(string, startline, endline, column)
 endfunction
 
 function! Align(string) range
-    let col = virtcol("'<")
+    let col = min([ virtcol("'<"), virtcol("'>") ])
     let l:cursor_save = getpos('.')
     let l:max_column = MaxColumn(a:string, a:firstline, a:lastline, col)
     for line in range(a:lastline - a:firstline + 1)
