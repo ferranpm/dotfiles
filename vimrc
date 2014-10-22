@@ -66,7 +66,7 @@ set splitbelow
 set autoindent
 set expandtab
 set list
-set listchars=tab:\|\ ,trail:·
+set listchars=tab:»\ ,trail:·
 set shiftwidth=4
 set smartindent
 set smarttab
