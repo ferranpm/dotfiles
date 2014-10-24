@@ -2,6 +2,13 @@ PROMPT='
 %{$fg[green]%}%n%{$fg[blue]%}%{$reset_color%} in %{$fg[blue]%}%{$fg[red]%}%~ %{$reset_color%}at %{$fg[cyan]%}%m$(git_prompt)$(vi_prompt)
 %{$fg_bold[cyan]%}%(!.#.»)%{$reset_color%} '
 
+ZSH_FOLDER=$HOME/.zsh
+if [[ -d $ZSH_FOLDER ]]; then
+    for file in $(find $ZSH_FOLDER -name "*.plugin.zsh"); do
+        source $file
+    done
+fi
+
 stty -ixon
 
 ## EXPORTS ##
@@ -133,41 +140,18 @@ extract () {
     for f in $*; do
         if [ -f $f ] ; then
             case $f in
-                *.tar.bz2)
-                    tar xvjf $f
-                    ;;
-                *.tar.gz)
-                    tar xvzf $f
-                    ;;
-                *.bz2)
-                    bunzip2 $f
-                    ;;
-                *.rar)
-                    unrar x $f
-                    ;;
-                *.gz)
-                    gunzip $f
-                    ;;
-                *.tar)
-                    tar xvf $f
-                    ;;
-                *.tbz2)
-                    tar xvjf $f
-                    ;;
-                *.tgz)
-                    tar xvzf $f
-                    ;;
-                *.zip)
-                    unzip $f
-                    ;;
-                *.Z)
-                    uncompress $f
-                    ;;
-                *.7z)
-                    7z x $f
-                    ;;
-                *)
-                    echo "don't know how to extract '$f'..." ;;
+                *.tar.bz2) tar xvjf $f ;;
+                *.tar.gz) tar xvzf $f ;;
+                *.bz2) bunzip2 $f ;;
+                *.rar) unrar x $f ;;
+                *.gz) gunzip $f ;;
+                *.tar) tar xvf $f ;;
+                *.tbz2) tar xvjf $f ;;
+                *.tgz) tar xvzf $f ;;
+                *.zip) unzip $f ;;
+                *.Z) uncompress $f ;;
+                *.7z) 7z x $f ;;
+                *) echo "don't know how to extract '$f'..." ;;
             esac
         else
             echo "'$f' is not a valid file!"
