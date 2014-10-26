@@ -8,6 +8,12 @@ try
 catch
 endtry
 
+" Clang-Complete
+let g:clang_complete_auto=1
+let g:clang_hl_errors=1
+let g:clang_snippets=1
+let g:clang_close_preview=1
+
 " Netrw
 let g:netrw_banner=0
 let g:netrw_liststyle=1
@@ -102,11 +108,7 @@ set wildmode=longest:list,full
 
 " Colors
 set t_Co=256
-set term=xterm-256color
-try
-    colorscheme xoria256
-catch
-endtry
+colorscheme xoria256
 
 " Highlights
 highlight WhiteOnRed ctermfg=255 ctermbg=196 guifg=#ffffff guibg=#ff0000
@@ -129,11 +131,6 @@ if has('gui_running')
     elseif has('win32')
         set guifont=Consolas:h9
     endif
-endif
-
-" Autocommands
-if has('autocmd')
-    autocmd! FileType * setlocal formatoptions=ql
 endif
 
 " Commands
@@ -225,8 +222,8 @@ nnoremap <F12>  :call system('ctags')<cr>
  noremap                <leader>c "+y
  noremap                <leader>j :join<cr>
  noremap                <leader>p :put *<cr>
- noremap                <leader>s :let p=getpos('.')<cr>:%s/\s\+$//<cr>:call setpos('.',p)<cr>
  noremap                <leader>v "+p
+ noremap    <silent>    <leader>zs :let p=getpos('.')<cr>:%s/\s\+$//<cr>:call setpos('.',p)<cr>
 nnoremap                <leader>bc :ls!<cr>:bwipeout 
 nnoremap                <leader>bs :CtrlPBuffer<cr>
 nnoremap                <leader>bw :e #<cr>:bwipeout #<cr>
@@ -239,14 +236,18 @@ nnoremap                <leader>h :Help
 nnoremap                <leader>L O<Esc>
 nnoremap                <leader>l o<Esc>
 nnoremap                <leader>m; :s/;$/ {\r}\rkVk=o
+nnoremap                <leader>S :%s/\<<C-r>=expand('<cword>')<CR>\>/
+nnoremap                <leader>s :s/\<<C-r>=expand('<cword>')<CR>\>/
+vnoremap                <leader>S y<esc>:%s/<C-r>0/
+vnoremap                <leader>s y<esc>:s/<C-r>0/
 nnoremap                <leader>t :CtrlPTag<cr>
+vnoremap                <leader>m; :s/;$/ {\r}\rgv=
 nnoremap    <silent>    <leader>. :update<cr>
 nnoremap    <silent>    <leader>bk :call BufferKill()<cr>
 nnoremap    <silent>    <leader>e :close<cr>
 nnoremap    <silent>    <leader>ms iSigned-off-by: Ferran Pelayo Monfort <ferran.pel.mon@gmail.com><Esc>
 nnoremap    <silent>    <leader>q :quit<cr>
 nnoremap    <silent>    <leader>Q :quitall<cr>
-vnoremap                <leader>m; :s/;$/ {\r}\rgv=
 
 " Functions
 function! Pipe(cmd)
