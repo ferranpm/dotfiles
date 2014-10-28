@@ -12,6 +12,8 @@
 *termName: xterm-256color
 *visualBell: false
 
+#define term_font xft:Inconsolata:size=13
+
 !!!!!!!!!!!
 !! xterm !!
 !!!!!!!!!!!
@@ -23,11 +25,12 @@ XTerm*fastScroll: true
 XTerm*fullscreen: never
 XTerm*translations: #override Shift <Btn1Up>: exec-formatted("firefox '%t'", PRIMARY)
 XTerm*utf8: true
+XTerm*faceName: term_font
 
 !!!!!!!!!!!
 !! urxvt !!
 !!!!!!!!!!!
-urxvt*font: xft:Inconsolata:size=13
+urxvt*font: term_font
 urxvt*scrollTtyKeypress: true
 
 !!!!!!!!!!
