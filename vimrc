@@ -39,7 +39,6 @@ set nowrap
 set autoread
 set backspace=2
 set encoding=utf-8
-set isfname-==
 set mouse=n
 set nocompatible
 set scrolloff=10
@@ -135,7 +134,7 @@ endif
 
 " Commands
 command! -nargs=+ -complete=command Pipe call Pipe(<q-args>)
-command! -nargs=+ -complete=shellcmd Shell call Shell(<q-args>)
+command! -nargs=+ -complete=shellcmd Shell call Shell(<f-args>)
 command! -nargs=1 -complete=help Help if &ft=~"help" | help <args> | else | tab help <args> | endif
 command! SudoWrite call SudoWriteCmd()
 command! -nargs=? UnderscoreToUpperCamelCase <args>s#\m\(\%(\<\l\+\)\%(_\)\@=\)\|_\(\l\)#\u\1\2
@@ -144,6 +143,7 @@ command! -nargs=? CamelCaseToUnderscore <args>s#\m\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+
 command! -nargs=+ Grep silent grep! <args> * | copen | redraw!
 command! -nargs=* Make silent make! <args> | copen | redraw!
 command! -nargs=1 -range Align '<,'>call Align(<f-args>)
+command! -nargs=0 Reg call Reg() | normal <cr>
 
 " Mappings
 nmap J 5j
@@ -337,4 +337,13 @@ function! Align(string) range
         endif
     endfor
     call setpos('.', l:cursor_save)
+endfunction
+
+function! Reg()
+    reg
+    echo "Register: "
+    let char = getchar()
+    execute "normal! \"".nr2char(char)."p"
+    redraw
+    normal! k
 endfunction
