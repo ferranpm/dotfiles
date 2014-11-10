@@ -41,40 +41,16 @@ Xpdf*fontList: -misc-dejavu sans light-extralight-r-normal--0-0-0-0-p-0-ascii-0
 Xpdf*foreground: #333333
 Xpdf*background: #AAAAAA
 
-! !!!!!!!!!!!!!!!!
-! !! urxvt dark !!
-! !!!!!!!!!!!!!!!!
-! #define C_foreground   #DADADA
-! #define C_background   #111111
-! #define C_cursorColor  #ff8939
-! #define C_cursorColor2 #151515
-! #define C_color0       #2B2B2B
-! #define C_color1       #E84F4F
-! #define C_color2       #B8D68C
-! #define C_color3       #E1AA5D
-! #define C_color4       #7DC1CF
-! #define C_color5       #9B64FB
-! #define C_color6       #6D878D
-! #define C_color7       #dddddd
-! #define C_color8       #404040
-! #define C_color9       #D23D3D
-! #define C_color10      #A0CF5D
-! #define C_color11      #F39D21
-! #define C_color12      #4E9FB1
-! #define C_color13      #8542FF
-! #define C_color14      #42717B
-! #define C_color15      #dddddd
-
-!!!!!!!!!!!!!!!!!
-!! urxvt light !!
-!!!!!!!!!!!!!!!!!
-#define C_foreground   #0F0F0F
-#define C_background   #FDF6E3
+!!!!!!!!!!!!!!!!
+!! urxvt dark !!
+!!!!!!!!!!!!!!!!
+#define C_foreground   #DADADA
+#define C_background   #111111
 #define C_cursorColor  #ff8939
 #define C_cursorColor2 #151515
 #define C_color0       #2B2B2B
 #define C_color1       #E84F4F
-#define C_color2       #78964C
+#define C_color2       #B8D68C
 #define C_color3       #E1AA5D
 #define C_color4       #7DC1CF
 #define C_color5       #9B64FB
@@ -88,6 +64,30 @@ Xpdf*background: #AAAAAA
 #define C_color13      #8542FF
 #define C_color14      #42717B
 #define C_color15      #dddddd
+
+! !!!!!!!!!!!!!!!!!
+! !! urxvt light !!
+! !!!!!!!!!!!!!!!!!
+! #define C_foreground   #0F0F0F
+! #define C_background   #FDF6E3
+! #define C_cursorColor  #ff8939
+! #define C_cursorColor2 #151515
+! #define C_color0       #2B2B2B
+! #define C_color1       #E84F4F
+! #define C_color2       #78964C
+! #define C_color3       #E1AA5D
+! #define C_color4       #7DC1CF
+! #define C_color5       #9B64FB
+! #define C_color6       #6D878D
+! #define C_color7       #dddddd
+! #define C_color8       #404040
+! #define C_color9       #D23D3D
+! #define C_color10      #A0CF5D
+! #define C_color11      #F39D21
+! #define C_color12      #4E9FB1
+! #define C_color13      #8542FF
+! #define C_color14      #42717B
+! #define C_color15      #dddddd
 
 !!!!!!!!!!!!
 !! Common !!
