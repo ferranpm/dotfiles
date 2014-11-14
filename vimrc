@@ -39,6 +39,7 @@ set nowrap
 set autoread
 set backspace=2
 set encoding=utf-8
+set hidden confirm
 set mouse=n
 set nocompatible
 set scrolloff=10
@@ -126,9 +127,9 @@ if has('gui_running')
     set lines=9999
     set showtabline=2
     if has('unix')
-        set guifont=Inconsolata
+        set guifont=Inconsolata\ 13
     elseif has('win32')
-        set guifont=Consolas:h9
+        set guifont=Consolas:h11
     endif
 endif
 
@@ -143,7 +144,7 @@ command! -nargs=? CamelCaseToUnderscore <args>s#\m\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+
 command! -nargs=+ Grep silent grep! <args> * | copen | redraw!
 command! -nargs=* Make silent make! <args> | copen | redraw!
 command! -nargs=1 -range Align '<,'>call Align(<f-args>)
-command! -nargs=0 Reg call Reg() | normal <cr>
+command! -nargs=0 Reg call Reg()
 
 " Mappings
 nmap J 5j
@@ -158,11 +159,12 @@ nmap Q gqap
 inoremap <C-o> <C-x><C-o><C-p>
 inoremap <C-j> <esc>O
 
+inoremap <C-^> <Esc><C-^>
+
 nnoremap ) <Esc>/[)}"'\]>]<CR>
 nnoremap ( <Esc>?[({"'\[<]<CR>
 vnoremap ) /[)}"'\]>]<CR>
 vnoremap ( ?[({"'\[<]<CR>
-
 
 nnoremap <C-l> <C-w><C-l>
 nnoremap <C-h> <C-w><C-h>
@@ -227,7 +229,7 @@ nnoremap <F12>  :call system('ctags')<cr>
 nnoremap                <leader>bc :ls!<cr>:bwipeout 
 nnoremap                <leader>bs :CtrlPBuffer<cr>
 nnoremap                <leader>bw :e #<cr>:bwipeout #<cr>
-nnoremap                <leader>d :set diff! scrollbind!<cr>:set diff? scrollbind?<cr>
+nnoremap                <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap                <leader>fc zM
 nnoremap                <leader>fe zMzvzz
 nnoremap                <leader>fo zR
@@ -244,7 +246,6 @@ nnoremap                <leader>t :CtrlPTag<cr>
 vnoremap                <leader>m; :s/;$/ {\r}\rgv=
 nnoremap    <silent>    <leader>. :update<cr>
 nnoremap    <silent>    <leader>bk :call BufferKill()<cr>
-nnoremap    <silent>    <leader>e :close<cr>
 nnoremap    <silent>    <leader>ms iSigned-off-by: Ferran Pelayo Monfort <ferran.pel.mon@gmail.com><Esc>
 nnoremap    <silent>    <leader>q :quit<cr>
 nnoremap    <silent>    <leader>Q :quitall<cr>
@@ -342,8 +343,9 @@ endfunction
 function! Reg()
     reg
     echo "Register: "
-    let char = getchar()
-    execute "normal! \"".nr2char(char)."p"
+    let char = nr2char(getchar())
+    if char != "\<Esc>"
+        execute "normal! \"".char."p"
+    endif
     redraw
-    normal! k
 endfunction
