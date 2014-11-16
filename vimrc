@@ -8,6 +8,11 @@ try
 catch
 endtry
 
+" incsearch
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
 " Clang-Complete
 let g:clang_complete_auto=1
 let g:clang_hl_errors=1
