@@ -113,7 +113,14 @@ set wildmode=longest:list,full
 
 " Colors
 set t_Co=256
-colorscheme xoria256
+if has("unix")
+    colorscheme xoria256
+else
+    if has("gui_running")
+        set background=light
+        colorscheme solarized
+    endif
+endif
 
 " Highlights
 highlight WhiteOnRed ctermfg=255 ctermbg=196 guifg=#ffffff guibg=#ff0000
