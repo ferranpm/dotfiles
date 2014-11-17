@@ -199,6 +199,8 @@ nnoremap <silent> N N:call HLNext(0.2)<cr>
 nnoremap <silent> * *:call HLNext(0.2)<cr>
 nnoremap <silent> # #:call HLNext(0.2)<cr>
 
+nnoremap z/ :call AutoHighlightToggle()<cr>
+
 vnoremap > >gv
 vnoremap < <gv
 
@@ -353,4 +355,21 @@ function! Reg()
         execute "normal! \"".char."p"
     endif
     redraw
+endfunction
+
+function! AutoHighlightToggle()
+    if exists('#auto_highlight')
+        match none IncSearch
+        autocmd! auto_highlight
+        augroup! auto_highlight
+        augroup END
+        setl updatetime=5000
+        echo 'Highlight current word: OFF'
+    else
+        augroup auto_highlight
+            autocmd! CursorHold * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+        augroup END
+        setl updatetime=500
+        echo 'Highlight current word: ON'
+    endif
 endfunction
