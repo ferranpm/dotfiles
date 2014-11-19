@@ -1,4 +1,5 @@
-" Pathogen
+" vim: foldmethod=marker
+" Pathogen {{{
 if !has("python")
     let g:pathogen_disabled = ["ultisnips"]
 endif
@@ -7,35 +8,41 @@ try
     call pathogen#infect()
 catch
 endtry
+" }}}
 
-" incsearch
+" Incsearch {{{
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
+" }}}
 
-" Clang-Complete
+" Clang-Complete {{{
 let g:clang_complete_auto=1
 let g:clang_hl_errors=1
 let g:clang_snippets=1
 let g:clang_close_preview=1
+" }}}
 
-" Netrw
+" Netrw {{{
 let g:netrw_banner=0
 let g:netrw_liststyle=1
 let g:netrw_keepdir=1
+" }}}
 
-" UltiSnips
+" UltiSnips {{{
 let g:UltiSnipsJumpForwardTrigger='<tab>'
 let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
+" }}}
 
-" CtrlP
+" CtrlP {{{
 let g:ctrlp_show_hidden=0
 let g:ctrlp_max_height=100
 let g:ctrlp_max_files=100
 let g:ctrlp_working_path_mode='0'
 let g:ctrlp_use_caching=0
+" }}}
 
-" Basic configuration
+" Basic configuration {{{
 filetype plugin on
 filetype indent on
 syntax on
@@ -45,6 +52,7 @@ set autoread
 set backspace=2
 set encoding=utf-8
 set hidden confirm
+set modeline
 set mouse=n
 set nocompatible
 set scrolloff=10
@@ -52,15 +60,17 @@ set timeoutlen=500
 set ttimeoutlen=0
 set virtualedit=block
 set wildignore+=.git/*,.gitignore,*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__
+" }}}
 
-" OS dependent
+" Programs {{{
 if has('unix')
     set grepprg=ack\ -i
 else
     set makeprg=mingw32-make
 endif
+" }}}
 
-" Indicators
+" Indicators {{{
 set completeopt=menuone
 set ruler
 set showbreak=>
@@ -68,12 +78,14 @@ set showcmd
 set showmode
 set title
 set titlestring=%t%(\ %M%)%(\ (%{expand(\'%:~:.:h\')})%)%(\ %a%)
+" }}}
 
-" Windows & splits
+" Windows & splits {{{
 set splitright
 set splitbelow
+" }}}
 
-" Indentation
+" Indentation {{{
 set autoindent
 set expandtab
 set list
@@ -83,35 +95,41 @@ set smartindent
 set smarttab
 set softtabstop=4
 set tabstop=4
+" }}}
 
-" Search & Replace
+" Search & Replace {{{
 set gdefault
 set ignorecase
 set incsearch
 set smartcase
+" }}}
 
-" Folds
+" Folds {{{
 set foldmethod=syntax
 set foldopen=hor,mark,percent,quickfix,search,tag,undo
 set foldnestmax=1
 set foldcolumn=1
 set foldlevel=1
 set foldtext=NeatFoldText()
+" }}}
 
-" Backups
+" Backups {{{
 set nobackup
 set noswapfile
 set nowritebackup
+" }}}
 
-" Status Line
+" Status Line {{{
 set laststatus=2
 set statusline=%f%m\ %y%h%r%w\ (%l/%L,\ %c)\ %p%%\ %=%{substitute(getcwd(),'^'.$HOME,'~','')}
+" }}}
 
-" Menu
+" Menu {{{
 set wildmenu
 set wildmode=longest:list,full
+" }}}
 
-" Colors
+" Colors {{{
 set t_Co=256
 if has("unix")
     colorscheme xoria256
@@ -121,8 +139,9 @@ else
         colorscheme solarized
     endif
 endif
+" }}}
 
-" Highlights
+" Highlights {{{
 highlight WhiteOnRed ctermfg=255 ctermbg=196 guifg=#ffffff guibg=#ff0000
 highlight IndentWhiteSpaces cterm=undercurl ctermfg=242 gui=underline guifg=#262626
 highlight TrilingWhitespace ctermbg=199 guibg=#ff00af
@@ -130,8 +149,9 @@ highlight RightMargin ctermbg=93 guibg=#8700ff
 call matchadd('RightMargin', '\%81c', 30)
 " call matchadd('TrilingWhitespace', '\s\+\%#\@<!$', 70)
 " call matchadd('IndentWhiteSpaces', '^ \+', 100)
+" }}}
 
-" GUI
+" GUI {{{
 if has('gui_running')
     set guioptions-=m
     set guioptions-=T
@@ -144,8 +164,9 @@ if has('gui_running')
         set guifont=Consolas:h11
     endif
 endif
+" }}}
 
-" Commands
+" Commands {{{
 command! -nargs=+ -complete=command Pipe call Pipe(<q-args>)
 command! -nargs=+ -complete=shellcmd Shell call Shell(<f-args>)
 command! -nargs=1 -complete=help Help if &ft=~"help" | help <args> | else | tab help <args> | endif
@@ -157,8 +178,9 @@ command! -nargs=+ Grep silent grep! <args> * | copen | redraw!
 command! -nargs=* Make silent make! <args> | copen | redraw!
 command! -nargs=1 -range Align '<,'>call Align(<f-args>)
 command! -nargs=0 Reg call Reg()
+" }}}
 
-" Mappings
+" Mappings {{{
 nmap J 5j
 nmap K 5k
 
@@ -219,8 +241,9 @@ nnoremap Y y$
 nnoremap <Space> i_<Esc>r
 
 nnoremap - :Explore<cr>
+" }}}
 
-" Function keys mappings
+" Function keys mappings {{{
 if has('unix')
     nnoremap <F1>   :!clear; 
 else
@@ -232,8 +255,9 @@ nnoremap <F4>   :set spell! spell?<cr>
 nnoremap <F5>   :update<cr>:Make<cr>
 nnoremap <F9>   :Gstatus<cr>
 nnoremap <F12>  :call system('ctags')<cr>
+" }}}
 
-" Leader mappings
+" Leader mappings {{{
  noremap                <leader>a :Align 
  noremap                <leader>c "+y
  noremap                <leader>j :join<cr>
@@ -263,8 +287,9 @@ nnoremap    <silent>    <leader>bk :call BufferKill()<cr>
 nnoremap    <silent>    <leader>ms iSigned-off-by: Ferran Pelayo Monfort <ferran.pel.mon@gmail.com><Esc>
 nnoremap    <silent>    <leader>q :quit<cr>
 nnoremap    <silent>    <leader>Q :quitall<cr>
+" }}}
 
-" Functions
+" Functions {{{
 function! Pipe(cmd)
     redir @+>
     silent execute a:cmd
@@ -380,3 +405,4 @@ function! AutoHighlightToggle()
         echo 'Highlight current word: ON'
     endif
 endfunction
+" }}}
