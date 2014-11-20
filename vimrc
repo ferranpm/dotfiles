@@ -1,4 +1,4 @@
-" vim: foldmethod=marker
+" vim: foldmethod=marker foldlevel=0
 " Pathogen {{{
 if !has("python")
     let g:pathogen_disabled = ["ultisnips"]
@@ -217,6 +217,7 @@ vnoremap <silent> <up>   :move .-2<cr>gv
 vnoremap <silent> <down> :move '>+<cr>gv
 
 vnoremap <M-/> <Esc>/\%V
+vnoremap * y/0<cr>
 
 nnoremap <silent> <right> gt
 nnoremap <silent> <left>  gT
@@ -239,6 +240,7 @@ noremap : ;
 nnoremap Y y$
 
 nnoremap <Space> i_<Esc>r
+vnoremap <Space> I_<Esc>gvr
 
 nnoremap - :Explore<cr>
 " }}}
@@ -263,7 +265,7 @@ nnoremap <F12>  :call system('ctags')<cr>
  noremap                <leader>j :join<cr>
  noremap                <leader>p :put *<cr>
  noremap                <leader>v "+p
- noremap    <silent>    <leader>zs :let p=getpos('.')<cr>:%s/\s\+$//<cr>:call setpos('.',p)<cr>
+ noremap    <silent>    <leader>zs :s/\s\+$//<cr>
 nnoremap                <leader>bc :ls!<cr>:bwipeout 
 nnoremap                <leader>bs :CtrlPBuffer<cr>
 nnoremap                <leader>bw :e #<cr>:bwipeout #<cr>
@@ -276,6 +278,7 @@ nnoremap                <leader>h :Help
 nnoremap                <leader>L O<Esc>
 nnoremap                <leader>l o<Esc>
 nnoremap                <leader>m; :s/;$/ {\r}\rkVk=o
+nnoremap                <leader>mm dapGplrX
 nnoremap                <leader>S :%s/\<<C-r>=expand('<cword>')<CR>\>/
 nnoremap                <leader>s :s/\<<C-r>=expand('<cword>')<CR>\>/
 vnoremap                <leader>S y<esc>:%s/<C-r>0/
