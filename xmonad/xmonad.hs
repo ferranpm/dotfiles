@@ -87,26 +87,3 @@ myManageHook = composeAll . concat $
                 myFloats      = ["MPlayer", "Gimp", "Plasma", "Plasma-desktop", "Klipper", "Kded4"]
                 myOtherFloats = ["alsamixer", "exit"]
                 myPosition    = ["XTerm", "URxvt", "Dolphin"]
---------------------------------------------------------------------------------
--- VARIABLES
---------------------------------------------------------------------------------
-myFont = "xft:Inconsolata:size=10"
-
-background = "#181512"
-foreground = "#D6C3B6"
-color0     = "#332d29"
-color1     = "#8c644c"
-color2     = "#746C48"
-color3     = "#bfba92"
-color4     = "#646a6d"
-color5     = "#766782"
-color6     = "#4B5C5E"
-color7     = "#504339"
-color8     = "#817267"
-color9     = "#9f7155"
-color10    = "#9f7155"
-color11    = "#E0DAAC"
-color12    = "#777E82"
-color13    = "#897796"
-color14    = "#556D70"
-color15    = "#9a875f"

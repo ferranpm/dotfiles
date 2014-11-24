@@ -47,6 +47,7 @@ filetype plugin on
 filetype indent on
 syntax on
 let mapleader=','
+set exrc
 set nowrap
 set autoread
 set backspace=2
@@ -93,8 +94,6 @@ set listchars=tab:»\ ,trail:·
 set shiftwidth=4
 set smartindent
 set smarttab
-set softtabstop=4
-set tabstop=4
 " }}}
 
 " Search & Replace {{{
