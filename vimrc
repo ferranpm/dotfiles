@@ -204,11 +204,15 @@ nnoremap <C-h> <C-w><C-h>
 nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
 
-nnoremap ]q :cnext<cr>
-nnoremap [q :cprevious<cr>
+nnoremap <silent> ]q :cnext<cr>
+nnoremap <silent> [q :cprevious<cr>
 
-nnoremap ]t :tnext<cr>
-nnoremap [t :tprevious<cr>
+nnoremap <silent> ]t :tnext<cr>
+nnoremap <silent> [t :tprevious<cr>
+
+" Jump to next/previous merge conflict marker
+nnoremap <silent> ]c /\v^(\<\|\=\|\>){7}([^=].+)?$<CR>
+nnoremap <silent> [c ?\v^(\<\|\=\|\>){7}([^=].+)\?$<CR>
 
 nnoremap <silent> <up>   :move .-2<cr>
 nnoremap <silent> <down> :move .+1<cr>
@@ -264,10 +268,12 @@ nnoremap <F12>  :call system('ctags')<cr>
  noremap                <leader>j :join<cr>
  noremap                <leader>p :put *<cr>
  noremap                <leader>v "+p
- noremap    <silent>    <leader>zs :s/\s\+$//<cr>
+nnoremap    <silent>    <leader>zs :%s/\s\+$//<cr>
+vnoremap    <silent>    <leader>zs :s/\s\+$//<cr>
 nnoremap                <leader>bc :ls!<cr>:bwipeout 
 nnoremap                <leader>bs :CtrlPBuffer<cr>
 nnoremap                <leader>bw :e #<cr>:bwipeout #<cr>
+nnoremap                <leader>cd :cd <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap                <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap                <leader>fc zM
 nnoremap                <leader>fe zMzvzz
@@ -277,7 +283,7 @@ nnoremap                <leader>h :Help
 nnoremap                <leader>L O<Esc>
 nnoremap                <leader>l o<Esc>
 nnoremap                <leader>m; :s/;$/ {\r}\rkVk=o
-nnoremap                <leader>mm dapGplrX
+nnoremap                <leader>mm dapGplrX:w<cr>
 nnoremap                <leader>S :%s/\<<C-r>=expand('<cword>')<CR>\>/
 nnoremap                <leader>s :s/\<<C-r>=expand('<cword>')<CR>\>/
 vnoremap                <leader>S y<esc>:%s/<C-r>0/
