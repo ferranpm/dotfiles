@@ -11,9 +11,7 @@ endtry
 " }}}
 
 " Incsearch {{{
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
+map g/  <Plug>(incsearch-forward)
 " }}}
 
 " Clang-Complete {{{
@@ -35,11 +33,12 @@ let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
 " }}}
 
 " CtrlP {{{
-let g:ctrlp_show_hidden=0
+let g:ctrlp_by_filename=1
+let g:ctrlp_max_files=500
 let g:ctrlp_max_height=100
-let g:ctrlp_max_files=100
-let g:ctrlp_working_path_mode='0'
+let g:ctrlp_show_hidden=0
 let g:ctrlp_use_caching=0
+let g:ctrlp_working_path_mode='0'
 " }}}
 
 " Basic configuration {{{
@@ -293,8 +292,6 @@ vnoremap                <leader>m; :s/;$/ {\r}\rgv=
 nnoremap    <silent>    <leader>. :update<cr>
 nnoremap    <silent>    <leader>bk :call BufferKill()<cr>
 nnoremap    <silent>    <leader>ms iSigned-off-by: Ferran Pelayo Monfort <ferran.pel.mon@gmail.com><Esc>
-nnoremap    <silent>    <leader>q :quit<cr>
-nnoremap    <silent>    <leader>Q :quitall<cr>
 " }}}
 
 " Functions {{{
