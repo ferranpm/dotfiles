@@ -211,8 +211,8 @@ nnoremap <silent> ]t :tnext<cr>
 nnoremap <silent> [t :tprevious<cr>
 
 " Jump to next/previous merge conflict marker
-nnoremap <silent> ]c /\v^(\<\|\=\|\>){7}([^=].+)?$<CR>
-nnoremap <silent> [c ?\v^(\<\|\=\|\>){7}([^=].+)\?$<CR>
+nnoremap <silent> ]g /\v^(\<\|\=\|\>){7}([^=].+)?$<CR>
+nnoremap <silent> [g ?\v^(\<\|\=\|\>){7}([^=].+)\?$<CR>
 
 nnoremap <silent> <up>   :move .-2<cr>
 nnoremap <silent> <down> :move .+1<cr>
