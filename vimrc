@@ -176,6 +176,7 @@ command! -nargs=+ Grep silent grep! <args> * | copen | redraw!
 command! -nargs=* Make silent make! <args> | copen | redraw!
 command! -nargs=1 -range Align '<,'>call Align(<f-args>)
 command! -nargs=0 Reg call Reg()
+command! -nargs=1 -complete=file E call OpenWithHeader(<f-args>)
 " }}}
 
 " Mappings {{{
@@ -413,6 +414,19 @@ function! AutoHighlightToggle()
         augroup END
         setl updatetime=500
         echo 'Highlight current word: ON'
+    endif
+endfunction
+
+let g:headers = { 'c': 'h', 'cpp': 'h' }
+function! OpenWithHeader(file)
+    normal o
+    exec "e ".a:file
+    if has_key(g:headers, &ft)
+        let header = expand("%:r").'.'.g:headers[&ft]
+        if filereadable(header)
+            exec "vs ".header
+            normal h
+        endif
     endif
 endfunction
 " }}}
