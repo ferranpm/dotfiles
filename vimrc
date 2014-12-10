@@ -11,7 +11,9 @@ endtry
 " }}}
 
 " Incsearch {{{
-map g/  <Plug>(incsearch-forward)
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+noremap g/ /
 " }}}
 
 " Clang-Complete {{{
@@ -129,14 +131,8 @@ set wildmode=longest:list,full
 
 " Colors {{{
 set t_Co=256
-if has("unix")
-    colorscheme xoria256
-else
-    if has("gui_running")
-        set background=light
-        colorscheme solarized
-    endif
-endif
+set background=dark
+colorscheme xoria256
 " }}}
 
 " Highlights {{{
@@ -417,12 +413,12 @@ function! AutoHighlightToggle()
     endif
 endfunction
 
-let g:headers = { 'c': 'h', 'cpp': 'h' }
+let g:headers = { 'c': '.h', 'cpp': '.h', 'ruby': '_spec.rb' }
 function! OpenWithHeader(file)
     normal o
     exec "e ".a:file
     if has_key(g:headers, &ft)
-        let header = expand("%:r").'.'.g:headers[&ft]
+        let header = expand("%:r").g:headers[&ft]
         if filereadable(header)
             exec "vs ".header
             normal h
