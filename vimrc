@@ -246,16 +246,22 @@ nnoremap - :Explore<cr>
 
 " Function keys mappings {{{
 if has('unix')
-    nnoremap <F1>   :!clear; 
+    nnoremap [11~ :!clear; 
+    nnoremap [12~ :set cursorline! cursorline?<cr>
+    nnoremap [13~ :set hlsearch! hlsearch?<cr>
+    nnoremap [14~ :set spell! spell?<cr>
+    nnoremap [15~ :update<cr>:Make<cr>
+    nnoremap [20~ :Gstatus<cr>
+    nnoremap [24~ :call system('ctags')<cr>
 else
     nnoremap <F1>   :!
+    nnoremap <F2>   :set cursorline! cursorline?<cr>
+    nnoremap <F3>   :set hlsearch! hlsearch?<cr>
+    nnoremap <F4>   :set spell! spell?<cr>
+    nnoremap <F5>   :update<cr>:Make<cr>
+    nnoremap <F9>   :Gstatus<cr>
+    nnoremap <F12>  :call system('ctags')<cr>
 endif
-nnoremap <F2>   :set cursorline! cursorline?<cr>
-nnoremap <F3>   :set hlsearch! hlsearch?<cr>
-nnoremap <F4>   :set spell! spell?<cr>
-nnoremap <F5>   :update<cr>:Make<cr>
-nnoremap <F9>   :Gstatus<cr>
-nnoremap <F12>  :call system('ctags')<cr>
 " }}}
 
 " Leader mappings {{{
