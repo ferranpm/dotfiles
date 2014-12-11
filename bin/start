@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 setxkbmap us
-xmodmap ~/.xmodmap &
+$HOME/bin/keyboard.sh
 
 xrdb $HOME/.Xresources &
 
