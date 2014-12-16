@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+killall xcape
+killall xmodmap
+
 xmodmap -e "remove Lock    = Caps_Lock"
 xmodmap -e "remove Control = Control_L"
 
