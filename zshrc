@@ -14,7 +14,6 @@ stty -ixon
 ## EXPORTS ##
 export COLORFGBG="15;0"
 export EDITOR="vim"
-export GREP_OPTIONS='--color=auto'
 export HISTFILE=$HOME/.zshhistory
 export HISTSIZE=50000
 export KEYTIMEOUT=1
