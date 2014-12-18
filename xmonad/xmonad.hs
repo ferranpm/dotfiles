@@ -32,6 +32,7 @@ main = xmonad $ kde4Config
                         borderWidth        = 4,
                         focusedBorderColor = "#A55",
                         focusFollowsMouse  = False,
+                        clickJustFocuses   = False,
                         terminal           = "urxvt",
                         workspaces         = [ "1" , "2" , "3", "4" , "5" ],
 
@@ -67,9 +68,9 @@ main = xmonad $ kde4Config
 --------------------------------------------------------------------------------
 -- DECLARE WORKSPACES RULES
 --------------------------------------------------------------------------------
-myLayout = avoidStruts (tiled ||| tabbed shrinkText defaultTheme)
+myLayout = avoidStruts (tiled)
         where
-                tiled    = spacing 5 $ ResizableTall nmaster delta ratio []
+                tiled    = spacing 3 $ ResizableTall nmaster delta ratio []
                 nmaster  = 1
                 delta    = 5/100
                 ratio    = toRational (2/(1 + sqrt 5 :: Double))
