@@ -1,3 +1,9 @@
+if [[ ! "$TERM" =~ "screen" ]]; then
+    if [ ! $(tmux attach) ]; then
+        tmux
+    fi
+fi
+
 PROMPT='
 %{$fg[green]%}%n%{$fg[blue]%}%{$reset_color%} in %{$fg[blue]%}%{$fg[red]%}%~ %{$reset_color%}at %{$fg[cyan]%}%m$(git_prompt)$(vi_prompt)
 %{$fg_bold[cyan]%}%(!.#.»)%{$reset_color%} '
