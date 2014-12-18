@@ -182,9 +182,6 @@ nmap K 5k
 xmap J 5j
 xmap K 5k
 
-vmap Q gq
-nmap Q gqap
-
 inoremap <C-o> <C-x><C-o><C-p>
 inoremap <C-j> <esc>O
 
@@ -194,11 +191,6 @@ nnoremap ) <Esc>/[)}"'\]>]<CR>
 nnoremap ( <Esc>?[({"'\[<]<CR>
 vnoremap ) /[)}"'\]>]<CR>
 vnoremap ( ?[({"'\[<]<CR>
-
-nnoremap <C-l> <C-w><C-l>
-nnoremap <C-h> <C-w><C-h>
-nnoremap <C-j> <C-w><C-j>
-nnoremap <C-k> <C-w><C-k>
 
 nnoremap <silent> ]q :cnext<cr>
 nnoremap <silent> [q :cprevious<cr>
@@ -228,6 +220,7 @@ nnoremap <silent> N N:call HLNext(0.2)<cr>
 nnoremap <silent> * *:call HLNext(0.2)<cr>
 nnoremap <silent> # #:call HLNext(0.2)<cr>
 
+nnoremap M K
 nnoremap z/ :call AutoHighlightToggle()<cr>
 
 vnoremap > >gv
@@ -280,12 +273,13 @@ nnoremap                <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap                <leader>fc zM
 nnoremap                <leader>fe zMzvzz
 nnoremap                <leader>fo zR
+nnoremap                <leader>ff :find 
 nnoremap                <leader>g :Grep 
 nnoremap                <leader>h :Help 
 nnoremap                <leader>L O<Esc>
 nnoremap                <leader>l o<Esc>
 nnoremap                <leader>m; :s/;$/ {\r}\rkVk=o
-nnoremap                <leader>mm dapGplrX:w<cr>
+nnoremap                <leader>mm dapGplrXk/^\[ \]<cr>
 nnoremap                <leader>S :%s/\<<C-r>=expand('<cword>')<CR>\>/
 nnoremap                <leader>s :s/\<<C-r>=expand('<cword>')<CR>\>/
 vnoremap                <leader>S y<esc>:%s/<C-r>0/
