@@ -172,6 +172,7 @@ command! -nargs=+ Grep silent grep! <args> * | copen | redraw!
 command! -nargs=1 -range Align '<,'>call Align(<f-args>)
 command! -nargs=0 Reg call Reg()
 command! -nargs=1 -complete=file E call OpenWithHeader(<f-args>)
+command! -nargs=0 JSONFormatter call JSONFormatter()
 " }}}
 
 " Autocommands {{{
@@ -427,5 +428,13 @@ function! OpenWithHeader(file)
             normal h
         endif
     endif
+endfunction
+
+function! JSONFormatter()
+    set ft=json
+    silent %s/[{\[]/&\r/e
+    silent %s/[}\]]/\r&/e
+    silent %s/,/&\r/e
+    silent normal gg=G
 endfunction
 " }}}
