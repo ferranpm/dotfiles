@@ -85,6 +85,7 @@ set titlestring=%t%(\ %M%)%(\ (%{expand(\'%:~:.:h\')})%)%(\ %a%)
 " Windows & splits {{{
 set splitright
 set splitbelow
+set switchbuf=useopen
 " }}}
 
 " Indentation {{{
@@ -162,7 +163,7 @@ endif
 
 " Commands {{{
 command! -nargs=+ -complete=command Pipe call Pipe(<q-args>)
-command! -nargs=+ -complete=shellcmd Shell call Shell(<f-args>)
+command! -nargs=+ -complete=shellcmd Shell call Shell(<q-args>)
 command! -nargs=1 -complete=help Help if &ft=~"help" | help <args> | else | tab help <args> | endif
 command! SudoWrite call SudoWriteCmd()
 command! -nargs=? UnderscoreToUpperCamelCase <args>s#\m\(\%(\<\l\+\)\%(_\)\@=\)\|_\(\l\)#\u\1\2
@@ -306,10 +307,16 @@ function! Pipe(cmd)
 endfunction
 
 function! Shell(cmd)
-    vnew
+    if bufexists('Shell')
+        " needs 'set switchbuf=useopen' to work
+        vertical sbuffer Shell
+        normal ggdG
+    else
+        vnew
+        file Shell
+    endif
     execute 'read !'.a:cmd
-    call cursor(1, 1)
-    execute 'delete'
+    normal ggdd
     set nomodified
 endfunction
 
