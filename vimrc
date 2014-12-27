@@ -271,7 +271,7 @@ nnoremap    <silent>    <leader>zs :%s/\s\+$//<cr>
 vnoremap    <silent>    <leader>zs :s/\s\+$//<cr>
 nnoremap                <leader>bc :ls!<cr>:bwipeout 
 nnoremap                <leader>bs :CtrlPBuffer<cr>
-nnoremap                <leader>bw :e #<cr>:bwipeout #<cr>
+nnoremap                <leader>bw :call BWipeOut()<cr>
 nnoremap                <leader>cd :cd <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap                <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap                <leader>fc zM
@@ -427,6 +427,19 @@ function! OpenWithHeader(file)
             exec "vs ".header
             normal h
         endif
+    endif
+endfunction
+
+function! BWipeOut()
+    if bufexists(bufname('#'))
+        buffer #
+    else
+        exec "buffer ".last_buffer_nr()
+    endif
+    if (bufexists(bufname('#')))
+        bwipeout #
+    else
+        bwipeout
     endif
 endfunction
 
