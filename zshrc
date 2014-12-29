@@ -77,6 +77,7 @@ bindkey -v '^f'     history-incremental-pattern-search-backward
 bindkey -a '/'      history-incremental-pattern-search-backward
 bindkey -a '?'      history-incremental-pattern-search-forward
 bindkey -v '^s'     insert-sudo
+bindkey -v '^y'     insert-man
 bindkey -v '^k'     kill-buffer
 bindkey -v '^[[Z'   reverse-menu-complete
 bindkey -v '^[[A'   up-line-or-history
@@ -122,11 +123,14 @@ alias vimrc="e $HOME/.vimrc"
 alias zshrc="e $HOME/.zshrc"
 
 ## FUNCTIONS ##
-insert-sudo() {
-    sudo="sudo "
-    BUFFER="$sudo$BUFFER"
-    CURSOR=$(expr $CURSOR + $(expr length $sudo))
+insert-word() {
+    word="$1 "
+    BUFFER="$word$BUFFER"
+    CURSOR=$(expr $CURSOR + $(expr length $word))
 }
+insert-man() { insert-word "man" }
+zle -N insert-man
+insert-sudo() { insert-word "sudo" }
 zle -N insert-sudo
 
 
