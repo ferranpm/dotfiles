@@ -308,9 +308,11 @@ endfunction
 
 function! Shell(cmd)
     if bufexists('Shell')
-        " needs 'set switchbuf=useopen' to work
+        let switchbuf=&switchbuf
+        set switchbuf=useopen
         vertical sbuffer Shell
         normal ggdG
+        execute 'set switchbuf='.switchbuf
     else
         vnew
         file Shell
