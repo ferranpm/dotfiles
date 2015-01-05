@@ -197,13 +197,17 @@ nnoremap ( <Esc>?[({"'\[<]<CR>
 vnoremap ) /[)}"'\]>]<CR>
 vnoremap ( ?[({"'\[<]<CR>
 
+nnoremap <C-h> <C-W>h
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-l> <C-W>l
+
 nnoremap <silent> ]q :cnext<cr>
 nnoremap <silent> [q :cprevious<cr>
 
 nnoremap <silent> ]t :tnext<cr>
 nnoremap <silent> [t :tprevious<cr>
 
-" Jump to next/previous merge conflict marker
 nnoremap <silent> ]g /\v^(\<\|\=\|\>){7}([^=].+)?$<CR>
 nnoremap <silent> [g ?\v^(\<\|\=\|\>){7}([^=].+)\?$<CR>
 
