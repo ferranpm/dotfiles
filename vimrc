@@ -315,14 +315,14 @@ function! Shell(cmd)
         let switchbuf=&switchbuf
         set switchbuf=useopen
         vertical sbuffer Shell
-        normal ggdG
+        normal! ggdG
         execute 'set switchbuf='.switchbuf
     else
         vnew
         file Shell
     endif
     execute 'read !'.a:cmd
-    normal ggdd
+    normal! ggdd
     set nomodified
 endfunction
 
@@ -396,11 +396,12 @@ function! Align(string) range
         if search(a:string, 'c', line('.')) != 0
             let delta_col = (l:max_column - col('.'))
             if delta_col > 0
-                exe "normal ".delta_col."i "
+                exe "normal! ".delta_col."i "
             endif
         endif
     endfor
     call setpos('.', l:cursor_save)
+    normal! gv
 endfunction
 
 function! Reg()
@@ -432,13 +433,13 @@ endfunction
 
 let g:headers = { 'c': '.h', 'cpp': '.h', 'ruby': '_spec.rb' }
 function! OpenWithHeader(file)
-    normal o
+    normal! o
     exec "e ".a:file
     if has_key(g:headers, &ft)
         let header = expand("%:r").g:headers[&ft]
         if filereadable(header)
             exec "vs ".header
-            normal h
+            normal! h
         endif
     endif
 endfunction
@@ -461,6 +462,6 @@ function! JSONFormatter()
     silent %s/[{\[]/&\r/e
     silent %s/[}\]]/\r&/e
     silent %s/,/&\r/e
-    silent normal gg=G
+    silent normal! gg=G
 endfunction
 " }}}
