@@ -68,7 +68,7 @@ main = xmonad $ kde4Config
 --------------------------------------------------------------------------------
 -- DECLARE WORKSPACES RULES
 --------------------------------------------------------------------------------
-myLayout = avoidStruts (tiled)
+myLayout = avoidStruts (tiled ||| simpleTabbed)
         where
                 tiled    = spacing 3 $ ResizableTall nmaster delta ratio []
                 nmaster  = 1
