@@ -321,26 +321,29 @@ nnoremap    <silent>    <leader>ms iSigned-off-by: Ferran Pelayo Monfort <ferran
 " }}}
 
 " Functions {{{
+function! GoToBuffer(name, method)
+    if bufexists(a:name)
+        execute 'sbuffer '.a:name
+    else
+        execute a:method
+        execute 'file '.a:name
+    endif
+endfunction
+
 function! Pipe(cmd)
+    call GoToBuffer('Pipe', 'vnew')
+    normal ggdG
     redir @+>
     silent execute a:cmd
     redir END
-    vnew
     silent 0put +
+    normal! ggdd
     set nomodified
 endfunction
 
 function! Shell(cmd)
-    if bufexists('Shell')
-        let switchbuf=&switchbuf
-        set switchbuf=useopen
-        vertical sbuffer Shell
-        normal! ggdG
-        execute 'set switchbuf='.switchbuf
-    else
-        vnew
-        file Shell
-    endif
+    call GoToBuffer('Shell', 'vnew')
+    normal! ggdG
     execute 'read !'.a:cmd
     normal! ggdd
     set nomodified
