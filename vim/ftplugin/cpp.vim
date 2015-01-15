@@ -1,3 +1,25 @@
+function! ToCpp() range
+    let class_name = substitute(expand("%:t:r"), '\(^.\)', '\u\1', '')
+    for line in reverse(range(a:firstline, a:lastline))
+        execute 'normal! '.line.'gg'
+        execute 'silent! s/\m\(\s\)\(\w\+\s*(\)/\1'.class_name.'::\2'
+        call ToC()
+    endfor
+endfunction
+noremap <leader>m; :call ToCpp()<cr>
+
+function! ToHpp() range
+    for line in reverse(range(a:firstline, a:lastline))
+        execute 'normal! '.line.'gg'
+        call ToH()
+        silent! s/\w\+::
+    endfor
+    if a:firstline != a:lastline
+        '<,'>g/^$/d
+    endif
+endfunction
+noremap <leader>m: :call ToHpp()<cr>
+
 function! QtCppIndent()
     " Patterns used to recognise labels and search for the start
     " of declarations

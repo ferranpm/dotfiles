@@ -309,14 +309,12 @@ nnoremap                <leader>g :Grep
 nnoremap                <leader>h :Help 
 nnoremap                <leader>L O<Esc>
 nnoremap                <leader>l o<Esc>
-nnoremap                <leader>m; :s/;$/ {\r}\rkVk=o
 nnoremap                <leader>mm dapGplrXk/^\[ \]<cr>
 nnoremap                <leader>S :%s/\<<C-r>=expand('<cword>')<CR>\>/
 nnoremap                <leader>s :s/\<<C-r>=expand('<cword>')<CR>\>/
 vnoremap                <leader>S y<esc>:%s/<C-r>0/
 vnoremap                <leader>s y<esc>:s/<C-r>0/
 nnoremap                <leader>t :CtrlPTag<cr>
-vnoremap                <leader>m; :s/;$/ {\r}\rgv=
 nnoremap    <silent>    <leader>. :update<cr>
 nnoremap    <silent>    <leader>bk :call BufferKill()<cr>
 nnoremap    <silent>    <leader>ms iSigned-off-by: Ferran Pelayo Monfort <ferran.pel.mon@gmail.com><Esc>
@@ -485,46 +483,5 @@ function! JSONFormatter()
     silent %s/[}\]]/\r&/e
     silent %s/,/&\r/e
     silent normal! gg=G
-endfunction
-
-function! ToCpp() range
-    let class_name = substitute(expand("%:t:r"), '\(^.\)', '\u\1', '')
-    for line in reverse(range(a:firstline, a:lastline))
-        execute 'normal! '.line.'gg'
-        execute 'silent! s/\m\(\s\)\(\w\+\s*(\)/\1'.class_name.'::\2'
-        call ToC()
-    endfor
-endfunction
-
-function! ToHpp() range
-    for line in reverse(range(a:firstline, a:lastline))
-        execute 'normal! '.line.'gg'
-        call ToH()
-        silent! s/\w\+::
-    endfor
-    if a:firstline != a:lastline
-        '<,'>g/^$/d
-    endif
-endfunction
-
-function! ToC() range
-    for line in reverse(range(a:firstline, a:lastline))
-        execute 'normal! '.line.'gg'
-        silent! s/;$/ {\r}\r
-    endfor
-endfunction
-
-function! ToH() range
-    for line in reverse(range(a:firstline, a:lastline))
-        execute 'normal! '.line.'gg'
-        normal! jdi{dd
-        if line('.') != line('$')
-            normal! k
-        endif
-        silent! s/)\s*{\?\s*$/);
-    endfor
-    if a:firstline != a:lastline
-        '<,'>g/^$/d
-    endif
 endfunction
 " }}}
