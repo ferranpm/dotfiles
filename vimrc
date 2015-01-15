@@ -248,13 +248,13 @@ nnoremap - :Explore<cr>
 
 " Function keys mappings {{{
 if has('unix')
-    nnoremap [11~ :!clear; 
-    nnoremap [12~ :set cursorline! cursorline?<cr>
-    nnoremap [13~ :set hlsearch! hlsearch?<cr>
-    nnoremap [14~ :set spell! spell?<cr>
+    nnoremap OP :!clear; 
+    nnoremap OQ :set cursorline! cursorline?<cr>
+    nnoremap OR :set hlsearch! hlsearch?<cr>
+    nnoremap OS :set spell! spell?<cr>
     nnoremap [15~ :update<cr>:Make<cr>
     nnoremap [20~ :Gstatus<cr>
-    nnoremap [24~ :call system('ctags')<cr>
+    nnoremap [21~ :call system('ctags')<cr>
 else
     nnoremap <F1>   :!
     nnoremap <F2>   :set cursorline! cursorline?<cr>
