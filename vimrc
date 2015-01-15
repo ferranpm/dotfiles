@@ -10,6 +10,10 @@ catch
 endtry
 " }}}
 
+if filereadable(expand("~/.local.vim"))
+    source ~/.local.vim
+endif
+
 " Incsearch {{{
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
