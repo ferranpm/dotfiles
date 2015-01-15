@@ -486,4 +486,45 @@ function! JSONFormatter()
     silent %s/,/&\r/e
     silent normal! gg=G
 endfunction
+
+function! ToCpp() range
+    let class_name = substitute(expand("%:t:r"), '\(^.\)', '\u\1', '')
+    for line in reverse(range(a:firstline, a:lastline))
+        execute 'normal! '.line.'gg'
+        execute 'silent! s/\m\(\s\)\(\w\+\s*(\)/\1'.class_name.'::\2'
+        call ToC()
+    endfor
+endfunction
+
+function! ToHpp() range
+    for line in reverse(range(a:firstline, a:lastline))
+        execute 'normal! '.line.'gg'
+        call ToH()
+        silent! s/\w\+::
+    endfor
+    if a:firstline != a:lastline
+        '<,'>g/^$/d
+    endif
+endfunction
+
+function! ToC() range
+    for line in reverse(range(a:firstline, a:lastline))
+        execute 'normal! '.line.'gg'
+        silent! s/;$/ {\r}\r
+    endfor
+endfunction
+
+function! ToH() range
+    for line in reverse(range(a:firstline, a:lastline))
+        execute 'normal! '.line.'gg'
+        normal! jdi{dd
+        if line('.') != line('$')
+            normal! k
+        endif
+        silent! s/)\s*{\?\s*$/);
+    endfor
+    if a:firstline != a:lastline
+        '<,'>g/^$/d
+    endif
+endfunction
 " }}}
