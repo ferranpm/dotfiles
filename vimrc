@@ -63,7 +63,7 @@ let g:ctrlp_working_path_mode='0'
 filetype plugin on
 filetype indent on
 syntax on
-let mapleader=','
+let mapleader=' '
 set exrc
 set nowrap
 set autoread
@@ -260,6 +260,8 @@ nnoremap <Space> i_<Esc>r
 vnoremap <Space> I_<Esc>gvr
 
 nnoremap - :Explore<cr>
+
+nnoremap <silent> ,. :update<cr>
 " }}}
 
 " Function keys mappings {{{
