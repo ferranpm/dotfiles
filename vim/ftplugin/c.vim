@@ -14,6 +14,7 @@ function! ToH() range
             normal! k
         endif
         silent! s/)\s*{\?\s*$/);
+        silent! s/ \?\w\+\(,\|)\)/\1
     endfor
     if a:firstline != a:lastline
         '<,'>g/^$/d
