@@ -32,12 +32,6 @@ else
 endif
 " }}}
 
-" Incsearch {{{
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-noremap g/ /
-" }}}
-
 " Clang-Complete {{{
 let g:clang_complete_auto=1
 let g:clang_hl_errors=1
