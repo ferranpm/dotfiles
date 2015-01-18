@@ -1,4 +1,4 @@
-" vim: foldmethod=marker foldlevel=0
+" vim: foldmethod=marker
 " Pathogen {{{
 if !has("python")
     let g:pathogen_disabled = ["ultisnips"]
@@ -256,10 +256,7 @@ noremap : ;
 
 nnoremap Y y$
 
-nnoremap <Space> i_<Esc>r
-vnoremap <Space> I_<Esc>gvr
-
-nnoremap - :Explore<cr>
+nnoremap - ^
 
 nnoremap <silent> ,. :update<cr>
 " }}}
