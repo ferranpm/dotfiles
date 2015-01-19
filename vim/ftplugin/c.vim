@@ -1,8 +1,11 @@
 function! ToC() range
     for line in reverse(range(a:firstline, a:lastline))
-        execute 'normal! '.line.'gg'
+        execute 'normal! '.line.'gg=='
         silent! s/;$/ {\r}\r
     endfor
+    if a:firstline == a:lastline
+        normal 2k
+    endif
 endfunction
 noremap <leader>m; :call ToC()<cr>
 
