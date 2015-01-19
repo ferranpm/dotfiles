@@ -449,13 +449,13 @@ endfunction
 
 let g:headers = { 'c': '.h', 'cpp': '.h', 'ruby': '_spec.rb' }
 function! OpenWithHeader(file)
-    normal! o
+    wincmd o
     exec "e ".a:file
     if has_key(g:headers, &ft)
         let header = expand("%:r").g:headers[&ft]
         if filereadable(header)
             exec "vs ".header
-            normal! h
+            wincmd h
         endif
     endif
 endfunction
