@@ -11,14 +11,10 @@ snippet class
 	class ${1:`expand("%:t:r")`} {
 	public:
 		$1(${4});${0}
-		~$1();
-	private:
 	};
 snippet classqt
-	class ${1:`expand("%:t:r")`} : public ${2:QWidget} {
+	class ${1:`substitute(expand("%:t:r"), '\(^.\)', '\u\1', '')`} : public ${2:QWidget} {
 	${3:Q_OBJECT}
 	public:
 		$1(${4:QWidget* parent = 0});${0}
-		~$1();
-	private:
 	};
