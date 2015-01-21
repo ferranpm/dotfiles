@@ -1,22 +1,27 @@
 function! ToCpp() range
+    let pos = getpos('.')
     let class_name = substitute(expand("%:t:r"), '\(^.\)', '\u\1', '')
-    for line in reverse(range(a:firstline, a:lastline))
-        execute 'normal! '.line.'gg'
-        execute 'silent! s/\m\(\s\)\(\w\+\s*(\)/\1'.class_name.'::\2'
-        call ToC()
-    endfor
+    let range = a:firstline.','.a:lastline
+    if a:firstline == a:lastline
+        normal ==
+    else
+        normal gv=
+    endif
+    execute 'silent '.range.'s/\m\(\s\)\(\w\+\s*(\)/\1'.class_name.'::\2/e'
+    execute 'silent '.range.'s/\%(explicit\|virtual\) //e'
+    execute 'silent '.range.'s/ \?= \?\w\+//e'
+    execute range.'call ToC()'
+    call setpos('.', pos)
 endfunction
 noremap <leader>m; :call ToCpp()<cr>
 
 function! ToHpp() range
-    for line in reverse(range(a:firstline, a:lastline))
-        execute 'normal! '.line.'gg'
-        call ToH()
-        silent! s/\w\+::
-    endfor
-    if a:firstline != a:lastline
-        '<,'>g/^$/d
-    endif
+    let pos = getpos('.')
+    let range = a:firstline.','.a:lastline
+    execute range.'call ToH()'
+    execute 'silent '.range.'s/\w\+:://e'
+    execute 'silent '.range.'s/ \?=//e'
+    call setpos('.', pos)
 endfunction
 noremap <leader>m: :call ToHpp()<cr>
 

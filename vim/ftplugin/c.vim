@@ -1,26 +1,25 @@
 function! ToC() range
-    for line in reverse(range(a:firstline, a:lastline))
-        execute 'normal! '.line.'gg=='
-        silent! s/;$/ {\r}\r
-    endfor
+    let pos = getpos('.')
     if a:firstline == a:lastline
-        normal 2k
+        normal ==
+    else
+        normal gv=
     endif
+    execute 'silent '.a:firstline.','.a:lastline.'s/;$/ {\r}\r/e'
+    call setpos('.', pos)
 endfunction
 noremap <leader>m; :call ToC()<cr>
 
 function! ToH() range
-    for line in reverse(range(a:firstline, a:lastline))
-        execute 'normal! '.line.'gg'
-        normal! jdi{dd
-        if line('.') != line('$')
-            normal! k
-        endif
-        silent! s/)\s*{\?\s*$/);
-        silent! s/ \?\w\+\(,\|)\)/\1
-    endfor
-    if a:firstline != a:lastline
-        '<,'>g/^$/d
+    let pos = getpos('.')
+    let range = a:firstline.','.a:lastline
+    if a:firstline == a:lastline
+        normal jda{k
+        call setpos('.', pos)
     endif
+    execute 'silent '.range.'g/^\%(\s\|\s*{\|\s*}\)\|^$/d'
+    execute 'silent '.range.'s/)\s*{\?\s*$/);/e'
+    execute 'silent '.range.'s/ \?\w\+\(,\|)\)/\1/e'
+    call setpos('.', pos)
 endfunction
 noremap <leader>m: :call ToH()<cr>
