@@ -17,9 +17,9 @@ function! ToH() range
         normal jda{k
         call setpos('.', pos)
     endif
-    execute 'silent '.range.'g/^\%(\s\|\s*{\|\s*}\)\|^$/d'
     execute 'silent '.range.'s/)\s*{\?\s*$/);/e'
     execute 'silent '.range.'s/ \?\w\+\(,\|)\)/\1/e'
+    execute 'silent '.range.'g/^\%(\s\|\s*{\|\s*}\)\|^$/d'
     call setpos('.', pos)
 endfunction
 noremap <leader>m: :call ToH()<cr>

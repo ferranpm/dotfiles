@@ -18,9 +18,9 @@ noremap <leader>m; :call ToCpp()<cr>
 function! ToHpp() range
     let pos = getpos('.')
     let range = a:firstline.','.a:lastline
-    execute range.'call ToH()'
     execute 'silent '.range.'s/\w\+:://e'
     execute 'silent '.range.'s/ \?=//e'
+    execute range.'call ToH()'
     call setpos('.', pos)
 endfunction
 noremap <leader>m: :call ToHpp()<cr>
