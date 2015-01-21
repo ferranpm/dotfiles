@@ -347,7 +347,7 @@ endfunction
 function! BufferKill()
     let l:count = 0
     for b in range(1, bufnr('$'))
-        if bufexists(b) && !bufloaded(b)
+        if bufexists(b) && !buflisted(b)
             execute 'bwipeout '.b
             let l:count += 1
         endif
