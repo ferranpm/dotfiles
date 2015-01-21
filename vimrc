@@ -85,7 +85,8 @@ set wildignore+=.git/*,.gitignore,*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__
 if has('unix')
     set grepprg=ack\ -i
 else
-    set makeprg=mingw32-make
+    set makeprg=mingw32-make\ -j8
+    set grepprg=grep\ -ri
 endif
 " }}}
 
