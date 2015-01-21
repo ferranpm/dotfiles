@@ -51,6 +51,7 @@ let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
 " }}}
 
 " CtrlP {{{
+let g:ctrlp_cmd = 'CtrlPBuffer'
 let g:ctrlp_by_filename=1
 let g:ctrlp_max_files=500
 let g:ctrlp_max_height=100

@@ -31,7 +31,7 @@
     dt = difftool
     f = fetch
     l = log --pretty=format:'%C(yellow)%h%Cgreen%d %Creset%s' --date=short --graph
-    lo = log --pretty=format:'%C(yellow)%h%Cgreen%d %Creset%s' --date=short --graph --all
+    lo = log --pretty=format:'%C(yellow)%h %C(red)%ad%Cgreen%d %Creset%s' --date=short --graph --all
     m = merge
     p = push
     s = status
