@@ -305,6 +305,7 @@ nnoremap                <leader>h :Help
 nnoremap                <leader>L O<Esc>
 nnoremap                <leader>l o<Esc>
 nnoremap                <leader>mm dapGplrXk/^\[ \]<cr>
+nnoremap                <leader>u :vimgrep /\<<c-r>=expand('<cword>')<cr>\>/j <c-r>=expand("%:p:h")."/"<cr>*<cr>:copen<cr>
 nnoremap                <leader>S :%s/\<<C-r>=expand('<cword>')<CR>\>/
 nnoremap                <leader>s :s/\<<C-r>=expand('<cword>')<CR>\>/
 vnoremap                <leader>S y<esc>:%s/<C-r>0/
