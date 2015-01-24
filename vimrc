@@ -305,7 +305,8 @@ nnoremap                <leader>h :Help
 nnoremap                <leader>L O<Esc>
 nnoremap                <leader>l o<Esc>
 nnoremap                <leader>mm dapGplrXk/^\[ \]<cr>
-nnoremap                <leader>u :vimgrep /\<<c-r>=expand('<cword>')<cr>\>/j <c-r>=expand("%:p:h")."/"<cr>*<cr>:copen<cr>
+nnoremap                <leader>u :call FindUsage(0)<cr>
+nnoremap                <leader>U :call FindUsage(1)<cr>
 nnoremap                <leader>S :%s/\<<C-r>=expand('<cword>')<CR>\>/
 nnoremap                <leader>s :s/\<<C-r>=expand('<cword>')<CR>\>/
 vnoremap                <leader>S y<esc>:%s/<C-r>0/
@@ -482,5 +483,17 @@ function! JSONFormatter()
     silent %s/[}\]]/\r&/e
     silent %s/,/&\r/e
     silent normal! gg=G
+endfunction
+
+" FindUsage([{recursive} [, {pattern} [, {path}]]])
+function! FindUsage(...)
+    let recursive = '*'
+    let pattern = expand('<cword>')
+    let path = expand("%:p:h")
+    if a:0 > 0 && a:1 != 0 | let recursive = '**' | endif
+    if a:0 > 1             | let pattern   = a:2  | endif
+    if a:0 > 2             | let path      = a:3  | endif
+    silent! execute 'vimgrep! /\C\<'.pattern.'\>/j '.path.'/'.recursive
+    copen
 endfunction
 " }}}
