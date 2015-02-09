@@ -7,7 +7,7 @@ function! ToCpp() range
     else
         normal gv=
     endif
-    execute 'silent '.range.'s/\m\(\s\)\(\w\+\s*(\)/\1'.class_name.'::\2/e'
+    execute 'silent '.range.'s/\m\(\w\+\s*(\)/'.class_name.'::\1/e'
     execute 'silent '.range.'s/\%(explicit\|virtual\) //e'
     execute 'silent '.range.'s/ \?= \?\w\+//e'
     execute range.'call ToC()'

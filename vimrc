@@ -188,7 +188,7 @@ command! -nargs=? UnderscoreToUpperCamelCase <args>s#\m\(\%(\<\l\+\)\%(_\)\@=\)\
 command! -nargs=? UnderscoreToLowerCamelCase <args>s#\m_\(\l\)#\u\1
 command! -nargs=? CamelCaseToUnderscore <args>s#\m\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+\)\(\u\)#\l\1_\l\2
 command! -nargs=+ Grep silent grep! <args> * | copen | redraw!
-command! -nargs=1 -range Align '<,'>call Align(<f-args>)
+command! -nargs=1 -range Align '<,'>call Align(<f-args>) | normal! gv
 command! -nargs=0 Reg call Reg()
 command! -nargs=1 -complete=file E call OpenWithHeader(<f-args>)
 command! -nargs=0 JSONFormatter call JSONFormatter()
@@ -261,6 +261,8 @@ nnoremap Y y$
 nnoremap - ^
 
 nnoremap <silent> ,. :update<cr>
+noremap ` '
+noremap ' `
 " }}}
 
 " Function keys mappings {{{
@@ -277,7 +279,7 @@ else
     nnoremap <F2>   :set cursorline! cursorline?<cr>
     nnoremap <F3>   :set hlsearch! hlsearch?<cr>
     nnoremap <F4>   :set spell! spell?<cr>
-    nnoremap <F5>   :update<cr>:Make<cr>
+    nnoremap <F5>   :wa<cr>:Make<cr>
     nnoremap <F9>   :Gstatus<cr>
     nnoremap <F12>  :call system('ctags')<cr>
 endif
@@ -421,7 +423,6 @@ function! Align(string) range
         endif
     endfor
     call setpos('.', l:cursor_save)
-    normal! gv
 endfunction
 
 function! Reg()
@@ -489,7 +490,7 @@ endfunction
 function! FindUsage(...)
     let recursive = '*'
     let pattern = expand('<cword>')
-    let path = expand("%:p:h")
+    let path = escape(expand("%:p:h"), ' ')
     if a:0 > 0 && a:1 != 0 | let recursive = '**' | endif
     if a:0 > 1             | let pattern   = a:2  | endif
     if a:0 > 2             | let path      = a:3  | endif

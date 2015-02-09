@@ -5,8 +5,12 @@ snippet cin
 	std::cin >> ${1:var};${0}
 snippet fori
 	for (int ${1:i} = 0; $1 < ${2:count}; $1++) {
-		${3:/* code */}
-	}${0}
+		${0}
+	}
+snippet forit
+	for (${1:std::vector<int>}::iterator ${2:it} = ${3:v}.begin(); $2 != $3.end(); $2++) {
+		${0}
+	}
 snippet class
 	class ${1:`expand("%:t:r")`} {
 	public:
@@ -18,3 +22,5 @@ snippet classqt
 	public:
 		$1(${4:QWidget* parent = 0});${0}
 	};
+snippet ios
+	#include <iostream>${0}
