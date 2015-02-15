@@ -46,8 +46,9 @@ let g:netrw_keepdir=1
 " }}}
 
 " UltiSnips {{{
-let g:UltiSnipsJumpForwardTrigger='<tab>'
-let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
+let g:UltiSnipsExpandTrigger='<c-l>'
+let g:UltiSnipsJumpForwardTrigger='<c-l>'
+let g:UltiSnipsJumpBackwardTrigger='<c-h>'
 " }}}
 
 " CtrlP {{{
@@ -129,7 +130,7 @@ set foldopen=hor,mark,percent,quickfix,search,tag,undo
 set foldnestmax=1
 set foldcolumn=1
 set foldlevel=1
-set foldtext=NeatFoldText()
+set foldtext=FoldText()
 " }}}
 
 " Backups {{{
@@ -266,16 +267,16 @@ noremap ' `
 " }}}
 
 " Function keys mappings {{{
-if has('unix')
-    nnoremap OP :!clear; 
+if has('unix') && !has('gui_running')
+    nnoremap OP :Dispatch 
     nnoremap OQ :set cursorline! cursorline?<cr>
     nnoremap OR :set hlsearch! hlsearch?<cr>
     nnoremap OS :set spell! spell?<cr>
-    nnoremap [15~ :update<cr>:Make<cr>
+    nnoremap [15~ :wa<cr>:Make<cr>
     nnoremap [20~ :Gstatus<cr>
     nnoremap [21~ :call system('ctags')<cr>
 else
-    nnoremap <F1>   :!
+    nnoremap <F1>   :Dispatch 
     nnoremap <F2>   :set cursorline! cursorline?<cr>
     nnoremap <F3>   :set hlsearch! hlsearch?<cr>
     nnoremap <F4>   :set spell! spell?<cr>
@@ -296,7 +297,7 @@ vnoremap    <silent>    <leader>zs :s/\s\+$//<cr>
 nnoremap                <leader>bc :ls!<cr>:bwipeout 
 nnoremap                <leader>bs :CtrlPBuffer<cr>
 nnoremap                <leader>bw :call BWipeOut()<cr>
-nnoremap                <leader>cd :cd <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap                <leader>cd :call SetProjectRoot()<cr>
 nnoremap                <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap                <leader>fc zM
 nnoremap                <leader>fe zMzvzz
@@ -359,19 +360,15 @@ function! BufferKill()
     echo 'Deleted ' . l:count . ' buffers'
 endfunction
 
-function! NeatFoldText()
+function! FoldText()
     let line = getline(v:foldstart)
-
     let nucolwidth = &fdc + &number * &numberwidth
     let windowwidth = winwidth(0) - nucolwidth - 3
-
     " expand tabs into spaces
     let onetab = strpart('          ', 0, &tabstop)
     let line = substitute(line, '\t', onetab, 'g')
-
     let line = strpart(line, 0, windowwidth - 2)
     let fillcharcount = windowwidth
-
     return line . repeat(" ", fillcharcount)
 endfunction
 
@@ -498,3 +495,12 @@ function! FindUsage(...)
     copen
 endfunction
 " }}}
+
+function! SetProjectRoot()
+  lcd %:p:h
+  let git_dir = system("git rev-parse --show-toplevel")
+  let is_not_git_dir = matchstr(git_dir, '^fatal:.*')
+  if empty(is_not_git_dir)
+    lcd `=git_dir`
+  endif
+endfunction
