@@ -175,7 +175,7 @@ if has('gui_running')
     if has('unix')
         set guifont=Inconsolata\ 13
     elseif has('win32')
-        set guifont=Consolas:h11
+        set guifont=Consolas:h10
     endif
 endif
 " }}}
@@ -298,6 +298,7 @@ nnoremap                <leader>bc :ls!<cr>:bwipeout
 nnoremap                <leader>bs :CtrlPBuffer<cr>
 nnoremap                <leader>bw :call BWipeOut()<cr>
 nnoremap                <leader>cd :call SetProjectRoot()<cr>
+nnoremap                <leader>d  :only<cr>:Gdiff<cr>
 nnoremap                <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap                <leader>fc zM
 nnoremap                <leader>fe zMzvzz
@@ -312,8 +313,8 @@ nnoremap                <leader>u :call FindUsage(0)<cr>
 nnoremap                <leader>U :call FindUsage(1)<cr>
 nnoremap                <leader>S :%s/\<<C-r>=expand('<cword>')<CR>\>/
 nnoremap                <leader>s :s/\<<C-r>=expand('<cword>')<CR>\>/
-vnoremap                <leader>S y<esc>:%s/<C-r>0/
-vnoremap                <leader>s y<esc>:s/<C-r>0/
+vnoremap                <leader>S y<esc>:%s/<C-r>=escape('<C-r>0', '/\[]')<cr>/
+vnoremap                <leader>s y<esc>:s/<C-r>=escape('<C-r>0', '/\[]')<cr>/
 nnoremap                <leader>t :CtrlPTag<cr>
 nnoremap    <silent>    <leader>. :update<cr>
 nnoremap    <silent>    <leader>bk :call BufferKill()<cr>
