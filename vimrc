@@ -477,9 +477,8 @@ endfunction
 
 function! JSONFormatter()
     set ft=json
-    silent %s/[{\[]/&\r/e
+    silent %s/[{[,]/&\r/e
     silent %s/[}\]]/\r&/e
-    silent %s/,/&\r/e
     silent normal! gg=G
 endfunction
 
