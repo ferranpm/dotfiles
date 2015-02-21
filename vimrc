@@ -35,7 +35,7 @@ endif
 " Clang-Complete {{{
 let g:clang_complete_auto=1
 let g:clang_hl_errors=1
-let g:clang_snippets=1
+let g:clang_snippets=0
 let g:clang_close_preview=1
 " }}}
 
@@ -46,9 +46,9 @@ let g:netrw_keepdir=1
 " }}}
 
 " UltiSnips {{{
-let g:UltiSnipsExpandTrigger='<c-l>'
-let g:UltiSnipsJumpForwardTrigger='<c-l>'
-let g:UltiSnipsJumpBackwardTrigger='<c-h>'
+let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsJumpForwardTrigger='<tab>'
+let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
 " }}}
 
 " CtrlP {{{
