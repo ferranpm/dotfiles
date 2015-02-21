@@ -80,13 +80,15 @@ set timeoutlen=500
 set ttimeoutlen=0
 set virtualedit=block
 set wildignore+=.git/*,.gitignore,*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__
+set wildignorecase
 " }}}
 
 " Programs {{{
 if has('unix')
     set grepprg=ack\ -i
+    set makeprg=make\ -j8\ -k
 else
-    set makeprg=mingw32-make\ -j8
+    set makeprg=mingw32-make\ -j8\ -k
     set grepprg=grep\ -ri
 endif
 " }}}
@@ -172,9 +174,7 @@ if has('gui_running')
     set columns=9999
     set lines=9999
     set showtabline=2
-    if has('unix')
-        set guifont=Inconsolata\ 13
-    elseif has('win32')
+    if has('win32')
         set guifont=Consolas:h10
     endif
 endif
@@ -322,13 +322,21 @@ nnoremap    <silent>    <leader>ms iSigned-off-by: Ferran Pelayo Monfort <ferran
 " }}}
 
 " Functions {{{
-function! GoToBuffer(name, method)
+" GoToBuffer({name}[, {methodnew}[, {switchbuf}]])
+function! GoToBuffer(name, ...)
+    let methodnew = 'tabnew'
+    let switchbuf = 'usetab'
+    let oldswitchbuf = &switchbuf
+    if a:0 > 0 | let methodnew = a:1 | endif
+    if a:0 > 1 | let switchbuf = a:2 | endif
+    execute 'set switchbuf='.switchbuf
     if bufexists(a:name)
         execute 'sbuffer '.a:name
     else
-        execute a:method
-        execute 'file '.a:name
+        execute methodnew
     endif
+    execute 'file '.a:name
+    execute 'set switchbuf='.oldswitchbuf
 endfunction
 
 function! Pipe(cmd)
@@ -363,11 +371,14 @@ endfunction
 
 function! FoldText()
     let line = getline(v:foldstart)
-    let nucolwidth = &fdc + &number * &numberwidth
+    let nucolwidth = &foldcolumn + &number * &numberwidth
     let windowwidth = winwidth(0) - nucolwidth - 3
     " expand tabs into spaces
     let onetab = strpart('          ', 0, &tabstop)
     let line = substitute(line, '\t', onetab, 'g')
+    if &foldmethod == 'marker'
+        let line = substitute(line, ' {{{', onetab, 'g') " }}}
+    endif
     let line = strpart(line, 0, windowwidth - 2)
     let fillcharcount = windowwidth
     return line . repeat(" ", fillcharcount)
