@@ -16,16 +16,18 @@ if [[ -d $ZSH_FOLDER ]]; then
 fi
 
 stty -ixon
+stty erase ^H
 
 ## EXPORTS ##
 export COLORFGBG="15;0"
+export C_INCLUDE_PATH=$C_INCLUDE_PATH:$HOME/root/include
 export EDITOR="vim"
 export HISTFILE=$HOME/.zshhistory
 export HISTSIZE=50000
 export KEYTIMEOUT=1
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/root/lib
 export LESS='-R'
-export NEOVIM_LISTEN_ADDRESS="/tmp/neovim$$"
-export PATH=$HOME/bin:$HOME/.gem/ruby/2.1.0/bin:$PATH
+export PATH=$HOME/root/bin:$HOME/.gem/ruby/2.1.0/bin:$PATH
 export SAVEHIST=10000
 export ZLS_COLORS=$LS_COLORS
 
