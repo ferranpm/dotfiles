@@ -95,6 +95,7 @@ endif
 
 " Indicators {{{
 set completeopt=menuone
+set number
 set ruler
 set showbreak=>
 set showcmd
@@ -162,7 +163,7 @@ highlight WhiteOnRed ctermfg=255 ctermbg=196 guifg=#ffffff guibg=#ff0000
 highlight IndentWhiteSpaces cterm=undercurl ctermfg=242 gui=underline guifg=#262626
 highlight TrilingWhitespace ctermbg=199 guibg=#ff00af
 highlight RightMargin ctermbg=93 guibg=#8700ff
-call matchadd('RightMargin', '\%81c', 30)
+" call matchadd('RightMargin', '\%81c', 30)
 " call matchadd('TrilingWhitespace', '\s\+\%#\@<!$', 70)
 " call matchadd('IndentWhiteSpaces', '^ \+', 100)
 " }}}
@@ -197,6 +198,8 @@ command! -nargs=0 JSONFormatter call JSONFormatter()
 
 " Autocommands {{{
 autocmd VimResized * :wincmd =
+autocmd InsertEnter * hi StatusLine ctermfg=233 guifg=#111111 ctermbg=148 guibg=#b3d500
+autocmd InsertLeave * hi StatusLine ctermfg=15  guifg=#ffffff ctermbg=239 guibg=#4e4e4e
 " }}}
 
 " Mappings {{{
@@ -387,14 +390,14 @@ endfunction
 function! HLNext(blinktime)
     let [bufnum, lnum, col, off] = getpos('.')
     let target_pat = '\c\%#'.@/
-    let blinks = 2
+    let blinks = 1
     for n in range(1, blinks)
         let red = matchadd('WhiteOnRed', target_pat, 100)
         redraw
-        execute 'sleep '.float2nr(a:blinktime/(2*blinks)*1000).'m'
+        execute 'sleep '.float2nr(a:blinktime/(2*blinks)*500).'m'
         call matchdelete(red)
         redraw
-        execute 'sleep '.float2nr(a:blinktime/(2*blinks)*1000).'m'
+        execute 'sleep '.float2nr(a:blinktime/(2*blinks)*500).'m'
     endfor
 endfunction
 
@@ -498,7 +501,7 @@ endfunction
 function! FindUsage(...)
     let recursive = '*'
     let pattern = expand('<cword>')
-    let path = escape(expand("%:p:h"), ' ')
+    let path = escape(getcwd(), ' ')
     if a:0 > 0 && a:1 != 0 | let recursive = '**' | endif
     if a:0 > 1             | let pattern   = a:2  | endif
     if a:0 > 2             | let path      = a:3  | endif
