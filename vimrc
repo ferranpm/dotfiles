@@ -86,9 +86,9 @@ set wildignorecase
 " Programs {{{
 if has('unix')
     set grepprg=ack\ -i
-    set makeprg=make\ -j8\ -k
+    set makeprg=make\ -j8
 else
-    set makeprg=mingw32-make\ -j8\ -k
+    set makeprg=mingw32-make\ -j8
     set grepprg=grep\ -ri
 endif
 " }}}
@@ -197,17 +197,22 @@ command! -nargs=0 JSONFormatter call JSONFormatter()
 " }}}
 
 " Autocommands {{{
-autocmd VimResized * :wincmd =
-autocmd InsertEnter * hi StatusLine ctermfg=233 guifg=#111111 ctermbg=148 guibg=#b3d500
-autocmd InsertLeave * hi StatusLine ctermfg=15  guifg=#ffffff ctermbg=239 guibg=#4e4e4e
+augroup autocommands
+    autocmd! VimResized * :wincmd =
+    autocmd! InsertEnter * hi StatusLine ctermfg=0   guifg=#000000 ctermbg=149 guibg=#afdf5f
+    autocmd! InsertLeave * hi StatusLine ctermfg=15  guifg=#ffffff ctermbg=239 guibg=#4e4e4e
+augroup END
 " }}}
 
 " Mappings {{{
-nmap J 5j
-nmap K 5k
+nnoremap J 5j
+nnoremap K 5k
 
-xmap J 5j
-xmap K 5k
+xnoremap J 5j
+xnoremap K 5k
+
+nnoremap q; q:
+xnoremap q; q:
 
 inoremap <C-o> <C-x><C-o><C-p>
 inoremap <C-j> <esc>O
