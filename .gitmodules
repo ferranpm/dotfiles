@@ -26,3 +26,6 @@
 	path = vim/bundle/fugitive
 	url = http://github.com/tpope/vim-fugitive
 	ignore = dirty
+[submodule "vim/bundle/gutentags"]
+	path = vim/bundle/gutentags
+	url = https://github.com/ludovicchabant/vim-gutentags
