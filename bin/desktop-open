@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+$(cat $1 | grep -ie '^exec=' | sed 's/^exec=//i')
