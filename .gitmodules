@@ -29,3 +29,6 @@
 [submodule "vim/bundle/gutentags"]
 	path = vim/bundle/gutentags
 	url = https://github.com/ludovicchabant/vim-gutentags
+[submodule "vim/bundle/dispatch"]
+	path = vim/bundle/dispatch
+	url = http://github.com/tpope/vim-dispatch
