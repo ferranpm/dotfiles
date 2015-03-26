@@ -224,10 +224,18 @@ nnoremap ( <Esc>?[({"'\[<]<CR>
 vnoremap ) /[)}"'\]>]<CR>
 vnoremap ( ?[({"'\[<]<CR>
 
-nnoremap <C-h> <C-W>h
-nnoremap <C-j> <C-W>j
-nnoremap <C-k> <C-W>k
-nnoremap <C-l> <C-W>l
+nnoremap <C-g>n gt
+nnoremap <C-g>p gT
+
+if has('nvim')
+    nnoremap <C-g>c :tabnew<cr>:term<cr>
+    nnoremap <C-w>\| :vs term://zsh<cr>i
+    tnoremap <esc> <C-\><C-n>
+    tnoremap <C-w>h <C-\><C-n><C-w>h
+    tnoremap <C-w>j <C-\><C-n><C-w>j
+    tnoremap <C-w>k <C-\><C-n><C-w>k
+    tnoremap <C-w>l <C-\><C-n><C-w>l
+endif
 
 nnoremap <silent> ]q :cnext<cr>
 nnoremap <silent> [q :cprevious<cr>
