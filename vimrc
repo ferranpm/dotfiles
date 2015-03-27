@@ -201,6 +201,7 @@ augroup autocommands
     autocmd! VimResized * :wincmd =
     autocmd! InsertEnter * hi StatusLine ctermfg=0   guifg=#000000 ctermbg=149 guibg=#afdf5f
     autocmd! InsertLeave * hi StatusLine ctermfg=15  guifg=#ffffff ctermbg=239 guibg=#4e4e4e
+    autocmd! BufEnter term://* startinsert
 augroup END
 " }}}
 
@@ -217,7 +218,8 @@ xnoremap q; q:
 inoremap <C-o> <C-x><C-o><C-p>
 inoremap <C-j> <esc>O
 
-inoremap <C-^> <Esc><C-^>
+nnoremap <silent> <C-@> :call AlternateSource()<cr>
+nnoremap <silent> <C-^> :call AlternateFile()<cr>
 
 nnoremap ) <Esc>/[)}"'\]>]<CR>
 nnoremap ( <Esc>?[({"'\[<]<CR>
@@ -228,9 +230,11 @@ nnoremap <C-g>n gt
 nnoremap <C-g>p gT
 
 if has('nvim')
-    nnoremap <C-g>c :tabnew<cr>:term<cr>
     nnoremap <C-w>\| :vs term://zsh<cr>i
-    tnoremap <esc> <C-\><C-n>
+    tnoremap <C-g> <C-\><C-n>
+    tnoremap <silent> <C-^> <C-\><C-n>:call AlternateFile()<cr>
+    tnoremap <silent> <leader>cd <C-\><C-n>? \<in\> ?e<cr>wyiW:cd <c-r>0<cr>i
+    tnoremap <silent> <leader>gt cd <C-\><C-n>:let @@=getcwd() \| .put 0<cr>i<cr>
     tnoremap <C-w>h <C-\><C-n><C-w>h
     tnoremap <C-w>j <C-\><C-n><C-w>j
     tnoremap <C-w>k <C-\><C-n><C-w>k
@@ -312,7 +316,7 @@ nnoremap    <silent>    <leader>zs :%s/\s\+$//<cr>
 vnoremap    <silent>    <leader>zs :s/\s\+$//<cr>
 nnoremap                <leader>bc :ls!<cr>:bwipeout 
 nnoremap                <leader>bs :CtrlPBuffer<cr>
-nnoremap                <leader>bw :call BWipeOut()<cr>
+nnoremap                <leader>bw :call BufferWipeOut()<cr>
 nnoremap                <leader>cd :call SetProjectRoot()<cr>
 nnoremap                <leader>d  :only<cr>:Gdiff<cr>
 nnoremap                <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
@@ -327,10 +331,10 @@ nnoremap                <leader>l o<Esc>
 nnoremap                <leader>mm dapGplrXk/^\[ \]<cr>
 nnoremap                <leader>u :call FindUsage(0)<cr>
 nnoremap                <leader>U :call FindUsage(1)<cr>
-nnoremap                <leader>S :%s/\<<C-r>=expand('<cword>')<CR>\>/
-nnoremap                <leader>s :s/\<<C-r>=expand('<cword>')<CR>\>/
-vnoremap                <leader>S y<esc>:%s/<C-r>=escape('<C-r>0', '/\[]')<cr>/
-vnoremap                <leader>s y<esc>:s/<C-r>=escape('<C-r>0', '/\[]')<cr>/
+nnoremap                <leader>S :%s/\C\<<C-r>=expand('<cword>')<CR>\>/
+nnoremap                <leader>s :s/\C\<<C-r>=expand('<cword>')<CR>\>/
+vnoremap                <leader>S y<esc>:%s/\C<C-r>=escape('<C-r>0', '*/\[]')<cr>/
+vnoremap                <leader>s y<esc>:s/\C<C-r>=escape('<C-r>0', '*/\[]')<cr>/
 nnoremap                <leader>t :CtrlPTag<cr>
 nnoremap    <silent>    <leader>. :update<cr>
 nnoremap    <silent>    <leader>bk :call BufferKill()<cr>
@@ -490,17 +494,40 @@ function! OpenWithHeader(file)
     endif
 endfunction
 
-function! BWipeOut()
-    if bufexists(bufname('#'))
+function! AlternateSource()
+    let file = expand("%:r")
+    let extension = expand("%:e")
+    if extension == "c" || extension == "cpp"
+        execute "e ".file.".h"
+    elseif extension == "h"
+        if filereadable(file.".c")
+            execute "e ".file.".c"
+        elseif filereadable(file.".cpp")
+            execute "e ".file.".cpp"
+        endif
+    endif
+endfunction
+
+function! AlternateFile()
+    try
         buffer #
-    else
-        exec "buffer ".last_buffer_nr()
-    endif
-    if (bufexists(bufname('#')))
+    catch
+        for b in reverse(range(1, bufnr('$')))
+            if bufexists(b) && buflisted(b) && b != bufnr("%")
+                exec "buffer ".b
+                return
+            endif
+        endfor
+    endtry
+endfunction
+
+function! BufferWipeOut()
+    call AlternateFile()
+    try
         bwipeout #
-    else
+    catch
         bwipeout
-    endif
+    endtry
 endfunction
 
 function! JSONFormatter()
@@ -521,13 +548,13 @@ function! FindUsage(...)
     silent! execute 'vimgrep! /\C\<'.pattern.'\>/j '.path.'/'.recursive
     copen
 endfunction
-" }}}
 
 function! SetProjectRoot()
-  lcd %:p:h
-  let git_dir = system("git rev-parse --show-toplevel")
-  let is_not_git_dir = matchstr(git_dir, '^fatal:.*')
-  if empty(is_not_git_dir)
-    lcd `=git_dir`
-  endif
+    lcd %:p:h
+    let git_dir = system("git rev-parse --show-toplevel")
+    let is_not_git_dir = matchstr(git_dir, '^fatal:.*')
+    if empty(is_not_git_dir)
+        lcd `=git_dir`
+    endif
 endfunction
+" }}}
