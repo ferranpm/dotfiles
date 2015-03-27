@@ -39,7 +39,7 @@
     a = add
     ap = add -p
     dc = diff --cached
-    r = rm
+    di = diff --color-words
 
 [sendemail]
     smtpencryption = tls
