@@ -70,7 +70,7 @@ main = xmonad $ kde4Config
 --------------------------------------------------------------------------------
 myLayout = avoidStruts (tiled ||| simpleTabbed)
         where
-                tiled    = spacing 3 $ ResizableTall nmaster delta ratio []
+                tiled    = spacing 0 $ ResizableTall nmaster delta ratio []
                 nmaster  = 1
                 delta    = 5/100
                 ratio    = toRational (2/(1 + sqrt 5 :: Double))
