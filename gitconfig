@@ -27,11 +27,10 @@
     b = branch
     c = commit
     co = checkout
-    d = diff
     dt = difftool
     f = fetch
-    l = log --pretty=format:'%C(yellow)%h%Cgreen%d %Creset%s' --date=short --graph
-    lo = log --pretty=format:'%C(yellow)%h %C(red)%ad%Cgreen%d %Creset%s' --date=short --graph --all
+    l  = log --oneline --graph --all --decorate=full --date=relative
+    lo = log --pretty=format:'%C(yellow)%h %C(red)%ad%C(green)%d %C(reset)%s %C(blue)<%an>' --date=short --graph --all --decorate=full
     m = merge
     p = push
     s = status
@@ -39,7 +38,7 @@
     a = add
     ap = add -p
     dc = diff --cached
-    di = diff --color-words
+    d = diff --color-words
 
 [sendemail]
     smtpencryption = tls

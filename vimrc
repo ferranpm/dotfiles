@@ -230,11 +230,10 @@ nnoremap <C-g>n gt
 nnoremap <C-g>p gT
 
 if has('nvim')
-    nnoremap <C-w>\| :vs term://zsh<cr>i
     tnoremap <C-g> <C-\><C-n>
     tnoremap <silent> <C-^> <C-\><C-n>:call AlternateFile()<cr>
-    tnoremap <silent> <leader>cd <C-\><C-n>? \<in\> ?e<cr>wyiW:cd <c-r>0<cr>i
-    tnoremap <silent> <leader>gt cd <C-\><C-n>:let @@=getcwd() \| .put 0<cr>i<cr>
+    tnoremap <silent> <C-\>n <C-\><C-n>? \<in\> ?e<cr>wyiW:cd <c-r>0<cr>i
+    tnoremap <silent> <C-\>t cd <C-\><C-n>:let @@=getcwd() \| .put 0<cr>i<cr>
     tnoremap <C-w>h <C-\><C-n><C-w>h
     tnoremap <C-w>j <C-\><C-n><C-w>j
     tnoremap <C-w>k <C-\><C-n><C-w>k
