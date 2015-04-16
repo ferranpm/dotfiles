@@ -538,13 +538,17 @@ endfunction
 
 " FindUsage([{recursive} [, {pattern} [, {path}]]])
 function! FindUsage(...)
-    let recursive = '*'
+    let recursive = 0
     let pattern = expand('<cword>')
-    let path = escape(getcwd(), ' ')
-    if a:0 > 0 && a:1 != 0 | let recursive = '**' | endif
-    if a:0 > 1             | let pattern   = a:2  | endif
-    if a:0 > 2             | let path      = a:3  | endif
-    silent! execute 'vimgrep! /\C\<'.pattern.'\>/j '.path.'/'.recursive
+    let path = getcwd()
+    if a:0 > 0 | let recursive = a:1 | endif
+    if a:0 > 1 | let pattern   = a:2 | endif
+    if a:0 > 2 | let path      = a:3 | endif
+    if !exists('a:3') && !recursive
+        let path = expand('%:h')
+    endif
+    let path = escape(path, ' ')
+    execute 'vimgrep! /\C\<'.pattern.'\>/j '.path.'/'.(recursive ? '**' : '*')
     copen
 endfunction
 
