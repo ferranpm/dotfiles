@@ -29,15 +29,15 @@
     co = checkout
     dt = difftool
     f = fetch
-    l  = log --oneline --graph --all --decorate=full --date=relative
-    lo = log --pretty=format:'%C(yellow)%h %C(red)%ad%C(green)%d %C(reset)%s %C(blue)<%an>' --date=short --graph --all --decorate=full
+    l  = log --graph --all --oneline --decorate=short
+    lo = log --graph --all --date=short --format='%C(yellow)%h %C(red)%ad%C(green)%d %C(reset)%s %C(blue)<%an>'
     m = merge
     p = push
     s = status
     v = describe --abbrev=0
     a = add
     ap = add -p
-    dc = diff --cached
+    dc = diff --cached --color-words
     d = diff --color-words
 
 [sendemail]
