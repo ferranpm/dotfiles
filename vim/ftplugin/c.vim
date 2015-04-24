@@ -24,3 +24,7 @@ function! ToH() range
     call setpos('.', pos)
 endfunction
 noremap <leader>m: :call ToH()<cr>
+
+" Text object for 'arround function'
+vmap <silent> af <esc>][v%?^\w\+<cr>
+onoremap <silent> af :normal Vaf<CR>

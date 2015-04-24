@@ -160,12 +160,6 @@ colorscheme xoria256
 
 " Highlights {{{
 highlight WhiteOnRed ctermfg=255 ctermbg=196 guifg=#ffffff guibg=#ff0000
-highlight IndentWhiteSpaces cterm=undercurl ctermfg=242 gui=underline guifg=#262626
-highlight TrilingWhitespace ctermbg=199 guibg=#ff00af
-highlight RightMargin ctermbg=93 guibg=#8700ff
-" call matchadd('RightMargin', '\%81c', 30)
-" call matchadd('TrilingWhitespace', '\s\+\%#\@<!$', 70)
-" call matchadd('IndentWhiteSpaces', '^ \+', 100)
 " }}}
 
 " GUI {{{
@@ -225,6 +219,11 @@ nnoremap ) <Esc>/[)}"'\]>]<CR>
 nnoremap ( <Esc>?[({"'\[<]<CR>
 vnoremap ) /[)}"'\]>]<CR>
 vnoremap ( ?[({"'\[<]<CR>
+
+noremap [[ ?{<CR>w99[{
+noremap ][ /}<CR>b99]}
+map ]] j0[[%/{<CR>
+map [] k$][%?}<CR>
 
 nnoremap <C-g>n gt
 nnoremap <C-g>p gT
