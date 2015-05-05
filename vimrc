@@ -184,7 +184,7 @@ command! -nargs=? UnderscoreToUpperCamelCase <args>s#\m\(\%(\<\l\+\)\%(_\)\@=\)\
 command! -nargs=? UnderscoreToLowerCamelCase <args>s#\m_\(\l\)#\u\1
 command! -nargs=? CamelCaseToUnderscore <args>s#\m\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+\)\(\u\)#\l\1_\l\2
 command! -nargs=+ Grep silent grep! <args> * | copen | redraw!
-command! -nargs=1 -range Align '<,'>call Align(<f-args>) | normal! gv
+command! -nargs=1 -range Align '<,'>call Align(<f-args>)
 command! -nargs=0 Reg call Reg()
 command! -nargs=1 -complete=file E call OpenWithHeader(<f-args>)
 command! -nargs=0 JSONFormatter call JSONFormatter()
@@ -195,7 +195,6 @@ augroup autocommands
     autocmd! VimResized * :wincmd =
     autocmd! InsertEnter * hi StatusLine ctermfg=0   guifg=#000000 ctermbg=149 guibg=#afdf5f
     autocmd! InsertLeave * hi StatusLine ctermfg=15  guifg=#ffffff ctermbg=239 guibg=#4e4e4e
-    autocmd! BufEnter term://* startinsert
 augroup END
 " }}}
 
@@ -209,7 +208,7 @@ xnoremap K 5k
 nnoremap q; q:
 xnoremap q; q:
 
-inoremap <C-o> <C-x><C-o><C-p>
+inoremap <C-o> <C-x><C-o>
 inoremap <C-j> <esc>O
 
 nnoremap <silent> <C-@> :call AlternateSource()<cr>
@@ -228,8 +227,11 @@ map [] k$][%?}<CR>
 nnoremap <C-g>n gt
 nnoremap <C-g>p gT
 
+vnoremap <cr> y :if &bt == "terminal" \| startinsert \| endif<cr>
+
 if has('nvim')
     tnoremap <C-g> <C-\><C-n>
+    tnoremap <C-g><C-p> <C-\><C-n>pi
     tnoremap <silent> <C-^> <C-\><C-n>:call AlternateFile()<cr>
     tnoremap <silent> <C-\>n <C-\><C-n>? \<in\> ?e<cr>wyiW:cd <c-r>0<cr>i
     tnoremap <silent> <C-\>t cd <C-\><C-n>:let @@=getcwd() \| .put 0<cr>i<cr>
@@ -290,7 +292,7 @@ if has('unix') && !has('gui_running')
     nnoremap OQ :set cursorline! cursorline?<cr>
     nnoremap OR :set hlsearch! hlsearch?<cr>
     nnoremap OS :set spell! spell?<cr>
-    nnoremap [15~ :wa<cr>:Make<cr>
+    nnoremap [15~ :call Make()<cr>
     nnoremap [20~ :Gstatus<cr>
     nnoremap [21~ :call system('ctags')<cr>
 else
@@ -298,7 +300,7 @@ else
     nnoremap <F2>   :set cursorline! cursorline?<cr>
     nnoremap <F3>   :set hlsearch! hlsearch?<cr>
     nnoremap <F4>   :set spell! spell?<cr>
-    nnoremap <F5>   :wa<cr>:Make<cr>
+    nnoremap <F5>   :call Make()<cr>
     nnoremap <F9>   :Gstatus<cr>
     nnoremap <F12>  :call system('ctags')<cr>
 endif
@@ -331,8 +333,8 @@ nnoremap                <leader>u :call FindUsage(0)<cr>
 nnoremap                <leader>U :call FindUsage(1)<cr>
 nnoremap                <leader>S :%s/\C\<<C-r>=expand('<cword>')<CR>\>/
 nnoremap                <leader>s :s/\C\<<C-r>=expand('<cword>')<CR>\>/
-vnoremap                <leader>S y<esc>:%s/\C<C-r>=escape('<C-r>0', '*/\[]')<cr>/
-vnoremap                <leader>s y<esc>:s/\C<C-r>=escape('<C-r>0', '*/\[]')<cr>/
+vnoremap                <leader>S y<esc>:%s/\C<C-r>=escape('<C-r>0', '*/\[].')<cr>/
+vnoremap                <leader>s y<esc>:s/\C<C-r>=escape('<C-r>0', '*/\[].')<cr>/
 nnoremap                <leader>t :CtrlPTag<cr>
 nnoremap    <silent>    <leader>. :update<cr>
 nnoremap    <silent>    <leader>bk :call BufferKill()<cr>
@@ -417,8 +419,8 @@ function! HLNext(blinktime)
 endfunction
 
 function! SudoWriteCmd() abort
-  execute (has('gui_running') ? '' : 'silent') 'write !env SUDO_EDITOR=tee sudo -e % >/dev/null'
-  let &modified = v:shell_error
+    execute (has('gui_running') ? '' : 'silent') 'write !env SUDO_EDITOR=tee sudo -e % >/dev/null'
+    let &modified = v:shell_error
 endfunction
 
 function! MaxColumn(string, startline, endline, column)
@@ -558,5 +560,11 @@ function! SetProjectRoot()
     if empty(is_not_git_dir)
         lcd `=git_dir`
     endif
+endfunction
+
+function! Make()
+    update
+    let make = exists(":Make") == 2 ? "Make " : "make "
+    execute filereadable("Makefile") ? make : make.expand("%:r")
 endfunction
 " }}}
