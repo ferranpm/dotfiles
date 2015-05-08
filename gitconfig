@@ -37,8 +37,9 @@
     v = describe --abbrev=0
     a = add
     ap = add -p
-    dc = diff --cached --color-words
-    d = diff --color-words
+    dc = diff --cached
+    d = diff
+    di = diff --color-words
 
 [sendemail]
     smtpencryption = tls
