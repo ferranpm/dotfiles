@@ -193,8 +193,6 @@ command! -nargs=0 JSONFormatter call JSONFormatter()
 " Autocommands {{{
 augroup autocommands
     autocmd! VimResized * :wincmd =
-    autocmd! InsertEnter * hi StatusLine ctermfg=0   guifg=#000000 ctermbg=149 guibg=#afdf5f
-    autocmd! InsertLeave * hi StatusLine ctermfg=15  guifg=#ffffff ctermbg=239 guibg=#4e4e4e
 augroup END
 " }}}
 
