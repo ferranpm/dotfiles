@@ -1,5 +1,5 @@
 if [[ ! "$TERM" =~ "screen" ]]; then
-    if [ ! $(tmux attach) ]; then
+    if [[ ! $(tmux attach) ]]; then
         tmux
     fi
 fi
@@ -26,8 +26,7 @@ export HISTFILE=$HOME/.zshhistory
 export HISTSIZE=50000
 export KEYTIMEOUT=1
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/root/lib
-export LESS='-R'
-export PATH=$HOME/root/bin:$HOME/.gem/ruby/2.1.0/bin:$PATH
+export PATH=$HOME/bin:$HOME/root/bin:$HOME/.gem/ruby/2.1.0/bin:$PATH
 export SAVEHIST=10000
 export ZLS_COLORS=$LS_COLORS
 
