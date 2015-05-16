@@ -285,23 +285,13 @@ noremap ' `
 " }}}
 
 " Function keys mappings {{{
-if has('unix') && !has('gui_running')
-    nnoremap OP :Dispatch 
-    nnoremap OQ :set cursorline! cursorline?<cr>
-    nnoremap OR :set hlsearch! hlsearch?<cr>
-    nnoremap OS :set spell! spell?<cr>
-    nnoremap [15~ :call Make()<cr>
-    nnoremap [20~ :Gstatus<cr>
-    nnoremap [21~ :call system('ctags')<cr>
-else
-    nnoremap <F1>   :Dispatch 
-    nnoremap <F2>   :set cursorline! cursorline?<cr>
-    nnoremap <F3>   :set hlsearch! hlsearch?<cr>
-    nnoremap <F4>   :set spell! spell?<cr>
-    nnoremap <F5>   :call Make()<cr>
-    nnoremap <F9>   :Gstatus<cr>
-    nnoremap <F12>  :call system('ctags')<cr>
-endif
+nnoremap <F1>   :Dispatch 
+nnoremap <F2>   :set cursorline! cursorline?<cr>
+nnoremap <F3>   :set hlsearch! hlsearch?<cr>
+nnoremap <F4>   :set spell! spell?<cr>
+nnoremap <F5>   :call Make()<cr>
+nnoremap <F9>   :Gstatus<cr>
+nnoremap <F12>  :call system('ctags')<cr>
 " }}}
 
 " Leader mappings {{{
