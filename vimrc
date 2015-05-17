@@ -96,6 +96,7 @@ endif
 " Indicators {{{
 set completeopt=menuone
 set number
+set relativenumber
 set ruler
 set showbreak=>
 set showcmd

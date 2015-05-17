@@ -1,5 +1,5 @@
 set makeprg=ant\ -emacs\ debug
-set errorformat=%f:%l:\ error:\ %m
+set errorformat=%f:%l:\ error:\ %m,%f:%l:\ %m
 
 nnoremap <F5> :update<cr>:Make<cr>
 nnoremap <F6> :Dispatch ant installd<cr>
