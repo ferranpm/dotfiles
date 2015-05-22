@@ -5,3 +5,6 @@ nnoremap <F5> :update<cr>:Make<cr>
 nnoremap <F6> :Dispatch ant installd<cr>
 
 let $CLASSPATH=expand("~/android-sdk/platforms/android-15/android.jar")
+
+set omnifunc=javacomplete#Complete
+set completefunc=javacomplete#CompleteParamsInfo
