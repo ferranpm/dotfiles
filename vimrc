@@ -207,7 +207,7 @@ xnoremap K 5k
 nnoremap q; q:
 xnoremap q; q:
 
-inoremap <C-o> <C-x><C-o>
+inoremap <C-o> <C-x><C-o><C-p>
 inoremap <C-j> <esc>O
 
 nnoremap <silent> <C-@> :call AlternateSource()<cr>
