@@ -45,8 +45,7 @@ endfunction
 
 command! -nargs=0 DeleteUnusedImports call DeleteUnusedImports()
 
-let g:projectName = system('grep "<project name=" build.xml | sed -e "s/ *<project name=\"\(.*\)\" .*$/\1/" | tr -d "\n"')
-let g:packageName = system('grep package AndroidManifest.xml | sed -e "s/ *package=\"\([a-zA-Z\.]\+\)\"/\1/" | tr -d "\n"')
+let g:projectName = system('xmllint AndroidManifest.xml | grep -m 1 "activity" | sed -e "s/ *<activity android:name=\"\([0-9A-Za-z_\.]\+\)\" .*/\1/" | tr -d "\n"')
+let g:packageName = system('xmllint AndroidManifest.xml | grep -m 1 "package"  | sed -e "s/.*package=\"\([0-9A-Za-z_\.]\+\)\".*/\1/" | tr -d "\n"')
 
-nnoremap <F5> :update<cr>:Make<cr>
 nnoremap <F6> :execute "Dispatch ant installd && adb shell am start -a android.intent.action.MAIN -n ".g:packageName."/.".g:projectName<cr>

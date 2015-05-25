@@ -554,6 +554,10 @@ endfunction
 function! Make()
     update
     let make = exists(":Make") == 2 ? "Make " : "make "
-    execute filereadable("Makefile") ? make : make.expand("%:r")
+    if filereadable("Makefile") || filereadable("AndroidManifest.xml")
+        execute make
+    else
+        execute make.expand("%:r")
+    endif
 endfunction
 " }}}
