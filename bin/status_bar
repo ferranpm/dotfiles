@@ -1,7 +1,0 @@
-#!/bin/bash
-
-foreground=$1
-background=$2
-font=$3
-
-~/bin/status | dzen2 -e '' -x '500' -y '0' -h '15' -ta 'r' -bg $background -fg $foreground -fn $font -dock &
