@@ -184,7 +184,7 @@ command! SudoWrite call SudoWriteCmd()
 command! -nargs=? UnderscoreToUpperCamelCase <args>s#\m\(\%(\<\l\+\)\%(_\)\@=\)\|_\(\l\)#\u\1\2
 command! -nargs=? UnderscoreToLowerCamelCase <args>s#\m_\(\l\)#\u\1
 command! -nargs=? CamelCaseToUnderscore <args>s#\m\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+\)\(\u\)#\l\1_\l\2
-command! -nargs=+ Grep silent grep! <args> * | copen | redraw!
+command! -nargs=+ Grep silent grep! <args> * | redraw!
 command! -nargs=1 -range Align '<,'>call Align(<f-args>)
 command! -nargs=0 Reg call Reg()
 command! -nargs=1 -complete=file E call OpenWithHeader(<f-args>)
@@ -194,6 +194,7 @@ command! -nargs=0 JSONFormatter call JSONFormatter()
 " Autocommands {{{
 augroup autocommands
     autocmd! VimResized * :wincmd =
+    autocmd! QuickFixCmdPost * :cwindow
 augroup END
 " }}}
 
@@ -529,7 +530,6 @@ function! FindUsage(...) " {{{
     endif
     let path = escape(path, ' ')
     execute 'vimgrep! /\C\<'.pattern.'\>/j '.path.'/'.(recursive ? '**' : '*')
-    copen
 endfunction " }}}
 
 function! SetProjectRoot() " {{{
