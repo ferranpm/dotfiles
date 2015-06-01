@@ -249,18 +249,8 @@ nnoremap <silent> [t :tprevious<cr>
 nnoremap <silent> ]g /\v^(\<\|\=\|\>){7}([^=].+)?$<CR>
 nnoremap <silent> [g ?\v^(\<\|\=\|\>){7}([^=].+)\?$<CR>
 
-nnoremap <silent> <up>   :move .-2<cr>
-nnoremap <silent> <down> :move .+1<cr>
-vnoremap <silent> <up>   :move .-2<cr>gv
-vnoremap <silent> <down> :move '>+<cr>gv
-
 vnoremap <M-/> <Esc>/\%V
 vnoremap * y/0<cr>
-
-nnoremap <silent> <right> gt
-nnoremap <silent> <left>  gT
-nnoremap <silent> <C-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-nnoremap <silent> <C-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 
 nnoremap <silent> n n:call HLNext(0.2)<cr>
 nnoremap <silent> N N:call HLNext(0.2)<cr>
