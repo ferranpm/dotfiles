@@ -5,10 +5,11 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char font[] = "Liberation Mono:pixelsize=16:antialias=false:autohint=false";
+static char font[] = "Liberation Mono:pixelsize=14:antialias=false:autohint=false";
 static int borderpx = 2;
 static char shell[] = "/bin/sh";
 static char *utmp = NULL;
+static char stty_args[] = "stty raw -echo -iexten echonl";
 
 /* identification sequence returned in DA and DECID */
 static char vtiden[] = "\033[?6c";
@@ -40,6 +41,11 @@ static unsigned int actionfps = 30;
  * attribute.
  */
 static unsigned int blinktimeout = 800;
+
+/*
+ * thickness of underline and bar cursors
+ */
+static unsigned int cursorthickness = 2;
 
 /*
  * bell volume. It must be a value between -100 and 100. Use 0 for disabling
@@ -118,6 +124,8 @@ static Shortcut shortcuts[] = {
 	{ MODKEY|ShiftMask,     XK_Home,        xzoomreset,     {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ MODKEY|ShiftMask,     XK_Insert,      clippaste,      {.i =  0} },
+	{ MODKEY|ShiftMask,     XK_C,           clipcopy,       {.i =  0} },
+	{ MODKEY|ShiftMask,     XK_V,           clippaste,      {.i =  0} },
 	{ MODKEY,               XK_Num_Lock,    numlock,        {.i =  0} },
 };
 
@@ -257,7 +265,7 @@ static Key key[] = {
 	{ XK_Delete,        ShiftMask,      "\033[2K",      -1,    0,    0},
 	{ XK_Delete,        ShiftMask,      "\033[3;2~",    +1,    0,    0},
 	{ XK_Delete,        XK_ANY_MOD,     "\033[P",       -1,    0,    0},
-	{ XK_Delete,        XK_ANY_MOD,     "\177",         +1,    0,    0},
+	{ XK_Delete,        XK_NO_MOD,      "\177",          0,    0,    0},
 	{ XK_Home,          ShiftMask,      "\033[2J",       0,   -1,    0},
 	{ XK_Home,          ShiftMask,      "\033[1;2H",     0,   +1,    0},
 	{ XK_Home,          XK_ANY_MOD,     "\033[H",        0,   -1,    0},
