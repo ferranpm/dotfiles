@@ -332,7 +332,7 @@ nnoremap    <silent>    <leader>ms iSigned-off-by: Ferran Pelayo Monfort <ferran
 
 " Functions {{{
 " GoToBuffer({name}[, {methodnew}[, {switchbuf}]])
-function! GoToBuffer(name, ...)
+function! GoToBuffer(name, ...) " {{{
     let methodnew = 'tabnew'
     let switchbuf = 'usetab'
     let oldswitchbuf = &switchbuf
@@ -346,9 +346,9 @@ function! GoToBuffer(name, ...)
     endif
     execute 'file '.a:name
     execute 'set switchbuf='.oldswitchbuf
-endfunction
+endfunction " }}}
 
-function! Pipe(cmd)
+function! Pipe(cmd) " {{{
     call GoToBuffer('Pipe', 'vnew')
     normal ggdG
     redir @+>
@@ -357,17 +357,17 @@ function! Pipe(cmd)
     silent 0put +
     normal! ggdd
     set nomodified
-endfunction
+endfunction " }}}
 
-function! Shell(cmd)
+function! Shell(cmd) " {{{
     call GoToBuffer('Shell', 'vnew')
     normal! ggdG
     execute 'read !'.a:cmd
     normal! ggdd
     set nomodified
-endfunction
+endfunction " }}}
 
-function! BufferKill()
+function! BufferKill() " {{{
     let l:count = 0
     for b in range(1, bufnr('$'))
         if bufexists(b) && !buflisted(b)
@@ -376,9 +376,9 @@ function! BufferKill()
         endif
     endfor
     echo 'Deleted ' . l:count . ' buffers'
-endfunction
+endfunction " }}}
 
-function! FoldText()
+function! FoldText() " {{{
     let line = getline(v:foldstart)
     let nucolwidth = &foldcolumn + &number * &numberwidth
     let windowwidth = winwidth(0) - nucolwidth - 3
@@ -391,9 +391,9 @@ function! FoldText()
     let line = strpart(line, 0, windowwidth - 2)
     let fillcharcount = windowwidth
     return line . repeat(" ", fillcharcount)
-endfunction
+endfunction " }}}
 
-function! HLNext(blinktime)
+function! HLNext(blinktime) " {{{
     let [bufnum, lnum, col, off] = getpos('.')
     let target_pat = '\c\%#'.@/
     let blinks = 1
@@ -405,14 +405,14 @@ function! HLNext(blinktime)
         redraw
         execute 'sleep '.float2nr(a:blinktime/(2*blinks)*500).'m'
     endfor
-endfunction
+endfunction " }}}
 
-function! SudoWriteCmd() abort
+function! SudoWriteCmd() abort " {{{
     execute (has('gui_running') ? '' : 'silent') 'write !env SUDO_EDITOR=tee sudo -e % >/dev/null'
     let &modified = v:shell_error
-endfunction
+endfunction " }}}
 
-function! MaxColumn(string, startline, endline, column)
+function! MaxColumn(string, startline, endline, column) " {{{
     let l:cursor_save = getpos('.')
     let l:max_column = 0
     for line in range(a:endline - a:startline + 1)
@@ -425,9 +425,9 @@ function! MaxColumn(string, startline, endline, column)
     endfor
     call setpos('.', l:cursor_save)
     return l:max_column
-endfunction
+endfunction " }}}
 
-function! Align(string) range
+function! Align(string) range " {{{
     let col = min([ virtcol("'<"), virtcol("'>") ])
     let l:cursor_save = getpos('.')
     let l:max_column = MaxColumn(a:string, a:firstline, a:lastline, col)
@@ -441,9 +441,9 @@ function! Align(string) range
         endif
     endfor
     call setpos('.', l:cursor_save)
-endfunction
+endfunction " }}}
 
-function! Reg()
+function! Reg() " {{{
     reg
     echo "Register: "
     let char = nr2char(getchar())
@@ -451,9 +451,9 @@ function! Reg()
         execute "normal! \"".char."p"
     endif
     redraw
-endfunction
+endfunction " }}}
 
-function! AutoHighlightToggle()
+function! AutoHighlightToggle() " {{{
     if exists('#auto_highlight')
         match none IncSearch
         autocmd! auto_highlight
@@ -468,10 +468,10 @@ function! AutoHighlightToggle()
         setl updatetime=500
         echo 'Highlight current word: ON'
     endif
-endfunction
+endfunction " }}}
 
 let g:headers = { 'c': '.h', 'cpp': '.h', 'ruby': '_spec.rb' }
-function! OpenWithHeader(file)
+function! OpenWithHeader(file) " {{{
     wincmd o
     exec "e ".a:file
     if has_key(g:headers, &ft)
@@ -481,9 +481,9 @@ function! OpenWithHeader(file)
             wincmd h
         endif
     endif
-endfunction
+endfunction " }}}
 
-function! AlternateSource()
+function! AlternateSource() " {{{
     let file = expand("%:r")
     let extension = expand("%:e")
     if extension == "c" || extension == "cpp"
@@ -495,9 +495,9 @@ function! AlternateSource()
             execute "e ".file.".cpp"
         endif
     endif
-endfunction
+endfunction " }}}
 
-function! AlternateFile()
+function! AlternateFile() " {{{
     try
         buffer #
     catch
@@ -508,26 +508,26 @@ function! AlternateFile()
             endif
         endfor
     endtry
-endfunction
+endfunction " }}}
 
-function! BufferWipeOut()
+function! BufferWipeOut() " {{{
     call AlternateFile()
     try
         bwipeout #
     catch
         bwipeout
     endtry
-endfunction
+endfunction " }}}
 
-function! JSONFormatter()
+function! JSONFormatter() " {{{
     set ft=json
     silent %s/[{[,]/&\r/e
     silent %s/[}\]]/\r&/e
     silent normal! gg=G
-endfunction
+endfunction " }}}
 
 " FindUsage([{recursive} [, {pattern} [, {path}]]])
-function! FindUsage(...)
+function! FindUsage(...) " {{{
     let recursive = 0
     let pattern = expand('<cword>')
     let path = getcwd()
@@ -540,18 +540,18 @@ function! FindUsage(...)
     let path = escape(path, ' ')
     execute 'vimgrep! /\C\<'.pattern.'\>/j '.path.'/'.(recursive ? '**' : '*')
     copen
-endfunction
+endfunction " }}}
 
-function! SetProjectRoot()
+function! SetProjectRoot() " {{{
     lcd %:p:h
     let git_dir = system("git rev-parse --show-toplevel")
     let is_not_git_dir = matchstr(git_dir, '^fatal:.*')
     if empty(is_not_git_dir)
         lcd `=git_dir`
     endif
-endfunction
+endfunction " }}}
 
-function! Make()
+function! Make() " {{{
     update
     let make = exists(":Make") == 2 ? "Make " : "make "
     if filereadable("Makefile") || filereadable("AndroidManifest.xml")
@@ -559,5 +559,5 @@ function! Make()
     else
         execute make.expand("%:r")
     endif
-endfunction
+endfunction " }}}
 " }}}
