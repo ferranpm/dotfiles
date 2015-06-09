@@ -1,4 +1,4 @@
-" vim: foldmethod=marker
+" vim: foldmethod=marker foldlevel=0
 " Pathogen {{{
 if !has("python")
     let g:pathogen_disabled = ["ultisnips"]
@@ -75,7 +75,7 @@ set hidden confirm
 set modeline
 set mouse=n
 set nocompatible
-set scrolloff=10
+set scrolloff=4
 set timeoutlen=500
 set ttimeoutlen=0
 set virtualedit=block
@@ -199,12 +199,6 @@ augroup END
 " }}}
 
 " Mappings {{{
-nnoremap J 5j
-nnoremap K 5k
-
-xnoremap J 5j
-xnoremap K 5k
-
 nnoremap q; q:
 xnoremap q; q:
 
@@ -223,9 +217,6 @@ noremap [[ ?{<CR>w99[{
 noremap ][ /}<CR>b99]}
 map ]] j0[[%/{<CR>
 map [] k$][%?}<CR>
-
-nnoremap <C-g>n gt
-nnoremap <C-g>p gT
 
 vnoremap <cr> y :if &bt == "terminal" \| startinsert \| endif<cr>
 
@@ -258,7 +249,6 @@ nnoremap <silent> N N:call HLNext(0.2)<cr>
 nnoremap <silent> * *:call HLNext(0.2)<cr>
 nnoremap <silent> # #:call HLNext(0.2)<cr>
 
-nnoremap M K
 nnoremap z/ :call AutoHighlightToggle()<cr>
 
 vnoremap > >gv
@@ -289,7 +279,6 @@ nnoremap <F12>  :call system('ctags')<cr>
 " Leader mappings {{{
  noremap                <leader>a :Align 
  noremap                <leader>c "+y
- noremap                <leader>j :join<cr>
  noremap                <leader>p :put *<cr>
  noremap                <leader>v "+p
 nnoremap    <silent>    <leader>zs :%s/\s\+$//<cr>
@@ -306,6 +295,8 @@ nnoremap                <leader>fo zR
 nnoremap                <leader>ff :find 
 nnoremap                <leader>g :Grep 
 nnoremap                <leader>h :Help 
+nnoremap                <leader>rs :Shell 
+nnoremap                <leader>rp :Pipe 
 nnoremap                <leader>L O<Esc>
 nnoremap                <leader>l o<Esc>
 nnoremap                <leader>mm dapGplrXk/^\[ \]<cr>
@@ -546,6 +537,8 @@ function! Make() " {{{
     let make = exists(":Make") == 2 ? "Make " : "make "
     if filereadable("Makefile") || filereadable("AndroidManifest.xml")
         execute make
+    elseif expand("%:e") == "ino"
+        execute make."%"
     else
         execute make.expand("%:r")
     endif
