@@ -1,9 +1,3 @@
-if [[ ! "$TERM" =~ "screen" ]]; then
-    if [[ ! $(tmux attach) ]]; then
-        tmux
-    fi
-fi
-
 PROMPT='
 %{$fg[green]%}%n%{$fg[blue]%}%{$reset_color%} in %{$fg[blue]%}%{$fg[red]%}%~ %{$reset_color%}at %{$fg[blue]%}%m$(git_prompt)$(vi_prompt)
 %{$fg_bold[blue]%}%(!.#.>)%{$reset_color%} '
@@ -16,7 +10,6 @@ if [[ -d $ZSH_FOLDER ]]; then
 fi
 
 stty -ixon
-stty erase ^H
 
 ## EXPORTS ##
 export COLORFGBG="15;0"
@@ -26,7 +19,7 @@ export HISTFILE=$HOME/.zshhistory
 export HISTSIZE=50000
 export KEYTIMEOUT=1
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/root/lib
-export PATH=$HOME/bin:$HOME/root/bin:$HOME/.gem/ruby/2.1.0/bin:$PATH
+export PATH=$HOME/bin:$HOME/root/bin:$HOME/.gem/ruby/2.2.0/bin:$PATH
 export SAVEHIST=10000
 export ZLS_COLORS=$LS_COLORS
 
