@@ -1,0 +1,11 @@
+#!/usr/bin/ruby
+
+sessions = `tmux list-sessions`.split "\n"
+
+sessions.each do |session|
+    if not /^(\w*):.*\(attached\)$/ =~ session
+        name = session.match /^(\w*)/
+        puts "killing session: #{session}"
+        `tmux kill-session -t #{name}`
+    end
+end
