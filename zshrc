@@ -19,7 +19,7 @@ export HISTFILE=$HOME/.zshhistory
 export HISTSIZE=50000
 export KEYTIMEOUT=1
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/root/lib
-export PATH=$HOME/bin:$HOME/root/bin:$HOME/.gem/ruby/2.2.0/bin:$PATH
+export PATH=$HOME/bin:$HOME/root/bin:$HOME/.gem/ruby/2.2.0/bin:$HOME/.rvm/bin:$PATH
 export SAVEHIST=10000
 export ZLS_COLORS=$LS_COLORS
 
@@ -118,7 +118,6 @@ alias cd1="cd ../"
 alias cd2="cd ../../"
 alias cd3="cd ../../../"
 alias cd4="cd ../../../../"
-alias diff="diff -yEbwB --suppress-common-lines"
 alias g="git"
 alias gwatch="while inotifywait -q -e access .git/; do clear; git lo 2>/dev/null | head; done"
 alias l="ls -lh"
@@ -160,6 +159,7 @@ extract () {
             case $f in
                 *.tar.bz2) tar xvjf $f ;;
                 *.tar.gz) tar xvzf $f ;;
+                *.tar.xz) tar xf $f ;;
                 *.bz2) bunzip2 $f ;;
                 *.rar) unrar x $f ;;
                 *.gz) gunzip $f ;;
