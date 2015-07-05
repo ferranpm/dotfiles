@@ -1,11 +1,29 @@
 " vim: foldmethod=marker foldlevel=0
-" Pathogen {{{
-if !has("python")
-    let g:pathogen_disabled = ["ultisnips"]
+" Vundle {{{
+set nocompatible
+filetype off
+try
+    set runtimepath+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+catch
+endtry
+if exists(':Plugin')
+    Plugin 'christoomey/vim-tmux-navigator'
+    Plugin 'gmarik/Vundle.vim'
+    Plugin 'kien/ctrlp.vim'
+    Plugin 'ludovicchabant/vim-gutentags'
+    Plugin 'taku-o/vim-vis'
+    Plugin 'tpope/vim-commentary'
+    Plugin 'tpope/vim-dispatch'
+    Plugin 'tpope/vim-fugitive'
+    Plugin 'tpope/vim-repeat'
+    Plugin 'tpope/vim-surround'
+    if has('python')
+        Plugin 'vim-scripts/UltiSnips'
+    endif
 endif
 try
-    runtime bundle/pathogen/autoload/pathogen.vim
-    call pathogen#infect()
+    call vundle#end()
 catch
 endtry
 " }}}
