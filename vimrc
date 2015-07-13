@@ -470,31 +470,58 @@ function! AutoHighlightToggle() " {{{
     endif
 endfunction " }}}
 
-let g:headers = { 'c': '.h', 'cpp': '.h', 'ruby': '_spec.rb' }
+let g:ft_to_header = {
+            \ 'c': ['h'],
+            \ 'cpp': ['h', 'hpp']
+            \ }
+let g:header_to_source = {
+            \ 'h': ['c', 'cpp'],
+            \ 'hpp': ['cpp']
+            \ }
 function! OpenWithHeader(file) " {{{
     wincmd o
-    exec "e ".a:file
-    if has_key(g:headers, &ft)
-        let header = expand("%:r").g:headers[&ft]
-        if filereadable(header)
-            exec "vs ".header
-            wincmd h
-        endif
+    execute 'e '.a:file
+    let extension = expand('%:e')
+    let filebase = expand('%:r')
+    if has_key(g:header_to_source, extension)
+        let extensions = g:header_to_source[extension]
+    elseif has_key(g:ft_to_header, &ft)
+        let extensions = g:ft_to_header[&ft]
+    else
+        return
     endif
+    for ext in extensions
+        let file = filebase.'.'.ext
+        if filereadable(file)
+            execute 'vs '.file
+            wincmd h
+            return
+        endif
+    endfor
+    let selection = 0
+    if len(extensions) > 1
+        let selection = inputlist(map(copy(extensions), 'v:key . ". " . v:val'))
+    endif
+    execute 'vs '.filebase.'.'.extensions[selection]
 endfunction " }}}
 
 function! AlternateSource() " {{{
-    let file = expand("%:r")
-    let extension = expand("%:e")
-    if extension == "c" || extension == "cpp"
-        execute "e ".file.".h"
-    elseif extension == "h"
-        if filereadable(file.".c")
-            execute "e ".file.".c"
-        elseif filereadable(file.".cpp")
-            execute "e ".file.".cpp"
-        endif
+    let filebase = expand('%:r')
+    let extension = expand('%:e')
+    let file = ''
+    let extensions = []
+    if has_key(g:header_to_source, extension)
+        let extensions = g:header_to_source[extension]
+    elseif has_key(g:ft_to_header, &ft)
+        let extensions = g:ft_to_header[&ft]
     endif
+    for ext in extensions
+        let file = filebase.'.'.ext
+        if filereadable(file)
+            execute 'e '.file
+            return
+        endif
+    endfor
 endfunction " }}}
 
 function! AlternateFile() " {{{
