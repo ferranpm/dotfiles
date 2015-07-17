@@ -260,7 +260,7 @@ nnoremap <silent> ]g /\v^(\<\|\=\|\>){7}([^=].+)?$<CR>
 nnoremap <silent> [g ?\v^(\<\|\=\|\>){7}([^=].+)\?$<CR>
 
 vnoremap <M-/> <Esc>/\%V
-vnoremap * y/0<cr>
+vnoremap * y/<c-r>=escape('<c-r>0', '*/\[].')<cr><cr>
 
 nnoremap <silent> n n:call HLNext(0.2)<cr>
 nnoremap <silent> N N:call HLNext(0.2)<cr>
