@@ -10,7 +10,7 @@ endtry
 if exists(':Plugin')
     Plugin 'christoomey/vim-tmux-navigator'
     Plugin 'gmarik/Vundle.vim'
-    Plugin 'kien/ctrlp.vim'
+    Plugin 'ctrlpvim/ctrlp.vim'
     Plugin 'ludovicchabant/vim-gutentags'
     Plugin 'taku-o/vim-vis'
     Plugin 'tpope/vim-commentary'
