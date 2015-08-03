@@ -112,35 +112,35 @@ bindkey -v '^p'     up-line-or-search
 bindkey -a 'k'      up-line-or-search
 
 ## ALIASES ##
-alias ack="ack --color"
-alias cal="cal -3 -m"
-alias cd1="cd ../"
-alias cd2="cd ../../"
-alias cd3="cd ../../../"
-alias cd4="cd ../../../../"
-alias g="git"
-alias gwatch="while inotifywait -q -e access .git/; do clear; git lo 2>/dev/null | head; done"
-alias l="ls -lh"
-alias ll="l -A"
-alias ls="ls --color=auto"
-alias mountc="mount | column -t"
-alias dades_mount="mount $HOME/Raco/dades"
-alias dades_umount="umount.davfs $HOME/Raco/dades"
-alias assig_mount="mount $HOME/Raco/assig"
-alias assig_umount="umount.davfs $HOME/Raco/assig"
-alias pmount="udisksctl mount -b"
-alias pumount="umount"
-alias pacman="pacman --color=auto"
-alias pacupg="sudo pacman -Syu"
-alias pacin="sudo pacman -S"
-alias pacre="sudo pacman -Rns"
-alias pacro="pacman -Qtd > /dev/null && sudo pacman -Rns \$(pacman -Qtdq | sed -e ':a;N;\$!ba;s/\n/ /g')" # Erase orphaned packages
-alias pacse="pacman -Ss"
-alias scan='iwlist wlan0 scanning | grep "ESSID" | sed -e "s/\ *ESSID:\"\(.*\)\"/\1/"'
-alias e="$EDITOR"
-alias TODO="e $HOME/TODO"
-alias vimrc="e $HOME/.vimrc"
-alias zshrc="e $HOME/.zshrc"
+alias ack='ack --color'
+alias cal='cal -3 -m'
+alias cd1='cd ../'
+alias cd2='cd ../../'
+alias cd3='cd ../../../'
+alias cd4='cd ../../../../'
+alias cr='cd `git rev-parse --show-toplevel`'
+alias g='git'
+alias gwatch='while inotifywait -q -e access .git/; do clear; git lo 2>/dev/null | head; done'
+alias l='ls -lh'
+alias ll='l -A'
+alias ls='ls --color=auto'
+alias mountc='mount | column -t'
+alias dades_mount='mount $HOME/Raco/dades'
+alias dades_umount='umount.davfs $HOME/Raco/dades'
+alias assig_mount='mount $HOME/Raco/assig'
+alias assig_umount='umount.davfs $HOME/Raco/assig'
+alias pmount='udisksctl mount -b'
+alias pumount='umount'
+alias pacman='pacman --color=auto'
+alias pacupg='sudo pacman -Syu'
+alias pacin='sudo pacman -S'
+alias pacre='sudo pacman -Rns'
+alias pacro='pacman -Qtd > /dev/null && sudo pacman -Rns \$(pacman -Qtdq | sed -e ":a;N;\$!ba;s/\n/ /g")' # Erase orphaned packages
+alias pacse='pacman -Ss'
+alias e='$EDITOR'
+alias TODO='e $HOME/TODO'
+alias vimrc='e $HOME/.vimrc'
+alias zshrc='e $HOME/.zshrc'
 
 ## FUNCTIONS ##
 insert-word() {
