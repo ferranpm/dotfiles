@@ -28,24 +28,24 @@ catch
 endtry
 " }}}
 
-if filereadable(expand("~/.local.vim"))
+if filereadable(expand('~/.local.vim'))
     source ~/.local.vim
 endif
 
 " Mail {{{
-let g:mail_netrc="~/.netrc"
+let g:mail_netrc='~/.netrc'
 let g:mail_imap_ssl=1
-if exists("g:mail_account") && g:mail_account == "fib"
+if exists('g:mail_account') && g:mail_account == 'fib'
     " fib
-    let g:mail_smtp_server="mail.fib.upc.es"
+    let g:mail_smtp_server='mail.fib.upc.es'
     let g:mail_smtp_port=1025
-    let g:mail_imap_server="correu.fib.upc.es"
+    let g:mail_imap_server='correu.fib.upc.es'
     let g:mail_imap_port=993
 else
     " gmail
-    let g:mail_smtp_server="smtp.gmail.com"
+    let g:mail_smtp_server='smtp.gmail.com'
     let g:mail_smtp_port=587
-    let g:mail_imap_server="imap.gmail.com"
+    let g:mail_imap_server='imap.gmail.com'
     let g:mail_imap_port=993
 endif
 " }}}
@@ -197,7 +197,7 @@ endif
 " Commands {{{
 command! -nargs=+ -complete=command Pipe call Pipe(<q-args>)
 command! -nargs=+ -complete=shellcmd Shell call Shell(<q-args>)
-command! -nargs=1 -complete=help Help if &ft=~"help" | help <args> | else | tab help <args> | endif
+command! -nargs=1 -complete=help Help if &ft=~'help' | help <args> | else | tab help <args> | endif
 command! SudoWrite call SudoWriteCmd()
 command! -nargs=? UnderscoreToUpperCamelCase <args>s#\m\(\%(\<\l\+\)\%(_\)\@=\)\|_\(\l\)#\u\1\2
 command! -nargs=? UnderscoreToLowerCamelCase <args>s#\m_\(\l\)#\u\1
@@ -236,8 +236,7 @@ noremap ][ /}<CR>b99]}
 map ]] j0[[%/{<CR>
 map [] k$][%?}<CR>
 
-vnoremap <cr> y :if &bt == "terminal" \| startinsert \| endif<cr>
-
+vnoremap <cr> y :if &bt == 'terminal' \| startinsert \| endif<cr>
 if has('nvim')
     tnoremap <C-g> <C-\><C-n>
     tnoremap <C-g><C-p> <C-\><C-n>pi
@@ -306,7 +305,7 @@ nnoremap                <leader>bs :CtrlPBuffer<cr>
 nnoremap                <leader>bw :call BufferWipeOut()<cr>
 nnoremap                <leader>cd :call SetProjectRoot()<cr>
 nnoremap                <leader>d  :only<cr>:Gdiff<cr>
-nnoremap                <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap                <leader>e :e <C-R>=expand('%:p:h') . '/' <CR>
 nnoremap                <leader>fc zM
 nnoremap                <leader>fe zMzvzz
 nnoremap                <leader>fo zR
@@ -390,7 +389,7 @@ function! FoldText() " {{{
     endif
     let line = strpart(line, 0, windowwidth - 2)
     let fillcharcount = windowwidth
-    return line . repeat(" ", fillcharcount)
+    return line . repeat(' ', fillcharcount)
 endfunction " }}}
 
 function! HLNext(blinktime) " {{{
@@ -436,7 +435,7 @@ function! Align(string) range " {{{
         if search(a:string, 'c', line('.')) != 0
             let delta_col = (l:max_column - col('.'))
             if delta_col > 0
-                exe "normal! ".delta_col."i "
+                exe 'normal! '.delta_col.'i '
             endif
         endif
     endfor
@@ -445,10 +444,10 @@ endfunction " }}}
 
 function! Reg() " {{{
     reg
-    echo "Register: "
+    echo 'Register: '
     let char = nr2char(getchar())
     if char != "\<Esc>"
-        execute "normal! \"".char."p"
+        execute 'normal! "'.char.'p'
     endif
     redraw
 endfunction " }}}
@@ -529,8 +528,8 @@ function! AlternateFile() " {{{
         buffer #
     catch
         for b in reverse(range(1, bufnr('$')))
-            if bufexists(b) && buflisted(b) && b != bufnr("%")
-                exec "buffer ".b
+            if bufexists(b) && buflisted(b) && b != bufnr('%')
+                execute 'buffer '.b
                 return
             endif
         endfor
@@ -570,7 +569,7 @@ endfunction " }}}
 
 function! SetProjectRoot() " {{{
     lcd %:p:h
-    let git_dir = system("git rev-parse --show-toplevel")
+    let git_dir = system('git rev-parse --show-toplevel')
     let is_not_git_dir = matchstr(git_dir, '^fatal:.*')
     if empty(is_not_git_dir)
         lcd `=git_dir`
@@ -579,13 +578,13 @@ endfunction " }}}
 
 function! Make() " {{{
     update
-    let make = exists(":Make") == 2 ? "Make " : "make "
-    if filereadable("Makefile") || filereadable("AndroidManifest.xml")
+    let make = exists(':Make') == 2 ? 'Make ' : 'make '
+    if filereadable('Makefile') || filereadable('AndroidManifest.xml')
         execute make
-    elseif expand("%:e") == "ino"
-        execute make."%"
+    elseif expand('%:e') == 'ino'
+        execute make.'%'
     else
-        execute make.expand("%:r")
+        execute make.expand('%:r')
     endif
 endfunction " }}}
 " }}}
