@@ -71,7 +71,8 @@ let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
 
 " CtrlP {{{
 let g:ctrlp_cmd = 'CtrlPBuffer'
-let g:ctrlp_by_filename=1
+nnoremap <C-q> :CtrlP<cr>
+let g:ctrlp_by_filename=0
 let g:ctrlp_max_files=500
 let g:ctrlp_max_height=100
 let g:ctrlp_show_hidden=0
@@ -86,6 +87,7 @@ syntax on
 let mapleader=' '
 set exrc
 set nowrap
+set nohlsearch
 set autoread
 set backspace=2
 set encoding=utf-8
@@ -207,6 +209,7 @@ command! -nargs=1 -range Align '<,'>call Align(<f-args>)
 command! -nargs=0 Reg call Reg()
 command! -nargs=1 -complete=file E call OpenWithHeader(<f-args>)
 command! -nargs=0 JSONFormatter call JSONFormatter()
+command! -nargs=? -complete=dir Mkdir call Mkdir(<f-args>)
 command! -nargs=1 -complete=custom,ScriptComplete Script source ~/.vim/scripts/<args>
 " }}}
 
@@ -239,15 +242,16 @@ map [] k$][%?}<CR>
 
 vnoremap <cr> y :if &bt == 'terminal' \| startinsert \| endif<cr>
 if has('nvim')
-    tnoremap <C-g> <C-\><C-n>
+    " autocmd BufWinEnter,WinEnter term://* startinsert
+    tnoremap <Esc> <C-\><C-n>
     tnoremap <C-g><C-p> <C-\><C-n>pi
     tnoremap <silent> <C-^> <C-\><C-n>:call AlternateFile()<cr>
     tnoremap <silent> <C-\>n <C-\><C-n>? \<in\> ?e<cr>wyiW:cd <c-r>0<cr>i
     tnoremap <silent> <C-\>t cd <C-\><C-n>:let @@=getcwd() \| .put 0<cr>i<cr>
-    tnoremap <C-w>h <C-\><C-n><C-w>h
-    tnoremap <C-w>j <C-\><C-n><C-w>j
-    tnoremap <C-w>k <C-\><C-n><C-w>k
-    tnoremap <C-w>l <C-\><C-n><C-w>l
+    tnoremap <C-h> <C-\><C-n><C-w>h
+    tnoremap <C-j> <C-\><C-n><C-w>j
+    tnoremap <C-k> <C-\><C-n><C-w>k
+    tnoremap <C-l> <C-\><C-n><C-w>l
 endif
 
 nnoremap <silent> ]q :cnext<cr>
@@ -589,7 +593,27 @@ function! Make() " {{{
     endif
 endfunction " }}}
 
+function! Mkdir(...) " {{{
+    let folder = a:0 > 0 ? a:1 : '%:h'
+    call system('mkdir -p '.expand(folder))
+endfunction
+" }}}
+
 function! ScriptComplete(ArgLead, CmdLine, CursorPos)
     return join(map(glob("~/.vim/scripts/*", 1, 1), 'substitute(v:val, expand("~/.vim/scripts/"), "", "")'), "\n")
 endfunction
 " }}}
+
+
+let g:ctrlp_buffer_func = { 'enter': 'CtrlPMappings' }
+
+function! CtrlPMappings()
+  nnoremap <buffer> <silent> <C-@> :call <sid>DeleteBuffer()<cr>
+endfunction
+
+function! s:DeleteBuffer()
+  let path = fnamemodify(getline('.')[2:], ':p')
+  let bufn = matchstr(path, '\v\d+\ze\*No Name')
+  execute "bwipeout" bufn ==# "" ? path : bufn
+  execute "normal \<F5>"
+endfunction
