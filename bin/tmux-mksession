@@ -1,0 +1,32 @@
+#!/usr/bin/bash
+
+BASE_PATH="$HOME/Workspace/"
+if [[ "$1" == "" ]]; then
+    PROJECT="dotfiles"
+fi
+
+DIR="$BASE_PATH/$PROJECT"
+
+SESSION="$(echo $DIR | tr "./" "__")"
+
+if [[ ! -d "$DIR" ]]; then
+    echo "No folder named $PROJECT in $BASE_PATH"
+    exit
+fi
+
+if [[ -e "$DIR/Session.vim" ]]; then
+    VIM_ARGUMENTS="$VIM_ARGUMENTS -S"
+fi
+
+tmux rename-session $SESSION
+
+if [[ ! $? == 0 ]]; then
+    exit
+fi
+
+tmux rename-window   -t $SESSION vim
+tmux send-keys       -t $SESSION "cd $DIR && vim $VIM_ARGUMENTS" C-m
+tmux new-window      -t $SESSION
+tmux rename-window   -t $SESSION shell
+tmux send-keys       -t $SESSION "cd $DIR" C-m
+tmux select-window   -t $SESSION:vim
