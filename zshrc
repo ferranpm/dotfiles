@@ -101,6 +101,7 @@ bindkey -v '^[[8~'  end-of-line
 bindkey -a '^[[8~'  end-of-line
 bindkey -v '^f'     history-incremental-pattern-search-backward
 bindkey -a '/'      history-incremental-pattern-search-backward
+bindkey -v '^R'      history-incremental-pattern-search-backward
 bindkey -a '?'      history-incremental-pattern-search-forward
 bindkey -v '^s'     insert-sudo
 bindkey -v '^y'     insert-man
