@@ -207,6 +207,7 @@ command! -nargs=1 -range Align '<,'>call Align(<f-args>)
 command! -nargs=0 Reg call Reg()
 command! -nargs=1 -complete=file E call OpenWithHeader(<f-args>)
 command! -nargs=0 JSONFormatter call JSONFormatter()
+command! -nargs=1 -complete=custom,ScriptComplete Script source ~/.vim/scripts/<args>
 " }}}
 
 " Autocommands {{{
@@ -587,4 +588,8 @@ function! Make() " {{{
         execute make.expand('%:r')
     endif
 endfunction " }}}
+
+function! ScriptComplete(ArgLead, CmdLine, CursorPos)
+    return join(map(glob("~/.vim/scripts/*", 1, 1), 'substitute(v:val, expand("~/.vim/scripts/"), "", "")'), "\n")
+endfunction
 " }}}
