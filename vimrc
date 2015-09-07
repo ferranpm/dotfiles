@@ -85,6 +85,7 @@ filetype plugin on
 filetype indent on
 syntax on
 let mapleader=' '
+set termencoding=utf8
 set exrc
 set nowrap
 set nohlsearch
