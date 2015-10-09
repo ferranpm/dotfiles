@@ -1,3 +1,6 @@
+if !exists('g:picocom_baud')
+    let g:picocom_baud = 9600
+endif
 
 function! serial#SelectPort(prefixes)
     let cmd = 'find /dev'
@@ -21,3 +24,7 @@ function! serial#SelectPort(prefixes)
     return get(ports, selection, ports[0])
 endfunction
 
+function! serial#Picocom()
+    let port = serial#SelectPort(["ttyUSB*", "ttyACM*"])
+    call utils#Run('picocom', '-b '.g:picocom_baud.' '.port)
+endfunction
