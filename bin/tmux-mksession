@@ -1,7 +1,8 @@
 #!/usr/bin/bash
 
 BASE_PATH="$HOME/Workspace/"
-if [[ "$1" == "" ]]; then
+PROJECT="$1"
+if [[ "$PROJECT" == "" ]]; then
     PROJECT="dotfiles"
 fi
 
