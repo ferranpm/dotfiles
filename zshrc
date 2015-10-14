@@ -13,12 +13,10 @@ stty -ixon
 
 ## EXPORTS ##
 export COLORFGBG="15;0"
-export C_INCLUDE_PATH=$C_INCLUDE_PATH:$HOME/root/include
 export EDITOR="vim"
 export HISTFILE=$HOME/.zshhistory
 export HISTSIZE=50000
 export KEYTIMEOUT=1
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/root/lib
 export PATH=$HOME/bin:$HOME/root/bin:$HOME/.gem/ruby/2.2.0/bin:$HOME/.rvm/bin:$PATH
 export SAVEHIST=10000
 export ZLS_COLORS=$LS_COLORS
@@ -113,7 +111,6 @@ bindkey -v '^p'     up-line-or-search
 bindkey -a 'k'      up-line-or-search
 
 ## ALIASES ##
-alias ack='ack --color'
 alias cal='cal -3 -m'
 alias cd1='cd ../'
 alias cd2='cd ../../'
@@ -121,17 +118,10 @@ alias cd3='cd ../../../'
 alias cd4='cd ../../../../'
 alias cr='cd `git rev-parse --show-toplevel`'
 alias g='git'
-alias gwatch='while inotifywait -q -e access .git/; do clear; git lo 2>/dev/null | head; done'
 alias l='ls -lh'
 alias ll='l -A'
 alias ls='ls --color=auto'
 alias mountc='mount | column -t'
-alias dades_mount='mount $HOME/Raco/dades'
-alias dades_umount='umount.davfs $HOME/Raco/dades'
-alias assig_mount='mount $HOME/Raco/assig'
-alias assig_umount='umount.davfs $HOME/Raco/assig'
-alias pmount='udisksctl mount -b'
-alias pumount='umount'
 alias pacman='pacman --color=auto'
 alias pacupg='sudo pacman -Syu'
 alias pacin='sudo pacman -S'
@@ -139,9 +129,6 @@ alias pacre='sudo pacman -Rns'
 alias pacro='pacman -Qtd > /dev/null && sudo pacman -Rns \$(pacman -Qtdq | sed -e ":a;N;\$!ba;s/\n/ /g")' # Erase orphaned packages
 alias pacse='pacman -Ss'
 alias e='$EDITOR'
-alias TODO='e $HOME/TODO'
-alias vimrc='e $HOME/.vimrc'
-alias zshrc='e $HOME/.zshrc'
 
 ## FUNCTIONS ##
 insert-word() {
