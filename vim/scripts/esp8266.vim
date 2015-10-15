@@ -17,12 +17,12 @@ function! s:LuaUpload(...)
     let filename = "%"
     if a:0 > 0 | let filename = a:1 | endif
     let port = serial#SelectPort(['ttyUSB*'])
-    call utils#Run(expand(g:luatool_binary), ' -sdr -f '.expand(filename).' -t init.lua -p '.port)
+    call utils#Run(expand(g:luatool_binary).' -sdr -f '.expand(filename).' -t init.lua -p '.port)
 endfunction
 
 function! s:LuaWipe()
     let port = serial#SelectPort(["ttyUSB*"])
-    call utils#Run(expand(g:luatool_binary), ' -p '.port.' -w')
+    call utils#Run(expand(g:luatool_binary).' -p '.port.' -w')
 endfunction
 
 " Flash([firmware])
@@ -32,12 +32,12 @@ function! s:Flash(...)
     if a:0 > 0 | let firmware = a:1 | endif
     let esptool_bin = 'esptool.py'
     let port = serial#SelectPort(['ttyUSB*'])
-    call utils#Run(expand(esptool_bin), ' --port '.port.' write_flash 0x00000 '.expand(base.firmware))
+    call utils#Run(expand(esptool_bin).' --port '.port.' write_flash 0x00000 '.expand(base.firmware))
 endfunction
 
 
 function! s:Wipe()
     let esptool_bin = 'esptool.py'
     let port = serial#SelectPort(["ttyUSB*"])
-    call utils#Run(expand(esptool_bin), ' --port '.port.' erase_flash')
+    call utils#Run(expand(esptool_bin).' --port '.port.' erase_flash')
 endfunction

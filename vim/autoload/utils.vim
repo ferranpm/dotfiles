@@ -1,8 +1,8 @@
-function! utils#Run(cmd, args)
-    if exists('*VimuxRunCommand') == 1
-        call VimuxRunCommand(a:cmd.' '.a:args)
+function! utils#Run(cmd)
+    if exists('*VimuxRunCommand')
+        call VimuxRunCommand(a:cmd)
     else
-        execute '!'.a:cmd.' '.a:args
+        execute '!'.a:cmd
     endif
 endfunction
 

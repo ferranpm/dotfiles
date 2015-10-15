@@ -26,5 +26,5 @@ endfunction
 
 function! serial#Picocom()
     let port = serial#SelectPort(["ttyUSB*", "ttyACM*"])
-    call utils#Run('picocom', '-b '.g:picocom_baud.' '.port)
+    call utils#Run('picocom -b '.g:picocom_baud.' '.port)
 endfunction
