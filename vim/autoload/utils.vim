@@ -65,18 +65,6 @@ function! utils#SudoWriteCmd() abort
     let &modified = v:shell_error
 endfunction
 
-function! utils#Make()
-    update
-    let make = exists(':Make') == 2 ? 'Make ' : 'make '
-    if filereadable('Makefile') || filereadable('AndroidManifest.xml')
-        execute make
-    elseif expand('%:e') == 'ino'
-        execute make.'%'
-    else
-        execute make.expand('%:r')
-    endif
-endfunction
-
 function! utils#Mkdir(...)
     let folder = a:0 > 0 ? a:1 : '%:h'
     call system('mkdir -p '.expand(folder))
