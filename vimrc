@@ -44,6 +44,7 @@ set smartcase
 " displaying text
 set scrolloff=4
 set showbreak=>
+set lazyredraw
 set list
 set listchars=tab:»\ ,trail:·
 set number
@@ -127,7 +128,7 @@ set nobackup
 set noswapfile
 
 " command line editing
-set wildmode=longest:list,full
+set wildmode=longest:list
 set wildignore+=.git/*,.gitignore,*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__
 set wildignorecase
 set wildmenu
@@ -184,7 +185,7 @@ command! -nargs=? UnderscoreToLowerCamelCase <args>s#\m_\(\l\)#\u\1
 command! -nargs=? CamelCaseToUnderscore <args>s#\m\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+\)\(\u\)#\l\1_\l\2
 
 command! -nargs=1 -range Align '<,'>call edit#Align(<f-args>)
-command! -nargs=0 JSONFormatter call edit#JSONFormatter()
+command! -nargs=0 JSONFormat call edit#json_format()
 command! -nargs=0 Reg call edit#Reg()
 
 command! -nargs=0 Picocom call serial#Picocom()
@@ -249,6 +250,7 @@ nnoremap - ^
 nnoremap <silent> ,. :update<cr>
 
 noremap ! :VimuxRunCommand 
+noremap ~ :VimuxTestCommand 
 
 nnoremap <F1>   :Dispatch 
 nnoremap <F2>   :setlocal cursorline! cursorline?<cr>
