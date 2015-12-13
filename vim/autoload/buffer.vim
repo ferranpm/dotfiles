@@ -1,10 +1,11 @@
 let s:ft_to_header = {
             \ 'c': ['h'],
-            \ 'cpp': ['h', 'hpp']
+            \ 'cpp': ['h', 'hpp', 'hh']
             \ }
 let s:header_to_source = {
             \ 'h': ['c', 'cpp'],
-            \ 'hpp': ['cpp']
+            \ 'hpp': ['cpp'],
+            \ 'hh': ['cc', 'cpp']
             \ }
 function! buffer#OpenWithHeader(file) " {{{
     wincmd o
