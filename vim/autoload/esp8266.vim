@@ -23,7 +23,7 @@ function! esp8266#flash(...)
     let firmware = 'nodemcu-master-9-modules-2015-09-17-09-00-52-integer.bin'
     if a:0 > 0 | let firmware = a:1 | endif
     let esptool_bin = 'esptool.py'
-    let port = serial#SelectPort(['ttyUSB*'])
+    let port = serial#SelectPort(['ttyUSB*', 'ttyACM*'])
     call utils#Run(expand(esptool_bin).' --port '.port.' write_flash 0x00000 '.expand(base.firmware))
 endfunction
 
