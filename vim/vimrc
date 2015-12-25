@@ -214,6 +214,7 @@ command! -nargs=0 JSONFormat call edit#json_format()
 command! -nargs=0 Reg call edit#Reg()
 
 command! -nargs=0 Picocom call serial#Picocom()
+command! -nargs=0 PicocomExit call serial#PicocomExit()
 
 function! s:ScriptComplete(ArgLead, CmdLine, CursorPos)
     return utils#FolderComplete(a:ArgLead, a:CmdLine, a:CursorPos, "~/.vim/scripts/")

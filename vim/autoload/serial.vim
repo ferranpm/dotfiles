@@ -28,3 +28,9 @@ function! serial#Picocom()
     let port = serial#SelectPort(["ttyUSB*", "ttyACM*"])
     call utils#Run('picocom -b '.g:picocom_baud.' '.port)
 endfunction
+
+function! serial#PicocomExit()
+    if exists('*VimuxRunCommand')
+        call VimuxSendKeys('C-a C-x')
+    endif
+endfunction
