@@ -162,7 +162,12 @@ set wildmenu
 
 " running make and jumping to errors
 if has('unix')
-    set grepprg=ack\ -i
+    if executable('ag')
+        set grepprg=ag\ --nogroup\ --nocolor\ --smart-case\ --column\ --vimgrep
+        set grepformat=%f:%l:%c:%m
+    elseif executable('ack')
+        set grepprg=ack\ -i
+    endif
 else
     set makeprg=mingw32-make\ -j8
     set grepprg=grep\ -ri
@@ -192,12 +197,18 @@ endtry
 " Autocommands
 augroup autocommands
     autocmd! VimResized * :wincmd =
-    autocmd! QuickFixCmdPost * :cwindow
+augroup END
+
+augroup automaticquickfix
+    autocmd!
+    autocmd QuickFixCmdPost [^l]* cwindow
+    autocmd QuickFixCmdPost    l* lwindow
 augroup END
 
 " Commands
 command! -nargs=1 -complete=help Help if &ft=~'help' | help <args> | else | tab help <args> | endif
-command! -nargs=+ Grep silent grep! <args> * | redraw!
+command! -nargs=+ -complete=file_in_path -bar Grep  silent! grep! <args> | redraw!
+command! -nargs=+ -complete=file_in_path -bar LGrep silent! lgrep! <args> | redraw!
 
 command! -nargs=1 -complete=file E call utils#OpenWithHeader(<f-args>)
 command! -nargs=? -complete=dir Mkdir call utils#Mkdir(<f-args>)

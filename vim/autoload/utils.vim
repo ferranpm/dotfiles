@@ -30,21 +30,6 @@ function! utils#FolderComplete(ArgLead, CmdLine, CursorPos, Folder)
     return join(map(glob(expanded.'*', 1, 1), 'substitute(v:val, expanded, "", "")'), "\n")
 endfunction
 
-" FindUsage([{recursive} [, {pattern} [, {path}]]])
-function! utils#FindUsage(...)
-    let recursive = 0
-    let pattern = expand('<cword>')
-    let path = getcwd()
-    if a:0 > 0 | let recursive = a:1 | endif
-    if a:0 > 1 | let pattern   = a:2 | endif
-    if a:0 > 2 | let path      = a:3 | endif
-    if !exists('a:3') && !recursive
-        let path = expand('%:h')
-    endif
-    let path = escape(path, ' ')
-    execute 'vimgrep! /\C\<'.pattern.'\>/j '.path.'/'.(recursive ? '**' : '*')
-endfunction
-
 function! utils#MaxColumn(string, startline, endline, column)
     let l:cursor_save = getpos('.')
     let l:max_column = 0
