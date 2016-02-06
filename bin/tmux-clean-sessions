@@ -1,11 +1,5 @@
-#!/usr/bin/ruby
+#!/usr/bin/env bash
 
-sessions = `tmux list-sessions`.split "\n"
+CURRENT=$(tmux ls | grep attached | sed -e 's/^\([^:]*\).*/\1/')
 
-sessions.each do |session|
-    if not /^(\w*):.*\(attached\)$/ =~ session
-        name = session.match /^(\w*)/
-        puts "killing session: #{session}"
-        `tmux kill-session -t #{name}`
-    end
-end
+tmux kill-session -a -t $CURRENT
