@@ -3,6 +3,4 @@
 setxkbmap us
 $HOME/bin/keyboard.sh
 
-xrdb $HOME/.Xresources &
-
 firefox &
