@@ -121,7 +121,8 @@ set confirm
 
 " editing text
 set backspace=2
-set completeopt=menuone
+set completeopt=menuone,preview
+autocmd! CompleteDone * pclose
 
 " tabs and indenting
 set shiftwidth=4
@@ -174,6 +175,7 @@ else
 endif
 
 " language specific
+set isfname-==
 
 " multi-byte characters
 set termencoding=utf8
@@ -206,11 +208,10 @@ augroup automaticquickfix
 augroup END
 
 " Commands
-command! -nargs=1 -complete=help Help if &ft=~'help' | help <args> | else | tab help <args> | endif
 command! -nargs=+ -complete=file_in_path -bar Grep  silent! grep! <args> | redraw!
 command! -nargs=+ -complete=file_in_path -bar LGrep silent! lgrep! <args> | redraw!
 
-command! -nargs=1 -complete=file E call utils#OpenWithHeader(<f-args>)
+command! -nargs=1 -complete=file E call buffer#OpenWithHeader(<f-args>)
 command! -nargs=? -complete=dir Mkdir call utils#Mkdir(<f-args>)
 command! -nargs=+ -complete=command Pipe call utils#Pipe(<q-args>)
 command! -nargs=+ -complete=shellcmd Shell call utils#Shell(<q-args>)
@@ -321,14 +322,14 @@ nnoremap                <leader>fe zMzvzz
 nnoremap                <leader>fo zR
 nnoremap                <leader>ff :find 
 nnoremap                <leader>g :Grep 
-nnoremap                <leader>h :Help 
+nnoremap                <leader>h :help 
 nnoremap                <leader>rs :Shell 
 nnoremap                <leader>rp :Pipe 
 nnoremap                <leader>L O<Esc>
 nnoremap                <leader>l o<Esc>
 nnoremap                <leader>mm dapGplrXk/^\[ \]<cr>
-nnoremap                <leader>u :call utils#FindUsage(0)<cr>
-nnoremap                <leader>U :call utils#FindUsage(1)<cr>
+nnoremap                <leader>u :grep! --case-sensitive "\b<cword>\b"<cr><cr>
+nnoremap                <leader>re :<c-u><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
 nnoremap                <leader>S :%s/\C\<<C-r>=expand('<cword>')<CR>\>/
 nnoremap                <leader>s :s/\C\<<C-r>=expand('<cword>')<CR>\>/
 vnoremap                <leader>S y<esc>:%s/\C<C-r>=escape('<C-r>0', '*/\[].~')<cr>/
@@ -337,3 +338,4 @@ nnoremap                <leader>t :tag
 nnoremap    <silent>    <leader>. :update<cr>
 nnoremap    <silent>    <leader>bk :call buffer#BufferKill()<cr>
 nnoremap    <silent>    <leader>ms iSigned-off-by: Ferran Pelayo Monfort <ferran.pel.mon@gmail.com><Esc>
+nnoremap    <silent>    <leader>mk :wall<cr>:call utils#Make()<cr>
