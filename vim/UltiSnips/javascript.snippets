@@ -1,0 +1,50 @@
+snippet fori
+for (var ${1:i} = 0; $1 < ${2:count}; $1++) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet fora
+for (var i in ${1:list}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet foreach
+${1:array}.forEach(function(item, i, array) {
+	${0:${VISUAL}}
+});
+endsnippet
+
+snippet cl
+console.log(${1:${VISUAL}});${0}
+endsnippet
+
+snippet proto
+${1:Object}.prototype.${2:name} = function(${3}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet f
+function(${1}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet fun
+function ${1:name}(${2}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet lam
+(${1}) => {
+}
+endsnippet
+
+snippet if
+if (${1:condition}) {
+	${0:${VISUAL}}
+}
+endsnippet
