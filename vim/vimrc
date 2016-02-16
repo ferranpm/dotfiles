@@ -338,4 +338,4 @@ nnoremap                <leader>t :tag
 nnoremap    <silent>    <leader>. :update<cr>
 nnoremap    <silent>    <leader>bk :call buffer#BufferKill()<cr>
 nnoremap    <silent>    <leader>ms iSigned-off-by: Ferran Pelayo Monfort <ferran.pel.mon@gmail.com><Esc>
-nnoremap    <silent>    <leader>mk :wall<cr>:call utils#Make()<cr>
+nnoremap    <silent>    <leader>mk :update<cr>:call utils#Make()<cr>
