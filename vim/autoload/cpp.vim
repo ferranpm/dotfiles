@@ -19,7 +19,7 @@ function! cpp#to_header() range
     let range = a:firstline.','.a:lastline
     execute 'silent '.range.'s/\w\+:://e'
     execute 'silent '.range.'s/ \?=//e'
-    execute range.'call to_header()'
+    execute range.'call c#to_header()'
     call setpos('.', pos)
 endfunction
 
