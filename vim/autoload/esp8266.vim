@@ -1,7 +1,3 @@
-function! esp8266#firmware_complete(ArgLead, CmdLine, CursorPos)
-    return utils#FolderComplete(a:ArgLead, a:CmdLine, a:CursorPos, '~/Workspace/esp8266/firmwares/')
-endfunction
-
 " lua_upload([file, [outputfilename]])
 function! esp8266#lua_upload(...)
     let filename = glob('%')
