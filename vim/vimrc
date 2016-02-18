@@ -120,6 +120,7 @@ set confirm
 " selecting text
 
 " editing text
+set undolevels=5000
 set backspace=2
 set completeopt=menuone,preview
 autocmd! CompleteDone * pclose
@@ -158,6 +159,11 @@ set wildmode=longest:list
 set wildignore+=.git/*,.gitignore,*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__
 set wildignorecase
 set wildmenu
+set undofile
+set undodir=~/.vim/undodir
+if !isdirectory(&undodir)
+    call system('mkdir '.&undodir)
+endif
 
 " executing external commands
 
