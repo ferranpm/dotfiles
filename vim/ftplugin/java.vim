@@ -25,4 +25,4 @@ command! -nargs=0 JavaDeleteUnusedImports call java#delete_unused_imports()
 let g:android_project_name = system('xmllint AndroidManifest.xml | grep -m 1 "activity" | sed -e "s/ *<activity android:name=\"\([0-9A-Za-z_\.]\+\)\" .*/\1/" | tr -d "\n"')
 let g:android_package_name = system('xmllint AndroidManifest.xml | grep -m 1 "package"  | sed -e "s/.*package=\"\([0-9A-Za-z_\.]\+\)\".*/\1/" | tr -d "\n"')
 
-command! -nargs=0 AndroidInstall call utils#Run('ant installd && adb shell am start -a android.intent.action.MAIN -n '.g:android_package_name.'/.'.g:android_project_name)
+command! -nargs=0 AndroidInstall call utils#Run('ant installd && '.g:android_sdk_path.'/platform-tools/adb shell am start -a android.intent.action.MAIN -n '.g:android_package_name.'/'.g:android_project_name)
