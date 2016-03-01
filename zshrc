@@ -17,7 +17,7 @@ export EDITOR="vim"
 export HISTFILE=$HOME/.zshhistory
 export HISTSIZE=50000
 export KEYTIMEOUT=1
-export PATH=$HOME/bin:$HOME/root/bin:$HOME/.gem/ruby/2.2.0/bin:$HOME/.rvm/bin:$PATH
+export PATH=$HOME/bin:$PATH
 export SAVEHIST=10000
 export ZLS_COLORS=$LS_COLORS
 
@@ -110,18 +110,19 @@ alias cd2='cd ../../'
 alias cd3='cd ../../../'
 alias cd4='cd ../../../../'
 alias cr='cd `git rev-parse --show-toplevel`'
+alias e='$EDITOR'
 alias g='git'
 alias l='ls -lh'
 alias ll='l -A'
 alias ls='ls --color=auto'
 alias mountc='mount | column -t'
-alias pacman='pacman --color=auto'
-alias pacupg='sudo pacman -Syu'
 alias pacin='sudo pacman -S'
+alias pacman='pacman --color=auto'
 alias pacre='sudo pacman -Rns'
 alias pacro='pacman -Qtdq && sudo pacman -Rns `pacman -Qtdq`'
 alias pacse='pacman -Ss'
-alias e='$EDITOR'
+alias pacupg='sudo pacman -Syu'
+alias t='task'
 
 ## FUNCTIONS ##
 insert-word() {
@@ -191,3 +192,11 @@ git_prompt() {
 rm_tr_white () {
     find . -not \( -name .svn -prune -o -name .git -prune -o -name '*.a' \) -type f -print0 | xargs -0 sed -i -e "s/[[:space:]]*$//"
 }
+
+## NODEJS/NVM ##
+export NODE_PATH=/usr/lib/node_modules
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+## RUBY/RVM ##
+export PATH=$PATH:$HOME/.gem/ruby/2.3.0/bin/:$HOME/.gem/ruby/2.2.0/bin/:$HOME/.rvm/bin
