@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char font[] = "Liberation Mono:pixelsize=14:antialias=true";
+static char font[] = "Liberation Mono:pixelsize=12:antialias=true";
 static int borderpx = 2;
 static char shell[] = "/bin/sh";
 static char *utmp = NULL;
@@ -119,9 +119,9 @@ static Shortcut shortcuts[] = {
 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
 	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
 	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
-	{ MODKEY|ShiftMask,     XK_Prior,       xzoom,          {.i = +1} },
-	{ MODKEY|ShiftMask,     XK_Next,        xzoom,          {.i = -1} },
-	{ MODKEY|ShiftMask,     XK_Home,        xzoomreset,     {.i =  0} },
+	{ MODKEY|ShiftMask,     XK_Prior,       xzoom,          {.f = +1} },
+	{ MODKEY|ShiftMask,     XK_Next,        xzoom,          {.f = -1} },
+	{ MODKEY|ShiftMask,     XK_Home,        xzoomreset,     {.f =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ MODKEY|ShiftMask,     XK_Insert,      clippaste,      {.i =  0} },
 	{ MODKEY|ShiftMask,     XK_C,           clipcopy,       {.i =  0} },
@@ -209,7 +209,8 @@ static Key key[] = {
 	{ XK_KP_Delete,     ControlMask,    "\033[3;5~",    +1,    0,    0},
 	{ XK_KP_Delete,     ShiftMask,      "\033[2K",      -1,    0,    0},
 	{ XK_KP_Delete,     ShiftMask,      "\033[3;2~",    +1,    0,    0},
-        { XK_KP_Delete,     XK_ANY_MOD,     "\033[3~",       0,    0,    0},
+	{ XK_KP_Delete,     XK_ANY_MOD,     "\033[P",       -1,    0,    0},
+	{ XK_KP_Delete,     XK_ANY_MOD,     "\033[3~",      +1,    0,    0},
 	{ XK_KP_Multiply,   XK_ANY_MOD,     "\033Oj",       +2,    0,    0},
 	{ XK_KP_Add,        XK_ANY_MOD,     "\033Ok",       +2,    0,    0},
 	{ XK_KP_Enter,      XK_ANY_MOD,     "\033OM",       +2,    0,    0},
@@ -264,8 +265,8 @@ static Key key[] = {
 	{ XK_Delete,        ShiftMask,      "\033[2K",      -1,    0,    0},
 	{ XK_Delete,        ShiftMask,      "\033[3;2~",    +1,    0,    0},
 	{ XK_Delete,        XK_ANY_MOD,     "\033[P",       -1,    0,    0},
-	{ XK_Delete,        XK_NO_MOD,      "\177",          0,    0,    0},
-        { XK_BackSpace,     XK_ANY_MOD,     "\177",          0,    0,    0},
+	{ XK_Delete,        XK_ANY_MOD,     "\033[3~",      +1,    0,    0},
+	{ XK_BackSpace,     XK_NO_MOD,      "\177",          0,    0,    0},
 	{ XK_Home,          ShiftMask,      "\033[2J",       0,   -1,    0},
 	{ XK_Home,          ShiftMask,      "\033[1;2H",     0,   +1,    0},
 	{ XK_Home,          XK_ANY_MOD,     "\033[H",        0,   -1,    0},
