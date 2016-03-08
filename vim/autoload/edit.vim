@@ -13,6 +13,7 @@ function! edit#json_format()
     silent %s/[{[,]/&\r/e
     silent %s/[}\]]/\r&/e
     silent normal! gg=G
+    silent g/^$/d
 endfunction
 
 function! edit#Align(string) range
