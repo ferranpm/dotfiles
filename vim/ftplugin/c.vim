@@ -7,4 +7,4 @@ onoremap <silent> af :normal Vaf<CR>
 
 setlocal tags+=~/.vim/tags/c/c
 
-command! CFormatFolder call c#format_folder()
+command! -buffer FormatFolder call c#format_folder()
