@@ -10,8 +10,6 @@ if exists(':Plugin')
     " Generic
     Plugin 'ctrlpvim/ctrlp.vim'
     Plugin 'ferranpm/vim-isolate'
-    Plugin 'ferranpm/vim-zeal'
-    Plugin 'ludovicchabant/vim-gutentags'
     Plugin 'michaeljsmith/vim-indent-object'
     Plugin 'taku-o/vim-vis'
     Plugin 'tomtom/tcomment_vim'
@@ -21,7 +19,6 @@ if exists(':Plugin')
     Plugin 'tpope/vim-surround'
     Plugin 'VundleVim/Vundle.vim'
     Plugin 'vim-scripts/UltiSnips'
-    Plugin 'Valloric/YouCompleteMe'
 
     " Testing
     Plugin 'dsummersl/vimunit'
@@ -34,6 +31,7 @@ if exists(':Plugin')
     Plugin 'vim-scripts/OmniCppComplete'
 
     " JavaScript
+    Plugin 'ternjs/tern_for_vim'
     Plugin 'moll/vim-node'
     Plugin 'jelera/vim-javascript-syntax'
 
@@ -117,7 +115,6 @@ set confirm
 set undolevels=5000
 set backspace=2
 set completeopt=menuone,preview
-autocmd! CompleteDone * pclose
 
 " tabs and indenting
 set shiftwidth=4
@@ -150,7 +147,7 @@ set noswapfile
 
 " command line editing
 set wildmode=longest:list
-set wildignore+=.git/*,.gitignore,*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__
+set wildignore+=*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__
 set wildignorecase
 set wildmenu
 set undofile
@@ -164,7 +161,7 @@ endif
 " running make and jumping to errors
 if has('unix')
     if executable('ag')
-        set grepprg=ag\ --nogroup\ --nocolor\ --smart-case\ --column\ --vimgrep
+        set grepprg=ag\ --nogroup\ --nocolor\ --smart-case\ --column\ --vimgrep\ --ignore-dir\ node_modules
         set grepformat=%f:%l:%c:%m
     elseif executable('ack')
         set grepprg=ack\ -i
@@ -308,6 +305,7 @@ nnoremap                <leader>vc :VimuxCloseRunner<cr>
 nnoremap    <silent>    <leader>zs :%s/\s\+$//<cr>
 vnoremap    <silent>    <leader>zs :s/\s\+$//<cr>
 nnoremap                <leader>bc :ls!<cr>:bwipeout 
+nnoremap                <leader>bs :ls!<cr>:buffer 
 nnoremap                <leader>bw :call buffer#BufferWipeOut()<cr>
 nnoremap                <leader>cd :call buffer#SetProjectRoot()<cr>
 nnoremap                <leader>d  :only<cr>:Gdiff<cr>
@@ -316,7 +314,7 @@ nnoremap                <leader>fc zM
 nnoremap                <leader>fe zMzvzz
 nnoremap                <leader>fo zR
 nnoremap                <leader>ff :find 
-nnoremap                <leader>g :Grep 
+nnoremap                <leader>g :Grep \"\"<left><left>
 nnoremap                <leader>h :help 
 nnoremap                <leader>rs :Shell 
 nnoremap                <leader>rp :Pipe 
@@ -324,11 +322,12 @@ nnoremap                <leader>L O<Esc>
 nnoremap                <leader>l o<Esc>
 nnoremap                <leader>mm dapGplrXk/^\[ \]<cr>
 nnoremap                <leader>u :grep! --case-sensitive "\b<cword>\b"<cr><cr>
+vnoremap                <leader>u y:grep! --case-sensitive "<C-r>0"<cr><cr>
 nnoremap                <leader>re :<c-u><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
 nnoremap                <leader>S :%s/\C\<<C-r>=expand('<cword>')<CR>\>/
 nnoremap                <leader>s :s/\C\<<C-r>=expand('<cword>')<CR>\>/
-vnoremap                <leader>S y<esc>:%s/\C<C-r>=escape('<C-r>0', '*/\[].~')<cr>/
-vnoremap                <leader>s y<esc>:s/\C<C-r>=escape('<C-r>0', '*/\[].~')<cr>/
+vnoremap                <leader>S y:%s/\C<C-r>=escape('<C-r>0', '*/\[].~')<cr>/
+vnoremap                <leader>s y:s/\C<C-r>=escape('<C-r>0', '*/\[].~')<cr>/
 nnoremap                <leader>t :tag 
 nnoremap    <silent>    <leader>. :update<cr>
 nnoremap    <silent>    <leader>bk :call buffer#BufferKill()<cr>
