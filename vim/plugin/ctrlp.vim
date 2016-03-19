@@ -10,7 +10,7 @@ let g:ctrlp_use_caching=0
 let g:ctrlp_working_path_mode='0'
 
 if executable('ag')
-    let g:ctrlp_user_command = 'ag %s --files-with-matches --nocolor -g ""'
+    let g:ctrlp_user_command = 'ag %s --files-with-matches --nocolor -g "" --ignore-dir node_modules'
 endif
 
 let g:ctrlp_buffer_func = { 'enter': 'CtrlPMappings' }
@@ -21,7 +21,8 @@ endfunction
 
 function! s:DeleteBuffer()
   let path = fnamemodify(getline('.')[2:], ':p')
-  let bufn = matchstr(path, '\v\d+\ze\*No Name')
-  execute "bwipeout" bufn ==# "" ? path : bufn
+  echo path
+  let bufn = matchstr(path, '\v\d+\ze')
+  execute "bwipeout" . bufn
   execute "normal \<F5>"
 endfunction
