@@ -8,6 +8,6 @@ command! -buffer -nargs=0 Mocha  setlocal makeprg=mocha\ --reporter\ tap      er
 command! -buffer -nargs=0 JSCS   setlocal makeprg=jscs\ --reporter\ inline\ % errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m
 command! -buffer -nargs=0 JSHINT setlocal makeprg=jshint\ %                   errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m
 
-Mocha
+JSHINT
 
 nnoremap <buffer> <silent> <c-]> :TernDef<cr>

@@ -20,6 +20,14 @@ snippet cl
 console.log(${1:${VISUAL}});${0}
 endsnippet
 
+snippet clui
+console.log(util.inspect(${1:${VISUAL:object}}, { depth: null }));
+endsnippet
+
+snippet clstr
+console.log(JSON.stringify(${1:${VISUAL:object}}, null, 2));
+endsnippet
+
 snippet proto
 ${1:Object}.prototype.${2:name} = function(${3}) {
 	${0:${VISUAL}}
@@ -38,9 +46,50 @@ function ${1:name}(${2}) {
 }
 endsnippet
 
-snippet lam
+snippet l
 (${1}) => {
+	${0:${VISUAL}}
 }
+endsnippet
+
+snippet amap
+async.map(${1:collection}, (value, callback) => {
+	${0:${VISUAL}}
+	callback(null, value);
+}, (error, results) => {
+});
+endsnippet
+
+snippet afilter
+async.filter(${1:collection}, (value, callback) => {
+	${0:${VISUAL}}
+	callback(true);
+}, (results) => {
+});
+endsnippet
+
+snippet aeach
+async.each(${1:collection}, (value, callback) => {
+	${0:${VISUAL}}
+	callback(null);
+}, (error) => {
+});
+endsnippet
+
+snippet awaterfall
+async.waterfall([
+	function(next) {
+		${0:${VISUAL}}
+	}
+], (error) => {
+});
+endsnippet
+
+snippet areduce
+async.reduce(${1:collection}, ${2:initial}, (memo, value, callback) => {
+	${0:${VISUAL}}
+}, (error, result) => {
+});
 endsnippet
 
 snippet if
