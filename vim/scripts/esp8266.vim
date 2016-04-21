@@ -1,7 +1,7 @@
-command! -nargs=* -complete=file ESP8266LuaUpload call esp8266#lua_upload(<f-args>)
-command! -nargs=0 ESP8266LuaWipe call esp8266#lua_wipe()
-command! -nargs=? -complete=file ESP8266Flash call esp8266#flash(<f-args>)
-command! -nargs=0 ESP8266Wipe call esp8266#wipe()
+command! -nargs=* -complete=file ESP8266LuaUpload call esp8266#LuaUpload(<f-args>)
+command! -nargs=0 ESP8266LuaWipe call esp8266#LuaWipe()
+command! -nargs=? -complete=file ESP8266Flash call esp8266#Flash(<f-args>)
+command! -nargs=0 ESP8266Wipe call esp8266#Wipe()
 
 let g:arduino_package = 'esp8266'
 let g:arduino_arch = 'esp8266'

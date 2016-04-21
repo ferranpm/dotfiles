@@ -8,7 +8,7 @@ function! edit#Reg()
     redraw
 endfunction
 
-function! edit#json_format()
+function! edit#JsonFormat()
     set ft=json
     silent %s/[{[,]/&\r/e
     silent %s/[}\]]/\r&/e

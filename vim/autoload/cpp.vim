@@ -1,4 +1,4 @@
-function! cpp#to_source() range
+function! cpp#ToSource() range
     let pos = getpos('.')
     let class_name = substitute(expand("%:t:r"), '\(^.\)', '\u\1', '')
     let range = a:firstline.','.a:lastline
@@ -10,20 +10,20 @@ function! cpp#to_source() range
     execute 'silent '.range.'s/\m\(\w\+\s*(\)/'.class_name.'::\1/e'
     execute 'silent '.range.'s/\%(explicit\|virtual\) //e'
     execute 'silent '.range.'s/ \?= \?\w\+//e'
-    execute range.'call c#to_source()'
+    execute range.'call c#ToSource()'
     call setpos('.', pos)
 endfunction
 
-function! cpp#to_header() range
+function! cpp#ToHeader() range
     let pos = getpos('.')
     let range = a:firstline.','.a:lastline
     execute 'silent '.range.'s/\w\+:://e'
     execute 'silent '.range.'s/ \?=//e'
-    execute range.'call c#to_header()'
+    execute range.'call c#ToHeader()'
     call setpos('.', pos)
 endfunction
 
-function! cpp#qt_cpp_indent()
+function! cpp#QtCppIndent()
     " Patterns used to recognise labels and search for the start
     " of declarations
     let labelpat='signals:\|slots:\|public:\|protected:\|private:\|Q_OBJECT'

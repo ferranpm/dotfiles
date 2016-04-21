@@ -219,7 +219,7 @@ command! -nargs=? UnderscoreToLowerCamelCase <args>s#\m_\(\l\)#\u\1
 command! -nargs=? CamelCaseToUnderscore <args>s#\m\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+\)\(\u\)#\l\1_\l\2
 
 command! -nargs=1 -range Align '<,'>call edit#Align(<f-args>)
-command! -nargs=0 JSONFormat call edit#json_format()
+command! -nargs=0 JSONFormat call edit#JsonFormat()
 command! -nargs=0 Reg call edit#Reg()
 
 command! -nargs=0 Picocom call serial#Picocom()

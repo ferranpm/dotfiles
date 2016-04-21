@@ -1,7 +1,7 @@
-noremap <leader>m; :call cpp#to_source()<cr>
-noremap <leader>m: :call cpp#to_header()<cr>
+noremap <leader>m; :call cpp#ToSource()<cr>
+noremap <leader>m: :call cpp#ToHeader()<cr>
 
-set indentexpr=cpp#qt_cpp_indent()
+set indentexpr=cpp#QtCppIndent()
 set omnifunc=omni#cpp#complete#Main
 
 " Generate more tags using this:

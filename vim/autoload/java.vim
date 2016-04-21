@@ -1,4 +1,4 @@
-function! java#is_unused_import()
+function! java#IsUnusedImport()
     let cur = getpos('.')
     normal! f;b*
     let val = getpos('.')[1] == cur[1]
@@ -6,11 +6,11 @@ function! java#is_unused_import()
     return val
 endfunction
 
-function! java#delete_unused_imports()
+function! java#DeleteUnusedImports()
     let cur = getpos('.')
     normal! gg
     while search('\m^\<import\> ', 'W') > 0
-        if java#is_unused_import()
+        if java#IsUnusedImport()
             normal! ddk
             if getpos('.')[1] < cur[1]
                 let cur[1] = cur[1] - 1

@@ -1,9 +1,9 @@
-function! arduino#get_board()
+function! arduino#GetBoard()
     return g:arduino_package.':'.g:arduino_arch.':'.g:arduino_board
 endfunction
 
-function! arduino#upload(...)
-    let board = arduino#get_board()
+function! arduino#Upload(...)
+    let board = arduino#GetBoard()
     let filename = '%'
     if a:0 > 0 | let filename = a:1 | endif
     let port = serial#SelectPort(['ttyACM*', 'ttyUSB*'])
@@ -11,8 +11,8 @@ function! arduino#upload(...)
     call utils#Make()
 endfunction
 
-function! arduino#verify(...)
-    let board = arduino#get_board()
+function! arduino#Verify(...)
+    let board = arduino#GetBoard()
     let filename = '%'
     if a:0 > 0 | let filename = a:1 | endif
     let filename = glob(filename)

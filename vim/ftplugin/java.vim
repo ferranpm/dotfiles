@@ -20,7 +20,7 @@ if glob('AndroidManifest.xml') =~ ''
     end
 endif
 
-command! -buffer -nargs=0 DeleteUnusedImports call java#delete_unused_imports()
+command! -buffer -nargs=0 DeleteUnusedImports call java#DeleteUnusedImports()
 
 let g:android_project_name = system('xmllint AndroidManifest.xml | grep -m 1 "activity" | sed -e "s/ *<activity android:name=\"\([0-9A-Za-z_\.]\+\)\" .*/\1/" | tr -d "\n"')
 let g:android_package_name = system('xmllint AndroidManifest.xml | grep -m 1 "package"  | sed -e "s/.*package=\"\([0-9A-Za-z_\.]\+\)\".*/\1/" | tr -d "\n"')

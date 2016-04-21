@@ -1,4 +1,4 @@
-function! c#to_source() range
+function! c#ToSource() range
     let pos = getpos('.')
     if a:firstline == a:lastline
         normal ==
@@ -9,7 +9,7 @@ function! c#to_source() range
     call setpos('.', pos)
 endfunction
 
-function! c#to_header() range
+function! c#ToHeader() range
     let pos = getpos('.')
     let range = a:firstline.','.a:lastline
     execute 'silent '.range.'s/)\s*{\?\s*$/);/e'
@@ -23,7 +23,7 @@ function! c#to_header() range
     call setpos('.', pos)
 endfunction
 
-function c#format_folder()
+function c#FormatFolder()
     silent! argdelete *
     silent! argadd *.c *.h
     silent! argdo normal! gg=G
