@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=syndaemon -i 1 -t -d
+Exec=syndaemon -i 2.5s -R -K -d -t
 Name=DisableMouseWhenOnKeyboard
 Type=Application
 Version=1.0
