@@ -1,0 +1,36 @@
+#compdef ttio
+
+_ttio() { 
+    local curcontext="$curcontext" state line
+    typeset -A opt_args
+
+    _arguments \
+        '1: :->program' \
+        '*: :->argument'
+
+    case $state in
+        program)
+            compadd "$@" api tmux vagrant vpn
+            ;;
+        argument)
+            case $words[2] in
+                api)
+                    ;;
+                tmux)
+                    # _files -W ~/Workspace/thethings.iO/
+                    compadd "$@" $(find -L ~/Workspace/thethings.iO -maxdepth 1 -type d | sed -n 's|^\/home\/ferran\/Workspace\/thethings.iO\/||p')
+
+                    ;;
+                vagrant)
+                    case ${#words[*]} in
+                        3) compadd "$@" up ssh
+                            ;;
+                    esac
+                    ;;
+                vpn)
+                    ;;
+            esac
+    esac
+}
+
+_ttio "$@"

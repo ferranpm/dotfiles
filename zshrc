@@ -2,6 +2,8 @@ PROMPT='
 %{$fg[green]%}%n%{$fg[blue]%}%{$reset_color%} in %{$fg[blue]%}%{$fg[red]%}%~ %{$reset_color%}at %{$fg[blue]%}%m$(git_prompt)$(vi_prompt)
 %{$fg_bold[blue]%}%(!.#.>)%{$reset_color%} '
 
+fpath=(~/.zsh/completion $fpath)
+
 ZSH_FOLDER=$HOME/.zsh
 if [[ -d $ZSH_FOLDER ]]; then
     for file in $(find $ZSH_FOLDER -name "*.plugin.zsh"); do

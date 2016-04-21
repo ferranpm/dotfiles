@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+DIR=~/Workspace/thethings.iO/vagrant/thethings-machine/
+cd $DIR
+
+vagrant_start_and_enter() {
+    ps -e | grep vagrant > /dev/null
+    if [[ ! "$?" == "0" ]]; then
+        vagrant up
+    fi
+    vagrant ssh
+}
+
+vagrant_start() {
+    vagrant up
+}
+
+case $1 in
+    up) vagrant_start ;;
+    ssh) vagrant_start_and_enter ;;
+    *)
+        if [[ "$#" == "0" ]]; then
+            vagrant_start_and_enter
+        else
+            vagrant $*
+        fi
+        ;;
+esac

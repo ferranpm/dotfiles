@@ -2,13 +2,10 @@
 
 BASE_PATH="$HOME/Workspace/"
 PROJECT="$1"
-if [[ "$PROJECT" == "" ]]; then
-    PROJECT="dotfiles"
-fi
 
 DIR="$BASE_PATH/$PROJECT"
 
-SESSION="$(echo $DIR | tr "./" "__")"
+SESSION="$(echo $PROJECT | tr "./" "__")"
 
 if [[ ! -d "$DIR" ]]; then
     echo "No folder named $PROJECT in $BASE_PATH"
@@ -19,15 +16,19 @@ if [[ -e "$DIR/Session.vim" ]]; then
     VIM_ARGUMENTS="$VIM_ARGUMENTS -S"
 fi
 
-tmux rename-session $SESSION
+tmux new-session -d -s $SESSION -n vim -c "$DIR"
 
 if [[ ! $? == 0 ]]; then
     exit
 fi
 
+tmux switch-client   -t $SESSION
 tmux rename-window   -t $SESSION vim
-tmux send-keys       -t $SESSION "cd $DIR && vim $VIM_ARGUMENTS" C-m
-tmux new-window      -t $SESSION
-tmux rename-window   -t $SESSION shell
-tmux send-keys       -t $SESSION "cd $DIR" C-m
+tmux split-window    -t $SESSION -h -c "$DIR"
+tmux split-window    -t $SESSION -h -c "$DIR"
+tmux send-keys       -t $SESSION:vim.2 "vim $VIM_ARGUMENTS" C-m
+tmux resize-pane     -t $SESSION:vim.1 -x 65
+tmux resize-pane     -t $SESSION:vim.3 -x 65
+tmux new-window      -t $SESSION -n shell -c "$DIR"
 tmux select-window   -t $SESSION:vim
+tmux select-pane     -t $SESSION:vim.2

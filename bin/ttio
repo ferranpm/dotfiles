@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+
+APPS_DIR=File.join(File.dirname(__FILE__), 'thethings.iO')
+APPS = Dir.entries(APPS_DIR)
+APPS.delete('.')
+APPS.delete('..')
+
+def usage
+    $stdout.puts "USAGE:"
+    APPS.each do |app|
+        $stdout.puts "\t#{__FILE__} #{app}"
+    end
+    exit 1
+end
+
+usage if not APPS.include?(ARGV[0])
+
+exec "#{APPS_DIR}/#{ARGV[0]} #{ARGV[1..-1].join(' ')}"
