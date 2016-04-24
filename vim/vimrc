@@ -32,8 +32,7 @@ if exists(':Plugin')
 
     " JavaScript
     Plugin 'ternjs/tern_for_vim'
-    Plugin 'moll/vim-node'
-    Plugin 'jelera/vim-javascript-syntax'
+    Plugin 'othree/yajs.vim'
 
     " Java
     Plugin 'javacomplete', {'pinned': 1}
@@ -161,7 +160,7 @@ endif
 " running make and jumping to errors
 if has('unix')
     if executable('ag')
-        set grepprg=ag\ --nogroup\ --nocolor\ --smart-case\ --column\ --vimgrep\ --ignore-dir\ node_modules
+        set grepprg=ag\ --nogroup\ --nocolor\ --smart-case\ --column\ --vimgrep
         set grepformat=%f:%l:%c:%m
     elseif executable('ack')
         set grepprg=ack\ -i
@@ -300,7 +299,7 @@ nnoremap <F12>  :call system('ctags')<cr>
  noremap                <leader>a :Align 
  noremap                <leader>c "+y
  noremap                <leader>p :put *<cr>
- noremap                <leader>v "+p
+ noremap                <leader>v :put +<cr>
 nnoremap                <leader>vc :VimuxCloseRunner<cr>
 nnoremap    <silent>    <leader>zs :%s/\s\+$//<cr>
 vnoremap    <silent>    <leader>zs :s/\s\+$//<cr>

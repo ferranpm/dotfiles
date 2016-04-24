@@ -2,7 +2,7 @@ nnoremap <C-q> :CtrlP<cr>
 nnoremap <C-t> :CtrlPTag<cr>
 
 let g:ctrlp_cmd = 'CtrlPBuffer'
-let g:ctrlp_by_filename=0
+let g:ctrlp_by_filename=1
 let g:ctrlp_max_files=0
 let g:ctrlp_max_height=100
 let g:ctrlp_show_hidden=0
