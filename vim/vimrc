@@ -194,6 +194,7 @@ endtry
 
 " Autocommands
 augroup autocommands
+    autocmd! BufRead TODO :set ft=TODO
     autocmd! VimResized * :wincmd =
 augroup END
 
@@ -319,7 +320,6 @@ nnoremap                <leader>rs :Shell
 nnoremap                <leader>rp :Pipe 
 nnoremap                <leader>L O<Esc>
 nnoremap                <leader>l o<Esc>
-nnoremap                <leader>mm dapGplrXk/^\[ \]<cr>
 nnoremap                <leader>u :grep! --case-sensitive "\b<cword>\b"<cr><cr>
 vnoremap                <leader>u y:grep! --case-sensitive "<C-r>0"<cr><cr>
 nnoremap                <leader>re :<c-u><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
