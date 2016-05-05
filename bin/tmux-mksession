@@ -1,34 +1,36 @@
 #!/usr/bin/bash
 
 BASE_PATH="$HOME/Workspace/"
-PROJECT="$1"
 
-DIR="$BASE_PATH/$PROJECT"
+PROJECTS="$*"
+for PROJECT in ${PROJECTS[*]}; do
+    VIM_ARGUMENTS=""
+    DIR="$BASE_PATH/$PROJECT"
+    SESSION="$(echo $PROJECT | tr "./" "__")"
 
-SESSION="$(echo $PROJECT | tr "./" "__")"
+    if [[ ! -d "$DIR" ]]; then
+        echo "No folder named $PROJECT in $BASE_PATH"
+        exit
+    fi
 
-if [[ ! -d "$DIR" ]]; then
-    echo "No folder named $PROJECT in $BASE_PATH"
-    exit
-fi
+    if [[ -e "$DIR/Session.vim" ]]; then
+        VIM_ARGUMENTS="$VIM_ARGUMENTS -S"
+    fi
 
-if [[ -e "$DIR/Session.vim" ]]; then
-    VIM_ARGUMENTS="$VIM_ARGUMENTS -S"
-fi
+    tmux new-session -d -s $SESSION -n vim -c "$DIR"
 
-tmux new-session -d -s $SESSION -n vim -c "$DIR"
+    if [[ ! $? == 0 ]]; then
+        exit
+    fi
 
-if [[ ! $? == 0 ]]; then
-    exit
-fi
-
-tmux switch-client   -t $SESSION
-tmux rename-window   -t $SESSION vim
-tmux split-window    -t $SESSION -h -c "$DIR"
-tmux split-window    -t $SESSION -h -c "$DIR"
-tmux send-keys       -t $SESSION:vim.2 "vim $VIM_ARGUMENTS" C-m
-tmux resize-pane     -t $SESSION:vim.1 -x 65
-tmux resize-pane     -t $SESSION:vim.3 -x 65
-tmux new-window      -t $SESSION -n shell -c "$DIR"
-tmux select-window   -t $SESSION:vim
-tmux select-pane     -t $SESSION:vim.2
+    tmux switch-client   -t $SESSION
+    tmux rename-window   -t $SESSION vim
+    tmux split-window    -t $SESSION -h -c "$DIR"
+    tmux split-window    -t $SESSION -h -c "$DIR"
+    tmux send-keys       -t $SESSION:vim.2 "vim $VIM_ARGUMENTS" C-m
+    tmux resize-pane     -t $SESSION:vim.1 -x 65
+    tmux resize-pane     -t $SESSION:vim.3 -x 65
+    tmux new-window      -t $SESSION -n shell -c "$DIR"
+    tmux select-window   -t $SESSION:vim
+    tmux select-pane     -t $SESSION:vim.2
+done

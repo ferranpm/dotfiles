@@ -6,11 +6,11 @@ DEV="http://api-dev.thethings.io/v2/things"
 URL=$PROD
 
 GET() {
-    curl -N -H "Content-Type: application/json" -X GET $1
+    curl -v -N -H "Content-Type: application/json" -X GET $1
 }
 
 POST() {
-    curl -H "Content-Type: application/json" -X POST "$1" -d "$2"
+    curl -v -H "Content-Type: application/json" -X POST "$1" -d "$2"
 }
 
 write() {

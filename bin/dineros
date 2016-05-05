@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+
+require 'nokogiri'
+require 'date'
+require 'pp'
+
+def parse_xml(file)
+    page = Nokogiri::XML(open(file))
+
+    trs = page.css('tr')
+
+    movimientos = []
+    trs.each do |tr|
+        fonts = tr.css('font')
+        if fonts.size == 5 then
+            begin
+                movimientos.push({
+                    :fecha_op  => Date.parse(fonts[0].text.strip),
+                    :fecha_val => Date.parse(fonts[1].text.strip),
+                    :concepto  => fonts[2].text.strip.force_encoding(Encoding::ISO_8859_1).encode(Encoding::UTF_8),
+                    :import    => fonts[3].text.gsub(/,/, '.').strip.to_f,
+                    :saldo     => fonts[4].text.gsub(/,/, '.').strip.to_f
+                })
+            rescue
+            end
+        end
+    end
+    return movimientos
+end
+
+def report(movimientos)
+    sum = 0
+    movimientos.each do |movimiento|
+        if /^RECIBO(?! PayPal)/.match(movimiento[:concepto]) then
+            sum = sum + movimiento[:import]
+            $stdout.print "#{movimiento[:import]}\t(#{movimiento[:concepto]})\n"
+        end
+    end
+    $stdout.print "total:\t#{sum}\n"
+    $stdout.print "p.p:\t#{sum/4.0}\n"
+end
+
+ARGV.each do |file|
+    report parse_xml(file)
+end
