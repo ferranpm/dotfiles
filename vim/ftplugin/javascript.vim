@@ -14,6 +14,6 @@ command! -buffer -nargs=0 JSCS   setlocal makeprg=jscs\ --reporter\ inline\ % er
 command! -buffer -nargs=0 JSHINT setlocal makeprg=jshint\ %                   errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m
 command! -buffer -nargs=0 JSHINTALL setlocal makeprg=ag\ -0\ --ignore-dir\ public\ -g\ \".js$\"\ \|\ xargs\ -0\ jshint errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m
 
-JSHINTALL
+JSHINT
 
 nnoremap <buffer> <silent> <c-]> :TernDef<cr>
