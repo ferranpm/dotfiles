@@ -10,7 +10,7 @@ _ttio() {
 
     case $state in
         program)
-            compadd "$@" api tmux vagrant vpn
+            compadd "$@" api tmux vagrant vpn frontend
             ;;
         argument)
             case $words[2] in
@@ -28,6 +28,8 @@ _ttio() {
                     esac
                     ;;
                 vpn)
+                    ;;
+                frontend)
                     ;;
             esac
     esac
