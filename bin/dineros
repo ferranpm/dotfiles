@@ -2,7 +2,6 @@
 
 require 'nokogiri'
 require 'date'
-require 'pp'
 
 def parse_xml(file)
     page = Nokogiri::XML(open(file))
