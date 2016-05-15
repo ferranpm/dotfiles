@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char font[] = "FreeMono:style=Regular:pixelsize=14:antialias=true";
+static char font[] = "Anonymous Pro Minus:style=Regular:pixelsize=14:antialias=true";
 static int borderpx = 2;
 
 /*
@@ -63,13 +63,13 @@ static unsigned int cursorthickness = 2;
 static int bellvolume = 0;
 
 /* default TERM value */
-static char termname[] = "st-256color";
+static char termname[] = "screen-256color";
 
 static unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	"#2b2b2b",
+	"#262626",
 	"#e84f4f",
 	"#b8d68c",
 	"#e1aa5d",
@@ -78,6 +78,8 @@ static const char *colorname[] = {
 	"#6d878d",
 	"#dddddd",
 	"#404040",
+
+	/* 8 bright colors */
 	"#d23d3d",
 	"#a0cf5d",
 	"#f39d21",
@@ -85,13 +87,14 @@ static const char *colorname[] = {
 	"#8542ff",
 	"#42717b",
 	"#dddddd",
+	"#dadada",
 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with defaultxx */
 	"#ff8939", // cursor
 	"#dadada", // foreground
-	"#262626", // background
+	"#121212", // background
 };
 
 
