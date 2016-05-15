@@ -107,10 +107,10 @@ bindkey -a 'k'      up-line-or-search
 
 ## ALIASES ##
 alias aura='aura --color=auto'
-alias aurain='sudo aura -Ayx'
+alias aurain='sudo aura -Ax'
 alias aurare='sudo aura -Rns'
-alias aurase='aura -As'
-alias auraupg='sudo aura -Ayux'
+alias aurase='aura -Aas'
+alias auraupg='sudo aura -Aux'
 alias cal='cal -3 -m'
 alias cd1='cd ../'
 alias cd2='cd ../../'
