@@ -68,8 +68,6 @@ set relativenumber
 set nowrap
 
 " syntax, highlighting and spelling
-set background=dark
-set t_Co=256
 set nohlsearch
 
 " multiple windows
