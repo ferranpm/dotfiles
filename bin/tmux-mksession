@@ -28,8 +28,8 @@ for PROJECT in ${PROJECTS[*]}; do
     tmux split-window    -t $SESSION -h -c "$DIR"
     tmux split-window    -t $SESSION -h -c "$DIR"
     tmux send-keys       -t $SESSION:vim.2 "vim $VIM_ARGUMENTS" C-m
-    tmux resize-pane     -t $SESSION:vim.1 -x 65
-    tmux resize-pane     -t $SESSION:vim.3 -x 65
+    tmux resize-pane     -t $SESSION:vim.1 -x 50
+    tmux resize-pane     -t $SESSION:vim.3 -x 70
     tmux new-window      -t $SESSION -n shell -c "$DIR"
     tmux select-window   -t $SESSION:vim
     tmux select-pane     -t $SESSION:vim.2

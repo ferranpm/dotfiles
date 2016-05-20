@@ -244,6 +244,7 @@ noremap ` '
 noremap ' `
 
 inoremap <C-o> <C-x><C-o><C-p>
+inoremap <C-l> <C-x><C-l>
 inoremap <C-j> <esc>O
 
 nnoremap <silent> <C-@> :call buffer#AlternateSource()<cr>

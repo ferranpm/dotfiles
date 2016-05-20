@@ -10,7 +10,7 @@ _ttio() {
 
     case $state in
         program)
-            compadd "$@" api tmux vagrant vpn frontend
+            compadd "$@" $(ls ~/bin/thethings.iO)
             ;;
         argument)
             case $words[2] in

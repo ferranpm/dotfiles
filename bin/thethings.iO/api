@@ -6,11 +6,11 @@ DEV="http://api-dev.thethings.io/v2/things"
 URL=$PROD
 
 GET() {
-    curl -v -N -H "Content-Type: application/json" -X GET $1
+    curl -N -H "Content-Type: application/json" -X GET $1
 }
 
 POST() {
-    curl -v -H "Content-Type: application/json" -X POST "$1" -d "$2"
+    curl -H "Content-Type: application/json" -X POST "$1" -d "$2"
 }
 
 write() {
@@ -37,7 +37,11 @@ get() {
         usage
         exit
     fi
-    GET "$URL/$TOKEN/resources/$KEY"
+    if [[ -z $LIMIT ]]
+    then
+        LIMIT=10
+    fi
+    GET "$URL/$TOKEN/resources/$KEY?limit=$LIMIT"
 }
 
 get_all() {
