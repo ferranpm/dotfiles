@@ -76,29 +76,29 @@ static unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-    "#262626", /*  0: black    */
-    "#e84f4f", /*  1: red      */
-    "#b8d68c", /*  2: green    */
-    "#e1aa5d", /*  2: yellow   */
-    "#7dc1cf", /*  4: blue     */
-    "#9b64fb", /*  5: magenta  */
-    "#6d878d", /*  6: dyan     */
-    "#dddddd", /*  7: white    */
+	"#262626", /*  0: black    */
+	"#e84f4f", /*  1: red      */
+	"#b8d68c", /*  2: green    */
+	"#e1aa5d", /*  2: yellow   */
+	"#7dc1cf", /*  4: blue     */
+	"#9b64fb", /*  5: magenta  */
+	"#6d878d", /*  6: dyan     */
+	"#dddddd", /*  7: white    */
 
-    "#404040", /*  8: brblack  */
-    "#d23d3d", /*  a: brrea    */
-    "#a0cf5d", /* 10: brgreen  */
-    "#f39d21", /* 11: bryellow */
-    "#4e9fb1", /* 12: brblue   */
-    "#8542ff", /* 13: brmagenta*/
-    "#42717b", /* 14: brcyan   */
-    "#dddddd", /* 15: brwhite  */
+	"#404040", /*  8: brblack  */
+	"#d23d3d", /*  a: brrea    */
+	"#a0cf5d", /* 10: brgreen  */
+	"#f39d21", /* 11: bryellow */
+	"#4e9fb1", /* 12: brblue   */
+	"#8542ff", /* 13: brmagenta*/
+	"#42717b", /* 14: brcyan   */
+	"#dddddd", /* 15: brwhite  */
 
-    [255] = 0,
+	[255] = 0,
 
-    "#ff8939", // cursor
-    "#dadada", // foreground
-    "#121212", // background
+	"#ff8939", // cursor
+	"#dadada", // foreground
+	"#121212", // background
 };
 
 /*
@@ -113,23 +113,23 @@ static unsigned int defaultrcs = 257;
 #elif THEME == LIGHT
 
 static const char *colorname[] = {
-    "#000000", /*  0: black    */
-    "#dd2222", /*  1: red      */
-    "#22bb22", /*  2: green    */
-    "#bbbb22", /*  2: yellow   */
-    "#2222dd", /*  4: blue     */
-    "#dd22dd", /*  5: magenta  */
-    "#22dddd", /*  6: dyan     */
-    "#ffffff", /*  7: white    */
+	"#000000", /*  0: black    */
+	"#dd2222", /*  1: red      */
+	"#22bb22", /*  2: green    */
+	"#bbbb22", /*  2: yellow   */
+	"#2222dd", /*  4: blue     */
+	"#dd22dd", /*  5: magenta  */
+	"#22dddd", /*  6: dyan     */
+	"#ffffff", /*  7: white    */
 
-    "#000000", /*  8: brblack  */
-    "#aa5555", /*  a: brrea    */
-    "#55aa55", /* 10: brgreen  */
-    "#aaaa55", /* 11: bryellow */
-    "#5555aa", /* 12: brblue   */
-    "#aa55aa", /* 13: brmagenta*/
-    "#55aaaa", /* 14: brcyan   */
-    "#ffffff", /* 15: brwhite  */
+	"#000000", /*  8: brblack  */
+	"#aa5555", /*  a: brrea    */
+	"#55aa55", /* 10: brgreen  */
+	"#aaaa55", /* 11: bryellow */
+	"#5555aa", /* 12: brblue   */
+	"#aa55aa", /* 13: brmagenta*/
+	"#55aaaa", /* 14: brcyan   */
+	"#ffffff", /* 15: brwhite  */
 };
 
 static unsigned int defaultfg = 0;
