@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-CURRENT=$(tmux ls | grep attached | sed -e 's/^\([^:]*\).*/\1/')
-
-tmux kill-session -a -t $CURRENT
