@@ -6,7 +6,8 @@ PROJECTS="$*"
 for PROJECT in ${PROJECTS[*]}; do
     VIM_ARGUMENTS=""
     DIR="$BASE_PATH/$PROJECT"
-    SESSION="$(echo $PROJECT | tr "./" "__")"
+    PROJECT=$(echo $PROJECT | sed 's|/\+|/|g')
+    SESSION=$(echo $PROJECT | tr "./" "__")
 
     if [[ ! -d "$DIR" ]]; then
         echo "No folder named $PROJECT in $BASE_PATH"
