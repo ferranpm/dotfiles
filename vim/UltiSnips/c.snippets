@@ -13,20 +13,20 @@ endsnippet
 
 snippet ifdef
 #pragma once
-#ifndef `toupper(expand("%:t:r"))`_H
-#define `toupper(expand("%:t:r"))`_H
+#ifndef `!v toupper(expand("%:t:r"))`_H
+#define `!v toupper(expand("%:t:r"))`_H
 
 ${0:${VISUAL}}
 
-#endif // `toupper(expand("%:t:r"))`_H
+#endif // `!v toupper(expand("%:t:r"))`_H
 endsnippet
 
 snippet inc
-#include <${1:`expand("%:t:r")`.h}>${0}
+#include <${1:`!v expand("%:t:r")`.h}>${0}
 endsnippet
 
 snippet Inc
-#include "${1:`expand("%:t:r")`.h}"${0}
+#include "${1:`!v expand("%:t:r")`.h}"${0}
 endsnippet
 
 snippet wh

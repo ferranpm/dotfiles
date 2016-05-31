@@ -27,14 +27,14 @@ for (${1:std::vector<int>}::iterator ${2:it} = ${3:v}.begin(); $2 != $3.end(); $
 endsnippet
 
 snippet class
-class ${1:`expand("%:t:r")`} {
+class ${1:`!v expand("%:t:r")`} {
 public:
 	$1(${4});${0}
 };
 endsnippet
 
 snippet classqt
-class ${1:`substitute(expand("%:t:r"), '\(^.\)', '\u\1', '')`} : public ${2:QWidget} {
+class ${1:`!v substitute(expand("%:t:r"), '\(^.\)', '\u\1', '')`} : public ${2:QWidget} {
 ${3:Q_OBJECT}
 public:
 	$1(${4:QWidget* parent = 0});${0}
