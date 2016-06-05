@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char font[] = "Anonymous Pro:style=Regular:pixelsize=14:antialias=true";
+static char font[] = "Anonymous Pro:style=Regular:pixelsize=16:antialias=true";
 static int borderpx = 2;
 
 /*
@@ -98,7 +98,7 @@ static const char *colorname[] = {
 
 	"#ff8939", // cursor
 	"#dadada", // foreground
-	"#121212", // background
+	"#1c1c1c", // background
 };
 
 /*

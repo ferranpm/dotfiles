@@ -27,7 +27,7 @@ highlight IncSearch      term=NONE cterm=NONE      ctermfg=0   ctermbg=223 gui=N
 highlight LineNr         term=NONE cterm=NONE      ctermfg=247 ctermbg=233 gui=NONE      guifg=#9e9e9e guibg=#121212
 highlight MatchParen     term=NONE cterm=bold      ctermfg=188 ctermbg=68  gui=bold      guifg=#d7d7d7 guibg=#5f87d7
 highlight NonText        term=NONE cterm=bold      ctermfg=247 ctermbg=233 gui=bold      guifg=#9e9e9e guibg=#121212
-highlight Normal         term=NONE cterm=NONE      ctermfg=252 ctermbg=233 gui=NONE      guifg=#d0d0d0 guibg=#121212
+highlight Normal         term=NONE cterm=NONE      ctermfg=252 ctermbg=234 gui=NONE      guifg=#d0d0d0 guibg=#1c1c1c
 highlight Number         term=NONE cterm=NONE      ctermfg=180             gui=NONE      guifg=#d7af87
 highlight Pmenu          term=NONE cterm=NONE      ctermfg=0   ctermbg=250 gui=NONE      guifg=#000000 guibg=#bcbcbc
 highlight PmenuSbar      term=NONE cterm=NONE                  ctermbg=252 gui=NONE                    guibg=#d0d0d0
