@@ -31,7 +31,7 @@ highlight Identifier       term=NONE cterm=NONE ctermfg=14              gui=NONE
 highlight Ignore           term=NONE cterm=NONE ctermfg=15              gui=NONE guifg=#ffffff
 highlight IncSearch        term=NONE cterm=NONE ctermfg=0   ctermbg=2   gui=NONE guifg=#000000 guibg=#008000
 highlight LineNr           term=NONE cterm=NONE ctermfg=0               gui=NONE guifg=#000000
-highlight MatchParen       term=NONE cterm=NONE             ctermbg=14  gui=NONE               guibg=#00ffff
+highlight MatchParen       term=NONE cterm=NONE             ctermbg=220 gui=NONE               guibg=#ffd700
 highlight MoreMsg          term=NONE cterm=NONE ctermfg=2               gui=NONE guifg=#008000
 highlight NonText          term=NONE cterm=NONE ctermfg=12              gui=NONE guifg=#0000ff
 highlight Normal           term=NONE cterm=NONE ctermfg=0   ctermbg=15  gui=NONE guifg=#000000 guibg=#ffffff
