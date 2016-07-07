@@ -85,6 +85,7 @@ set title
 set titlestring=%t%(\ %M%)%(\ (%{expand(\'%:~:.:h\')})%)%(\ %a%)
 
 " using the mouse
+set mouse=n
 
 " GUI
 if has('gui_running')

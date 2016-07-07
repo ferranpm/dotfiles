@@ -12,3 +12,5 @@ setlocal foldlevelstart=1
 compiler jshint
 
 nnoremap <buffer> <silent> <c-]> :TernDef<cr>
+nnoremap <buffer> <silent> <c-LeftMouse> <LeftMouse>:TernDef<cr>
+nnoremap <buffer> <silent> <c-RightMouse> <c-o>
