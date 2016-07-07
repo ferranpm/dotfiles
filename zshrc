@@ -77,15 +77,18 @@ zstyle ':completion::(^approximate*):*:functions'   ignored-patterns '_*'
 zstyle ':completion:correct:'                       prompt 'correct to: %e'
 
 ## BINDKEYS ##
-bindkey -v '^[[1;5D' backward-word
-bindkey -v '^[[1;5C' forward-word
-bindkey -v '^[[1;5D' backward-word
-bindkey -v '^[[7~'  beginning-of-line
-bindkey -a '^[[7~'  beginning-of-line
+bindkey -v '^[OC' forward-word
+bindkey -a '^[OC' forward-word
+bindkey -v '^[OD' backward-word
+bindkey -a '^[OD' backward-word
+bindkey -v '^[[1~'  beginning-of-line
+bindkey -a '^[[1~'  beginning-of-line
+bindkey -v '^[[4~'  end-of-line
+bindkey -a '^[[4~'  end-of-line
+bindkey -v '^[[P'   delete-char
+bindkey -a '^[[P'   delete-char
 bindkey -v '^m'     check-line
 bindkey -a '^m'     check-line
-bindkey -v '^[[3~'  delete-char
-bindkey -a '^[[3~'  delete-char
 bindkey -v '^[[B'   down-line-or-history
 bindkey -a 'n'      down-line-or-search
 bindkey -v '^n'     down-line-or-search
@@ -129,6 +132,7 @@ alias pacre='sudo pacman -Rns'
 alias pacro='pacman -Qtdq && sudo pacman -Rns `pacman -Qtdq`'
 alias pacse='pacman -Ss'
 alias pacupg='sudo pacman -Syu'
+alias psg='ps -e | grep'
 alias t='task'
 
 ## FUNCTIONS ##
