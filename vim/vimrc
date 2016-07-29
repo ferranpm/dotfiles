@@ -1,46 +1,23 @@
-" Vundle
-set nocompatible
-filetype off
-try
-    set runtimepath+=~/.vim/bundle/Vundle.vim
-    call vundle#begin()
-catch
-endtry
-if exists(':Plugin')
-    " Generic
-    Plugin 'ctrlpvim/ctrlp.vim'
-    Plugin 'ferranpm/vim-isolate'
-    Plugin 'michaeljsmith/vim-indent-object'
-    Plugin 'taku-o/vim-vis'
-    Plugin 'tomtom/tcomment_vim'
-    Plugin 'tpope/vim-dispatch'
-    Plugin 'tpope/vim-fugitive'
-    Plugin 'tpope/vim-repeat'
-    Plugin 'tpope/vim-surround'
-    Plugin 'VundleVim/Vundle.vim'
-    Plugin 'vim-scripts/UltiSnips'
+call plug#begin('~/.vim/bundle')
+" Generic
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ferranpm/vim-isolate'
+Plug 'taku-o/vim-vis'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'SirVer/ultisnips'
 
-    " Testing
-    Plugin 'dsummersl/vimunit'
+" tmux
+Plug 'benmills/vimux'
+Plug 'christoomey/vim-tmux-navigator'
 
-    " tmux
-    Plugin 'benmills/vimux'
-    Plugin 'christoomey/vim-tmux-navigator'
-
-    " C/C++
-    Plugin 'vim-scripts/OmniCppComplete'
-
-    " JavaScript
-    Plugin 'ternjs/tern_for_vim'
-    Plugin 'othree/yajs.vim'
-
-    " Java
-    Plugin 'javacomplete', {'pinned': 1}
-endif
-try
-    call vundle#end()
-catch
-endtry
+" JavaScript
+Plug 'ternjs/tern_for_vim'
+Plug 'othree/yajs.vim'
+call plug#end()
 
 if filereadable(expand('~/.local.vim'))
     source ~/.local.vim
