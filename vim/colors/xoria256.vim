@@ -35,7 +35,7 @@ highlight PmenuSel       term=NONE cterm=NONE      ctermfg=255 ctermbg=243 gui=N
 highlight PmenuThumb     term=NONE cterm=NONE      ctermfg=243             gui=NONE      guifg=#767676
 highlight PreProc        term=NONE cterm=NONE      ctermfg=150             gui=NONE      guifg=#afd787
 highlight Search         term=NONE cterm=NONE      ctermfg=0   ctermbg=149 gui=NONE      guifg=#000000 guibg=#afd75f
-highlight SignColumn     term=NONE cterm=NONE      ctermfg=248             gui=NONE      guifg=#a8a8a8
+highlight SignColumn     term=NONE cterm=NONE      ctermfg=247 ctermbg=233 gui=NONE      guifg=#9e9e9e guibg=#121212
 highlight Special        term=NONE cterm=NONE      ctermfg=174             gui=NONE      guifg=#d78787
 highlight SpecialKey     term=NONE cterm=NONE      ctermfg=237             gui=NONE      guifg=#3a3a3a
 highlight SpellBad       term=NONE cterm=underline ctermfg=160 ctermbg=bg  gui=underline guifg=#d70000 guibg=bg
