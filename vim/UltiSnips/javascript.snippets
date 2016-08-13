@@ -5,19 +5,27 @@ for (var ${1:i} = 0; $1 < ${2:count}; $1++) {
 endsnippet
 
 snippet fora
-for (var i in ${1:list}) {
+for (var key in ${1:list}) {
 	${0:${VISUAL}}
 }
 endsnippet
 
 snippet foreach
-${1:array}.forEach(function(item, i, array) {
-	${0:${VISUAL}}
+${1:${VISUAL:array}}.forEach((${2:item}) => {
+	${3}
 });
 endsnippet
 
+snippet cp
+console.log('${1:${VISUAL}} =', $1);${0}
+endsnippet
+
 snippet cl
-console.log(${1:${VISUAL}});${0}
+console.log('${1:${VISUAL}}');${0}
+endsnippet
+
+snippet ce
+console.error(${1:${VISUAL:error}});${0}
 endsnippet
 
 snippet clui
@@ -52,48 +60,30 @@ snippet l
 }
 endsnippet
 
-snippet amap
-async.map(${1:collection}, (value, callback) => {
-	${0:${VISUAL}}
-	callback(null, value);
-}, (error, results) => {
-});
-endsnippet
-
-snippet afilter
-async.filter(${1:collection}, (value, callback) => {
-	${0:${VISUAL}}
-	callback(true);
-}, (results) => {
-});
-endsnippet
-
-snippet aeach
-async.each(${1:collection}, (value, callback) => {
-	${0:${VISUAL}}
-	callback(null);
-}, (error) => {
-});
-endsnippet
-
-snippet awaterfall
-async.waterfall([
-	function(next) {
-		${0:${VISUAL}}
-	}
-], (error) => {
-});
-endsnippet
-
-snippet areduce
-async.reduce(${1:collection}, ${2:initial}, (memo, value, callback) => {
-	${0:${VISUAL}}
-}, (error, result) => {
-});
-endsnippet
-
 snippet if
 if (${1:condition}) {
 	${0:${VISUAL}}
 }
+endsnippet
+
+snippet newp
+new Promise((resolve, reject) => {
+	${0:${VISUAL}}
+});
+endsnippet
+
+snippet it
+it('Should ${1}', function(done) {
+	${VISUAL:done(new Error('TODO'));}
+});
+endsnippet
+
+snippet describe
+describe('${1}', function() {
+	${0}
+});
+endsnippet
+
+snippet me
+module.exports.${0}
 endsnippet
