@@ -18,7 +18,7 @@ _ttio() {
                     ;;
                 tmux)
                     # _files -W ~/Workspace/thethings.iO/
-                    compadd "$@" $(find -L ~/Workspace/thethings.iO/repos/ -maxdepth 1 -type d | sed -n 's|^\/home\/ferran\/Workspace\/thethings.iO\/repos\/||p')
+                    compadd "$@" $(find -L ~/Workspace/thethings.iO/ -maxdepth 1 -type d | sed -n 's|^\/home\/ferran\/Workspace\/thethings.iO\/||p')
 
                     ;;
                 vagrant)
