@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char font[] = "Anonymous Pro:style=Regular:pixelsize=16:antialias=true";
+static char font[] = "Anonymous Pro:style=Regular:pixelsize=14:antialias=true";
 static int borderpx = 2;
 
 /*
@@ -65,6 +65,21 @@ static int bellvolume = 0;
 /* default TERM value */
 static char termname[] = "screen-256color";
 
+/*
+ * spaces per tab
+ *
+ * When you are changing this value, don't forget to adapt the »it« value in
+ * the st.info and appropriately install the st.info in the environment where
+ * you use this st version.
+ *
+ *	it#$tabspaces,
+ *
+ * Secondly make sure your kernel is not expanding tabs. When running `stty
+ * -a` »tab0« should appear. You can tell the terminal to not expand tabs by
+ *  running following command:
+ *
+ *	stty tabs
+ */
 static unsigned int tabspaces = 8;
 
 #define DARK 0
@@ -100,6 +115,7 @@ static const char *colorname[] = {
 	"#dadada", // foreground
 	"#1c1c1c", // background
 };
+
 
 /*
  * Default colors (colorname index)
@@ -335,6 +351,7 @@ static Key key[] = {
 	{ XK_Delete,        XK_ANY_MOD,     "\033[P",       -1,    0,    0},
 	{ XK_Delete,        XK_ANY_MOD,     "\033[3~",      +1,    0,    0},
 	{ XK_BackSpace,     XK_NO_MOD,      "\177",          0,    0,    0},
+	{ XK_BackSpace,     Mod1Mask,       "\033\177",      0,    0,    0},
 	{ XK_Home,          ShiftMask,      "\033[2J",       0,   -1,    0},
 	{ XK_Home,          ShiftMask,      "\033[1;2H",     0,   +1,    0},
 	{ XK_Home,          XK_ANY_MOD,     "\033[H",        0,   -1,    0},
