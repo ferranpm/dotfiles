@@ -4,13 +4,6 @@ PROMPT='
 
 fpath=(~/.zsh/completion $fpath)
 
-ZSH_FOLDER=$HOME/.zsh
-if [[ -d $ZSH_FOLDER ]]; then
-    for file in $(find $ZSH_FOLDER -name "*.plugin.zsh"); do
-        source $file
-    done
-fi
-
 stty -ixon
 
 ## EXPORTS ##
