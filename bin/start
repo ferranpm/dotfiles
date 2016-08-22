@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
 setxkbmap us
-$HOME/bin/keyboard.sh
+$HOME/.local/bin/keyboard.sh
 
 firefox &

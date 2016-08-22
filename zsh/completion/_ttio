@@ -10,7 +10,7 @@ _ttio() {
 
     case $state in
         program)
-            compadd "$@" $(ls ~/bin/thethings.iO)
+            compadd "$@" $(ls ~/.local/bin/thethings.iO)
             ;;
         argument)
             case $words[2] in

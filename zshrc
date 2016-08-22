@@ -19,7 +19,7 @@ export EDITOR="vim"
 export HISTFILE=$HOME/.zshhistory
 export HISTSIZE=50000
 export KEYTIMEOUT=1
-export PATH=$HOME/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 export SAVEHIST=10000
 export ZLS_COLORS=$LS_COLORS
 

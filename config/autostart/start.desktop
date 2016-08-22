@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=/home/ferran/bin/start
+Exec=/home/ferran/.local/bin/start
 Name=start
 OnlyShowIn=LXQt;
 Type=Application
