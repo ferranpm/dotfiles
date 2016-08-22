@@ -99,8 +99,8 @@ set autoindent
 set smartindent
 
 " folding
-set foldlevel=1
-set foldcolumn=1
+set foldlevel=99
+set foldcolumn=0
 set foldopen=hor,mark,percent,quickfix,search,tag,undo
 set foldmethod=syntax
 set foldnestmax=1
