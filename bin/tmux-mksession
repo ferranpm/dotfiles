@@ -11,7 +11,7 @@ for PROJECT in ${PROJECTS[*]}; do
 
     if [[ ! -d "$DIR" ]]; then
         echo "No folder named $PROJECT in $BASE_PATH"
-        exit
+        continue
     fi
 
     if [[ -e "$DIR/Session.vim" ]]; then
@@ -21,7 +21,7 @@ for PROJECT in ${PROJECTS[*]}; do
     tmux new-session -d -s $SESSION -n vim -c "$DIR"
 
     if [[ ! $? == 0 ]]; then
-        exit
+        continue
     fi
 
     tmux switch-client   -t $SESSION
