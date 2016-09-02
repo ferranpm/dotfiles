@@ -3,4 +3,4 @@
 setxkbmap us
 $HOME/.local/bin/keyboard.sh
 
-firefox &
+opera &

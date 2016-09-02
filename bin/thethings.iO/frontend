@@ -2,5 +2,5 @@
 
 ps -C grunt > /dev/null
 if [[ ! $? == 0 ]]; then
-    st -e /usr/bin/sh -c 'cd ~/Workspace/thethings.iO/repos/panel.thethings.io/ && grunt live' &
+    xterm -e /usr/bin/sh -c 'cd ~/Workspace/thethings.iO/panel.thethings.io/ && grunt live' &
 fi

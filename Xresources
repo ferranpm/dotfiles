@@ -2,7 +2,6 @@
 !! General !!
 !!!!!!!!!!!!!
 *cursorBlink: false
-*geometry: 100x35
 *jumpScroll: true
 *loginShell: true
 *saveLines: 512
@@ -12,38 +11,38 @@
 *termName: xterm-256color
 *visualBell: false
 
-#define term_font xft:Inconsolata:size=13
+#define term_font xft:Anonymous Pro:size=11
+
+*VT100.Translations: #override \
+              <Key>BackSpace: string(0x7F)\n\
+              <Key>Delete:    string("\033[3~")\n\
+              <Key>Home:      string("\033[1~")\n\
+              <Key>End:       string("\033[4~")
+*ttyModes: erase ^?
 
 !!!!!!!!!!!
 !! xterm !!
 !!!!!!!!!!!
 XTerm*scrollKey: true
-XTerm*backarrowKey: false
-XTerm*backarrowKeyIsErase: true
 XTerm*bellIsUrgent: true
 XTerm*fastScroll: true
 XTerm*fullscreen: never
-XTerm*translations: #override Shift <Btn1Up>: exec-formatted("firefox '%t'", PRIMARY)
 XTerm*utf8: true
 XTerm*faceName: term_font
-
-!!!!!!!!!!!
-!! urxvt !!
-!!!!!!!!!!!
-urxvt*font: term_font
-urxvt*scrollTtyKeypress: true
+XTerm*backarrowKeyIsErase: false
+XTerm*backarrowKey: false
+XTerm*selectToClipboard: true
 
 !!!!!!!!!!
 !! Xpdf !!
 !!!!!!!!!!
-Xpdf.geometry: 900x900
 Xpdf*fontList: -misc-dejavu sans light-extralight-r-normal--0-0-0-0-p-0-ascii-0
 Xpdf*foreground: #333333
 Xpdf*background: #AAAAAA
 
-!!!!!!!!!!!!!!!!
-!! urxvt dark !!
-!!!!!!!!!!!!!!!!
+!!!!!!!!!!
+!! dark !!
+!!!!!!!!!!
 #define C_foreground   #DADADA
 #define C_background   #1C1C1C
 #define C_cursorColor  #FF8939
@@ -64,29 +63,51 @@ Xpdf*background: #AAAAAA
 #define C_color14      #42717B
 #define C_color15      #DDDDDD
 
-! !!!!!!!!!!!!!!!!!
-! !! urxvt light !!
-! !!!!!!!!!!!!!!!!!
-! #define C_foreground   #0F0F0F
-! #define C_background   #FDF6E3
-! #define C_cursorColor  #ff8939
-! #define C_cursorColor2 #151515
-! #define C_color0       #2B2B2B
-! #define C_color1       #E84F4F
-! #define C_color2       #78964C
-! #define C_color3       #E1AA5D
-! #define C_color4       #7DC1CF
-! #define C_color5       #9B64FB
-! #define C_color6       #6D878D
-! #define C_color7       #dddddd
-! #define C_color8       #404040
-! #define C_color9       #D23D3D
-! #define C_color10      #A0CF5D
-! #define C_color11      #F39D21
-! #define C_color12      #4E9FB1
-! #define C_color13      #8542FF
-! #define C_color14      #42717B
-! #define C_color15      #dddddd
+! !!!!!!!!!!!
+! !! light !!
+! !!!!!!!!!!!
+! #define C_foreground   #000000
+! #define C_background   #ffffff
+! #define C_cursorColor  #222222
+! #define C_color0       #000000
+! #define C_color1       #dd2222
+! #define C_color2       #22bb22
+! #define C_color3       #bbbb22
+! #define C_color4       #2222dd
+! #define C_color5       #dd22dd
+! #define C_color6       #22dddd
+! #define C_color7       #ffffff
+! #define C_color8       #000000
+! #define C_color9       #aa5555
+! #define C_color10      #55aa55
+! #define C_color11      #aaaa55
+! #define C_color12      #5555aa
+! #define C_color13      #aa55aa
+! #define C_color14      #55aaaa
+! #define C_color15      #ffffff
+
+! !!!!!!!!!!!!!!!!!!!!!
+! !! solarized light !!
+! !!!!!!!!!!!!!!!!!!!!!
+! #define C_foreground   #657b83
+! #define C_background   #fdf6e3
+! #define C_cursorColor  #586e75
+! #define C_color0       #073642
+! #define C_color1       #dc322f
+! #define C_color2       #859900
+! #define C_color3       #b58900
+! #define C_color4       #268bd2
+! #define C_color5       #d33682
+! #define C_color6       #2aa198
+! #define C_color7       #eee8d5
+! #define C_color8       #002b36
+! #define C_color9       #cb4b16
+! #define C_color10      #586e75
+! #define C_color11      #657b83
+! #define C_color12      #839496
+! #define C_color13      #6c71c4
+! #define C_color14      #93a1a1
+! #define C_color15      #fdf6e3
 
 !!!!!!!!!!!!
 !! Common !!
