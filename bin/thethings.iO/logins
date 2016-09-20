@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+logins -l ~/Workspace/thethings.iO/logins.json $*
+

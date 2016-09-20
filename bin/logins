@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'json'
+
+def parse_file(file)
+    File.open(File.expand_path(file), 'r') do |file|
+        return JSON.parse(file.read)
+    end
+end
+
+def format_logins(logins)
+    str = ''
+    first = true
+    logins.each_with_index do |val, index|
+        if first then first = false else str += "\n" end
+        str += "#{index}: #{val['name']}"
+    end
+    str
+end
+
+def select_login(logins, pattern)
+    select = logins.select { |login| login['name'] =~ /#{pattern}/i }
+    abort "No match for #{pattern}" if select.size == 0
+    puts format_logins(select)
+    i = if select.size == 1 then 0 else print '> '; STDIN.gets.chomp.to_i end
+    select[i] || select[0]
+end
+
+
+login_file = '~/.login.json'
+pattern = '.*'
+
+ARGV.options do |opts|
+    opts.on('-l', '--login=file', String) { |file| login_file = file }
+    opts.on('-h', '--help') { abort opts.help }
+    opts.parse!
+    pattern = ARGV.join('.*') if ARGV.size > 0
+end
+
+login = select_login(parse_file(login_file), pattern)
+puts JSON.pretty_generate(login)
+
+Process.detach Process.spawn("echo -n \"#{login['user']}\" | xclip -selection primary", :out => '/dev/null', :err => '/dev/null')
+Process.detach Process.spawn("echo -n \"#{login['password']}\" | xclip -selection clipboard", :out => '/dev/null', :err => '/dev/null')
