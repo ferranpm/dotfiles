@@ -1,2 +1,2 @@
-setlocal makeprg=jscs\ --reporter\ inline\ %
-setlocal errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m
+set makeprg=jscs\ --reporter\ inline\ %
+set errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m
