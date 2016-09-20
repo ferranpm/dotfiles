@@ -4,7 +4,7 @@ BASE_PATH="$HOME/Workspace/"
 
 PROJECTS="$*"
 for PROJECT in ${PROJECTS[*]}; do
-    VIM_ARGUMENTS=""
+    EDITOR_ARGUMENTS=""
     DIR="$BASE_PATH/$PROJECT"
     PROJECT=$(echo $PROJECT | sed 's|/\+|/|g')
     SESSION=$(echo $PROJECT | tr "./" "__")
@@ -15,21 +15,21 @@ for PROJECT in ${PROJECTS[*]}; do
     fi
 
     if [[ -e "$DIR/Session.vim" ]]; then
-        VIM_ARGUMENTS="$VIM_ARGUMENTS -S"
+        EDITOR_ARGUMENTS="$EDITOR_ARGUMENTS -S"
     fi
 
-    tmux new-session -d -s $SESSION -n vim -c "$DIR"
+    tmux new-session -d -s $SESSION -n $EDITOR -c "$DIR"
 
     if [[ ! $? == 0 ]]; then
         continue
     fi
 
     tmux switch-client   -t $SESSION
-    tmux rename-window   -t $SESSION vim
+    tmux rename-window   -t $SESSION $EDITOR
     tmux split-window    -t $SESSION -h -c "$DIR"
-    tmux send-keys       -t $SESSION:vim.1 "vim $VIM_ARGUMENTS" C-m
-    tmux resize-pane     -t $SESSION:vim.2 -x 80
+    tmux send-keys       -t $SESSION:$EDITOR.1 "$EDITOR $EDITOR_ARGUMENTS" C-m
+    tmux resize-pane     -t $SESSION:$EDITOR.2 -x 80
     tmux new-window      -t $SESSION -n shell -c "$DIR"
-    tmux select-window   -t $SESSION:vim
-    tmux select-pane     -t $SESSION:vim.1
+    tmux select-window   -t $SESSION:$EDITOR
+    tmux select-pane     -t $SESSION:$EDITOR.1
 done
