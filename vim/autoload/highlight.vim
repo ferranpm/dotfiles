@@ -40,6 +40,13 @@ function! highlight#unset(key)
     endif
 endfunction
 
+function! highlight#clear()
+    for l:hi in highlight#list()
+        echo l:hi
+        call highlight#unset(l:hi)
+    endfor
+endfunction
+
 function! highlight#list()
     return keys(s:lights)
 endfunction
