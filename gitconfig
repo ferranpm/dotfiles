@@ -46,3 +46,12 @@
     smtpserver = smtp.gmail.com
     smtpuser = ferran.pel.mon@gmail.com
     smtpserverport = 587
+[guitool "git checkout -- $FILENAME"]
+	cmd = git checkout -- $FILENAME
+	noconsole = yes
+	needsfile = yes
+[guitool "git log --graph --all --oneline --decorate=short"]
+	cmd = git log --graph --all --oneline --decorate=short
+[guitool "gitk --all"]
+	cmd = gitk --all
+	noconsole = yes
