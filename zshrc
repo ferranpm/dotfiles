@@ -22,6 +22,7 @@ export LESS_TERMCAP_se=$(printf "\e[0m")
 export LESS_TERMCAP_so=$(printf "\e[1;40;33m")
 export LESS_TERMCAP_ue=$(printf "\e[0m")
 export LESS_TERMCAP_us=$(printf "\e[1;32m")
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
 autoload -U colors && colors
 autoload -U compinit && compinit -d $HOME/.zshcompdump
@@ -87,8 +88,6 @@ bindkey -v '^[[4~'  end-of-line
 bindkey -a '^[[4~'  end-of-line
 bindkey -v '^[[P'   delete-char
 bindkey -a '^[[P'   delete-char
-bindkey -v '^m'     check-line
-bindkey -a '^m'     check-line
 bindkey -v '^[[B'   down-line-or-history
 bindkey -a 'n'      down-line-or-search
 bindkey -v '^n'     down-line-or-search
@@ -119,6 +118,7 @@ alias cd1='cd ../'
 alias cd2='cd ../../'
 alias cd3='cd ../../../'
 alias cd4='cd ../../../../'
+alias cpcwd='pwd | tr -d "\n" | xclip -selection clipboard'
 alias cr='cd `git rev-parse --show-toplevel`'
 alias e='$EDITOR'
 alias g='git'
@@ -126,6 +126,7 @@ alias l='ls -lh'
 alias ll='l -A'
 alias ls='ls --color=auto'
 alias mountc='mount | column -t'
+alias nvm='run_nvm'
 alias pacin='sudo pacman -S'
 alias pacman='pacman --color=auto'
 alias pacre='sudo pacman -Rns'
@@ -170,14 +171,6 @@ extract () {
     done
 }
 
-check-line() {
-    if [ "$BUFFER" = "" ]; then
-        return
-    fi
-    zle accept-line
-}
-zle -N check-line
-
 # VI
 zle-keymap-select() {
     zle reset-prompt
@@ -205,9 +198,15 @@ rm_tr_white () {
 }
 
 ## NODEJS/NVM ##
-export NODE_PATH=/usr/lib/node_modules
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+run_nvm() {
+    if [[ ! $NVM_LOADED ]]; then
+        NVM_LOADED=1
+        export NODE_PATH=/usr/lib/node_modules
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+    fi
+    nvm $*
+}
 
 ## RUBY/RVM ##
-export PATH=$PATH:$HOME/.gem/ruby/2.3.0/bin/:$HOME/.gem/ruby/2.2.0/bin/:$HOME/.rvm/bin
+export PATH=$PATH:$HOME/.rvm/bin
