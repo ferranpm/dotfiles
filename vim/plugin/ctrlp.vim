@@ -12,17 +12,3 @@ let g:ctrlp_working_path_mode='0'
 if executable('ag')
     let g:ctrlp_user_command = 'ag %s --files-with-matches --nocolor -g ""'
 endif
-
-let g:ctrlp_buffer_func = { 'enter': 'CtrlPMappings' }
-
-function! CtrlPMappings()
-  nnoremap <buffer> <silent> <C-@> :call <sid>DeleteBuffer()<cr>
-endfunction
-
-function! s:DeleteBuffer()
-  let path = fnamemodify(getline('.')[2:], ':p')
-  echo path
-  let bufn = matchstr(path, '\v\d+\ze')
-  execute "bwipeout" . bufn
-  execute "normal \<F5>"
-endfunction

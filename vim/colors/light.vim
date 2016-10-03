@@ -12,7 +12,7 @@ set t_Co=256
 let colors_name = "light"
 
 highlight ColorColumn      term=NONE cterm=NONE             ctermbg=224 gui=NONE               guibg=#ffd7d7
-highlight Comment          term=NONE cterm=NONE ctermfg=10              gui=NONE guifg=#00ff00
+highlight Comment          term=NONE cterm=NONE ctermfg=34              gui=NONE guifg=#00af00
 highlight Conceal          term=NONE cterm=NONE ctermfg=7   ctermbg=242 gui=NONE guifg=#c0c0c0 guibg=#666666
 highlight Constant         term=NONE cterm=NONE ctermfg=1               gui=NONE guifg=#800000
 highlight CursorColumn     term=NONE cterm=NONE             ctermbg=7   gui=NONE               guibg=#c0c0c0
@@ -27,9 +27,9 @@ highlight Error            term=NONE cterm=NONE ctermfg=15  ctermbg=9   gui=NONE
 highlight ErrorMsg         term=NONE cterm=NONE ctermfg=15  ctermbg=1   gui=NONE guifg=#ffffff guibg=#800000
 highlight FoldColumn       term=NONE cterm=NONE ctermfg=4   ctermbg=15  gui=NONE guifg=#000080 guibg=#ffffff
 highlight Folded           term=NONE cterm=NONE ctermfg=12  ctermbg=254 gui=NONE guifg=#0000ff guibg=#e4e4e4
-highlight Identifier       term=NONE cterm=NONE ctermfg=14              gui=NONE guifg=#00ffff
+highlight Identifier       term=NONE cterm=NONE ctermfg=33              gui=NONE guifg=#0087ff
 highlight Ignore           term=NONE cterm=NONE ctermfg=15              gui=NONE guifg=#ffffff
-highlight IncSearch        term=NONE cterm=NONE ctermfg=0   ctermbg=2   gui=NONE guifg=#000000 guibg=#008000
+highlight IncSearch        term=NONE cterm=NONE ctermfg=0   ctermbg=10  gui=NONE guifg=#000000 guibg=#00ff00
 highlight LineNr           term=NONE cterm=NONE ctermfg=0               gui=NONE guifg=#000000
 highlight MatchParen       term=NONE cterm=NONE             ctermbg=220 gui=NONE               guibg=#ffd700
 highlight MoreMsg          term=NONE cterm=NONE ctermfg=2               gui=NONE guifg=#008000

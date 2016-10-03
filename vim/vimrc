@@ -1,9 +1,8 @@
 call plug#begin('~/.vim/bundle')
 " Generic
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'ferranpm/vim-isolate'
 Plug 'taku-o/vim-vis'
-Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
@@ -71,8 +70,11 @@ if has('gui_running')
     set columns=9999
     set lines=9999
     set showtabline=1
+    set guicursor+=a:blinkon0
     if has('win32')
         set guifont=Consolas:h10
+    else
+        set guifont=Anonymous\ Pro\ 11
     endif
 endif
 
@@ -181,9 +183,6 @@ augroup automaticquickfix
 augroup END
 
 " Commands
-command! -nargs=+ -complete=file_in_path -bar Grep  silent! grep! <args> | redraw!
-command! -nargs=+ -complete=file_in_path -bar LGrep silent! lgrep! <args> | redraw!
-
 command! -nargs=1 -complete=file E call buffer#OpenWithHeader(<f-args>)
 command! -nargs=? -complete=dir Mkdir call utils#Mkdir(<f-args>)
 command! -nargs=+ -complete=command Pipe call utils#Pipe(<q-args>)
@@ -227,6 +226,7 @@ inoremap <C-j> <esc>O
 
 nnoremap <silent> <C-@> :call buffer#AlternateSource()<cr>
 nnoremap <silent> <C-^> :call buffer#AlternateFile()<cr>
+nmap     <silent> <BS> <C-^>
 
 noremap [[ ?{<CR>w99[{
 noremap ][ /}<CR>b99]}
@@ -242,8 +242,11 @@ nnoremap <silent> [t :tprevious<cr>
 nnoremap <silent> ]l :lnext<cr>
 nnoremap <silent> [l :lprevious<cr>
 
-nnoremap <silent> ]g /\v^(\<\|\=\|\>){7}([^=].+)?$<CR>
-nnoremap <silent> [g ?\v^(\<\|\=\|\>){7}([^=].+)\?$<CR>
+noremap <silent> ]g /\v^(\<\|\=\|\>){7}([^=].+)?$<CR>
+noremap <silent> [g ?\v^(\<\|\=\|\>){7}([^=].+)\?$<CR>
+
+nnoremap <silent> [<Space> :call append(line('.') - 1, repeat([''], v:count1))<cr>
+nnoremap <silent> ]<Space> :call append(line('.'), repeat([''], v:count1))<cr>
 
 vnoremap <M-/> <Esc>/\%V
 vnoremap * y/<c-r>=escape('<c-r>0', '*/\[].')<cr><cr>
@@ -262,10 +265,18 @@ nnoremap Y y$
 
 nnoremap - ^
 
-nnoremap <silent> ,. :update<cr>
-
 noremap ! :VimuxRunCommand 
 noremap ~ :VimuxTestCommand 
+
+nnoremap ,S :%s/\C\<<C-r>=expand('<cword>')<CR>\>/
+nnoremap ,s :s/\C\<<C-r>=expand('<cword>')<CR>\>/
+vnoremap ,S y:%s/\C<C-r>=escape('<C-r>0', '*/\[].~')<cr>/
+vnoremap ,s y:s/\C<C-r>=escape('<C-r>0', '*/\[].~')<cr>/
+
+nnoremap ,g :g/\C\<<C-r>=expand('<cword>')<CR>\>/
+nnoremap ,v :v/\C\<<C-r>=expand('<cword>')<CR>\>/
+vnoremap ,g y:g/\C<C-r>=escape('<C-r>0', '*/\[].~')<cr>/
+vnoremap ,v y:v/\C<C-r>=escape('<C-r>0', '*/\[].~')<cr>/
 
 nnoremap <F1>   :Dispatch 
 nnoremap <F2>   :setlocal cursorline! cursorline?<cr>
@@ -291,19 +302,14 @@ nnoremap                <leader>fc zM
 nnoremap                <leader>fe zMzvzz
 nnoremap                <leader>fo zR
 nnoremap                <leader>ff :find 
-nnoremap                <leader>g :Grep \"\"<left><left>
+nnoremap                <leader>g :grep! ""<left>
 nnoremap                <leader>h :help 
 nnoremap                <leader>rs :Shell 
 nnoremap                <leader>rp :Pipe 
 nnoremap                <leader>L O<Esc>
 nnoremap                <leader>l o<Esc>
 nnoremap                <leader>u :grep! --case-sensitive "\b<cword>\b"<cr><cr>
-vnoremap                <leader>u y:grep! --case-sensitive "<C-r>0"<cr><cr>
-nnoremap                <leader>re :<c-u><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
-nnoremap                <leader>S :%s/\C\<<C-r>=expand('<cword>')<CR>\>/
-nnoremap                <leader>s :s/\C\<<C-r>=expand('<cword>')<CR>\>/
-vnoremap                <leader>S y:%s/\C<C-r>=escape('<C-r>0', '*/\[].~')<cr>/
-vnoremap                <leader>s y:s/\C<C-r>=escape('<C-r>0', '*/\[].~')<cr>/
+vnoremap                <leader>u y:grep! --case-sensitive --literal "<C-r>0"<cr><cr>
 nnoremap                <leader>t :tag 
 nnoremap    <silent>    <leader>. :update<cr>
 nnoremap    <silent>    <leader>bk :call buffer#BufferKill()<cr>

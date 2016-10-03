@@ -1,2 +1,8 @@
-set makeprg=mocha\ test/unit\ --reporter\ tap\ 2>/dev/null
-set errorformat=%Enot\ ok\ %n\ %.%#,%C%.%#AssertionError:\ %m,%Z%.%#(%f:%l:%c)
+set makeprg=mocha
+
+set errorformat=%E\ %#%n\)\ %.%#:
+set errorformat+=%C%.%\\{-}Error:\ %m
+set errorformat+=%Z\ %#\ at\ %f:%l:%c
+set errorformat+=%Z\ %#\ at\ %.%#\ (%f:%l:%c)
+set errorformat+=%Z%^%$
+set errorformat+=%C%.%#
