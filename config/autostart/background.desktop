@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=$HOME/.local/bin/keyboard
-Name=keyboard
+Exec=$HOME/.fehbg
+Name=background
 Type=Application
 Version=1.0

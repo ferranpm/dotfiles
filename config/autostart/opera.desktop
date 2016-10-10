@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=$HOME/.local/bin/keyboard
-Name=keyboard
+Exec=/usr/bin/opera
+Name=opera
 Type=Application
 Version=1.0

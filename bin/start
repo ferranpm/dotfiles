@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-setxkbmap us
-$HOME/.local/bin/keyboard.sh
-
-opera &

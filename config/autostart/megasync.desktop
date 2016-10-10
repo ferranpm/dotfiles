@@ -3,6 +3,7 @@ Categories=Network;System;
 Comment=Easy automated syncing between your computers and your MEGA cloud drive.
 Exec=megasync
 GenericName=File Synchronizer
+Hidden=true
 Icon=mega
 Name=MEGASync
 StartupNotify=false

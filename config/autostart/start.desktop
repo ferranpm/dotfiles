@@ -1,6 +1,0 @@
-[Desktop Entry]
-Exec=/home/ferran/.local/bin/start
-Name=start
-OnlyShowIn=LXQt;
-Type=Application
-Version=1.0
