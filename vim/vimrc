@@ -18,10 +18,6 @@ Plug 'ternjs/tern_for_vim'
 Plug 'othree/yajs.vim'
 call plug#end()
 
-if filereadable(expand('~/.local.vim'))
-    source ~/.local.vim
-endif
-
 " Basic configuration
 " important
 set nocompatible
@@ -136,16 +132,12 @@ endif
 " executing external commands
 
 " running make and jumping to errors
-if has('unix')
-    if executable('ag')
-        set grepprg=ag\ --nogroup\ --nocolor\ --smart-case\ --column\ --vimgrep
-        set grepformat=%f:%l:%c:%m
-    elseif executable('ack')
-        set grepprg=ack\ -i
-    endif
-else
-    set makeprg=mingw32-make\ -j8
-    set grepprg=grep\ -ri
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor\ --smart-case\ --column
+    set grepformat=%f:%l:%c:%m
+elseif executable('ack')
+    set grepprg=ack\ -i
+    set grepformat=%f:%l:%m
 endif
 
 " language specific
@@ -183,7 +175,6 @@ augroup automaticquickfix
 augroup END
 
 " Commands
-command! -nargs=1 -complete=file E call buffer#OpenWithHeader(<f-args>)
 command! -nargs=? -complete=dir Mkdir call utils#Mkdir(<f-args>)
 command! -nargs=+ -complete=command Pipe call utils#Pipe(<q-args>)
 command! -nargs=+ -complete=shellcmd Shell call utils#Shell(<q-args>)
@@ -194,11 +185,9 @@ command! -nargs=? UnderscoreToLowerCamelCase <args>s#\m_\(\l\)#\u\1
 command! -nargs=? CamelCaseToUnderscore <args>s#\m\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+\)\(\u\)#\l\1_\l\2
 
 command! -nargs=1 -range Align '<,'>call edit#Align(<f-args>)
-command! -nargs=0 JSONFormat call edit#JsonFormat()
 command! -nargs=0 Reg call edit#Reg()
 
 command! -nargs=0 Picocom call serial#Picocom()
-command! -nargs=0 PicocomExit call serial#PicocomExit()
 
 function! s:ScriptComplete(ArgLead, CmdLine, CursorPos)
     return utils#FolderComplete(a:ArgLead, a:CmdLine, a:CursorPos, "~/.vim/scripts/")
@@ -251,11 +240,6 @@ nnoremap <silent> ]<Space> :call append(line('.'), repeat([''], v:count1))<cr>
 vnoremap <M-/> <Esc>/\%V
 vnoremap * y/<c-r>=escape('<c-r>0', '*/\[].')<cr><cr>
 
-nnoremap <silent> n n:call movement#HLNext(0.2)<cr>
-nnoremap <silent> N N:call movement#HLNext(0.2)<cr>
-nnoremap <silent> * *:call movement#HLNext(0.2)<cr>
-nnoremap <silent> # #:call movement#HLNext(0.2)<cr>
-
 nnoremap z/ :call edit#AutoHighlightToggle()<cr>
 
 vnoremap > >gv
@@ -264,9 +248,6 @@ vnoremap < <gv
 nnoremap Y y$
 
 nnoremap - ^
-
-noremap ! :VimuxRunCommand 
-noremap ~ :VimuxTestCommand 
 
 nnoremap ,S :%s/\C\<<C-r>=expand('<cword>')<CR>\>/
 nnoremap ,s :s/\C\<<C-r>=expand('<cword>')<CR>\>/
@@ -278,7 +259,6 @@ nnoremap ,v :v/\C\<<C-r>=expand('<cword>')<CR>\>/
 vnoremap ,g y:g/\C<C-r>=escape('<C-r>0', '*/\[].~')<cr>/
 vnoremap ,v y:v/\C<C-r>=escape('<C-r>0', '*/\[].~')<cr>/
 
-nnoremap <F1>   :Dispatch 
 nnoremap <F2>   :setlocal cursorline! cursorline?<cr>
 nnoremap <F3>   :setlocal hlsearch! hlsearch?<cr>
 nnoremap <F4>   :setlocal spell! spell?<cr>
@@ -289,7 +269,6 @@ nnoremap <F12>  :call system('ctags')<cr>
  noremap                <leader>c "+y
  noremap                <leader>p :put *<cr>
  noremap                <leader>v :put +<cr>
-nnoremap                <leader>vc :VimuxCloseRunner<cr>
 nnoremap    <silent>    <leader>zs :%s/\s\+$//<cr>
 vnoremap    <silent>    <leader>zs :s/\s\+$//<cr>
 nnoremap                <leader>bc :ls!<cr>:bwipeout 
@@ -298,10 +277,7 @@ nnoremap                <leader>bw :call buffer#BufferWipeOut()<cr>
 nnoremap                <leader>cd :call buffer#SetProjectRoot()<cr>
 nnoremap                <leader>d  :only<cr>:Gdiff<cr>
 nnoremap                <leader>e :e <C-R>=expand('%:p:h') . '/' <CR>
-nnoremap                <leader>fc zM
-nnoremap                <leader>fe zMzvzz
-nnoremap                <leader>fo zR
-nnoremap                <leader>ff :find 
+nnoremap                <leader>f :find 
 nnoremap                <leader>g :grep! ""<left>
 nnoremap                <leader>h :help 
 nnoremap                <leader>rs :Shell 
@@ -314,4 +290,4 @@ nnoremap                <leader>t :tag
 nnoremap    <silent>    <leader>. :update<cr>
 nnoremap    <silent>    <leader>bk :call buffer#BufferKill()<cr>
 nnoremap    <silent>    <leader>ms iSigned-off-by: Ferran Pelayo Monfort <ferran.pel.mon@gmail.com><Esc>
-nnoremap    <silent>    <leader>mk :update<cr>:call utils#Make()<cr>
+nnoremap    <silent>    <leader>mk :update<cr>:make<cr><cr><cr>

@@ -1,19 +1,3 @@
-function! utils#Run(cmd)
-    if exists('*VimuxRunCommand')
-        call VimuxRunCommand(a:cmd)
-    else
-        execute '!'.a:cmd
-    endif
-endfunction
-
-function! utils#Make()
-    if exists(':Make') == 2
-        Make
-    else
-        make
-    endif
-endfunction
-
 function! utils#Pipe(cmd)
     call buffer#GoToBuffer('Pipe', 'vnew')
     normal ggdG

@@ -8,14 +8,6 @@ function! edit#Reg()
     redraw
 endfunction
 
-function! edit#JsonFormat()
-    set ft=json
-    silent %s/[{[,]/&\r/e
-    silent %s/[}\]]/\r&/e
-    silent normal! gg=G
-    silent g/^$/d
-endfunction
-
 function! edit#Align(string) range
     let col = min([ virtcol("'<"), virtcol("'>") ])
     let l:cursor_save = getpos('.')

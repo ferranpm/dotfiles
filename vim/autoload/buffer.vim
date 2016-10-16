@@ -7,32 +7,6 @@ let s:header_to_source = {
             \ 'hpp': ['cpp'],
             \ 'hh': ['cc', 'cpp']
             \ }
-function! buffer#OpenWithHeader(file) " {{{
-    wincmd o
-    execute 'e '.a:file
-    let extension = expand('%:e')
-    let filebase = expand('%:r')
-    if has_key(s:header_to_source, extension)
-        let extensions = s:header_to_source[extension]
-    elseif has_key(s:ft_to_header, &ft)
-        let extensions = s:ft_to_header[&ft]
-    else
-        return
-    endif
-    for ext in extensions
-        let file = filebase.'.'.ext
-        if filereadable(file)
-            execute 'vs '.file
-            wincmd h
-            return
-        endif
-    endfor
-    let selection = 0
-    if len(extensions) > 1
-        let selection = inputlist(map(copy(extensions), 'v:key . ". " . v:val'))
-    endif
-    execute 'vs '.filebase.'.'.extensions[selection]
-endfunction " }}}
 
 function! buffer#AlternateSource() " {{{
     let filebase = expand('%:r')
