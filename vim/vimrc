@@ -158,7 +158,11 @@ filetype plugin on
 filetype indent on
 syntax on
 try
-    colorscheme xoria256
+    if has('gui_running')
+        colorscheme monokai
+    else
+        colorscheme xoria256
+    end
 catch
 endtry
 
