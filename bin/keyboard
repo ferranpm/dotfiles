@@ -1,3 +1,11 @@
 #!/usr/bin/env bash
 
-xmodmap ~/.Xmodmap && xcape
+setxkbmap -option
+setxkbmap -option ctrl:nocaps
+
+if ps -C xcape 1>/dev/null 2>&1
+then
+    pkill xcape
+fi
+
+xcape
