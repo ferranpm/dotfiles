@@ -1,16 +1,12 @@
 call plug#begin('~/.vim/bundle')
 " Generic
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'taku-o/vim-vis'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'SirVer/ultisnips'
 
 " tmux
-Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
 
 " JavaScript
@@ -23,6 +19,7 @@ call plug#end()
 set nocompatible
 
 " moving around, searching and patterns
+set path=.,**
 set incsearch
 set ignorecase
 set smartcase
@@ -63,8 +60,13 @@ set mouse=n
 if has('gui_running')
     set guioptions-=m
     set guioptions-=T
-    set columns=9999
-    set lines=9999
+    set guioptions-=b
+    set guioptions-=r
+    set guioptions-=R
+    set guioptions-=l
+    set guioptions-=L
+    set columns=100
+    set lines=50
     set showtabline=1
     set guicursor+=a:blinkon0
     if has('win32')
@@ -77,6 +79,7 @@ endif
 " printing
 
 " messages and info
+set shortmess=I
 set showcmd
 set showmode
 set ruler
@@ -119,8 +122,8 @@ set nobackup
 set noswapfile
 
 " command line editing
-set wildmode=longest:list
-set wildignore+=*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__
+set wildmode=longest:list,full
+set wildignore+=*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__,**/node_modules/**,**/coverage/**
 set wildignorecase
 set wildmenu
 set undofile
@@ -170,6 +173,7 @@ endtry
 augroup autocommands
     autocmd! BufRead TODO :set ft=TODO
     autocmd! VimResized * :wincmd =
+    autocmd! BufRead *.dwv :setlocal ft=vhdl
 augroup END
 
 augroup automaticquickfix
@@ -269,29 +273,26 @@ nnoremap <F4>   :setlocal spell! spell?<cr>
 nnoremap <F9>   :Gstatus<cr>
 nnoremap <F12>  :call system('ctags')<cr>
 
+nnoremap <C-p> :ls!<cr>:buffer 
+nnoremap <C-s> :ls!<cr>:bwipeout 
+nnoremap <C-q> :find 
+
  noremap                <leader>a :Align 
  noremap                <leader>c "+y
  noremap                <leader>p :put *<cr>
  noremap                <leader>v :put +<cr>
 nnoremap    <silent>    <leader>zs :%s/\s\+$//<cr>
 vnoremap    <silent>    <leader>zs :s/\s\+$//<cr>
-nnoremap                <leader>bc :ls!<cr>:bwipeout 
-nnoremap                <leader>bs :ls!<cr>:buffer 
 nnoremap                <leader>bw :call buffer#BufferWipeOut()<cr>
+nnoremap    <silent>    <leader>bk :call buffer#BufferKill()<cr>
 nnoremap                <leader>cd :call buffer#SetProjectRoot()<cr>
 nnoremap                <leader>d  :only<cr>:Gdiff<cr>
 nnoremap                <leader>e :e <C-R>=expand('%:p:h') . '/' <CR>
-nnoremap                <leader>f :find 
 nnoremap                <leader>g :grep! ""<left>
 nnoremap                <leader>h :help 
-nnoremap                <leader>rs :Shell 
-nnoremap                <leader>rp :Pipe 
 nnoremap                <leader>L O<Esc>
 nnoremap                <leader>l o<Esc>
 nnoremap                <leader>u :grep! --case-sensitive "\b<cword>\b"<cr><cr>
 vnoremap                <leader>u y:grep! --case-sensitive --literal "<C-r>0"<cr><cr>
 nnoremap                <leader>t :tag 
-nnoremap    <silent>    <leader>. :update<cr>
-nnoremap    <silent>    <leader>bk :call buffer#BufferKill()<cr>
-nnoremap    <silent>    <leader>ms iSigned-off-by: Ferran Pelayo Monfort <ferran.pel.mon@gmail.com><Esc>
 nnoremap    <silent>    <leader>mk :update<cr>:make<cr><cr><cr>
