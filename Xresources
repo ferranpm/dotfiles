@@ -11,8 +11,6 @@
 *termName: xterm-256color
 *visualBell: false
 
-#define term_font xft:Anonymous Pro:size=11
-
 *VT100.Translations: #override \
               <Key>BackSpace: string(0x7F)\n\
               <Key>Delete:    string("\033[3~")\n\
@@ -28,7 +26,7 @@ XTerm*bellIsUrgent: true
 XTerm*fastScroll: true
 XTerm*fullscreen: never
 XTerm*utf8: true
-XTerm*faceName: term_font
+XTerm*faceName: xft:Anonymous Pro:size=11
 XTerm*backarrowKeyIsErase: false
 XTerm*backarrowKey: false
 XTerm*selectToClipboard: true
@@ -43,94 +41,68 @@ Xpdf*background: #AAAAAA
 !!!!!!!!!!
 !! dark !!
 !!!!!!!!!!
-#define C_foreground   #DADADA
-#define C_background   #1C1C1C
-#define C_cursorColor  #FF8939
-#define C_color0       #262626
-#define C_color1       #E84F4F
-#define C_color2       #B8D68C
-#define C_color3       #E1AA5D
-#define C_color4       #7DC1CF
-#define C_color5       #9B64FB
-#define C_color6       #6D878D
-#define C_color7       #DDDDDD
-#define C_color8       #404040
-#define C_color9       #D23D3D
-#define C_color10      #A0CF5D
-#define C_color11      #F39D21
-#define C_color12      #4E9FB1
-#define C_color13      #8542FF
-#define C_color14      #42717B
-#define C_color15      #DDDDDD
-
-! !!!!!!!!!!!
-! !! light !!
-! !!!!!!!!!!!
-! #define C_foreground   #000000
-! #define C_background   #ffffff
-! #define C_cursorColor  #222222
-! #define C_color0       #000000
-! #define C_color1       #dd2222
-! #define C_color2       #22bb22
-! #define C_color3       #bbbb22
-! #define C_color4       #2222dd
-! #define C_color5       #dd22dd
-! #define C_color6       #22dddd
-! #define C_color7       #ffffff
-! #define C_color8       #000000
-! #define C_color9       #aa5555
-! #define C_color10      #55aa55
-! #define C_color11      #aaaa55
-! #define C_color12      #5555aa
-! #define C_color13      #aa55aa
-! #define C_color14      #55aaaa
-! #define C_color15      #ffffff
-
-! !!!!!!!!!!!!!!!!!!!!!
-! !! solarized light !!
-! !!!!!!!!!!!!!!!!!!!!!
-! #define C_foreground   #657b83
-! #define C_background   #fdf6e3
-! #define C_cursorColor  #586e75
-! #define C_color0       #073642
-! #define C_color1       #dc322f
-! #define C_color2       #859900
-! #define C_color3       #b58900
-! #define C_color4       #268bd2
-! #define C_color5       #d33682
-! #define C_color6       #2aa198
-! #define C_color7       #eee8d5
-! #define C_color8       #002b36
-! #define C_color9       #cb4b16
-! #define C_color10      #586e75
-! #define C_color11      #657b83
-! #define C_color12      #839496
-! #define C_color13      #6c71c4
-! #define C_color14      #93a1a1
-! #define C_color15      #fdf6e3
+*foreground   :#DADADA
+*background   :#1C1C1C
+*cursorColor  :#FF8939
+*color0       :#262626
+*color1       :#E84F4F
+*color2       :#B8D68C
+*color3       :#E1AA5D
+*color4       :#7DC1CF
+*color5       :#9B64FB
+*color6       :#6D878D
+*color7       :#DDDDDD
+*color8       :#404040
+*color9       :#D23D3D
+*color10      :#A0CF5D
+*color11      :#F39D21
+*color12      :#4E9FB1
+*color13      :#8542FF
+*color14      :#42717B
+*color15      :#DDDDDD
 
 !!!!!!!!!!!!
-!! Common !!
+!!! light !!
 !!!!!!!!!!!!
-#define C_borderColor C_background
+!*foreground   :#000000
+!*background   :#ffffff
+!*cursorColor  :#222222
+!*color0       :#000000
+!*color1       :#dd2222
+!*color2       :#22bb22
+!*color3       :#bbbb22
+!*color4       :#2222dd
+!*color5       :#dd22dd
+!*color6       :#22dddd
+!*color7       :#ffffff
+!*color8       :#000000
+!*color9       :#aa5555
+!*color10      :#55aa55
+!*color11      :#aaaa55
+!*color12      :#5555aa
+!*color13      :#aa55aa
+!*color14      :#55aaaa
+!*color15      :#ffffff
 
-*foreground  : C_foreground
-*background  : C_background
-*borderColor : C_borderColor
-*cursorColor : C_cursorColor
-*color0      : C_color0
-*color1      : C_color1
-*color2      : C_color2
-*color3      : C_color3
-*color4      : C_color4
-*color5      : C_color5
-*color6      : C_color6
-*color7      : C_color7
-*color8      : C_color8
-*color9      : C_color9
-*color10     : C_color10
-*color11     : C_color11
-*color12     : C_color12
-*color13     : C_color13
-*color14     : C_color14
-*color15     : C_color15
+!!!!!!!!!!!!!!!!!!!!!!
+!!! solarized light !!
+!!!!!!!!!!!!!!!!!!!!!!
+!*foreground   :#657b83
+!*background   :#fdf6e3
+!*cursorColor  :#586e75
+!*color0       :#073642
+!*color1       :#dc322f
+!*color2       :#859900
+!*color3       :#b58900
+!*color4       :#268bd2
+!*color5       :#d33682
+!*color6       :#2aa198
+!*color7       :#eee8d5
+!*color8       :#002b36
+!*color9       :#cb4b16
+!*color10      :#586e75
+!*color11      :#657b83
+!*color12      :#839496
+!*color13      :#6c71c4
+!*color14      :#93a1a1
+!*color15      :#fdf6e3
