@@ -102,7 +102,7 @@ set noswapfile
 
 " command line editing
 set wildmode=longest:list,full
-set wildignore+=*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__,**/node_modules/**,**/coverage/**
+set wildignore+=*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__,*/node_modules/*,*/coverage/*,*/test/*,*/certs/*
 set wildignorecase
 set wildmenu
 set undofile
