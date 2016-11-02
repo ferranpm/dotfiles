@@ -10,7 +10,6 @@ Plug 'SirVer/ultisnips'
 Plug 'christoomey/vim-tmux-navigator'
 
 " JavaScript
-Plug 'ternjs/tern_for_vim'
 Plug 'othree/yajs.vim'
 call plug#end()
 
@@ -127,8 +126,6 @@ endif
 set isfname-==
 
 " multi-byte characters
-set termencoding=utf8
-set encoding=utf-8
 
 " various
 set virtualedit=block
@@ -201,10 +198,10 @@ nnoremap <silent> <C-@> :call buffer#AlternateSource()<cr>
 nnoremap <silent> <C-^> :call buffer#AlternateFile()<cr>
 nmap     <silent> <BS> <C-^>
 
-noremap [[ ?{<CR>w99[{
-noremap ][ /}<CR>b99]}
-map ]] j0[[%/{<CR>
-map [] k$][%?}<CR>
+noremap <silent> [[ ?^\a<cr>
+noremap <silent> ][ /}<CR>b99]}
+map <silent> ]] /^\a<cr>
+map <silent> [] k$][%?}<CR>
 
 nnoremap <silent> ]q :cnext<cr>
 nnoremap <silent> [q :cprevious<cr>
@@ -247,10 +244,10 @@ nnoremap <F2>   :setlocal cursorline! cursorline?<cr>
 nnoremap <F3>   :setlocal hlsearch! hlsearch?<cr>
 nnoremap <F4>   :setlocal spell! spell?<cr>
 nnoremap <F9>   :Gstatus<cr>
-nnoremap <F12>  :call system('ctags')<cr>
+nnoremap <F12>  :!ctags -R<cr>
 
-nnoremap <C-p> :ls!<cr>:buffer 
-nnoremap <C-s> :ls!<cr>:bwipeout 
+nnoremap <C-p> :ls<cr>:buffer 
+nnoremap <C-s> :ls<cr>:bwipeout 
 nnoremap <C-q> :find 
 
  noremap                <leader>a :Align 
@@ -260,6 +257,7 @@ nnoremap <C-q> :find
 nnoremap    <silent>    <leader>zs :%s/\s\+$//<cr>
 vnoremap    <silent>    <leader>zs :s/\s\+$//<cr>
 nnoremap                <leader>bw :call buffer#BufferWipeOut()<cr>
+nnoremap                <leader>bd :call buffer#BufferDelete()<cr>
 nnoremap    <silent>    <leader>bk :call buffer#BufferKill()<cr>
 nnoremap                <leader>cd :call buffer#SetProjectRoot()<cr>
 nnoremap                <leader>d  :only<cr>:Gdiff<cr>
@@ -270,5 +268,4 @@ nnoremap                <leader>L O<Esc>
 nnoremap                <leader>l o<Esc>
 nnoremap                <leader>u :grep! --case-sensitive "\b<cword>\b"<cr><cr>
 vnoremap                <leader>u y:grep! --case-sensitive --literal "<C-r>0"<cr><cr>
-nnoremap                <leader>t :tag 
-nnoremap    <silent>    <leader>mk :update<cr>:make<cr><cr><cr>
+nnoremap    <silent>    <leader>mk :update<cr>:make<cr>

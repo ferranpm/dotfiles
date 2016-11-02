@@ -40,6 +40,15 @@ function! buffer#AlternateFile() " {{{
     endtry
 endfunction " }}}
 
+function! buffer#BufferDelete() " {{{
+    call buffer#AlternateFile()
+    try
+        bdelete #
+    catch
+        bdelete
+    endtry
+endfunction " }}}
+
 function! buffer#BufferWipeOut() " {{{
     call buffer#AlternateFile()
     try
