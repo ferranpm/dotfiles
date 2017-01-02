@@ -31,7 +31,7 @@ function! mocha#Run(line)
     try
         let l:compiler_cmd = exists('b:current_compiler') ? 'compiler '.b:current_compiler : ''
         compiler mocha
-        execute 'make -g ' . mocha#ParseTestLine(a:line) . ' ' . expand('%') . '|' .  l:compiler_cmd
+        execute 'make! -g ' . mocha#ParseTestLine(a:line) . ' ' . expand('%') . '|' .  l:compiler_cmd
     catch
         echoerr 'No test found'
     endtry

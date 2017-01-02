@@ -6,10 +6,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'SirVer/ultisnips'
 
-" tmux
-Plug 'christoomey/vim-tmux-navigator'
-
 " JavaScript
+Plug 'ternjs/tern_for_vim'
 Plug 'othree/yajs.vim'
 call plug#end()
 
@@ -58,7 +56,7 @@ set mouse=n
 " printing
 
 " messages and info
-set shortmess=I
+set shortmess=ITt
 set showcmd
 set showmode
 set ruler
@@ -102,7 +100,7 @@ set noswapfile
 
 " command line editing
 set wildmode=longest:list,full
-set wildignore+=*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__,*/node_modules/*,*/coverage/*,*/test/*,*/certs/*
+set wildignore+=*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__,*/node_modules/*,*/coverage/*,*/certs/*
 set wildignorecase
 set wildmenu
 set undofile
@@ -181,6 +179,10 @@ cnoremap <C-n> <Down>
 cnoremap <Up> <C-p>
 cnoremap <Down> <C-n>
 
+nnoremap <c-h> <c-w><c-h>
+nnoremap <c-l> <c-w><c-l>
+nnoremap <c-j> <c-w><c-j>
+nnoremap <c-k> <c-w><c-k>
 noremap ; :
 noremap : ;
 
@@ -266,6 +268,6 @@ nnoremap                <leader>g :grep! ""<left>
 nnoremap                <leader>h :help 
 nnoremap                <leader>L O<Esc>
 nnoremap                <leader>l o<Esc>
-nnoremap                <leader>u :grep! --case-sensitive "\b<cword>\b"<cr><cr>
-vnoremap                <leader>u y:grep! --case-sensitive --literal "<C-r>0"<cr><cr>
+nnoremap                <leader>u :grep! --case-sensitive "\b<cword>\b"<cr>
+vnoremap                <leader>u y:grep! --case-sensitive --literal "<C-r>0"<cr>
 nnoremap    <silent>    <leader>mk :update<cr>:make<cr>

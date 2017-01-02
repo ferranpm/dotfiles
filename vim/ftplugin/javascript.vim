@@ -12,7 +12,9 @@ setlocal foldlevelstart=1
 nnoremap <buffer> <silent> ,i :update<cr>:MochaTest<cr>
 nnoremap <buffer> <silent> ,d :update<cr>:MochaDescription<cr>
 nnoremap <buffer> <silent> <c-RightMouse> <c-o>
+nnoremap <buffer> <silent> <c-]> :TernDef<cr>
+nnoremap <buffer> <silent> <c-LeftMouse> <LeftMouse>:TernDef<cr>
 
 if !exists('current_compiler')
-    compiler mocha
+    compiler javascript
 endif

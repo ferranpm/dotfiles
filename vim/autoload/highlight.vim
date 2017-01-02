@@ -42,7 +42,6 @@ endfunction
 
 function! highlight#clear()
     for l:hi in highlight#list()
-        echo l:hi
         call highlight#unset(l:hi)
     endfor
 endfunction
