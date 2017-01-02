@@ -120,7 +120,7 @@
 
        use obconf if you want to change these without having to log out
        and back in -->
-    <number>5</number>
+    <number>6</number>
     <firstdesk>1</firstdesk>
     <names>
       <!-- set names up here if you want to, like this:
@@ -254,6 +254,36 @@
     <keybind key="C-A-5">
       <action name="SendToDesktop">
         <to>5</to>
+        <wrap>yes</wrap>
+      </action>
+    </keybind>
+    <keybind key="C-A-6">
+      <action name="SendToDesktop">
+        <to>6</to>
+        <wrap>yes</wrap>
+      </action>
+    </keybind>
+    <keybind key="C-A-7">
+      <action name="SendToDesktop">
+        <to>7</to>
+        <wrap>yes</wrap>
+      </action>
+    </keybind>
+    <keybind key="C-A-8">
+      <action name="SendToDesktop">
+        <to>8</to>
+        <wrap>yes</wrap>
+      </action>
+    </keybind>
+    <keybind key="C-A-9">
+      <action name="SendToDesktop">
+        <to>9</to>
+        <wrap>yes</wrap>
+      </action>
+    </keybind>
+    <keybind key="C-A-0">
+      <action name="SendToDesktop">
+        <to>10</to>
         <wrap>yes</wrap>
       </action>
     </keybind>
