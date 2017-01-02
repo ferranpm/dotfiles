@@ -48,7 +48,7 @@ setopt VI
 
 ## ZSTYLE ##
 zstyle ':completion:*'                              matcher-list 'm:{a-z}={A-Z}'
-zstyle ':completion:*'                              menu select false
+zstyle ':completion:*'                              menu select
 zstyle ':completion:*'                              special-dirs ..
 zstyle ':completion:*'                              verbose false
 zstyle ':completion:*:*:-subscript-:*'              tag-order indexes parameters
@@ -78,34 +78,13 @@ zstyle ':completion::(^approximate*):*:functions'   ignored-patterns '_*'
 zstyle ':completion:correct:'                       prompt 'correct to: %e'
 
 ## BINDKEYS ##
-bindkey -v '^[OC' forward-word
-bindkey -a '^[OC' forward-word
-bindkey -v '^[OD' backward-word
-bindkey -a '^[OD' backward-word
-bindkey -v '^[[1~'  beginning-of-line
-bindkey -a '^[[1~'  beginning-of-line
-bindkey -v '^[[4~'  end-of-line
-bindkey -a '^[[4~'  end-of-line
-bindkey -v '^[[P'   delete-char
-bindkey -a '^[[P'   delete-char
-bindkey -v '^[[B'   down-line-or-history
-bindkey -a 'n'      down-line-or-search
-bindkey -v '^n'     down-line-or-search
-bindkey -a 'j'      down-line-or-search
-bindkey -v '^[[8~'  end-of-line
-bindkey -a '^[[8~'  end-of-line
-bindkey -v '^f'     history-incremental-pattern-search-backward
-bindkey -a '/'      history-incremental-pattern-search-backward
-bindkey -v '^R'      history-incremental-pattern-search-backward
-bindkey -a '?'      history-incremental-pattern-search-forward
-bindkey -v '^s'     insert-sudo
-bindkey -v '^y'     insert-man
-bindkey -v '^k'     kill-buffer
-bindkey -v '^[[Z'   reverse-menu-complete
-bindkey -v '^[[A'   up-line-or-history
-bindkey -a 'p'      up-line-or-search
-bindkey -v '^p'     up-line-or-search
-bindkey -a 'k'      up-line-or-search
+bindkey -v '^[[1~' beginning-of-line
+bindkey -v '^[[4~' end-of-line
+bindkey -v '^[[3~' delete-char
+bindkey -v '^n' down-line-or-search
+bindkey -v '^s' insert-sudo
+bindkey -v '^y' insert-man
+bindkey -v '^p' up-line-or-search
 
 ## ALIASES ##
 alias aura='aura --color=auto'
