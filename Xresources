@@ -11,13 +11,6 @@
 *termName: xterm-256color
 *visualBell: false
 
-*VT100.Translations: #override \
-              <Key>BackSpace: string(0x7F)\n\
-              <Key>Delete:    string("\033[3~")\n\
-              <Key>Home:      string("\033[1~")\n\
-              <Key>End:       string("\033[4~")
-*ttyModes: erase ^?
-
 !!!!!!!!!!!
 !! xterm !!
 !!!!!!!!!!!
@@ -30,6 +23,9 @@ XTerm*faceName: xft:Anonymous Pro:size=11
 XTerm*backarrowKeyIsErase: false
 XTerm*backarrowKey: false
 XTerm*selectToClipboard: true
+XTerm*metaSendsEscape: true
+XTerm*ttyModes: erase ^?
+XTerm*eightBitInput: false
 
 !!!!!!!!!!
 !! Xpdf !!
