@@ -5,6 +5,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'SirVer/ultisnips'
+Plug 'christoomey/vim-tmux-navigator'
 
 " JavaScript
 Plug 'ternjs/tern_for_vim'
@@ -179,10 +180,6 @@ cnoremap <C-n> <Down>
 cnoremap <Up> <C-p>
 cnoremap <Down> <C-n>
 
-nnoremap <c-h> <c-w><c-h>
-nnoremap <c-l> <c-w><c-l>
-nnoremap <c-j> <c-w><c-j>
-nnoremap <c-k> <c-w><c-k>
 noremap ; :
 noremap : ;
 
