@@ -31,12 +31,7 @@ function! buffer#AlternateFile() " {{{
     try
         buffer #
     catch
-        for b in reverse(range(1, bufnr('$')))
-            if bufexists(b) && buflisted(b) && b != bufnr('%')
-                execute 'buffer '.b
-                return
-            endif
-        endfor
+        bprevious
     endtry
 endfunction " }}}
 
@@ -70,11 +65,11 @@ function! buffer#BufferKill() " {{{
 endfunction " }}}
 
 function! buffer#SetProjectRoot() " {{{
-    lcd %:p:h
+    cd %:p:h
     let git_dir = system('git rev-parse --show-toplevel')
     let is_not_git_dir = matchstr(git_dir, '^fatal:.*')
     if empty(is_not_git_dir)
-        lcd `=git_dir`
+        cd `=git_dir`
     endif
 endfunction " }}}
 
@@ -85,12 +80,12 @@ function! buffer#GoToBuffer(name, ...) " {{{
     let oldswitchbuf = &switchbuf
     if a:0 > 0 | let methodnew = a:1 | endif
     if a:0 > 1 | let switchbuf = a:2 | endif
-    execute 'set switchbuf='.switchbuf
     if bufexists(a:name)
+        execute 'set switchbuf='.switchbuf
         execute 'sbuffer '.a:name
+        execute 'set switchbuf='.oldswitchbuf
     else
         execute methodnew
+        execute 'file '.a:name
     endif
-    execute 'file '.a:name
-    execute 'set switchbuf='.oldswitchbuf
 endfunction " }}}

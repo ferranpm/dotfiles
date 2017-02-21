@@ -1,0 +1,1 @@
+/home/ferran/.vim/vimrc

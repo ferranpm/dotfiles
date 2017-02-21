@@ -1,5 +1,13 @@
+
+snippet par
+function par(a) {
+	console.log(a);
+	return a;
+}
+endsnippet
+
 snippet fori
-for (var ${1:i} = 0; $1 < ${2:count}; $1++) {
+for (let ${1:i} = 0; $1 < ${2:count}; $1++) {
 	${0:${VISUAL}}
 }
 endsnippet
@@ -10,10 +18,20 @@ for (var key in ${1:list}) {
 }
 endsnippet
 
+snippet foro
+for (let ${1:i} of ${2:list}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
 snippet foreach
 ${1:${VISUAL:array}}.forEach((${2:item}) => {
 	${3}
 });
+endsnippet
+
+snippet cj
+console.log('${1:${VISUAL}} =', prettyjson.render($1));${0}
 endsnippet
 
 snippet cp
@@ -34,6 +52,10 @@ endsnippet
 
 snippet clstr
 console.log(JSON.stringify(${1:${VISUAL:object}}, null, 2));
+endsnippet
+
+snippet st
+'use strict';
 endsnippet
 
 snippet proto
@@ -73,9 +95,15 @@ new Promise((resolve, reject) => {
 endsnippet
 
 snippet it
-it('Should ${1}', function(done) {
+it('should ${1}', function(done) {
 	${VISUAL:done(new Error('TODO'));}
 });
+endsnippet
+
+snippet co
+co(function*() {
+	${0:${VISUAL}}
+}).catch(console.error);
 endsnippet
 
 snippet desc
@@ -86,4 +114,8 @@ endsnippet
 
 snippet me
 module.exports.${0}
+endsnippet
+
+snippet re
+const ${1:${VISUAL:util}} = require('$1');${0}
 endsnippet

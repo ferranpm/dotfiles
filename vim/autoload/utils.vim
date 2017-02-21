@@ -46,3 +46,9 @@ function! utils#Mkdir(...)
     let folder = a:0 > 0 ? a:1 : '%:h'
     call system('mkdir -p '.expand(folder))
 endfunction
+
+function! utils#GetRelative(cwd, path)
+    let l:cwd = glob(a:cwd) . (a:cwd[strlen(a:cwd) - 1] == '/' ? '' : '/')
+    let l:path = glob(a:path) . (a:path[strlen(a:path) - 1] == '/' ? '' : '/')
+    return substitute(l:path, escape(l:cwd, '/'), '', '')
+endfunction

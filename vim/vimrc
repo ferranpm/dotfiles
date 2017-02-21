@@ -6,10 +6,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'SirVer/ultisnips'
 Plug 'christoomey/vim-tmux-navigator'
-
-" JavaScript
-Plug 'ternjs/tern_for_vim'
-Plug 'othree/yajs.vim'
 call plug#end()
 
 " Basic configuration
@@ -36,10 +32,11 @@ set nowrap
 
 " syntax, highlighting and spelling
 set nohlsearch
+set colorcolumn=80,132
 
 " multiple windows
 set laststatus=2
-set statusline=%f%m\ %y%h%r%w\ (%l/%L,\ %c)\ %p%%\ %=%{substitute(getcwd(),'^'.$HOME,'~','')}
+set statusline=%f%m\ %y%h%r%w\ (%l/%L,\ %c)\ %p%%\ %=%{fnamemodify(getcwd(),':t')}
 set hidden
 set switchbuf=useopen
 set splitbelow
@@ -49,7 +46,7 @@ set splitright
 
 " terminal
 set title
-set titlestring=%t%(\ %M%)%(\ (%{expand(\'%:~:.:h\')})%)%(\ %a%)
+set titlestring=%{fnamemodify(getcwd(),':t')}
 
 " using the mouse
 set mouse=n
@@ -101,7 +98,7 @@ set noswapfile
 
 " command line editing
 set wildmode=longest:list,full
-set wildignore+=*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__,*/node_modules/*,*/coverage/*,*/certs/*
+set wildignore+=*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__,*/node_modules/*,*/bower_components/*,*/coverage/*,*/certs/*
 set wildignorecase
 set wildmenu
 set undofile
@@ -114,7 +111,7 @@ endif
 
 " running make and jumping to errors
 if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor\ --smart-case\ --column
+    set grepprg=ag\ --vimgrep\ $*
     set grepformat=%f:%l:%c:%m
 elseif executable('ack')
     set grepprg=ack\ -i
@@ -130,6 +127,7 @@ set isfname-==
 set virtualedit=block
 set exrc
 set gdefault
+set signcolumn=yes
 
 " misc
 let mapleader=' '
@@ -191,11 +189,11 @@ noremap ' `
 
 inoremap <C-o> <C-x><C-o><C-p>
 inoremap <C-l> <C-x><C-l>
-inoremap <C-j> <esc>O
+inoremap <M-k> <esc>O
+inoremap <M-j> <esc>o
 
 nnoremap <silent> <C-@> :call buffer#AlternateSource()<cr>
 nnoremap <silent> <C-^> :call buffer#AlternateFile()<cr>
-nmap     <silent> <BS> <C-^>
 
 noremap <silent> [[ ?^\a<cr>
 noremap <silent> ][ /}<CR>b99]}
@@ -242,6 +240,7 @@ vnoremap ,v y:v/\C<C-r>=escape('<C-r>0', '*/\[].~')<cr>/
 nnoremap <F2>   :setlocal cursorline! cursorline?<cr>
 nnoremap <F3>   :setlocal hlsearch! hlsearch?<cr>
 nnoremap <F4>   :setlocal spell! spell?<cr>
+nnoremap <F8>   :setlocal wrap! wrap?<cr>
 nnoremap <F9>   :Gstatus<cr>
 nnoremap <F12>  :!ctags -R<cr>
 
@@ -255,12 +254,12 @@ nnoremap <C-q> :find
  noremap                <leader>v :put +<cr>
 nnoremap    <silent>    <leader>zs :%s/\s\+$//<cr>
 vnoremap    <silent>    <leader>zs :s/\s\+$//<cr>
-nnoremap                <leader>bw :call buffer#BufferWipeOut()<cr>
-nnoremap                <leader>bd :call buffer#BufferDelete()<cr>
+nnoremap    <silent>    <leader>bw :call buffer#BufferWipeOut()<cr>
+nnoremap    <silent>    <leader>bd :call buffer#BufferDelete()<cr>
 nnoremap    <silent>    <leader>bk :call buffer#BufferKill()<cr>
 nnoremap                <leader>cd :call buffer#SetProjectRoot()<cr>
 nnoremap                <leader>d  :only<cr>:Gdiff<cr>
-nnoremap                <leader>e :e <C-R>=expand('%:p:h') . '/' <CR>
+nnoremap                <leader>e :e <C-R>=utils#GetRelative(getcwd(), expand('%:p:h'))<CR>
 nnoremap                <leader>g :grep! ""<left>
 nnoremap                <leader>h :help 
 nnoremap                <leader>L O<Esc>
@@ -268,3 +267,15 @@ nnoremap                <leader>l o<Esc>
 nnoremap                <leader>u :grep! --case-sensitive "\b<cword>\b"<cr>
 vnoremap                <leader>u y:grep! --case-sensitive --literal "<C-r>0"<cr>
 nnoremap    <silent>    <leader>mk :update<cr>:make<cr>
+
+if has('nvim')
+    set inccommand=nosplit
+
+    tnoremap <c-h> <c-\><c-n><c-w><c-h>
+    tnoremap <c-l> <c-\><c-n><c-w><c-l>
+    tnoremap <c-j> <c-\><c-n><c-w><c-j>
+    tnoremap <c-k> <c-\><c-n><c-w><c-k>
+    tnoremap <silent> <C-^> <c-\><c-n>:call buffer#AlternateFile()<cr>
+
+    autocmd! BufEnter term://* :startinsert
+endif
