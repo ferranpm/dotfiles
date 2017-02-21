@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-ps -C openvpn > /dev/null
-if [[ ! $? == 0 ]]; then
-    xterm -e /usr/bin/sh -c 'cd ~/Workspace/thethings.iO/vpn && sudo openvpn --config config.ovpn --auth-user-pass login.conf' &
-fi

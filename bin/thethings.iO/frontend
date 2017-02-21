@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-ps -C grunt > /dev/null
-if [[ ! $? == 0 ]]; then
-    xterm -e /usr/bin/sh -c 'cd ~/Workspace/thethings.iO/panel.thethings.io/ && grunt live' &
-fi
