@@ -1,51 +1,51 @@
 [user]
-    name = Ferran Pelayo Monfort
-    email = ferran.pel.mon@gmail.com
+	name = Ferran Pelayo Monfort
+	email = ferran.pel.mon@gmail.com
 
 [core]
-    editor = vim
-    pager = less -R
-    autocrlf = input
-    excludesfile = ~/.cvsignore
+	editor = vim
+	pager = less -R
+	autocrlf = input
+	excludesfile = ~/.cvsignore
 
 [color]
-    diff = auto
-    status = auto
-    branch = auto
-    ui = true
+	diff = auto
+	status = auto
+	branch = auto
+	ui = true
 
 [merge]
-    tool = vimdiff
+	tool = vimdiff
 
 [push]
-    default = current
+	default = current
 
 [web]
-    browser = firefox
+	browser = google-chrome-stable
 
 [alias]
-    b = branch
-    c = commit --verbose
-    co = checkout
-    dt = difftool
-    f = fetch
-    l  = log --graph --all --oneline --decorate=short
-    lo = log --graph --all --date=short --format='%C(yellow)%h %C(red)%ad%C(green)%d %C(reset)%s %C(blue)<%an>'
-    m = merge
-    p = push
-    s = status
-    v = describe --abbrev=0
-    a = add
-    ap = add -p
-    dc = diff --cached
-    d = diff
-    di = diff --color-words
+	b = branch
+	c = commit --verbose
+	co = checkout
+	dt = difftool
+	f = fetch
+	l  = log --graph --all --oneline --decorate=short
+	lo = log --graph --all --date=short --format='%C(yellow)%h %C(red)%ad%C(green)%d %C(reset)%s %C(blue)<%an>'
+	m = merge
+	p = push
+	s = status
+	v = describe --abbrev=0
+	a = add
+	ap = add -p
+	dc = diff --cached
+	d = diff
+	di = diff --color-words
 
 [sendemail]
-    smtpencryption = tls
-    smtpserver = smtp.gmail.com
-    smtpuser = ferran.pel.mon@gmail.com
-    smtpserverport = 587
+	smtpencryption = tls
+	smtpserver = smtp.gmail.com
+	smtpuser = ferran.pel.mon@gmail.com
+	smtpserverport = 587
 [guitool "rm $FILENAME"]
 	cmd = rm $FILENAME
 	noconsole = yes
