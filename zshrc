@@ -1,5 +1,5 @@
 PROMPT='
-%{$fg[green]%}%n%{$fg[blue]%}%{$reset_color%} in %{$fg[blue]%}%{$fg[red]%}%~ %{$reset_color%}at %{$fg[blue]%}%m$(git_prompt)$(vi_prompt)
+%{$fg[green]%}%n%{$reset_color%} in %{$fg[yellow]%}%~%{$reset_color%} at %{$fg[blue]%}%m $(git_prompt)$(vi_prompt)
 %{$fg_bold[blue]%}%(!.#.>)%{$reset_color%} '
 
 fpath=(~/.zsh/completion $fpath)
@@ -8,6 +8,7 @@ stty -ixon
 
 ## EXPORTS ##
 export COLORFGBG="15;0"
+export FZF_DEFAULT_COMMAND="ag -g ''"
 export EDITOR="vim"
 export HISTFILE=$HOME/.zshhistory
 export HISTSIZE=50000
@@ -113,7 +114,6 @@ alias pacro='pacman -Qtdq && sudo pacman -Rns `pacman -Qtdq`'
 alias pacse='pacman -Ss'
 alias pacupg='sudo pacman -Syu'
 alias psg='ps -e | grep'
-alias t='task'
 
 ## FUNCTIONS ##
 insert-word() {
@@ -157,7 +157,7 @@ zle-keymap-select() {
 zle -N zle-keymap-select
 
 vi_prompt() {
-    INDICATOR=" %{$reset_color%}[$fg[magenta]X%{$reset_color%}]"
+    INDICATOR="%{$reset_color%}[$fg[magenta]X%{$reset_color%}]"
     if [ "$KEYMAP" = "vicmd" ]; then
         echo $INDICATOR
     fi
@@ -168,7 +168,7 @@ git_prompt() {
     if git rev-parse --git-dir >/dev/null 2>&1; then
         ref=$(git symbolic-ref HEAD 2>/dev/null || git name-rev --name-only --no-undefined --always HEAD)
         ref=${ref#refs/heads/}
-        echo " %{$reset_color%}[%{$fg[yellow]%}$ref%{$reset_color%}]"
+        echo "%{$reset_color%}[%{$fg[green]%}$ref%{$reset_color%}]"
     fi
 }
 
