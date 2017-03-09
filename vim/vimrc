@@ -6,6 +6,10 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'SirVer/ultisnips'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'w0rp/ale'
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 " Basic configuration
@@ -49,12 +53,12 @@ set title
 set titlestring=%{fnamemodify(getcwd(),':t')}
 
 " using the mouse
-set mouse=n
+set mouse=a
 
 " printing
 
 " messages and info
-set shortmess=ITt
+set shortmess=cITt
 set showcmd
 set showmode
 set ruler
@@ -189,8 +193,8 @@ noremap ' `
 
 inoremap <C-o> <C-x><C-o><C-p>
 inoremap <C-l> <C-x><C-l>
-inoremap <M-k> <esc>O
-inoremap <M-j> <esc>o
+inoremap <S-CR> <esc>O
+inoremap <C-CR> <esc>o
 
 nnoremap <silent> <C-@> :call buffer#AlternateSource()<cr>
 nnoremap <silent> <C-^> :call buffer#AlternateFile()<cr>
@@ -214,6 +218,7 @@ noremap <silent> [g ?\v^(\<\|\=\|\>){7}([^=].+)\?$<CR>
 
 nnoremap <silent> [<Space> :call append(line('.') - 1, repeat([''], v:count1))<cr>
 nnoremap <silent> ]<Space> :call append(line('.'), repeat([''], v:count1))<cr>
+nmap <silent> ][<Space> ]<Space>[<Space>
 
 vnoremap <M-/> <Esc>/\%V
 vnoremap * y/<c-r>=escape('<c-r>0', '*/\[].')<cr><cr>
@@ -262,6 +267,7 @@ nnoremap                <leader>d  :only<cr>:Gdiff<cr>
 nnoremap                <leader>e :e <C-R>=utils#GetRelative(getcwd(), expand('%:p:h'))<CR>
 nnoremap                <leader>g :grep! ""<left>
 nnoremap                <leader>h :help 
+nnoremap                <leader>s "_ddP
 nnoremap                <leader>L O<Esc>
 nnoremap                <leader>l o<Esc>
 nnoremap                <leader>u :grep! --case-sensitive "\b<cword>\b"<cr>

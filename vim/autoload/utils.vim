@@ -48,7 +48,7 @@ function! utils#Mkdir(...)
 endfunction
 
 function! utils#GetRelative(cwd, path)
-    let l:cwd = glob(a:cwd) . (a:cwd[strlen(a:cwd) - 1] == '/' ? '' : '/')
-    let l:path = glob(a:path) . (a:path[strlen(a:path) - 1] == '/' ? '' : '/')
+    let l:cwd = glob(a:cwd, 1) . (a:cwd[strlen(a:cwd) - 1] == '/' ? '' : '/')
+    let l:path = glob(a:path, 1) . (a:path[strlen(a:path) - 1] == '/' ? '' : '/')
     return substitute(l:path, escape(l:cwd, '/'), '', '')
 endfunction
