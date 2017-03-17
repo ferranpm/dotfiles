@@ -17,8 +17,8 @@ def parse_xml(file)
                     :fecha_op  => Date.parse(fonts[0].text.strip),
                     :fecha_val => Date.parse(fonts[1].text.strip),
                     :concepto  => fonts[2].text.strip.force_encoding(Encoding::ISO_8859_1).encode(Encoding::UTF_8),
-                    :import    => fonts[3].text.gsub(/,/, '.').strip.to_f,
-                    :saldo     => fonts[4].text.gsub(/,/, '.').strip.to_f
+                    :import    => fonts[3].text.gsub(/\./, '').gsub(/,/, '.').strip.to_f,
+                    :saldo     => fonts[4].text.gsub(/\./, '').gsub(/,/, '.').strip.to_f
                 })
             rescue
             end
@@ -32,11 +32,11 @@ def report(movimientos)
     movimientos.each do |movimiento|
         if /^RECIBO(?! PayPal)/.match(movimiento[:concepto]) then
             sum = sum + movimiento[:import]
-            $stdout.print "#{movimiento[:import]}\t(#{movimiento[:concepto]})\n"
+            puts "#{movimiento[:import]}\t(#{movimiento[:concepto]})"
         end
     end
-    $stdout.print "total:\t#{sum}\n"
-    $stdout.print "p.p:\t#{sum/4.0}\n"
+    puts "total:\t#{sum}"
+    puts "p.p:\t#{sum/4.0}"
 end
 
 ARGV.each do |file|
