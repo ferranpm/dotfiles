@@ -11,7 +11,7 @@ set t_Co=256
 
 let colors_name = "xoria256"
 
-highlight ColorColumn    term=NONE cterm=NONE                  ctermbg=237 gui=NONE                    guibg=#3a3a3a
+highlight ColorColumn    term=NONE cterm=NONE                  ctermbg=235 gui=NONE                    guibg=#202020
 highlight Comment        term=NONE cterm=NONE      ctermfg=244             gui=NONE      guifg=#808080
 highlight Constant       term=NONE cterm=NONE      ctermfg=229             gui=NONE      guifg=#ffffaf
 highlight Cursor         term=NONE cterm=NONE                  ctermbg=214 gui=NONE                    guibg=#ffaf00

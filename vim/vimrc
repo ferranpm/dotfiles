@@ -138,10 +138,6 @@ let mapleader=' '
 filetype plugin on
 filetype indent on
 syntax on
-try
-    colorscheme xoria256
-catch
-endtry
 
 " Autocommands
 augroup autocommands
