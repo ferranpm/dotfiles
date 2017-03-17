@@ -2,4 +2,7 @@
 --tag-relative
 --exclude=.svn
 --exclude=.git
+--exclude=node_modules
+--exclude=coverage
+--exclude=test
 --c-kinds=+l
