@@ -3,6 +3,7 @@ let g:fzf_buffers_jump=1
 nnoremap <C-p> :Buffers<cr>
 nnoremap <C-q> :FZF<cr>
 nnoremap <C-s> :DeleteBuffers<cr>
+nnoremap <C-t> :Tags<cr>
 
 function! s:list_buffers()
     redir => buffers
