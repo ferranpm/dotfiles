@@ -1,5 +1,5 @@
 PROMPT='
-%{$fg[green]%}%n%{$reset_color%} in %{$fg[yellow]%}%~%{$reset_color%} at %{$fg[blue]%}%m $(git_prompt)$(vi_prompt)
+%{$fg[green]%}%n%{$reset_color%} in %{$fg[yellow]%}%~%{$reset_color%} at %{$fg[blue]%}%m $(git_prompt)
 %{$fg_bold[blue]%}%(!.#.>)%{$reset_color%} '
 
 fpath=(~/.zsh/completion $fpath)
@@ -45,7 +45,6 @@ setopt PUSHD_IGNORE_DUPS
 setopt PUSHD_MINUS
 setopt PUSHD_SILENT
 setopt PUSHD_TOHOME
-setopt VI
 
 ## ZSTYLE ##
 zstyle ':completion:*'                              matcher-list 'm:{a-z}={A-Z}'
@@ -79,13 +78,13 @@ zstyle ':completion::(^approximate*):*:functions'   ignored-patterns '_*'
 zstyle ':completion:correct:'                       prompt 'correct to: %e'
 
 ## BINDKEYS ##
-bindkey -v '^[[1~' beginning-of-line
-bindkey -v '^[[4~' end-of-line
-bindkey -v '^[[3~' delete-char
-bindkey -v '^n' down-line-or-search
-bindkey -v '^s' insert-sudo
-bindkey -v '^y' insert-man
-bindkey -v '^p' up-line-or-search
+bindkey -e '^[[1~' beginning-of-line
+bindkey -e '^[[4~' end-of-line
+bindkey -e '^[[3~' delete-char
+bindkey -e '^n' down-line-or-search
+bindkey -e '^s' insert-sudo
+bindkey -e '^y' insert-man
+bindkey -e '^p' up-line-or-search
 
 ## ALIASES ##
 alias aura='aura --color=auto'
@@ -148,19 +147,6 @@ extract () {
             echo "'$f' is not a valid file!"
         fi
     done
-}
-
-# VI
-zle-keymap-select() {
-    zle reset-prompt
-}
-zle -N zle-keymap-select
-
-vi_prompt() {
-    INDICATOR="%{$reset_color%}[$fg[magenta]X%{$reset_color%}]"
-    if [ "$KEYMAP" = "vicmd" ]; then
-        echo $INDICATOR
-    fi
 }
 
 # GIT
