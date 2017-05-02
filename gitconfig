@@ -29,17 +29,16 @@
 	co = checkout
 	dt = difftool
 	f = fetch
-	l  = log --graph --all --oneline --decorate=short
-	lo = log --graph --all --date=short --format='%C(yellow)%h %C(red)%ad%C(green)%d %C(reset)%s %C(blue)<%an>'
+	l  = log --graph --oneline --decorate=short
+	lo = log --graph --oneline --date=short --format='%C(yellow)%h %C(red)%ad%C(green)%d %C(reset)%s %C(blue)<%an>'
 	m = merge
 	p = push
 	s = status
 	v = describe --abbrev=0
 	a = add
 	ap = add -p
-	dc = diff --cached
-	d = diff
-	di = diff --color-words
+	dc = diff --color-words=. --cached
+	d = diff --color-words=.
 
 [sendemail]
 	smtpencryption = tls
@@ -59,3 +58,7 @@
 [guitool "gitk --all"]
 	cmd = gitk --all
 	noconsole = yes
+[branch "master"]
+	rebase = true
+[fetch]
+	prune = true
