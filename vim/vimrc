@@ -1,18 +1,15 @@
 call plug#begin('~/.vim/bundle')
 " Generic
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'SirVer/ultisnips'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
 call plug#end()
 
-" Basic configuration
 " important
+set synmaxcol=255
 set nocompatible
 
 " moving around, searching and patterns
@@ -25,6 +22,7 @@ set smartcase
 
 " displaying text
 set scrolloff=4
+set nowrap
 set showbreak=>
 set lazyredraw
 set list
@@ -34,12 +32,19 @@ set relativenumber
 set nowrap
 
 " syntax, highlighting and spelling
+if has('gui_running')
+  set background=dark
+  colorscheme monokai
+else
+  set background=light
+endif
 set nohlsearch
 set colorcolumn=80,132
 
 " multiple windows
 set laststatus=2
 set statusline=%f%m\ %y%h%r%w\ (%l/%L,\ %c)\ %p%%\ %=%{fnamemodify(getcwd(),':t')}
+set equalalways
 set hidden
 set switchbuf=useopen
 set splitbelow
@@ -48,11 +53,8 @@ set splitright
 " multiple tab pages
 
 " terminal
-set title
-set titlestring=%{fnamemodify(getcwd(),':t')}
 
 " using the mouse
-set mouse=a
 
 " printing
 
@@ -71,7 +73,8 @@ set backspace=2
 set completeopt=menuone,preview
 
 " tabs and indenting
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set smarttab
 set expandtab
 set autoindent
@@ -82,7 +85,7 @@ set foldlevel=99
 set foldcolumn=0
 set foldopen=hor,mark,percent,quickfix,search,tag,undo
 set foldmethod=syntax
-set foldnestmax=1
+set foldnestmax=3
 
 " diff mode
 
@@ -101,24 +104,21 @@ set noswapfile
 
 " command line editing
 set wildmode=longest:list,full
-set wildignore+=*.class,*.o,*.pyc,*.tar.*,*.tgz,*.zip,*.rar,__*__,*/node_modules/*,*/bower_components/*,*/coverage/*,*/certs/*
+set wildignore=**/node_modules/**,*.cache,**/tmp/**,**/coverage/**,**/.git/**
 set wildignorecase
 set wildmenu
 set undofile
 set undodir=~/.vim/undodir
 if !isdirectory(&undodir)
-    call system('mkdir '.&undodir)
+  call system('mkdir '.&undodir)
 endif
 
 " executing external commands
 
 " running make and jumping to errors
-if executable('ag')
-    set grepprg=ag\ --vimgrep\ $*
-    set grepformat=%f:%l:%c:%m
-elseif executable('ack')
-    set grepprg=ack\ -i
-    set grepformat=%f:%l:%m
+if executable("ag")
+  set grepprg=ag\ --vimgrep\ --nogroup\ --nocolor
+  set grepformat=%f:%l:%c:%m
 endif
 
 " language specific
@@ -139,65 +139,32 @@ filetype indent on
 syntax on
 
 " Autocommands
-augroup autocommands
-    autocmd! BufRead TODO :set ft=TODO
-    autocmd! VimResized * :wincmd =
-    autocmd! BufRead *.dwv :setlocal ft=vhdl
-augroup END
-
 augroup automaticquickfix
     autocmd!
     autocmd QuickFixCmdPost [^l]* cwindow
     autocmd QuickFixCmdPost    l* lwindow
 augroup END
 
-" Commands
-command! -nargs=? -complete=dir Mkdir call utils#Mkdir(<f-args>)
-command! -nargs=+ -complete=command Pipe call utils#Pipe(<q-args>)
-command! -nargs=+ -complete=shellcmd Shell call utils#Shell(<q-args>)
-command! SudoWrite call utils#SudoWriteCmd()
-
 command! -nargs=? UnderscoreToUpperCamelCase <args>s#\m\(\%(\<\l\+\)\%(_\)\@=\)\|_\(\l\)#\u\1\2
 command! -nargs=? UnderscoreToLowerCamelCase <args>s#\m_\(\l\)#\u\1
 command! -nargs=? CamelCaseToUnderscore <args>s#\m\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+\)\(\u\)#\l\1_\l\2
-
-command! -nargs=1 -range Align '<,'>call edit#Align(<f-args>)
-command! -nargs=0 Reg call edit#Reg()
-
-command! -nargs=0 Picocom call serial#Picocom()
-
-function! s:ScriptComplete(ArgLead, CmdLine, CursorPos)
-    return utils#FolderComplete(a:ArgLead, a:CmdLine, a:CursorPos, "~/.vim/scripts/")
-endfunction
-command! -nargs=1 -complete=custom,s:ScriptComplete Script source ~/.vim/scripts/<args>
-
 " Mappings
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
-cnoremap <Up> <C-p>
-cnoremap <Down> <C-n>
+cnoremap <c-p> <up>
+cnoremap <c-n> <down>
+cnoremap <up> <c-p>
+cnoremap <down> <c-n>
 
 noremap ; :
 noremap : ;
 
-nnoremap q; q:
-xnoremap q; q:
+noremap q; q:
+noremap q: q;
 
 noremap ` '
 noremap ' `
 
-inoremap <C-o> <C-x><C-o><C-p>
-inoremap <C-l> <C-x><C-l>
-inoremap <S-CR> <esc>O
-inoremap <C-CR> <esc>o
-
-nnoremap <silent> <C-@> :call buffer#AlternateSource()<cr>
-nnoremap <silent> <C-^> :call buffer#AlternateFile()<cr>
-
-noremap <silent> [[ ?^\a<cr>
-noremap <silent> ][ /}<CR>b99]}
-map <silent> ]] /^\a<cr>
-map <silent> [] k$][%?}<CR>
+inoremap <s-cr> <esc>O
+inoremap <c-cr> <esc>o
 
 nnoremap <silent> ]q :cnext<cr>
 nnoremap <silent> [q :cprevious<cr>
@@ -208,75 +175,52 @@ nnoremap <silent> [t :tprevious<cr>
 nnoremap <silent> ]l :lnext<cr>
 nnoremap <silent> [l :lprevious<cr>
 
-noremap <silent> ]g /\v^(\<\|\=\|\>){7}([^=].+)?$<CR>
-noremap <silent> [g ?\v^(\<\|\=\|\>){7}([^=].+)\?$<CR>
+noremap <silent> ]g /\v^(\<\|\=\|\>){7}([^=].+)?$<cr>
+noremap <silent> [g ?\v^(\<\|\=\|\>){7}([^=].+)\?$<cr>
 
-nnoremap <silent> [<Space> :call append(line('.') - 1, repeat([''], v:count1))<cr>
-nnoremap <silent> ]<Space> :call append(line('.'), repeat([''], v:count1))<cr>
-nmap <silent> ][<Space> ]<Space>[<Space>
-
-vnoremap <M-/> <Esc>/\%V
 vnoremap * y/<c-r>=escape('<c-r>0', '*/\[].')<cr><cr>
-
-nnoremap z/ :call edit#AutoHighlightToggle()<cr>
 
 vnoremap > >gv
 vnoremap < <gv
 
 nnoremap Y y$
 
+nnoremap <c-h> <c-w><c-h>
+nnoremap <c-j> <c-w><c-j>
+nnoremap <c-k> <c-w><c-k>
+nnoremap <c-l> <c-w><c-l>
+
 nnoremap - ^
 
-nnoremap ,S :%s/\C\<<C-r>=expand('<cword>')<CR>\>/
-nnoremap ,s :s/\C\<<C-r>=expand('<cword>')<CR>\>/
-vnoremap ,S y:%s/\C<C-r>=escape('<C-r>0', '*/\[].~')<cr>/
-vnoremap ,s y:s/\C<C-r>=escape('<C-r>0', '*/\[].~')<cr>/
+nnoremap ,S :%s/\C\<<c-r>=expand('<cword>')<cr>\>/
+nnoremap ,s :s/\C\<<c-r>=expand('<cword>')<cr>\>/
+vnoremap ,S y:%s/\C<c-r>=escape('<c-r>0', '*/\[].~')<cr>/
+vnoremap ,s y:s/\C<c-r>=escape('<c-r>0', '*/\[].~')<cr>/
 
-nnoremap ,g :g/\C\<<C-r>=expand('<cword>')<CR>\>/
-nnoremap ,v :v/\C\<<C-r>=expand('<cword>')<CR>\>/
-vnoremap ,g y:g/\C<C-r>=escape('<C-r>0', '*/\[].~')<cr>/
-vnoremap ,v y:v/\C<C-r>=escape('<C-r>0', '*/\[].~')<cr>/
+nnoremap ,g :g/\C\<<c-r>=expand('<cword>')<cr>\>/
+nnoremap ,v :v/\C\<<c-r>=expand('<cword>')<cr>\>/
+vnoremap ,g y:g/\C<c-r>=escape('<c-r>0', '*/\[].~')<cr>/
+vnoremap ,v y:v/\C<c-r>=escape('<c-r>0', '*/\[].~')<cr>/
 
-nnoremap <F2>   :setlocal cursorline! cursorline?<cr>
-nnoremap <F3>   :setlocal hlsearch! hlsearch?<cr>
-nnoremap <F4>   :setlocal spell! spell?<cr>
-nnoremap <F8>   :setlocal wrap! wrap?<cr>
-nnoremap <F9>   :Gstatus<cr>
-nnoremap <F12>  :!ctags -R<cr>
+nnoremap <f2> :setlocal cursorline! cursorline?<cr>
+nnoremap <f3> :setlocal hlsearch! hlsearch?<cr>
+nnoremap <f4> :setlocal spell! spell?<cr>
+nnoremap <f8> :setlocal wrap! wrap?<cr>
 
-nnoremap <C-p> :ls<cr>:buffer 
-nnoremap <C-s> :ls<cr>:bwipeout 
-nnoremap <C-q> :find 
+nnoremap <c-p> :ls<cr>:buffer 
+nnoremap <c-q> :find 
 
- noremap                <leader>a :Align 
- noremap                <leader>c "+y
- noremap                <leader>p :put *<cr>
- noremap                <leader>v :put +<cr>
-nnoremap    <silent>    <leader>zs :%s/\s\+$//<cr>
-vnoremap    <silent>    <leader>zs :s/\s\+$//<cr>
-nnoremap    <silent>    <leader>bw :call buffer#BufferWipeOut()<cr>
-nnoremap    <silent>    <leader>bd :call buffer#BufferDelete()<cr>
-nnoremap    <silent>    <leader>bk :call buffer#BufferKill()<cr>
-nnoremap                <leader>cd :call buffer#SetProjectRoot()<cr>
-nnoremap                <leader>d  :only<cr>:Gdiff<cr>
-nnoremap                <leader>e :e <C-R>=utils#GetRelative(getcwd(), expand('%:p:h'))<CR>
-nnoremap                <leader>g :grep! ""<left>
-nnoremap                <leader>h :help 
-nnoremap                <leader>s "_ddP
-nnoremap                <leader>L O<Esc>
-nnoremap                <leader>l o<Esc>
-nnoremap                <leader>u :grep! --case-sensitive "\b<cword>\b"<cr>
-vnoremap                <leader>u y:grep! --case-sensitive --literal "<C-r>0"<cr>
-nnoremap    <silent>    <leader>mk :update<cr>:make<cr>
+nnoremap <silent> <c-s-c> :let @*=bufname("%")<cr>
 
-if has('nvim')
-    set inccommand=nosplit
+nnoremap <silent> <leader>zs :%s/\s\+$//<cr>
+vnoremap <silent> <leader>zs :s/\s\+$//<cr>
+nnoremap <silent> <leader>u :grep! "\b<cword>\b"<cr>
+nnoremap <silent> <leader>U :grep! "\b<cWORD>\b"<cr>
+vnoremap <silent> <leader>u y:grep! --case-sensitive --literal "<C-r>0"<cr>
+nnoremap          <leader>g :grep! ""<left>
+nnoremap          <leader>h :help 
+nnoremap          <leader>s "_ddP
+nnoremap          <leader>L O<esc>
+nnoremap          <leader>l o<esc>
 
-    tnoremap <c-h> <c-\><c-n><c-w><c-h>
-    tnoremap <c-l> <c-\><c-n><c-w><c-l>
-    tnoremap <c-j> <c-\><c-n><c-w><c-j>
-    tnoremap <c-k> <c-\><c-n><c-w><c-k>
-    tnoremap <silent> <C-^> <c-\><c-n>:call buffer#AlternateFile()<cr>
-
-    autocmd! BufEnter term://* :startinsert
-endif
+autocmd QuickFixCmdPost * cwindow
