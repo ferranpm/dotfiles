@@ -44,12 +44,12 @@ function! buffer#BufferDelete() " {{{
     endtry
 endfunction " }}}
 
-function! buffer#BufferWipeOut() " {{{
+function! buffer#BufferDelete() " {{{
     call buffer#AlternateFile()
     try
-        bwipeout #
+        bdelete #
     catch
-        bwipeout
+        bdelete
     endtry
 endfunction " }}}
 
@@ -57,7 +57,7 @@ function! buffer#BufferKill() " {{{
     let l:count = 0
     for b in range(1, bufnr('$'))
         if bufexists(b) && !buflisted(b)
-            execute 'bwipeout '.b
+            execute 'bdelete '.b
             let l:count += 1
         endif
     endfor

@@ -53,6 +53,7 @@ set splitright
 " multiple tab pages
 
 " terminal
+set titlestring=%{fnamemodify(getcwd(),':t')}
 
 " using the mouse
 
@@ -83,7 +84,7 @@ set smartindent
 " folding
 set foldlevel=99
 set foldcolumn=0
-set foldopen=hor,mark,percent,quickfix,search,tag,undo
+set foldopen=hor,mark,percent,quickfix,tag,undo
 set foldmethod=syntax
 set foldnestmax=3
 
@@ -210,8 +211,8 @@ nnoremap <f8> :setlocal wrap! wrap?<cr>
 nnoremap <c-p> :ls<cr>:buffer 
 nnoremap <c-q> :find 
 
-nnoremap <silent> <c-s-c> :let @*=bufname("%")<cr>
-
+nnoremap <silent> <leader>bc :let @*=bufname("%")<cr>
+nnoremap <silent> <leader>lo :!open <cWORD> &<cr>
 nnoremap <silent> <leader>zs :%s/\s\+$//<cr>
 vnoremap <silent> <leader>zs :s/\s\+$//<cr>
 nnoremap <silent> <leader>u :grep! "\b<cword>\b"<cr>
@@ -222,5 +223,7 @@ nnoremap          <leader>h :help
 nnoremap          <leader>s "_ddP
 nnoremap          <leader>L O<esc>
 nnoremap          <leader>l o<esc>
+nnoremap          <leader>zh :call edit#AutoHighlightToggle()<cr>
+nnoremap          <leader>bd :call buffer#BufferDelete()<cr>
 
 autocmd QuickFixCmdPost * cwindow

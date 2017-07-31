@@ -4,6 +4,9 @@ nnoremap <c-p> :CtrlPBuffer<cr>
 nnoremap <c-g> :CtrlPBufTag<cr>
 nnoremap <c-t> :CtrlPTag<cr>
 
+let g:ctrlp_match_current_file=1
+let g:ctrlp_lazy_update=1
+let g:ctrlp_match_window='max:100,results:100'
 let g:ctrlp_working_path_mode="w"
 let g:ctrlp_prompt_mappings={
       \ 'PrtSelectMove("j")': ['<c-n>', '<down>'],
