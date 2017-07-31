@@ -31,14 +31,15 @@
 	f = fetch
 	l  = log --graph --oneline --decorate=short
 	lo = log --graph --oneline --date=short --format='%C(yellow)%h %C(red)%ad%C(green)%d %C(reset)%s %C(blue)<%an>'
-	m = merge
-	p = push
+	m = merge --no-ff
 	s = status
 	v = describe --abbrev=0
 	a = add
 	ap = add -p
-	dc = diff --color-words --cached
-	d = diff --color-words
+	dc = diff --cached
+	d = diff
+	sh = show --name-status
+	pu = pull --rebase --autostash
 
 [sendemail]
 	smtpencryption = tls
