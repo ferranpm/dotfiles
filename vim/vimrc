@@ -1,5 +1,6 @@
 call plug#begin('~/.vim/bundle')
 " Generic
+Plug 'ap/vim-buftabline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -225,5 +226,8 @@ nnoremap          <leader>L O<esc>
 nnoremap          <leader>l o<esc>
 nnoremap          <leader>zh :call edit#AutoHighlightToggle()<cr>
 nnoremap          <leader>bd :call buffer#BufferDelete()<cr>
+
+noremap <silent> <c-s-tab> :bprevious<cr>
+noremap <silent> <c-tab> :bnext<cr>
 
 autocmd QuickFixCmdPost * cwindow
