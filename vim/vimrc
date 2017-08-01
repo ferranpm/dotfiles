@@ -217,7 +217,7 @@ nnoremap <silent> <leader>zs :%s/\s\+$//<cr>
 vnoremap <silent> <leader>zs :s/\s\+$//<cr>
 nnoremap <silent> <leader>u :grep! "\b<cword>\b"<cr>
 nnoremap <silent> <leader>U :grep! "\b<cWORD>\b"<cr>
-vnoremap <silent> <leader>u y:grep! --case-sensitive --literal "<C-r>0"<cr>
+vnoremap <silent> <leader>u y:grep! --case-sensitive --literal "<c-r>0"<cr>
 nnoremap          <leader>g :grep! ""<left>
 nnoremap          <leader>h :help 
 nnoremap          <leader>s "_ddP
