@@ -44,12 +44,12 @@ function! buffer#BufferDelete() " {{{
     endtry
 endfunction " }}}
 
-function! buffer#BufferDelete() " {{{
+function! buffer#BufferWipeOut() " {{{
     call buffer#AlternateFile()
     try
-        bdelete #
+        bwipeout #
     catch
-        bdelete
+        bwipeout
     endtry
 endfunction " }}}
 

@@ -2,7 +2,9 @@ let g:ctrlp_map='<c-q>'
 
 nnoremap <c-p> :CtrlPBuffer<cr>
 nnoremap <c-t> :CtrlPBufTag<cr>
+nnoremap <c-g> :CtrlPBufTag<cr>
 
+let g:ctrlp_lazy_update=100
 let g:ctrlp_open_multiple_files='i'
 let g:ctrlp_match_current_file=0
 let g:ctrlp_match_window='max:100,results:100'

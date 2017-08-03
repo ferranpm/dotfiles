@@ -150,6 +150,8 @@ augroup END
 command! -nargs=? UnderscoreToUpperCamelCase <args>s#\m\(\%(\<\l\+\)\%(_\)\@=\)\|_\(\l\)#\u\1\2
 command! -nargs=? UnderscoreToLowerCamelCase <args>s#\m_\(\l\)#\u\1
 command! -nargs=? CamelCaseToUnderscore <args>s#\m\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+\)\(\u\)#\l\1_\l\2
+command! -nargs=1 -range Align '<,'>call edit#Align(<f-args>)
+
 " Mappings
 cnoremap <c-p> <up>
 cnoremap <c-n> <down>
@@ -226,6 +228,7 @@ nnoremap          <leader>L O<esc>
 nnoremap          <leader>l o<esc>
 nnoremap          <leader>zh :call edit#AutoHighlightToggle()<cr>
 nnoremap          <leader>bd :call buffer#BufferDelete()<cr>
+nnoremap          <leader>bw :call buffer#BufferWipeOut()<cr>
 
 noremap <silent> <c-s-tab> :bprevious<cr>
 noremap <silent> <c-tab> :bnext<cr>
