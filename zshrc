@@ -105,7 +105,6 @@ alias l='ls -lh'
 alias ll='l -A'
 alias ls='ls --color=auto'
 alias mountc='mount | column -t'
-alias nvm='run_nvm'
 alias pacin='sudo pacman -S'
 alias pacman='pacman --color=auto'
 alias pacre='sudo pacman -Rns'
@@ -163,15 +162,10 @@ rm_tr_white () {
 }
 
 ## NODEJS/NVM ##
-run_nvm() {
-    if [[ ! $NVM_LOADED ]]; then
-        NVM_LOADED=1
-        export NODE_PATH=/usr/lib/node_modules
-        export NVM_DIR="$HOME/.nvm"
-        [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
-    fi
-    nvm $*
-}
+export NVM_DIR="$HOME/.nvm"
+export PATH="$PATH:$HOME/.rvm/bin"
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 ## RUBY/RVM ##
-export PATH=$PATH:$HOME/.rvm/bin
+export PATH=$HOME/.rvm/gems/ruby-2.4.1/bin:$PATH
