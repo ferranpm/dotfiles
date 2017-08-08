@@ -235,5 +235,3 @@ noremap <silent> <c-s-tab> :bprevious<cr>
 noremap <silent> <c-tab> :bnext<cr>
 noremap <silent> <c-pageup> :bprevious<cr>
 noremap <silent> <c-pagedown> :bnext<cr>
-
-autocmd QuickFixCmdPost * cwindow
