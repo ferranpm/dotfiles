@@ -40,3 +40,7 @@ function! edit#AutoHighlightToggle()
         echo 'Highlight current word: ON'
     endif
 endfunction
+
+function! edit#QuickfixToArgs()
+  execute 'args '.join(filter(uniq(map(getqflist(), 'bufname(v:val["bufnr"])')), 'v:val !~ "^\s*$"'), ' ')
+endfunction
