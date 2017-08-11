@@ -2,6 +2,7 @@ call plug#begin('~/.vim/bundle')
 " Generic
 Plug 'ap/vim-buftabline'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'michaeljsmith/vim-indent-object'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
@@ -29,7 +30,6 @@ set lazyredraw
 set list
 set listchars=tab:»\ ,trail:·
 set number
-set relativenumber
 set nowrap
 
 " syntax, highlighting and spelling
@@ -40,7 +40,7 @@ else
   set background=light
 endif
 set nohlsearch
-set colorcolumn=80,132
+set colorcolumn=100
 
 " multiple windows
 set laststatus=2
