@@ -146,6 +146,11 @@ augroup automaticquickfix
     autocmd QuickFixCmdPost    l* lwindow
 augroup END
 
+augroup quickfix
+    autocmd!
+    autocmd FileType qf set nobuflisted
+augroup END
+
 command! -nargs=? UnderscoreToUpperCamelCase <args>s#\m\(\%(\<\l\+\)\%(_\)\@=\)\|_\(\l\)#\u\1\2
 command! -nargs=? UnderscoreToLowerCamelCase <args>s#\m_\(\l\)#\u\1
 command! -nargs=? CamelCaseToUnderscore <args>s#\m\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+\)\(\u\)#\l\1_\l\2
