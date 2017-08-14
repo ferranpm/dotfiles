@@ -86,7 +86,7 @@ set smartindent
 set foldlevel=99
 set foldcolumn=0
 set foldopen=hor,mark,percent,quickfix,tag,undo
-set foldmethod=syntax
+set foldmethod=indent
 
 " diff mode
 
