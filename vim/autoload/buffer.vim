@@ -53,11 +53,11 @@ function! buffer#BufferWipeOut() " {{{
     endtry
 endfunction " }}}
 
-function! buffer#BufferKill() " {{{
+function! buffer#BufferClean() " {{{
     let l:count = 0
     for b in range(1, bufnr('$'))
         if bufexists(b) && !buflisted(b)
-            execute 'bdelete '.b
+            execute 'bwipeout '.b
             let l:count += 1
         endif
     endfor
