@@ -8,7 +8,6 @@ stty -ixon
 
 ## EXPORTS ##
 export COLORFGBG="15;0"
-export FZF_DEFAULT_COMMAND="ag -g ''"
 export EDITOR="vim"
 export HISTFILE=$HOME/.zshhistory
 export HISTSIZE=50000
