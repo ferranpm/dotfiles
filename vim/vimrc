@@ -1,6 +1,5 @@
 call plug#begin('~/.vim/bundle')
 " Generic
-Plug 'ap/vim-buftabline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'tpope/vim-commentary'
