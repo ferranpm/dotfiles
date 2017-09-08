@@ -166,4 +166,4 @@ export PATH="$PATH:$HOME/.rvm/bin"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 ## RUBY/RVM ##
-export PATH=$HOME/.rvm/gems/ruby-2.4.1/bin:$PATH
+export PATH=$HOME/.rvm/gems/$RUBY_VERSION/bin:$PATH
