@@ -1,5 +1,6 @@
 call plug#begin('~/.vim/bundle')
 " Generic
+Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'tpope/vim-commentary'
