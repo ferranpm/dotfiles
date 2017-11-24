@@ -7,40 +7,30 @@
 	pager = less -R
 	autocrlf = input
 	excludesfile = ~/.cvsignore
-
 [color]
 	diff = auto
 	status = auto
 	branch = auto
 	ui = true
-
 [merge]
 	tool = vimdiff
-
+	ff = false
 [push]
 	default = current
-
 [web]
 	browser = google-chrome-stable
-
 [alias]
+	a = add
+	ap = add -p
 	b = branch
 	c = commit --verbose
 	co = checkout
-	dt = difftool
-	f = fetch
-	l  = log --graph --oneline --decorate=short
-	lo = log --graph --oneline --date=short --format='%C(yellow)%h %C(red)%ad%C(green)%d %C(reset)%s %C(blue)<%an>'
-	m = merge --no-ff
-	s = status
-	v = describe --abbrev=0
-	a = add
-	ap = add -p
 	dc = diff --cached
 	d = diff
-	sh = show --name-status
-	pu = pull --rebase --autostash
-
+	l  = log --graph --oneline --decorate=short
+	lo = log --graph --oneline --date=short --format='%C(yellow)%h %C(red)%ad%C(green)%d %C(reset)%s %C(blue)<%an>'
+	m = merge
+	s = status
 [sendemail]
 	smtpencryption = tls
 	smtpserver = smtp.gmail.com
@@ -59,7 +49,9 @@
 [guitool "gitk --all"]
 	cmd = gitk --all
 	noconsole = yes
-[branch "master"]
-	rebase = true
 [fetch]
 	prune = true
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
