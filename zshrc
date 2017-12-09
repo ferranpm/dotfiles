@@ -113,9 +113,9 @@ alias psg='ps -e | grep'
 
 ## FUNCTIONS ##
 insert-word() {
-    word="$1 "
-    BUFFER="$word$BUFFER"
-    CURSOR=$(expr $CURSOR + $(expr length $word))
+  word="$1 "
+  BUFFER="$word$BUFFER"
+  CURSOR=$(expr $CURSOR + ${#word})
 }
 insert-man() { insert-word "man" }
 zle -N insert-man
@@ -123,40 +123,50 @@ insert-sudo() { insert-word "sudo" }
 zle -N insert-sudo
 
 extract () {
-    for f in $*; do
-        if [ -f $f ] ; then
-            case $f in
-                *.tar.bz2) tar xvjf $f ;;
-                *.tar.gz) tar xvzf $f ;;
-                *.tar.xz) tar xf $f ;;
-                *.bz2) bunzip2 $f ;;
-                *.rar) unrar x $f ;;
-                *.gz) gunzip $f ;;
-                *.tar) tar xvf $f ;;
-                *.tbz2) tar xvjf $f ;;
-                *.tgz) tar xvzf $f ;;
-                *.zip) unzip $f ;;
-                *.Z) uncompress $f ;;
-                *.7z) 7z x $f ;;
-                *) echo "don't know how to extract '$f'..." ;;
-            esac
-        else
-            echo "'$f' is not a valid file!"
-        fi
-    done
+  for f in $*; do
+    if [ -f $f ] ; then
+      case $f in
+        *.tar.bz2) tar xvjf $f ;;
+        *.tar.gz) tar xvzf $f ;;
+        *.tar.xz) tar xf $f ;;
+        *.bz2) bunzip2 $f ;;
+        *.rar) unrar x $f ;;
+        *.gz) gunzip $f ;;
+        *.tar) tar xvf $f ;;
+        *.tbz2) tar xvjf $f ;;
+        *.tgz) tar xvzf $f ;;
+        *.zip) unzip $f ;;
+        *.Z) uncompress $f ;;
+        *.7z) 7z x $f ;;
+        *) echo "don't know how to extract '$f'..." ;;
+      esac
+    else
+      echo "'$f' is not a valid file!"
+    fi
+  done
 }
 
 # GIT
+git_full_branch_name() {
+  git symbolic-ref HEAD 2>/dev/null || git name-rev --name-only --no-undefined --always HEAD
+}
+
+git_branch_name() {
+  git_full_branch_name | sed -e 's|refs/heads/||'
+}
+
+is_git_directory() {
+  git rev-parse --git-dir >/dev/null 2>&1
+}
+
 git_prompt() {
-    if git rev-parse --git-dir >/dev/null 2>&1; then
-        ref=$(git symbolic-ref HEAD 2>/dev/null || git name-rev --name-only --no-undefined --always HEAD)
-        ref=${ref#refs/heads/}
-        echo "%{$reset_color%}[%{$fg[green]%}$ref%{$reset_color%}]"
-    fi
+  if is_git_directory; then
+    echo "%{$reset_color%}[%{$fg[green]%}$(git_branch_name)%{$reset_color%}]"
+  fi
 }
 
 rm_tr_white () {
-    find . -not \( -name .svn -prune -o -name .git -prune -o -name '*.a' \) -type f -print0 | xargs -0 sed -i -e "s/[[:space:]]*$//"
+  find . -not \( -name .svn -prune -o -name .git -prune -o -name '*.a' \) -type f -print0 | xargs -0 sed -i -e "s/[[:space:]]*$//"
 }
 
 ## NODEJS/NVM ##
