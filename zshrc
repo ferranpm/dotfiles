@@ -12,9 +12,6 @@ export EDITOR="vim"
 export HISTFILE=$HOME/.zshhistory
 export HISTSIZE=50000
 export KEYTIMEOUT=1
-export PATH=$HOME/.local/bin:$PATH
-export SAVEHIST=10000
-export ZLS_COLORS=$LS_COLORS
 export LESS_TERMCAP_mb=$(printf "\e[1;31m")
 export LESS_TERMCAP_md=$(printf "\e[1;34m")
 export LESS_TERMCAP_me=$(printf "\e[0m")
@@ -22,6 +19,11 @@ export LESS_TERMCAP_se=$(printf "\e[0m")
 export LESS_TERMCAP_so=$(printf "\e[1;40;33m")
 export LESS_TERMCAP_ue=$(printf "\e[0m")
 export LESS_TERMCAP_us=$(printf "\e[1;32m")
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.rvm/bin:$PATH"
+export PATH="$HOME/.rvm/gems/$RUBY_VERSION/bin:$PATH"
+export SAVEHIST=10000
+export ZLS_COLORS=$LS_COLORS
 
 autoload -U colors && colors
 autoload -U compinit && compinit -d $HOME/.zshcompdump
@@ -45,35 +47,9 @@ setopt PUSHD_SILENT
 setopt PUSHD_TOHOME
 
 ## ZSTYLE ##
-zstyle ':completion:*'                              matcher-list 'm:{a-z}={A-Z}'
-zstyle ':completion:*'                              menu select
-zstyle ':completion:*'                              special-dirs ..
-zstyle ':completion:*'                              verbose false
-zstyle ':completion:*:*:-subscript-:*'              tag-order indexes parameters
-zstyle ':completion:*:*:zcompile:*'                 ignored-patterns '(*~|*.zwc)'
-zstyle ':completion:*:-command-:*:'                 verbose false
-zstyle ':completion:*:approximate:'                 max-errors 'reply=( $((($#PREFIX+$#SUFFIX)/3 )) numeric )'
-zstyle ':completion:*:complete:-command-::commands' ignored-patterns '(aptitude-*|*\~)'
-zstyle ':completion:*:correct:*'                    insert-unambiguous true
-zstyle ':completion:*:correct:*'                    original true
-zstyle ':completion:*:corrections'                  format $'%{\e[0;31m%}%d (errors: %e)%{\e[0m%}'
-zstyle ':completion:*:default'                      list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*:descriptions'                 format $'%{\e[0;31m%}completing %B%d%b%{\e[0m%}'
-zstyle ':completion:*:expand:*'                     tag-order all-expansions
-zstyle ':completion:*:history-words'                list false
-zstyle ':completion:*:history-words'                menu true
-zstyle ':completion:*:history-words'                remove-all-dups true
-zstyle ':completion:*:history-words'                stop true
-zstyle ':completion:*:manuals'                      separate-sections true
-zstyle ':completion:*:matches'                      group true
-zstyle ':completion:*:messages'                     format '%d'
-zstyle ':completion:*:options'                      auto-description '%d'
-zstyle ':completion:*:options'                      description true
-zstyle ':completion:*:processes'                    command 'ps -au$USER'
-zstyle ':completion:*:processes-names'              command 'ps c -u ${USER} -o command | uniq'
-zstyle ':completion:*:warnings'                     format $'%{\e[0;31m%}No matches for:%{\e[0m%} %d'
-zstyle ':completion::(^approximate*):*:functions'   ignored-patterns '_*'
-zstyle ':completion:correct:'                       prompt 'correct to: %e'
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' menu select
+zstyle ':completion:*' verbose true
 
 ## BINDKEYS ##
 bindkey -e '^[[1~' beginning-of-line
@@ -95,14 +71,11 @@ alias cd1='cd ../'
 alias cd2='cd ../../'
 alias cd3='cd ../../../'
 alias cd4='cd ../../../../'
-alias cpcwd='pwd | tr -d "\n" | xclip -selection clipboard'
-alias cr='cd `git rev-parse --show-toplevel`'
 alias e='$EDITOR'
 alias g='git'
 alias l='ls -lh'
 alias ll='l -A'
 alias ls='ls --color=auto'
-alias mountc='mount | column -t'
 alias pacin='sudo pacman -S'
 alias pacman='pacman --color=auto'
 alias pacre='sudo pacman -Rns'
@@ -169,9 +142,5 @@ rm_tr_white () {
 
 ## NODEJS/NVM ##
 export NVM_DIR="$HOME/.nvm"
-export PATH="$PATH:$HOME/.rvm/bin"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
-## RUBY/RVM ##
-export PATH=$HOME/.rvm/gems/$RUBY_VERSION/bin:$PATH
