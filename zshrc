@@ -1,6 +1,6 @@
 PROMPT='
-%{$fg[green]%}%n%{$reset_color%} in %{$fg[yellow]%}%~%{$reset_color%} at %{$fg[blue]%}%m $(git_prompt)
-%{$fg_bold[blue]%}%(!.#.>)%{$reset_color%} '
+%{$fg[green]%}%n%{$reset_color%} in %{$fg[yellow]%}%~%{$reset_color%} at %{$fg[blue]%}%m$(git_prompt)
+%{$fg[blue]%}%(!.#.>)%{$reset_color%} '
 
 fpath=(~/.zsh/completion $fpath)
 
@@ -160,9 +160,7 @@ is_git_directory() {
 }
 
 git_prompt() {
-  if is_git_directory; then
-    echo "%{$reset_color%}[%{$fg[green]%}$(git_branch_name)%{$reset_color%}]"
-  fi
+  is_git_directory && echo " %{$reset_color%}[%{$fg[green]%}$(git_branch_name)%{$reset_color%}]"
 }
 
 rm_tr_white () {
