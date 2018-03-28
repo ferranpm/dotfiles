@@ -1,8 +1,8 @@
 call plug#begin('~/.vim/bundle')
-" Generic
+Plug 'itchyny/lightline.vim'
+Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'michaeljsmith/vim-indent-object'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
@@ -33,7 +33,6 @@ set number
 set nowrap
 
 " syntax, highlighting and spelling
-colorscheme monokai
 set nohlsearch
 set colorcolumn=100
 
@@ -52,6 +51,7 @@ set splitright
 set titlestring=%{fnamemodify(getcwd(),':t')}
 
 " using the mouse
+set mouse=a
 
 " printing
 
@@ -194,8 +194,6 @@ nnoremap <c-j> <c-w><c-j>
 nnoremap <c-k> <c-w><c-k>
 nnoremap <c-l> <c-w><c-l>
 
-nnoremap - ^
-
 nnoremap ,S :%s/\C\<<c-r>=expand('<cword>')<cr>\>/
 nnoremap ,s :s/\C\<<c-r>=expand('<cword>')<cr>\>/
 vnoremap ,S y:%s/\C<c-r>=escape('<c-r>0', '*/\[].~')<cr>/
@@ -214,7 +212,7 @@ nnoremap <f8> :setlocal wrap! wrap?<cr>
 nnoremap <c-p> :ls<cr>:buffer 
 nnoremap <c-q> :find 
 
-nnoremap <silent> <leader>bc :let @*=bufname("%")<cr>
+nnoremap <silent> <leader>bc :let @*=expand("%:p")<cr>
 nnoremap <silent> <leader>lo :!open <cWORD> &<cr>
 nnoremap <silent> <leader>zs :%s/\s\+$//<cr>
 vnoremap <silent> <leader>zs :s/\s\+$//<cr>
@@ -229,8 +227,17 @@ nnoremap          <leader>l o<esc>
 nnoremap          <leader>zh :call edit#AutoHighlightToggle()<cr>
 nnoremap          <leader>bd :call buffer#BufferDelete()<cr>
 nnoremap          <leader>bw :call buffer#BufferWipeOut()<cr>
+nnoremap          <leader>fo zMzv
+nnoremap          <leader>e :e <c-r>=expand("%:h")<cr>/
 
 noremap <silent> <c-s-tab> :bprevious<cr>
 noremap <silent> <c-tab> :bnext<cr>
 noremap <silent> <c-pageup> :bprevious<cr>
 noremap <silent> <c-pagedown> :bnext<cr>
+
+if exists(':terminal')
+  tnoremap <c-h> <c-w>h
+  tnoremap <c-j> <c-w>j
+  tnoremap <c-k> <c-w>k
+  tnoremap <c-l> <c-w>l
+endif
