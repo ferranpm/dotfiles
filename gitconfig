@@ -1,7 +1,6 @@
 [user]
 	name = Ferran Pelayo Monfort
 	email = ferran.pel.mon@gmail.com
-
 [core]
 	editor = vim
 	pager = less -R
