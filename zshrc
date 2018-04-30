@@ -19,9 +19,9 @@ export LESS_TERMCAP_se=$(printf "\e[0m")
 export LESS_TERMCAP_so=$(printf "\e[1;40;33m")
 export LESS_TERMCAP_ue=$(printf "\e[0m")
 export LESS_TERMCAP_us=$(printf "\e[1;32m")
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.rvm/bin:$PATH"
-export PATH="$HOME/.rvm/gems/$RUBY_VERSION/bin:$PATH"
+export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.rvm/bin:$PATH
+export PATH=$HOME/.rvm/gems/$RUBY_VERSION/bin:$PATH
 export SAVEHIST=10000
 export ZLS_COLORS=$LS_COLORS
 
@@ -140,10 +140,11 @@ rm_tr_white () {
   find . -not \( -name .svn -prune -o -name .git -prune -o -name '*.a' \) -type f -print0 | xargs -0 sed -i -e "s/[[:space:]]*$//"
 }
 
-## NODEJS/NVM ##
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+test_and_source() { [ -f $1 ] && source $1 }
 
 ## FZF ##
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+test_and_source $HOME/.fzf.zsh
+
+## ASDF ##
+test_and_source $HOME/.asdf/asdf.sh
+test_and_source $HOME/.asdf/completions/asdf.bash
