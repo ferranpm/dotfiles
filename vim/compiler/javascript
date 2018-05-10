@@ -1,4 +1,0 @@
-#!/bin/bash
-
-jshint $1
-jscs --reporter=inline $1

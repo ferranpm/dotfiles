@@ -14,5 +14,3 @@ let g:lightline.active = {
       \ 'right': [ [ 'lineinfo', 'gitbranch', 'directory' ],
       \            [ 'percent' ],
       \            [ 'fileformat', 'fileencoding', 'filetype'] ] }
-
-let g:lightline.inactive = g:lightline.active
