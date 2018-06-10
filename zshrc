@@ -87,6 +87,7 @@ alias psg='ps -e | grep'
 ## FUNCTIONS ##
 insert-word() {
   word="$1 "
+  [[ $BUFFER =~ "^$word" ]] && return
   BUFFER="$word$BUFFER"
   CURSOR=$(expr $CURSOR + ${#word})
 }
