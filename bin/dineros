@@ -2,43 +2,79 @@
 
 require 'nokogiri'
 require 'date'
+require 'optparse'
 
-def parse_xml(file)
-    page = Nokogiri::XML(open(file))
+PARTICIPANTS = 4.freeze
+Transaction = Struct.new(:date, :concept, :amount, :balance)
 
-    trs = page.css('tr')
+class SantanderFile
+  def initialize(file)
+    @page = Nokogiri::XML(File.read(File.expand_path(file)))
+  end
+  attr_reader :page
 
-    movimientos = []
-    trs.each do |tr|
-        fonts = tr.css('font')
-        if fonts.size == 5 then
-            begin
-                movimientos.push({
-                    :fecha_op  => Date.parse(fonts[0].text.strip),
-                    :fecha_val => Date.parse(fonts[1].text.strip),
-                    :concepto  => fonts[2].text.strip.force_encoding(Encoding::ISO_8859_1).encode(Encoding::UTF_8),
-                    :import    => fonts[3].text.gsub(/\./, '').gsub(/,/, '.').strip.to_f,
-                    :saldo     => fonts[4].text.gsub(/\./, '').gsub(/,/, '.').strip.to_f
-                })
-            rescue
-            end
-        end
-    end
-    return movimientos
+  def transactions
+    rows
+      .reject { |tr| tr.css('#TDListadoBorderBottom').empty? }
+      .map { |tr| tr.css('font').map(&:text).map(&:strip) }
+      .map { |font| build_transaction(font) }
+  end
+
+  private
+
+  def rows
+    table.css('tr')
+  end
+
+  def table
+    page.css('table')
+  end
+
+  def build_transaction(font)
+    date, _other_date, concept, amount, balance, rest = font
+    raise 'Unexpected extra column' unless rest.nil?
+    Transaction.new(
+      Date.parse(date),
+      concept.force_encoding(Encoding::ISO_8859_1).encode(Encoding::UTF_8),
+      amount.delete('.').tr(',', '.').to_f,
+      balance.delete('.').tr(',', '.').to_f
+    )
+  end
 end
 
-def report(movimientos)
-    sum = 0
-    movimientos.each do |movimiento|
-        if /^RECIBO(?! PayPal)/.match(movimiento[:concepto]) then
-            sum = sum + movimiento[:import]
-            puts "#{movimiento[:import]}\t(#{movimiento[:concepto]})"
-        end
-    end
-    puts "total:\t#{sum}"
-    puts "p.p:\t#{sum/4.0}"
+def despeses(transactions)
+  transactions.sort_by(&:amount).each do |t|
+    puts "#{t.concept};#{t.date};#{t.amount}"
+  end
 end
+
+
+def rebuts(transactions)
+  sum = transactions.sum do |transaction|
+    if /^RECIBO(?! PayPal)/.match(transaction.concept) then
+      puts "#{transaction.amount}\t(#{transaction.concept})"
+      transaction.amount
+    else
+      0
+    end
+  end
+  puts "total:\t#{sum}"
+  puts "p.p:\t#{sum/PARTICIPANTS}"
+end
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: dineros [options] file..."
+
+  opts.on("-r", "--rebuts", "Veure els rebuts") { |r| options[:rebuts] = r }
+  opts.on("-d", "--despeses", "Veure les despeses") { |d| options[:despeses] = d }
+end.parse!
 
 ARGV.each do |file|
-    report parse_xml(file)
+  transactions = SantanderFile.new(file).transactions
+  if options[:rebuts]
+    rebuts(transactions)
+  else
+    despeses(transactions)
+  end
 end
