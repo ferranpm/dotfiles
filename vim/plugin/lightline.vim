@@ -13,4 +13,10 @@ let g:lightline.active = {
       \           [ 'readonly', 'relativepath', 'modified' ] ],
       \ 'right': [ [ 'lineinfo', 'gitbranch', 'directory' ],
       \            [ 'percent' ],
-      \            [ 'fileformat', 'fileencoding', 'filetype'] ] }
+      \            [ 'fileformat', 'fileencoding', 'filetype'] ]
+      \ }
+
+let g:lightline.inactive = {
+      \ 'left': [ [ 'filename', 'modified' ] ],
+      \ 'right': [ [ 'lineinfo' ],
+      \            [ 'percent' ] ] }

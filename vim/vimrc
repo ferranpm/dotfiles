@@ -34,7 +34,7 @@ set nowrap
 
 " syntax, highlighting and spelling
 set nohlsearch
-set colorcolumn=100
+set colorcolumn=128
 
 " multiple windows
 set laststatus=2
@@ -206,6 +206,8 @@ nnoremap ,v :v/\C\<<c-r>=expand('<cword>')<cr>\>/
 vnoremap ,g y:g/\C<c-r>=escape('<c-r>0', '*/\[].~')<cr>/
 vnoremap ,v y:v/\C<c-r>=escape('<c-r>0', '*/\[].~')<cr>/
 
+vnoremap ,r :s/\%V
+
 nnoremap <f2> :setlocal cursorline! cursorline?<cr>
 nnoremap <f3> :setlocal hlsearch! hlsearch?<cr>
 nnoremap <f4> :setlocal spell! spell?<cr>
@@ -222,6 +224,7 @@ nnoremap <silent> <leader>u :grep! "\b<cword>\b"<cr>
 nnoremap <silent> <leader>U :grep! "\b<cWORD>\b"<cr>
 vnoremap <silent> <leader>u y:grep! --case-sensitive --literal "<c-r>0"<cr>
 nnoremap          <leader>g :grep! ""<left>
+vnoremap          <leader>g y:grep! "<c-r>0"<left>
 nnoremap <silent> <leader>h :setlocal hlsearch! hlsearch?<cr>
 nnoremap          <leader>s "_ddP
 nnoremap          <leader>L O<esc>
@@ -243,3 +246,10 @@ if exists(':terminal')
   tnoremap <c-k> <c-w>k
   tnoremap <c-l> <c-w>l
 endif
+
+set background=dark
+if has('gui_running') || has('gui_vimr')
+  colorscheme one
+else
+  colorscheme xoria256
+end
