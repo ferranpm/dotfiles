@@ -15,7 +15,7 @@ set synmaxcol=255
 set nocompatible
 
 " moving around, searching and patterns
-set path=.,**
+set path=,,
 set incsearch
 set ignorecase
 set smartcase
@@ -34,6 +34,7 @@ set nowrap
 
 " syntax, highlighting and spelling
 set nohlsearch
+set termguicolors
 set colorcolumn=128
 
 " multiple windows
@@ -99,7 +100,7 @@ set nobackup
 set noswapfile
 
 " command line editing
-set wildmode=longest:list,full
+set wildmode=list:longest,list:full
 set wildignore=**/node_modules/**,*.cache,**/tmp/**,**/coverage/**,**/.git/**
 set wildignorecase
 set wildmenu
@@ -220,19 +221,19 @@ nnoremap <silent> <leader>bc :let @*=expand("%:p")<cr>
 nnoremap <silent> <leader>lo :!open <cWORD> &<cr>
 nnoremap <silent> <leader>zs :%s/\s\+$//<cr>
 vnoremap <silent> <leader>zs :s/\s\+$//<cr>
-nnoremap <silent> <leader>u :grep! "\b<cword>\b"<cr>
-nnoremap <silent> <leader>U :grep! "\b<cWORD>\b"<cr>
-vnoremap <silent> <leader>u y:grep! --case-sensitive --literal "<c-r>0"<cr>
+nnoremap          <leader>u :grep! "\b<cword>\b"<cr>
+nnoremap          <leader>U :grep! "\b<cWORD>\b"<cr>
+vnoremap          <leader>u y:grep! --case-sensitive --literal "<c-r>0"<cr>
 nnoremap          <leader>g :grep! ""<left>
 vnoremap          <leader>g y:grep! "<c-r>0"<left>
 nnoremap <silent> <leader>h :setlocal hlsearch! hlsearch?<cr>
 nnoremap          <leader>s "_ddP
 nnoremap          <leader>L O<esc>
 nnoremap          <leader>l o<esc>
-nnoremap          <leader>zh :call edit#AutoHighlightToggle()<cr>
-nnoremap          <leader>bd :call buffer#BufferDelete()<cr>
-nnoremap          <leader>bw :call buffer#BufferWipeOut()<cr>
-nnoremap          <leader>fo zMzv
+nnoremap <silent> <leader>zh :call edit#AutoHighlightToggle()<cr>
+nnoremap <silent> <leader>bd :call buffer#BufferDelete()<cr>
+nnoremap <silent> <leader>bw :call buffer#BufferWipeOut()<cr>
+nnoremap          <leader>zv zMzvzz
 nnoremap          <leader>e :e <c-r>=expand("%:h")<cr>/
 
 noremap <silent> <c-s-tab> :bprevious<cr>

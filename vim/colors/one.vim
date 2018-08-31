@@ -831,6 +831,6 @@ endif
   endfunction
   "}}}
 
-highlight Folded guibg=#efefef guifg=#898989
+highlight Folded guibg=#2d3139 guifg=#898989
 
 " vim: set fdl=0 fdm=marker:
