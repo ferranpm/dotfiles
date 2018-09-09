@@ -3,3 +3,8 @@ bower_components
 coverage
 *.sublime-workspace
 *.min.js
+*.min.js.map
+*.min.css
+*.lock
+*.log
+*.js.map
