@@ -2,11 +2,11 @@ call plug#begin('~/.vim/bundle')
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-vinegar'
 Plug 'w0rp/ale'
 call plug#end()
 
@@ -194,8 +194,6 @@ nnoremap <c-h> <c-w><c-h>
 nnoremap <c-j> <c-w><c-j>
 nnoremap <c-k> <c-w><c-k>
 nnoremap <c-l> <c-w><c-l>
-
-nnoremap - ^
 
 nnoremap ,S :%s/\C\<<c-r>=expand('<cword>')<cr>\>/
 nnoremap ,s :s/\C\<<c-r>=expand('<cword>')<cr>\>/
