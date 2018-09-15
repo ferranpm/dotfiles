@@ -49,6 +49,7 @@ set splitright
 " multiple tab pages
 
 " terminal
+set guicursor=a:block-Cursor-blinkon0,i-ci:ver25-Cursor-blinkon0,r-cr:hor20-Cursor-blinkon0
 set titlestring=%{fnamemodify(getcwd(),':t')}
 
 " using the mouse
@@ -171,6 +172,8 @@ noremap ' `
 inoremap <s-cr> <esc>O
 inoremap <c-cr> <esc>o
 
+inoremap <expr> <c-j> pumvisible() ? "\<c-n>" : "\<c-x>\<c-u>"
+
 nnoremap <silent> ]q :cnext<cr>
 nnoremap <silent> [q :cprevious<cr>
 
@@ -238,6 +241,8 @@ noremap <silent> <c-s-tab> :bprevious<cr>
 noremap <silent> <c-tab> :bnext<cr>
 noremap <silent> <c-pageup> :bprevious<cr>
 noremap <silent> <c-pagedown> :bnext<cr>
+
+cnoremap <C-A> <Home>
 
 if exists(':terminal')
   tnoremap <c-h> <c-w>h
