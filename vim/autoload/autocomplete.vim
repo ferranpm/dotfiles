@@ -6,7 +6,8 @@ function! autocomplete#complete(findstart, base)
     let line = strpart(getline('.'), 0, col('.') - 1)
     return autocomplete#find_start(line, g:mkw_any)
   else
-    return filter(autocomplete#get_all_words(), "v:val =~ s:regex")
+    let l:list = filter(autocomplete#get_all_words(), "v:val =~# s:regex")
+    return sort(sort(l:list), { a, b -> len(a) - len(b) })
   endif
 endfunction
 
@@ -37,14 +38,14 @@ function! autocomplete#find_start(line, anyre)
 endfunction
 
 function! autocomplete#get_all_words()
-  let list = []
+  let l:list = []
   let buffers = filter(getbufinfo(), "buflisted(v:val['bufnr']) && bufloaded(v:val['bufnr'])")
   for buffer in buffers
     let lines = getbufline(buffer['bufnr'], 0, '$')
     for line in lines
       let words = split(line, '\s*\<\|\>\s*')
-      call extend(list, words)
+      call extend(l:list, words)
     endfor
   endfor
-  return uniq(sort(list))
+  return l:list
 endfunction

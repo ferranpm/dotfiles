@@ -89,3 +89,5 @@ function! buffer#GoToBuffer(name, ...) " {{{
         execute 'file '.a:name
     endif
 endfunction " }}}
+
+" vim:foldmethod=marker foldmarker={{{,}}}
