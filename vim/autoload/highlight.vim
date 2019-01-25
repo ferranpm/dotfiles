@@ -28,7 +28,7 @@ highlight Highlight13 ctermfg=0 ctermbg=13 guifg=#ffffff guibg=#ff00ff
 highlight Highlight14 ctermfg=0 ctermbg=14 guifg=#ffffff guibg=#00ffff
 
 function! highlight#set(key, ...)
-    let l:regexp = a:0 > 0 ? a:1 : a:key
+    let l:regexp = a:0 > 1 ? a:1 : a:key
     call highlight#unset(a:key)
     let s:lights[a:key] = matchadd(s:groups[len(keys(s:lights))%len(s:groups)], l:regexp)
 endfunction
