@@ -22,7 +22,7 @@
 	a = add
 	ap = add -p
 	b = branch
-	c = commit --verbose
+	c = commit
 	co = checkout
 	dc = diff --cached
 	d = diff
@@ -30,6 +30,8 @@
 	lo = log --graph --oneline --date=short --format='%C(yellow)%h %C(red)%ad%C(green)%d %C(reset)%s %C(blue)<%an>'
 	m = merge
 	s = status
+[commit]
+	verbose = yes
 [sendemail]
 	smtpencryption = tls
 	smtpserver = smtp.gmail.com
