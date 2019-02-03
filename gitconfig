@@ -13,7 +13,6 @@
 	ui = true
 [merge]
 	tool = vimdiff
-	ff = false
 [push]
 	default = current
 [web]
