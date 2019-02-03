@@ -14,18 +14,20 @@ endif
 let g:colors_name = 'monochrome'
 
 let s:white  = ['White', 15]
-let s:black  = ['#0e1111', 16]
-let s:bgray  = ['#181818', 233]
+let s:black  = ['Black', 16]
+let s:lblack = ['#171717', 234]
+let s:bgray  = ['#1d1d1d', 235]
 let s:lgray  = ['LightGray', 255]
 let s:cgray  = ['#737373', 243]
 let s:dgray  = ['DarkGray', 248]
-let s:sblue  = ['#778899', 67]
+let s:sblue  = ['#778797', 67]
 let s:yellow = ['Yellow', 226]
-let s:red    = ['#b6403a', 160]
-let s:green  = ['#478226', 28]
+let s:red    = ['Red', 160]
+let s:green  = ['DarkGreen', 28]
+let s:orange = ['DarkOrange', 166]
 
 let s:default_fg = s:lgray
-let s:default_bg = s:black
+let s:default_bg = s:lblack
 
 let s:italic    = 'italic'
 let s:bold      = 'bold'
@@ -72,13 +74,22 @@ endfunction
 "
 
 call s:hi('Normal')
-call s:hi('Cursor', s:black, s:lgray)
+call s:hi('Cursor', s:black, s:orange)
 call s:hi('CursorLine', s:default_lst, s:bgray, s:none)
+call s:hi('CursorColumn', s:default_lst, s:bgray, s:none)
 call s:hi('CursorLineNr', s:white, s:default_bg, s:bold)
 call s:hi('ColorColumn', s:default_fg, s:bgray)
 call s:hi('Search', s:white, s:sblue)
 call s:hi('Visual', s:white, s:sblue)
 call s:hi('ErrorMsg', s:white, s:red)
+call s:hi('TabLine')
+call s:hi('TabLineFill', s:default_bg, s:default_bg)
+call s:hi('TabLineSel', s:black, s:lgray)
+call s:hi('StatusLine', s:lgray, s:black)
+call s:hi('StatusLineNC', s:lgray, s:black)
+call s:hi('StatusLineTerm', s:black, s:lgray, s:bold)
+call s:hi('StatusLineTermNC', s:black, s:lgray)
+
 
 " Tildes at the bottom of a buffer, etc.
 call s:hi('NonText', s:dgray)
@@ -94,7 +105,7 @@ call s:hi('LineNr', s:dgray)
 call s:hi('SpecialKey', s:sblue, s:default_bg, s:bold)
 
 " File browsers.
-call s:hi('Directory', s:white, s:default_bg, s:bold)
+call s:hi('Directory', s:white, s:default_bg)
 
 " Help.
 call s:hi('helpSpecial')
@@ -102,8 +113,8 @@ call s:hi('helpHyperTextJump', s:sblue, s:default_bg, s:underline)
 call s:hi('helpNote')
 
 " Popup menu.
-call s:hi('Pmenu', s:white, s:sblue)
-call s:hi('PmenuSel', s:sblue, s:white)
+call s:hi('Pmenu', s:white, s:cgray)
+call s:hi('PmenuSel', s:black, s:white)
 
 " Notes.
 call s:hi('Todo', s:black, s:yellow, s:bold)
@@ -115,12 +126,12 @@ call s:hi('SignColumn')
 " --- Programming languages ----------------------------------------------------
 "
 
-call s:hi('Statement', s:white, s:default_bg, s:bold)
-call s:hi('PreProc', s:white, s:default_bg, s:bold)
+call s:hi('Statement', s:white, s:default_bg)
+call s:hi('PreProc', s:white, s:default_bg)
 call s:hi('String', s:sblue)
 call s:hi('Comment', s:cgray, s:default_bg, s:comment_attr)
 call s:hi('Constant')
-call s:hi('Type', s:white, s:default_bg, s:bold)
+call s:hi('Type', s:white, s:default_bg)
 call s:hi('Function', s:white)
 call s:hi('Identifier')
 call s:hi('Special')
@@ -206,6 +217,10 @@ call s:hi('javaScriptFunction', s:white, s:default_bg, s:bold)
 " --- Diffs --------------------------------------------------------------------
 "
 
+call s:hi('DiffAdd', s:white, s:green)
+call s:hi('DiffDelete', s:white, s:red)
+call s:hi('DiffChange', s:white, s:cgray)
+call s:hi('DiffText', s:white, s:red)
 call s:hi('diffFile', s:cgray)
 call s:hi('diffNewFile', s:cgray)
 call s:hi('diffIndexLine', s:cgray)
@@ -251,3 +266,22 @@ call s:hi('NeomakeError', s:yellow)
 call s:hi('NeomakeInfo', s:default_fg, s:default_bg, s:bold)
 call s:hi('NeomakeMessage')
 call s:hi('NeomakeWarning', s:yellow)
+
+let g:terminal_ansi_colors = [
+      \ "#353a44",
+      \ "#e88388",
+      \ "#a7cc8c",
+      \ "#ebca8d",
+      \ "#72bef2",
+      \ "#d291e4",
+      \ "#65c2cd",
+      \ "#e3e5e9",
+      \ "#353a44",
+      \ "#e88388",
+      \ "#a7cc8c",
+      \ "#ebca8d",
+      \ "#72bef2",
+      \ "#d291e4",
+      \ "#65c2cd",
+      \ "#e3e5e9",
+      \ ]
