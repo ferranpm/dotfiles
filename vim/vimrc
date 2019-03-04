@@ -162,9 +162,6 @@ cnoremap <down> <c-n>
 noremap ; :
 noremap : ;
 
-noremap q; q:
-noremap q: q;
-
 noremap ` '
 noremap ' `
 
@@ -191,6 +188,7 @@ vnoremap > >gv
 vnoremap < <gv
 
 nnoremap Y y$
+nnoremap - ^
 
 nnoremap <c-h> <c-w><c-h>
 nnoremap <c-j> <c-w><c-j>
@@ -221,20 +219,25 @@ nnoremap <silent> <leader>bc :let @*=expand("%:p")<cr>
 nnoremap <silent> <leader>lo :!open <cWORD> &<cr>
 nnoremap <silent> <leader>zs :%s/\s\+$//<cr>
 vnoremap <silent> <leader>zs :s/\s\+$//<cr>
-nnoremap          <leader>u :grep! "\b<cword>\b"<cr>
-nnoremap          <leader>U :grep! "\b<cWORD>\b"<cr>
-vnoremap          <leader>u y:grep! --case-sensitive --literal "<c-r>0"<cr>
-nnoremap          <leader>g :grep! ""<left>
-vnoremap          <leader>g y:grep! "<c-r>0"<left>
 nnoremap <silent> <leader>h :setlocal hlsearch! hlsearch?<cr>
+let silent = has('gui_running') ? 'silent ' : ''
+execute 'nnoremap <leader>u :'.silent.'grep! "\b<c-r>=expand("<cword>")<cr>\b"'
+execute 'nnoremap <leader>U :'.silent.'grep! "\b<c-r>=expand("<cWORD>")<cr>\b"'
+execute 'vnoremap <leader>u y:'.silent.'grep! --case-sensitive --literal "\b<c-r>0\b"'
+execute 'nnoremap <leader>g :'.silent.'grep! ""<left>'
+execute 'vnoremap <leader>g y:'.silent.'grep! "<c-r>0"<left>'
 nnoremap          <leader>s "_ddP
-nnoremap          <leader>L O<esc>
-nnoremap          <leader>l o<esc>
 nnoremap <silent> <leader>zh :call edit#AutoHighlightToggle()<cr>
 nnoremap <silent> <leader>bd :call buffer#BufferDelete()<cr>
 nnoremap <silent> <leader>bw :call buffer#BufferWipeOut()<cr>
 nnoremap          <leader>zv zMzvzz
 nnoremap          <leader>e :e <c-r>=expand("%:h")<cr>/
+
+if has('clipboard')
+  nnoremap <c-c> "+yy
+  vnoremap <c-c> "+y
+end
+nnoremap <silent> <c-s> :update<cr>
 
 noremap <silent> <c-s-tab> :bprevious<cr>
 noremap <silent> <c-tab> :bnext<cr>
@@ -248,11 +251,8 @@ if exists(':terminal')
   tnoremap <c-j> <c-w>j
   tnoremap <c-k> <c-w>k
   tnoremap <c-l> <c-w>l
+  tnoremap <c-^> <c-\><c-n><c-^>
+  tnoremap <c-u> <c-\><c-n><c-u>
 endif
 
-set background=dark
-if has('gui_running') || has('gui_vimr')
-  colorscheme one
-else
-  colorscheme xoria256
-end
+colorscheme monochrome

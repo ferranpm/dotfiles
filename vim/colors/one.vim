@@ -354,7 +354,7 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
   call <sid>X('SpecialKey',   s:special_grey,  '',               'none')
   call <sid>X('Whitespace',   s:special_grey,  '',               'none')
   call <sid>X('StatusLine',   s:syntax_fg,     s:syntax_cursor,  'bold')
-  call <sid>X('StatusLineNC', s:syntax_fg,     s:syntax_cursor,  'none')
+  call <sid>X('StatusLineNC', s:syntax_fg,     s:syntax_bg,      'none')
   call <sid>X('TabLine',      s:mono_1,        s:syntax_bg,      '')
   call <sid>X('TabLineFill',  s:mono_3,        s:visual_grey,    'none')
   call <sid>X('TabLineSel',   s:syntax_fg,     s:mono_3,         '')

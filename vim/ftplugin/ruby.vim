@@ -5,6 +5,6 @@ setlocal shiftwidth=2
 map <silent> ]] /\m\<def\><cr>
 map <silent> [[ ?\m\<def\><cr>
 
-if !exists('current_compiler')
-    compiler ruby
-endif
+nnoremap <buffer> <silent> <leader>t :let @*="spring rspec ".expand("%").":".line(".")<cr>
+
+command! -buffer -range HashToJson s/=>/:/e | s/\<nil\>/null/e | .!json_pp
