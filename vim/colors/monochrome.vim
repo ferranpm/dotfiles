@@ -6,9 +6,10 @@
 
 set background=dark
 
-hi clear
+highlight clear
+
 if exists('syntax_on')
-   syntax reset
+  syntax reset
 endif
 
 let g:colors_name = 'monochrome'
@@ -43,29 +44,29 @@ endif
 let s:comment_attr = g:monochrome_italic_comments ? s:italic : s:none
 
 function! s:hi(...)
-    let group = a:1
-    let fg    = get(a:, 2, s:default_fg)
-    let bg    = get(a:, 3, s:default_bg)
-    let attr  = get(a:, 4, s:default_str)
+  let group = a:1
+  let fg    = get(a:, 2, s:default_fg)
+  let bg    = get(a:, 3, s:default_bg)
+  let attr  = get(a:, 4, s:default_str)
 
-    let cmd = ['hi', group]
+  let cmd = ['hi', group]
 
-    if fg != s:default_lst
-        call add(cmd, 'guifg='.fg[0])
-        call add(cmd, 'ctermfg='.fg[1])
-    endif
+  if fg != s:default_lst
+    call add(cmd, 'guifg='.fg[0])
+    call add(cmd, 'ctermfg='.fg[1])
+  endif
 
-    if bg != s:default_lst
-        call add(cmd, 'guibg='.bg[0])
-        call add(cmd, 'ctermbg='.bg[1])
-    endif
+  if bg != s:default_lst
+    call add(cmd, 'guibg='.bg[0])
+    call add(cmd, 'ctermbg='.bg[1])
+  endif
 
-    if attr != s:default_str
-        call add(cmd, 'gui='.attr)
-        call add(cmd, 'cterm='.attr)
-    endif
+  if attr != s:default_str
+    call add(cmd, 'gui='.attr)
+    call add(cmd, 'cterm='.attr)
+  endif
 
-    exec join(cmd, ' ')
+  exec join(cmd, ' ')
 endfunction
 
 
@@ -73,22 +74,22 @@ endfunction
 " --- Vim interface ------------------------------------------------------------
 "
 
-call s:hi('Normal')
-call s:hi('Cursor', s:black, s:orange)
-call s:hi('CursorLine', s:default_lst, s:bgray, s:none)
-call s:hi('CursorColumn', s:default_lst, s:bgray, s:none)
-call s:hi('CursorLineNr', s:white, s:default_bg, s:bold)
 call s:hi('ColorColumn', s:default_fg, s:bgray)
-call s:hi('Search', s:white, s:sblue)
-call s:hi('Visual', s:white, s:sblue)
+call s:hi('Cursor', s:black, s:orange)
+call s:hi('CursorColumn', s:default_lst, s:bgray, s:none)
+call s:hi('CursorLine', s:default_lst, s:bgray, s:none)
+call s:hi('CursorLineNr', s:white, s:default_bg, s:bold)
 call s:hi('ErrorMsg', s:white, s:red)
-call s:hi('TabLine')
-call s:hi('TabLineFill', s:default_bg, s:default_bg)
-call s:hi('TabLineSel', s:black, s:lgray)
+call s:hi('Normal')
+call s:hi('Search', s:white, s:sblue)
 call s:hi('StatusLine', s:lgray, s:black)
 call s:hi('StatusLineNC', s:lgray, s:black)
 call s:hi('StatusLineTerm', s:black, s:lgray, s:bold)
 call s:hi('StatusLineTermNC', s:black, s:lgray)
+call s:hi('TabLine')
+call s:hi('TabLineFill', s:default_bg, s:default_bg)
+call s:hi('TabLineSel', s:black, s:lgray)
+call s:hi('Visual', s:white, s:sblue)
 
 
 " Tildes at the bottom of a buffer, etc.
@@ -126,15 +127,19 @@ call s:hi('SignColumn')
 " --- Programming languages ----------------------------------------------------
 "
 
-call s:hi('Statement', s:white, s:default_bg)
-call s:hi('PreProc', s:white, s:default_bg)
-call s:hi('String', s:sblue)
 call s:hi('Comment', s:cgray, s:default_bg, s:comment_attr)
 call s:hi('Constant')
-call s:hi('Type', s:white, s:default_bg)
-call s:hi('Function', s:white)
+call s:hi('String', s:sblue)
+call s:hi('Character', s:sblue)
+call s:hi('Number', s:sblue)
+call s:hi('Boolean', s:sblue)
+call s:hi('Float', s:sblue)
 call s:hi('Identifier')
-call s:hi('Special')
+call s:hi('Statement', s:white, s:default_bg)
+call s:hi('PreProc', s:white, s:default_bg)
+call s:hi('Type', s:white, s:default_bg, s:bold)
+call s:hi('Special', s:white, s:default_bg, s:bold)
+
 call s:hi('MatchParen', s:black, s:lgray)
 
 
@@ -218,16 +223,16 @@ call s:hi('javaScriptFunction', s:white, s:default_bg, s:bold)
 "
 
 call s:hi('DiffAdd', s:white, s:green)
-call s:hi('DiffDelete', s:white, s:red)
 call s:hi('DiffChange', s:white, s:cgray)
+call s:hi('DiffDelete', s:white, s:red)
 call s:hi('DiffText', s:white, s:red)
+call s:hi('diffAdded', s:white, s:green)
 call s:hi('diffFile', s:cgray)
-call s:hi('diffNewFile', s:cgray)
 call s:hi('diffIndexLine', s:cgray)
 call s:hi('diffLine', s:cgray)
-call s:hi('diffSubname', s:cgray)
-call s:hi('diffAdded', s:white, s:green)
+call s:hi('diffNewFile', s:cgray)
 call s:hi('diffRemoved', s:white, s:red)
+call s:hi('diffSubname', s:cgray)
 
 
 "
