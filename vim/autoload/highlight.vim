@@ -1,18 +1,17 @@
-let s:lights = {}
 let s:groups = [
-            \ 'Highlight1',
-            \ 'Highlight2',
-            \ 'Highlight3',
-            \ 'Highlight4',
-            \ 'Highlight5',
-            \ 'Highlight6',
-            \ 'Highlight9',
-            \ 'Highlight10',
-            \ 'Highlight11',
-            \ 'Highlight12',
-            \ 'Highlight13',
-            \ 'Highlight14'
-            \ ]
+      \ 'Highlight1',
+      \ 'Highlight2',
+      \ 'Highlight3',
+      \ 'Highlight4',
+      \ 'Highlight5',
+      \ 'Highlight6',
+      \ 'Highlight9',
+      \ 'Highlight10',
+      \ 'Highlight11',
+      \ 'Highlight12',
+      \ 'Highlight13',
+      \ 'Highlight14'
+      \ ]
 
 highlight Highlight1  ctermfg=0 ctermbg=1  guifg=#ffffff guibg=#800000
 highlight Highlight2  ctermfg=0 ctermbg=2  guifg=#ffffff guibg=#008000
@@ -27,29 +26,28 @@ highlight Highlight12 ctermfg=0 ctermbg=12 guifg=#ffffff guibg=#0000ff
 highlight Highlight13 ctermfg=0 ctermbg=13 guifg=#ffffff guibg=#ff00ff
 highlight Highlight14 ctermfg=0 ctermbg=14 guifg=#ffffff guibg=#00ffff
 
-function! highlight#set(key, ...)
-    let l:regexp = a:0 > 1 ? a:1 : a:key
-    call highlight#unset(a:key)
-    let s:lights[a:key] = matchadd(s:groups[len(keys(s:lights))%len(s:groups)], l:regexp)
+function! highlight#set(pattern)
+  call highlight#unset(a:pattern)
+  call matchadd(s:groups[len(highlight#list())%len(s:groups)], a:pattern)
 endfunction
 
-function! highlight#unset(key)
-    if has_key(s:lights, a:key)
-        call matchdelete(s:lights[a:key])
-        call remove(s:lights, a:key)
-    endif
+function! highlight#unset(pattern)
+  let l:matches = filter(getmatches(), 'v:val["pattern"] ==# a:pattern')
+  for l:match in l:matches
+    call matchdelete(get(l:match, "id"))
+  endfor
 endfunction
 
 function! highlight#clear()
-    for l:hi in highlight#list()
-        call highlight#unset(l:hi)
-    endfor
-endfunction
-
-function! highlight#list()
-    return keys(s:lights)
+  for l:match in getmatches()
+    call matchdelete(l:match["id"])
+  endfor
 endfunction
 
 function! highlight#complete(lead, line, pos)
-    return filter(keys(s:lights), 'v:val =~ "^'.a:lead.'"')
+  return filter(highlight#list(), 'v:val =~ "^'.a:lead.'"')
+endfunction
+
+function! highlight#list()
+  return map(getmatches(), 'v:val["pattern"]')
 endfunction
