@@ -121,20 +121,32 @@ extract () {
 }
 
 # GIT
-git_full_branch_name() {
-  git symbolic-ref HEAD 2>/dev/null || git name-rev --name-only --no-undefined --always HEAD
+git_prompt() {
+  is_git_directory && echo "%{$reset_color%} on %{$fg[green]%}$(git_branch_name)%{$reset_color%}"
+}
+
+git_issue() {
+  git_branch_name | cut -d - -f 1-2 | tr '[:lower:]' '[:upper:]'
 }
 
 git_branch_name() {
   git_full_branch_name | sed -e 's|refs/heads/||'
 }
 
-is_git_directory() {
-  git rev-parse --git-dir >/dev/null 2>&1
+git_full_branch_name() {
+  git symbolic-ref HEAD 2>/dev/null || git name-rev --name-only --no-undefined --always HEAD
 }
 
-git_prompt() {
-  is_git_directory && echo " %{$reset_color%}[%{$fg[green]%}$(git_branch_name)%{$reset_color%}]"
+is_git_directory() {
+  git_directory >/dev/null 2>&1
+}
+
+git_project() {
+  git_directory | sed 's/.*\///'
+}
+
+git_directory() {
+  git rev-parse --show-toplevel
 }
 
 rm_tr_white () {
