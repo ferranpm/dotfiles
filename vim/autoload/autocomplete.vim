@@ -2,50 +2,39 @@
 
 function! autocomplete#complete(findstart, base)
   if a:findstart
-    " locate start column of word
-    let line = strpart(getline('.'), 0, col('.') - 1)
-    return autocomplete#find_start(line, g:mkw_any)
+    return autocomplete#find_start()
   else
-    let l:list = filter(autocomplete#get_all_words(), "v:val =~# s:regex")
-    return sort(sort(l:list), { a, b -> len(a) - len(b) })
+    return autocomplete#completions(a:base)
   endif
 endfunction
 
-" find start of keyword-match (return) and create regexp for finding matching keyword (s:regex)
-" a:line - string to search in, search starts at end of string
-" a:anyre - reg.exp looked for to be replaced by '\k\*'
-function! autocomplete#find_start(line, anyre)
-  " this can not be used because a:anyre could be 0-length:
-  " return match(a:line, '\%(\k*'.a:anyre.'\)*\k*$')
-  let line = a:line
-  " trims trailing keyword-characters
-  let result = match(line, '\k*$')
-  if result < 0
-    let result = strlen(line)
-  else
-    let line = strpart(line, 0, result)
-  endif
-  " trim trailing occurrences of keyword-characters followed by anyre
-  while result > 0
-    let result = match(line, '\k*'.a:anyre.'$')
-    if result < 0 || result == strlen(line) | break | endif
-    let line = strpart(line, 0, result)
-  endwhile
-  let result = strlen(line)
-  let line = strpart(a:line, result)
-  let s:regex = '\<'.substitute(line, a:anyre, '\\k*', "g").'\>'
-  return result
+function! autocomplete#find_start()
+  let l:part = strpart(getline('.'), 0, col('.') - 1)
+  return match(part, '\m\<\w*$')
 endfunction
 
-function! autocomplete#get_all_words()
+function! autocomplete#completions(base)
+  let l:regex = autocomplete#regexp(a:base)
+  let l:list = autocomplete#get_all_words_matching(l:regex)
+  return uniq(sort(l:list, { a, b -> len(a) - len(b) }))
+endfunction
+
+function! autocomplete#regexp(base)
+  return '\<'.substitute(a:base, '\m\k\zs', '\\k*', "g").'\>'
+endfunction
+
+function! autocomplete#get_all_words_matching(regexp)
   let l:list = []
-  let buffers = filter(getbufinfo(), "buflisted(v:val['bufnr']) && bufloaded(v:val['bufnr'])")
-  for buffer in buffers
-    let lines = getbufline(buffer['bufnr'], 0, '$')
-    for line in lines
-      let words = split(line, '\s*\<\|\>\s*')
-      call extend(l:list, words)
-    endfor
+  let Split = { _, line -> split(line, '\m\s*\<\|\>\s*') }
+  let Matching = { _, word -> word =~# a:regexp }
+  for buffer in getbufinfo()
+    let bufnr = buffer['bufnr']
+    if buflisted(bufnr)
+      let lines = getbufline(bufnr, 0, '$')
+      for words in map(lines, Split)
+        call uniq(extend(l:list, filter(words, Matching)))
+      endfor
+    endif
   endfor
   return l:list
 endfunction
