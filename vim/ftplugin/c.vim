@@ -1,10 +1,6 @@
-noremap <leader>m; :call c#ToSource()<cr>
-noremap <leader>m: :call c#ToHeader()<cr>
+command -buffer -range ToSource <line1>,<line2>call c#to_source()
+command -buffer -range ToHeader <line1>,<line2>call c#to_header()
 
 " Text object for 'arround function'
-vmap <silent> af <esc>][v%?^\w\+<cr>
-onoremap <silent> af :normal Vaf<CR>
-
-setlocal tags+=~/.vim/tags/c/c
-
-command! -buffer FormatFolder call c#FormatFolder()
+vmap <buffer> <silent> af <esc>][v%?^\w\+<cr>
+onoremap <buffer> <silent> af :normal Vaf<CR>

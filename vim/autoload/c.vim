@@ -1,33 +1,17 @@
-function! c#ToSource() range
-    let pos = getpos('.')
-    if a:firstline == a:lastline
-        normal ==
-    else
-        normal gv=
-    endif
-    execute 'silent '.a:firstline.','.a:lastline.'s/;$/ {\r}\r/e'
-    call setpos('.', pos)
+function! c#to_source() range
+  let pos = getpos('.')
+  execute a:firstline.','.a:lastline.'call utils#indent()'
+  execute a:firstline.','.a:lastline.'s/;$/ {\r}\r/e'
+  call setpos('.', pos)
 endfunction
 
-function! c#ToHeader() range
-    let pos = getpos('.')
-    let range = a:firstline.','.a:lastline
-    execute 'silent '.range.'s/)\s*{\?\s*$/);/e'
-    execute 'silent '.range.'s/ \?\w\+\(,\|)\)/\1/e'
-    execute 'silent '.range.'g/^\%(\s\|\s*{\|\s*}\)\|^$/d'
-    if a:firstline == a:lastline
-        normal ==
-    else
-        normal gv=
-    endif
-    call setpos('.', pos)
+function! c#to_header() range
+  let pos = getpos('.')
+  execute a:firstline.','.a:lastline.'s/)\s*{\?\s*$/);/e'
+  execute a:firstline.','.a:lastline.'s/ \?\w\+\(,\|)\)/\1/e'
+  execute a:firstline.','.a:lastline.'g/^\%(\s\|\s*{\|\s*}\)\|^$/d'
+  let maxposition = min([a:lastline, line('$')])
+  execute a:firstline.','.maxposition.'call utils#indent()'
+  call setpos('.', pos)
 endfunction
 
-function c#FormatFolder()
-    silent! argdelete *
-    silent! argadd *.c *.h
-    silent! argdo normal! gg=G
-    silent! argdo g/^$\n^$/d
-    silent! argdo %s/\s\+$//
-    silent! argdo w
-endfunction

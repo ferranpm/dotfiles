@@ -1,54 +1,49 @@
-function! utils#Pipe(cmd)
-    call buffer#GoToBuffer('Pipe', 'vnew')
-    normal ggdG
-    redir @+>
-    silent execute a:cmd
-    redir END
-    silent 0put +
-    normal! ggdd
-    set nomodified
-endfunction
-
-function! utils#Shell(cmd)
-    call buffer#GoToBuffer('Shell', 'vnew')
-    normal! ggdG
-    execute 'read !'.a:cmd
-    normal! ggdd
-    set nomodified
-endfunction
-
-function! utils#FolderComplete(ArgLead, CmdLine, CursorPos, Folder)
+function! utils#folder_complete(ArgLead, CmdLine, CursorPos, Folder)
     let expanded = expand(a:Folder) . '/'
     return join(map(glob(expanded.'*', 1, 1), 'substitute(v:val, expanded, "", "")'), "\n")
 endfunction
 
-function! utils#MaxColumn(string, startline, endline, column)
-    let l:cursor_save = getpos('.')
-    let l:max_column = 0
-    for line in range(a:endline - a:startline + 1)
-        call cursor(a:startline + line, a:column)
-        call search(a:string, 'c', line('.'))
-        let l:current_column = col('.')
-        if l:current_column > l:max_column
-            let l:max_column = l:current_column
-        endif
-    endfor
-    call setpos('.', l:cursor_save)
-    return l:max_column
+function! utils#max_column(string, startline, endline, column)
+  let l:cursor_save = getpos('.')
+  let l:max_column = 0
+  for line in range(a:endline - a:startline + 1)
+    call cursor(a:startline + line, a:column)
+    call search(a:string, 'c', line('.'))
+    let l:current_column = col('.')
+    if l:current_column > l:max_column
+      let l:max_column = l:current_column
+    endif
+  endfor
+  call setpos('.', l:cursor_save)
+  return l:max_column
 endfunction
 
-function! utils#SudoWriteCmd() abort
-    execute (has('gui_running') ? '' : 'silent') 'write !env SUDO_EDITOR=tee sudo -e % >/dev/null'
-    let &modified = v:shell_error
+function! utils#sudo_write() abort
+  execute (has('gui_running') ? '' : 'silent') 'write !env SUDO_EDITOR=tee sudo -e % >/dev/null'
+  let &modified = v:shell_error
 endfunction
 
-function! utils#Mkdir(...)
-    let folder = a:0 > 0 ? a:1 : '%:h'
-    call system('mkdir -p '.expand(folder))
+function! utils#indent() range
+  if a:firstline == a:lastline
+    normal ==
+  else
+    normal gv=
+  endif
 endfunction
 
-function! utils#GetRelative(cwd, path)
-    let l:cwd = glob(a:cwd, 1) . (a:cwd[strlen(a:cwd) - 1] == '/' ? '' : '/')
-    let l:path = glob(a:path, 1) . (a:path[strlen(a:path) - 1] == '/' ? '' : '/')
-    return substitute(l:path, escape(l:cwd, '/'), '', '')
-endfunction
+" utils#go_to_buffer({name}[, {methodnew}[, {switchbuf}]])
+function! utils#go_to_buffer(name, ...) " {{{
+    let methodnew = 'tabnew'
+    let switchbuf = 'usetab'
+    let oldswitchbuf = &switchbuf
+    if a:0 > 0 | let methodnew = a:1 | endif
+    if a:0 > 1 | let switchbuf = a:2 | endif
+    if bufexists(a:name)
+        execute 'set switchbuf='.switchbuf
+        execute 'sbuffer '.a:name
+        execute 'set switchbuf='.oldswitchbuf
+    else
+        execute methodnew
+        execute 'file '.a:name
+    endif
+endfunction " }}}

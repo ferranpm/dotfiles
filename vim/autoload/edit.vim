@@ -1,4 +1,4 @@
-function! edit#Reg()
+function! edit#reg()
     reg
     echo 'Register: '
     let char = nr2char(getchar())
@@ -8,10 +8,10 @@ function! edit#Reg()
     redraw
 endfunction
 
-function! edit#Align(string) range
+function! edit#align(string) range
     let col = min([ virtcol("'<"), virtcol("'>") ])
     let l:cursor_save = getpos('.')
-    let l:max_column = utils#MaxColumn(a:string, a:firstline, a:lastline, col)
+    let l:max_column = utils#max_column(a:string, a:firstline, a:lastline, col)
     for line in range(a:lastline - a:firstline + 1)
         call cursor(a:firstline + line, col)
         if search(a:string, 'c', line('.')) != 0
@@ -24,7 +24,7 @@ function! edit#Align(string) range
     call setpos('.', l:cursor_save)
 endfunction
 
-function! edit#AutoHighlightToggle()
+function! edit#auto_highlight_toggle()
     if exists('#auto_highlight')
         match none IncSearch
         autocmd! auto_highlight
@@ -41,6 +41,6 @@ function! edit#AutoHighlightToggle()
     endif
 endfunction
 
-function! edit#QuickfixToArgs()
+function! edit#quickfix_to_args()
   execute 'args '.join(filter(uniq(map(getqflist(), 'bufname(v:val["bufnr"])')), 'v:val !~ "^\s*$"'), ' ')
 endfunction
