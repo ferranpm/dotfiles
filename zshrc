@@ -59,6 +59,7 @@ bindkey -e '^n' down-line-or-search
 bindkey -e '^s' insert-sudo
 bindkey -e '^y' insert-man
 bindkey -e '^p' up-line-or-search
+bindkey -e '^r' search-history
 
 ## ALIASES ##
 alias aura='aura --color=auto'
@@ -95,6 +96,12 @@ insert-man() { insert-word "man" }
 zle -N insert-man
 insert-sudo() { insert-word "sudo" }
 zle -N insert-sudo
+
+search-history() {
+  BUFFER=$(fc -lr 0 | cut -d " " -f 4- | fzy --query="$BUFFER")
+  CURSOR=${#BUFFER}
+}
+zle -N search-history
 
 extract () {
   for f in $*; do
@@ -155,8 +162,6 @@ rm_tr_white () {
 
 test_and_source() { [ -f $1 ] && source $1 }
 
-## FZF ##
-test_and_source $HOME/.fzf.zsh
 
 ## ASDF ##
 test_and_source $HOME/.asdf/asdf.sh
