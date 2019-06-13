@@ -6,4 +6,5 @@
 --exclude=coverage
 --exclude=test
 --exclude=spec
+--exclude=*.min.*
 --c-kinds=+l
