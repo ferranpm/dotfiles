@@ -46,6 +46,13 @@ set splitbelow
 set splitright
 
 " multiple tab pages
+function! TabLine()
+  let tabnr = tabpagenr()
+  let ColorClass = { nr -> nr == tabnr ? '%#TabLineSel#' : '%#TabLine#' }
+  let TabInfo = { _, val ->  ColorClass(val['tabnr']) . ' ' . val['tabnr'] }
+  return join(map(gettabinfo(), TabInfo)) . '%#TabLineFill#'
+endfunction
+set tabline=%!TabLine()
 
 " terminal
 set guicursor=a:block-Cursor-blinkon0,i-c-ci:ver20-Cursor-blinkon0,r-cr:hor20-Cursor-blinkon0
