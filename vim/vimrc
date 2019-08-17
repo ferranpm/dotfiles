@@ -261,4 +261,4 @@ if exists(':terminal')
   tnoremap <c-u> <c-\><c-n><c-u>
 endif
 
-colorscheme monochrome
+colorscheme basic
