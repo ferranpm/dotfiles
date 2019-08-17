@@ -208,8 +208,6 @@ nnoremap ,S :%s/\C\<<c-r>=expand('<cword>')<cr>\>/
 nnoremap ,s :s/\C\<<c-r>=expand('<cword>')<cr>\>/
 vnoremap ,S y:%s/\C<c-r>=escape('<c-r>0', '*/\[].~')<cr>/
 vnoremap ,s y:s/\C<c-r>=escape('<c-r>0', '*/\[].~')<cr>/
-map q,s ,s<c-f>i
-map q,S ,S<c-f>i
 
 nnoremap ,g :g/\C\<<c-r>=expand('<cword>')<cr>\>/
 nnoremap ,v :v/\C\<<c-r>=expand('<cword>')<cr>\>/
