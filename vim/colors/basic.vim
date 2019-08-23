@@ -99,11 +99,7 @@ function! s:hi(...)
   exec join(cmd, ' ')
 endfunction
 
-
-"
-" --- Vim interface ------------------------------------------------------------
-"
-
+" Vim interface
 call s:hi('ColorColumn', s:default_fg, s:gray0)
 call s:hi('CursorColumn', s:default_fg, s:gray0)
 call s:hi('CursorLine', s:default_fg, s:gray0)
@@ -150,10 +146,7 @@ call s:hi('Todo', s:black, s:yellow0)
 " Signs.
 call s:hi('SignColumn')
 
-"
-" --- Programming languages ----------------------------------------------------
-"
-
+" Programming languages
 call s:hi('Comment', s:gray2)
 call s:hi('Constant', s:red2)
 call s:hi('Identifier', s:blue2)
@@ -164,10 +157,7 @@ call s:hi('Special', s:purple1)
 
 call s:hi('MatchParen', s:default_fg, s:yellow1)
 
-"
-" --- Diffs --------------------------------------------------------------------
-"
-
+" Diffs
 call s:hi('DiffAdd', s:default_fg, s:green0)
 call s:hi('DiffChange', s:default_fg, s:gray0)
 call s:hi('DiffDelete', s:default_fg, s:red0)
@@ -180,6 +170,7 @@ call s:hi('diffNewFile', s:default_fg, s:gray0)
 call s:hi('diffRemoved', s:default_fg, s:red0)
 call s:hi('diffSubname', s:default_fg, s:gray0)
 
+" Terminal
 let g:terminal_ansi_colors = [
       \ s:black[0],
       \ s:red2[0],
