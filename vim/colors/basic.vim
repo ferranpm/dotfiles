@@ -70,28 +70,28 @@ else
   let s:default_bg = s:black
 end
 
-let s:efault_lst2 = []
-let s:efault_str2 = ''
+let s:default_lst2 = []
+let s:default_str2 = ''
 
 function! s:hi(...)
   let group = a:1
   let fg    = get(a:, 2, s:default_fg)
   let bg    = get(a:, 3, s:default_bg)
-  let attr  = get(a:, 4, s:efault_str2)
+  let attr  = get(a:, 4, s:default_str2)
 
   let cmd = ['hi', group]
 
-  if fg != s:efault_lst2
+  if fg != s:default_lst2
     call add(cmd, 'guifg='.fg[0])
     call add(cmd, 'ctermfg='.fg[1])
   endif
 
-  if bg != s:efault_lst2
+  if bg != s:default_lst2
     call add(cmd, 'guibg='.bg[0])
     call add(cmd, 'ctermbg='.bg[1])
   endif
 
-  if attr != s:efault_str2
+  if attr != s:default_str2
     call add(cmd, 'gui='.attr)
     call add(cmd, 'cterm='.attr)
   endif
