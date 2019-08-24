@@ -6,65 +6,52 @@ endif
 
 let g:colors_name = 'basic'
 
-if &background == 'light'
-  let s:white   = ['#ffffff', 231]
+let s:black   = ['#000000', 0]
+let s:white   = ['#ffffff', 15]
 
+let s:red1     = ['#990000', 160]
+let s:green1   = ['#009900', 82]
+let s:yellow1  = ['#999900', 184]
+let s:blue1    = ['#000099', 25]
+let s:purple1  = ['#990099', 135]
+let s:cyan1    = ['#009999', 45]
+let s:gray1    = ['#999999', 245]
+
+if &background == 'light'
   let s:red0    = ['#ee0000', 9]
   let s:green0  = ['#00ee00', 10]
   let s:yellow0 = ['#eeee00', 11]
   let s:blue0   = ['#0000ee', 12]
   let s:purple0 = ['#ee00ee', 13]
   let s:cyan0   = ['#00eeee', 14]
-  let s:gray0   = ['#eeeeee', 255]
+  let s:gray0   = ['#eeeeee', 250]
 
-  let s:red1     = ['#cc0000', 9]
-  let s:green1   = ['#00cc00', 10]
-  let s:yellow1  = ['#cccc00', 11]
-  let s:blue1    = ['#0000cc', 12]
-  let s:purple1  = ['#cc00cc', 13]
-  let s:cyan1    = ['#00cccc', 14]
-  let s:gray1    = ['#cccccc', 252]
-
-  let s:red2    = ['#a00000', 1]
-  let s:green2  = ['#00a000', 2]
-  let s:yellow2 = ['#808000', 3]
-  let s:blue2   = ['#0000a0', 4]
-  let s:purple2 = ['#a000a0', 5]
-  let s:cyan2   = ['#a000a0', 6]
-  let s:gray2   = ['#aaaaaa', 240]
-
-  let s:black   = ['#000000', 0]
+  let s:red2    = ['#770000', 1]
+  let s:green2  = ['#007700', 2]
+  let s:yellow2 = ['#777700', 3]
+  let s:blue2   = ['#000077', 4]
+  let s:purple2 = ['#770077', 5]
+  let s:cyan2   = ['#770077', 6]
+  let s:gray2   = ['#777777', 240]
 
   let s:default_fg = s:black
   let s:default_bg = s:white
 else
-  let s:white   = ['#ffffff', 231]
+  let s:red0    = ['#aa0000', 1]
+  let s:green0  = ['#00aa00', 2]
+  let s:yellow0 = ['#aaaa00', 3]
+  let s:blue0   = ['#0000aa', 4]
+  let s:purple0 = ['#aa00aa', 5]
+  let s:cyan0   = ['#aa00aa', 6]
+  let s:gray0   = ['#aaaaaa', 240]
 
-  let s:red0    = ['#a00000', 1]
-  let s:green0  = ['#00a000', 2]
-  let s:yellow0 = ['#808000', 3]
-  let s:blue0   = ['#aaaacc', 4]
-  let s:purple0 = ['#a000a0', 5]
-  let s:cyan0   = ['#a000a0', 6]
-  let s:gray0   = ['#2a2a3a', 240]
-
-  let s:red1     = ['#cc0000', 9]
-  let s:green1   = ['#00cc00', 10]
-  let s:yellow1  = ['#cccc00', 11]
-  let s:blue1    = ['#0000cc', 12]
-  let s:purple1  = ['#cc00cc', 13]
-  let s:cyan1    = ['#00cccc', 14]
-  let s:gray1    = ['#cccccc', 252]
-
-  let s:red2    = ['#ee4444', 9]
-  let s:green2  = ['#00ee00', 10]
-  let s:yellow2 = ['#eeee00', 11]
-  let s:blue2   = ['#aaaaee', 12]
-  let s:purple2 = ['#ee00ee', 13]
-  let s:cyan2   = ['#00eeee', 14]
-  let s:gray2   = ['#aaaaaa', 255]
-
-  let s:black   = ['#000000', 0]
+  let s:red2    = ['#cc5555', 9]
+  let s:green2  = ['#55cc55', 10]
+  let s:yellow2 = ['#cccc55', 11]
+  let s:blue2   = ['#5555cc', 12]
+  let s:purple2 = ['#cc55cc', 13]
+  let s:cyan2   = ['#55cccc', 14]
+  let s:gray2   = ['#cccccc', 250]
 
   let s:default_fg = s:white
   let s:default_bg = s:black
