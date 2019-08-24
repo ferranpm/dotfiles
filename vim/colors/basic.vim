@@ -101,9 +101,9 @@ endfunction
 
 " Vim interface
 call s:hi('ColorColumn', s:default_fg, s:gray0)
-call s:hi('CursorColumn', s:default_fg, s:gray0)
-call s:hi('CursorLine', s:default_fg, s:gray0)
-call s:hi('CursorLineNr', s:black)
+call s:hi('CursorColumn', s:default_lst2, s:gray0)
+call s:hi('CursorLine', s:default_lst2, s:gray0)
+call s:hi('CursorLineNr')
 call s:hi('Error', s:default_bg, s:red1)
 call s:hi('ErrorMsg', s:default_bg, s:red1)
 call s:hi('IncSearch', s:default_fg, s:yellow1)
@@ -116,14 +116,14 @@ call s:hi('StatusLineTermNC', s:default_bg, s:default_fg)
 call s:hi('TabLine', s:default_bg, s:default_fg, 'reverse')
 call s:hi('TabLineFill', s:default_bg, s:default_fg, 'reverse')
 call s:hi('TabLineSel', s:default_fg, s:default_bg, 'reverse,bold')
-call s:hi('Visual', s:default_fg, s:gray1)
+call s:hi('Visual', s:default_fg, s:gray0)
 
 " Tildes at the bottom of a buffer, etc.
 call s:hi('NonText', s:blue2)
 
 " Folding.
 call s:hi('FoldColumn', s:blue2, s:default_bg)
-call s:hi('Folded', s:blue2, s:gray0)
+call s:hi('Folded', s:blue2, s:gray1)
 
 " Line numbers gutter.
 call s:hi('LineNr', s:gray2)
@@ -152,8 +152,8 @@ call s:hi('Constant', s:red2)
 call s:hi('Identifier', s:blue2)
 call s:hi('Statement', s:purple2)
 call s:hi('PreProc', s:purple2)
-call s:hi('Type', s:blue0)
-call s:hi('Special', s:purple1)
+call s:hi('Type', s:blue2)
+call s:hi('Special', s:purple2)
 
 call s:hi('MatchParen', s:default_fg, s:yellow1)
 
