@@ -32,7 +32,6 @@ set nowrap
 
 " syntax, highlighting and spelling
 set nohlsearch
-set cursorline
 set colorcolumn=128
 
 " multiple windows
@@ -107,7 +106,7 @@ set nobackup
 set noswapfile
 
 " command line editing
-set wildmode=list:longest,full
+set wildmode=longest:full,full
 set wildignore=**/node_modules/**,*.cache,**/tmp/**,**/coverage/**,**/.git/**
 set wildignorecase
 set wildmenu
@@ -147,6 +146,7 @@ augroup automaticquickfix
     autocmd!
     autocmd QuickFixCmdPost [^l]* cwindow
     autocmd QuickFixCmdPost    l* lwindow
+    autocmd TerminalOpen * nnoremap <buffer> <c-p> i<c-p>
 augroup END
 
 augroup quickfix
@@ -237,7 +237,7 @@ nnoremap <silent> <leader>n :e ~/Notes/sequra/inbox.md<cr>
 let silent = has('gui_running') ? 'silent ' : ''
 execute 'nnoremap <leader>u :'.silent.'grep! "\b<c-r>=expand("<cword>")<cr>\b"'
 execute 'nnoremap <leader>U :'.silent.'grep! "\b<c-r>=expand("<cWORD>")<cr>\b"'
-execute 'vnoremap <leader>u y:'.silent.'grep! --case-sensitive --literal "\b<c-r>0\b"'
+execute 'vnoremap <leader>u y:'.silent.'grep! --case-sensitive --literal "<c-r>0"'
 execute 'nnoremap <leader>g :'.silent.'grep! ""<left>'
 execute 'vnoremap <leader>g y:'.silent.'grep! "<c-r>0"<left>'
 
