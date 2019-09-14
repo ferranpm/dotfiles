@@ -1,1 +1,0 @@
-nmap <c-\> <Plug>VinegarUp
