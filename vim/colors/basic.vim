@@ -43,7 +43,7 @@ else
   let s:blue0   = ['#0000aa', 4]
   let s:purple0 = ['#aa00aa', 5]
   let s:cyan0   = ['#aa00aa', 6]
-  let s:gray0   = ['#aaaaaa', 240]
+  let s:gray0   = ['#333333', 240]
 
   let s:red2    = ['#cc5555', 9]
   let s:green2  = ['#55cc55', 10]
@@ -103,14 +103,14 @@ call s:hi('StatusLineTermNC', s:default_bg, s:default_fg)
 call s:hi('TabLine', s:default_bg, s:default_fg, 'reverse')
 call s:hi('TabLineFill', s:default_bg, s:default_fg, 'reverse')
 call s:hi('TabLineSel', s:default_fg, s:default_bg, 'reverse,bold')
-call s:hi('Visual', s:default_fg, s:gray0)
+call s:hi('Visual', s:default_lst2, s:gray0)
 
 " Tildes at the bottom of a buffer, etc.
 call s:hi('NonText', s:blue2)
 
 " Folding.
 call s:hi('FoldColumn', s:blue2, s:default_bg)
-call s:hi('Folded', s:blue2, s:gray1)
+call s:hi('Folded', s:blue1, s:gray0)
 
 " Line numbers gutter.
 call s:hi('LineNr', s:gray2)
