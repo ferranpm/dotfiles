@@ -1,5 +1,5 @@
 PROMPT='
-%{$fg[green]%}%n%{$reset_color%} in %{$fg[yellow]%}%~%{$reset_color%} at %{$fg[blue]%}%m$(git_prompt)
+%{$fg[green]%}%n%{$reset_color%} in %{$fg[yellow]%}%~%{$reset_color%} at %{$fg[blue]%}%m${vcs_info_msg_0_}
 %{$fg[blue]%}%(!.#.>)%{$reset_color%} '
 
 fpath=(~/.zsh/completion $fpath)
@@ -27,6 +27,7 @@ export ZLS_COLORS=$LS_COLORS
 
 autoload -U colors && colors
 autoload -U compinit && compinit -d $HOME/.zshcompdump
+autoload -Uz vcs_info
 
 ## OPTS ##
 setopt APPEND_HISTORY
@@ -50,6 +51,9 @@ setopt PUSHD_TOHOME
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' menu select
 zstyle ':completion:*' verbose true
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' formats       '%F{$reset_color} on %F{2}%b%F{$reset_color}'
+zstyle ':vcs_info:*' actionformats '%F{$reset_color} on %F{2}%b %F{1}(%a)%F{$reset_color}'
 
 ## BINDKEYS ##
 bindkey -e '^[[1~' beginning-of-line
@@ -128,10 +132,6 @@ extract () {
 }
 
 # GIT
-git_prompt() {
-  is_git_directory && echo "%{$reset_color%} on %{$fg[green]%}$(git_branch_name)%{$reset_color%}"
-}
-
 git_issue() {
   git_branch_name | cut -d - -f 1-2 | tr '[:lower:]' '[:upper:]'
 }
@@ -162,6 +162,9 @@ rm_tr_white () {
 
 test_and_source() { [ -f $1 ] && source $1 }
 
+precmd () {
+  vcs_info
+}
 
 ## ASDF ##
 test_and_source $HOME/.asdf/asdf.sh
