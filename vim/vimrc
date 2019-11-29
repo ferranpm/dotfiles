@@ -37,7 +37,7 @@ set colorcolumn=128
 " multiple windows
 set laststatus=2
 set statusline=%f%m\ %y%h%r%w\ (%l/%L,\ %c)\ %p%%\ %=%{fnamemodify(getcwd(),':t')}
-set equalalways
+set noequalalways
 set hidden
 set switchbuf=useopen
 set splitbelow
@@ -106,7 +106,7 @@ set nobackup
 set noswapfile
 
 " command line editing
-set wildmode=longest:full,full
+set wildmode=full
 set wildignore=**/node_modules/**,*.cache,**/tmp/**,**/coverage/**,**/.git/**
 set wildignorecase
 set wildmenu
@@ -203,10 +203,10 @@ nnoremap <c-j> <c-w><c-j>
 nnoremap <c-k> <c-w><c-k>
 nnoremap <c-l> <c-w><c-l>
 
-nnoremap ,S :%s/\C\<<c-r>=expand('<cword>')<cr>\>/
-nnoremap ,s :s/\C\<<c-r>=expand('<cword>')<cr>\>/
-vnoremap ,S y:%s/\C<c-r>=escape('<c-r>0', '*/\[].~')<cr>/
-vnoremap ,s y:s/\C<c-r>=escape('<c-r>0', '*/\[].~')<cr>/
+nnoremap ,S :%s/\C\<<c-r>=expand('<cword>')<cr>\>/<c-f>i
+nnoremap ,s :s/\C\<<c-r>=expand('<cword>')<cr>\>/<c-f>i
+vnoremap ,S y:%s/\C<c-r>=escape('<c-r>0', '*/\[].~')<cr>/<c-f>i
+vnoremap ,s y:s/\C<c-r>=escape('<c-r>0', '*/\[].~')<cr>/<c-f>i
 
 nnoremap ,g :g/\C\<<c-r>=expand('<cword>')<cr>\>/
 nnoremap ,v :v/\C\<<c-r>=expand('<cword>')<cr>\>/
