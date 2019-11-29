@@ -1,5 +1,5 @@
-nmap <c-q> <Plug>(PickerEdit)
-nmap <c-p> <Plug>(PickerBuffer)
+nmap <leader>q <Plug>(PickerEdit)
+nmap <leader>p <Plug>(PickerBuffer)
 
 if executable("rg")
   let g:picker_custom_find_executable = 'rg'
