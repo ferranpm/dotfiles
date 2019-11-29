@@ -19,6 +19,7 @@ export LESS_TERMCAP_se=$(printf "\e[0m")
 export LESS_TERMCAP_so=$(printf "\e[1;40;33m")
 export LESS_TERMCAP_ue=$(printf "\e[0m")
 export LESS_TERMCAP_us=$(printf "\e[1;32m")
+export NVM_DIR=$HOME/.nvm
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.rvm/bin:$PATH
 export PATH=$HOME/.rvm/gems/$RUBY_VERSION/bin:$PATH
@@ -38,6 +39,7 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
+setopt HIST_SAVE_NO_DUPS
 setopt HIST_VERIFY
 setopt INC_APPEND_HISTORY
 setopt NO_FLOW_CONTROL
@@ -64,6 +66,8 @@ bindkey -e '^s' insert-sudo
 bindkey -e '^y' insert-man
 bindkey -e '^p' up-line-or-search
 bindkey -e '^r' search-history
+bindkey -e '^[[1;5C' forward-word
+bindkey -e '^[[1;5D' backward-word
 
 ## ALIASES ##
 alias aura='aura --color=auto'
@@ -102,7 +106,7 @@ insert-sudo() { insert-word "sudo" }
 zle -N insert-sudo
 
 search-history() {
-  BUFFER=$(fc -lr 0 | cut -d " " -f 4- | fzy --query="$BUFFER")
+  BUFFER=$(history -r 0 | cut -d " " -f 4- | fzy --query="$BUFFER")
   CURSOR=${#BUFFER}
 }
 zle -N search-history
@@ -166,6 +170,5 @@ precmd () {
   vcs_info
 }
 
-## ASDF ##
-test_and_source $HOME/.asdf/asdf.sh
-test_and_source $HOME/.asdf/completions/asdf.bash
+test_and_source "$NVM_DIR/nvm.sh"
+test_and_source "$NVM_DIR/bash_completion"
