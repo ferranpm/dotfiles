@@ -19,10 +19,7 @@ export LESS_TERMCAP_se=$(printf "\e[0m")
 export LESS_TERMCAP_so=$(printf "\e[1;40;33m")
 export LESS_TERMCAP_ue=$(printf "\e[0m")
 export LESS_TERMCAP_us=$(printf "\e[1;32m")
-export NVM_DIR=$HOME/.nvm
 export PATH=$HOME/.local/bin:$PATH
-export PATH=$HOME/.rvm/bin:$PATH
-export PATH=$HOME/.rvm/gems/$RUBY_VERSION/bin:$PATH
 export SAVEHIST=10000
 export ZLS_COLORS=$LS_COLORS
 
@@ -92,6 +89,8 @@ alias pacro='pacman -Qtdq && sudo pacman -Rns `pacman -Qtdq`'
 alias pacse='pacman -Ss'
 alias pacupg='sudo pacman -Syu'
 alias psg='ps -e | grep'
+alias bex='bundle exec'
+alias bop='bopdle open'
 
 ## FUNCTIONS ##
 insert-word() {
@@ -170,5 +169,5 @@ precmd () {
   vcs_info
 }
 
-test_and_source "$NVM_DIR/nvm.sh"
-test_and_source "$NVM_DIR/bash_completion"
+test_and_source "$HOME/.asdf/asdf.sh"
+test_and_source "$HOME/.asdf/completions/asdf.bash"
