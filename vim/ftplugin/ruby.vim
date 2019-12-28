@@ -1,3 +1,8 @@
+if exists("b:ruby_ftplugin")
+  finish
+endif
+let b:ruby_ftplugin = 1
+
 setlocal softtabstop=2
 setlocal tabstop=2
 setlocal shiftwidth=2
@@ -15,7 +20,7 @@ function! RubyTest()
   let line = line(".")
   let filename = expand("%")
   let spring = g:ruby_spring ? "spring " : ""
-  let @*=spring."rspec ".filename.":".line
+  let @*="bundle exec ".spring."rspec ".filename.":".line
 endfunction
 
 iabbrev bp binding.pry
