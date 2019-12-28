@@ -146,7 +146,6 @@ augroup automaticquickfix
     autocmd!
     autocmd QuickFixCmdPost [^l]* cwindow
     autocmd QuickFixCmdPost    l* lwindow
-    autocmd TerminalOpen * nnoremap <buffer> <c-p> i<c-p>
 augroup END
 
 augroup quickfix
@@ -198,10 +197,38 @@ vnoremap < <gv
 nnoremap Y y$
 nnoremap - ^
 
-nnoremap <c-h> <c-w><c-h>
-nnoremap <c-j> <c-w><c-j>
-nnoremap <c-k> <c-w><c-k>
-nnoremap <c-l> <c-w><c-l>
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+
+if has('nvim')
+  tnoremap <c-h> <C-\><c-n><c-w>h
+  tnoremap <c-j> <C-\><c-n><c-w>j
+  tnoremap <c-k> <C-\><c-n><c-w>k
+  tnoremap <c-l> <C-\><c-n><c-w>l
+
+  tnoremap <c-^> <c-\><c-n><c-^>
+  tnoremap <c-u> <c-\><c-n><c-u>
+
+  augroup terminalgroup
+    autocmd TermOpen * nnoremap <buffer> <c-p> i<c-p>
+    autocmd TermOpen * startinsert
+    autocmd WinEnter term://* startinsert
+  augroup END
+else
+  tnoremap <c-h> <c-w>h
+  tnoremap <c-j> <c-w>j
+  tnoremap <c-k> <c-w>k
+  tnoremap <c-l> <c-w>l
+
+  tnoremap <c-^> <c-\><c-n><c-^>
+  tnoremap <c-u> <c-\><c-n><c-u>
+
+  augroup termgroup
+    autocmd TerminalOpen * nnoremap <buffer> <c-p> i<c-p>
+  augroup END
+endif
 
 nnoremap ,S :%s/\C\<<c-r>=expand('<cword>')<cr>\>/<c-f>i
 nnoremap ,s :s/\C\<<c-r>=expand('<cword>')<cr>\>/<c-f>i
@@ -255,14 +282,5 @@ nnoremap <leader>lp o<c-r>"<esc>
 nnoremap <leader>lP O<c-r>"<esc>
 
 cnoremap <C-A> <Home>
-
-if exists(':terminal')
-  tnoremap <c-h> <c-w>h
-  tnoremap <c-j> <c-w>j
-  tnoremap <c-k> <c-w>k
-  tnoremap <c-l> <c-w>l
-  tnoremap <c-^> <c-\><c-n><c-^>
-  tnoremap <c-u> <c-\><c-n><c-u>
-endif
 
 colorscheme basic
