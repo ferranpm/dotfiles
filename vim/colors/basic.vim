@@ -176,3 +176,20 @@ let g:terminal_ansi_colors = [
       \ s:blue_lc[0],
       \ s:white[0],
       \ ]
+
+let g:terminal_color_0 = s:black[0]
+let g:terminal_color_1 = s:red_hc[0]
+let g:terminal_color_2 = s:green_hc[0]
+let g:terminal_color_3 = s:yellow_hc[0]
+let g:terminal_color_4 = s:blue_hc[0]
+let g:terminal_color_5 = s:red[0]
+let g:terminal_color_6 = s:green[0]
+let g:terminal_color_7 = s:gray_lc[0]
+let g:terminal_color_8 = s:gray_hc[0]
+let g:terminal_color_9 = s:red[0]
+let g:terminal_color_10 = s:green[0]
+let g:terminal_color_11 = s:yellow[0]
+let g:terminal_color_12 = s:blue[0]
+let g:terminal_color_13 = s:red_lc[0]
+let g:terminal_color_14 = s:blue_lc[0]
+let g:terminal_color_15 = s:white[0]
