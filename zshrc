@@ -1,6 +1,6 @@
-PROMPT='
-%{$fg[green]%}%n%{$reset_color%} in %{$fg[yellow]%}%~%{$reset_color%} at %{$fg[blue]%}%m${vcs_info_msg_0_}
-%{$fg[blue]%}%(!.#.>)%{$reset_color%} '
+PROMPT='%B
+%n in %~ at %m ${vcs_info_msg_0_}
+%(!.#.>) %b'
 
 fpath=(~/.zsh/completion $fpath)
 
@@ -51,8 +51,8 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' menu select
 zstyle ':completion:*' verbose true
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' formats       '%F{$reset_color} on %F{2}%b%F{$reset_color}'
-zstyle ':vcs_info:*' actionformats '%F{$reset_color} on %F{2}%b %F{1}(%a)%F{$reset_color}'
+zstyle ':vcs_info:*' formats       'on %b'
+zstyle ':vcs_info:*' actionformats 'on %b (%a)'
 
 ## BINDKEYS ##
 bindkey -e '^[[1~' beginning-of-line
