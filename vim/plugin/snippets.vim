@@ -13,7 +13,7 @@ let g:snippets["html"] = {
       \ "meta": "<meta charset=\"UTF-8\">",
       \ "viewport": "<meta name=\"viewport\" content=\"width=device-width\">",
       \ "script": "<script src=\"\"></script>\<c-o>F\"",
-      \ "style": "<link rel=\"stylesheet\" href=\"\">\<c-o>F\"",
+      \ "style": "<link rel=\"stylesheet\" type=\"text/css\" href=\"\">\<c-o>F\"",
       \ "title": "<title></title>\<c-o>F<",
       \ "h1": "<h1></h1>\<c-o>F<",
       \ "h2": "<h2></h2>\<c-o>F<",
@@ -21,6 +21,7 @@ let g:snippets["html"] = {
       \ "h4": "<h4></h4>\<c-o>F<",
       \ "h5": "<h5></h5>\<c-o>F<",
       \ "a": "<a href=\"\"></a>\<c-o>F\"",
+      \ "nav": "<nav>\<cr></nav>\<c-o>O",
       \ "ul": "<ul>\<cr></ul>\<c-o>O",
       \ "ol": "<ol>\<cr></ol>\<c-o>O",
       \ "li": "<li></li>\<c-o>F<",
@@ -38,11 +39,18 @@ call extend(g:snippets["eruby"], {
       \ })
 
 let g:snippets["ruby"] = {
-      \ "bp": "binding.pry",
+      \ "bp": "require \"pry\"; binding.pry",
       \ "ar": "attr_reader ",
       \ "defi": function("snippets#ruby#defi"),
-      \ "class": "class \<c-r>=substitute(expand('%:t:r'), '\\m\\%(_\\|\\<\\)\\(\\l\\)', '\\U\\1', 'g')\<cr>\<cr>end\<c-o>O"
+      \ "class": "class \<c-r>=snippets#ruby#class_name()\<cr>\<cr>end\<c-o>O",
+      \ "fsl": "# frozen_string_literal: true\<cr>\<c-w>",
+      \ "rspec": "RSpec.describe \<c-r>=substitute(snippets#ruby#class_name(), 'Spec$', '', '')\<cr> do\<cr>end\<c-o>O",
+      \ "describe": "describe \"\" do\<cr>end\<esc>k0f\"a",
+      \ "context": "context \"\" do\<cr>end\<esc>k0f\"a",
+      \ "it": "it \"\" do\<cr>end\<esc>k0f\"a",
       \ }
+let g:snippets["ruby"]["desc"] = g:snippets["ruby"]["describe"]
+let g:snippets["ruby"]["ctx"] = g:snippets["ruby"]["context"]
 
 let g:snippets["javascript"] = {
       \ "cl": "console.log();\<c-o>F)",
@@ -56,7 +64,7 @@ let g:snippets["typescript"] = g:snippets["javascript"]
 let g:snippets["javascript.jsx"] = g:snippets["javascript"]
 
 function! TriggerSnippet()
-  let trigger = matchstr(getline('.')[:col('.')-1], '\m\k\+$')
+  let trigger = matchstr(getline('.')[:col('.')-2], '\m\k\+$')
   let snippets = get(g:snippets, &filetype, {})
   let backspaces = has_key(snippets, trigger) ? repeat("\<backspace>", len(trigger)) : ""
   let Expansion = get(snippets, trigger, "\<tab>")
