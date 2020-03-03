@@ -1,6 +1,7 @@
 call plug#begin('~/.vim/bundle')
 Plug 'srstevenson/vim-picker'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -80,7 +81,7 @@ set confirm
 set undolevels=5000
 set textwidth=128
 set backspace=2
-set completeopt=menuone,preview
+set completeopt=menuone
 
 " tabs and indenting
 set tabstop=2
