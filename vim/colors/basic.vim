@@ -9,22 +9,22 @@ let g:colors_name = 'basic'
 let s:black   = ['#000000', 0]
 let s:white   = ['#ffffff', 15]
 
-let s:red     = ['#990000', 160]
-let s:green   = ['#009900', 82]
-let s:yellow  = ['#999900', 184]
-let s:blue    = ['#000099', 25]
-let s:purple  = ['#990099', 135]
-let s:cyan    = ['#009999', 45]
-let s:gray    = ['#999999', 245]
+let s:red     = ['#aa5555', 160]
+let s:green   = ['#55aa55', 82]
+let s:yellow  = ['#aaaa55', 184]
+let s:blue    = ['#5555aa', 25]
+let s:purple  = ['#aa55aa', 135]
+let s:cyan    = ['#55aaaa', 45]
+let s:gray    = ['#aaaaaa', 245]
 
 if &background == 'light'
-  let s:red_lc    = ['#ee0000', 9]
-  let s:green_lc  = ['#00ee00', 10]
-  let s:yellow_lc = ['#eeee00', 11]
-  let s:blue_lc   = ['#0000ee', 12]
-  let s:purple_lc = ['#ee00ee', 13]
-  let s:cyan_lc   = ['#00eeee', 14]
-  let s:gray_lc   = ['#eeeeee', 250]
+  let s:red_lc    = ['#bb1111', 9]
+  let s:green_lc  = ['#11bb11', 10]
+  let s:yellow_lc = ['#bbbb11', 11]
+  let s:blue_lc   = ['#1111bb', 12]
+  let s:purple_lc = ['#bb11bb', 13]
+  let s:cyan_lc   = ['#11bbbb', 14]
+  let s:gray_lc   = ['#e0e0e0', 250]
 
   let s:red_hc    = ['#770000', 1]
   let s:green_hc  = ['#007700', 2]
@@ -35,26 +35,26 @@ if &background == 'light'
   let s:gray_hc   = ['#777777', 240]
 
   let s:default_fg = s:black
-  let s:default_bg = s:white
+  let s:default_bg = ['#f5f5f3', 'NONE']
 else
-  let s:red_lc    = ['#aa0000', 1]
-  let s:green_lc  = ['#00aa00', 2]
-  let s:yellow_lc = ['#aaaa00', 3]
-  let s:blue_lc   = ['#0000aa', 4]
-  let s:purple_lc = ['#aa00aa', 5]
-  let s:cyan_lc   = ['#aa00aa', 6]
-  let s:gray_lc   = ['#333333', 240]
+  let s:red_lc    = ['#bf4b5c', 9]
+  let s:green_lc  = ['#7a8a48', 10]
+  let s:yellow_lc = ['#917b17', 11]
+  let s:blue_lc   = ['#b3deef', 12]
+  let s:purple_lc = ['#d3b987', 13]
+  let s:cyan_lc   = ['#66b6d9', 14]
+  let s:gray_lc   = ['#444444', 236]
 
-  let s:red_hc    = ['#cc5555', 9]
-  let s:green_hc  = ['#55cc55', 10]
-  let s:yellow_hc = ['#cccc55', 11]
-  let s:blue_hc   = ['#5555cc', 12]
-  let s:purple_hc = ['#cc55cc', 13]
-  let s:cyan_hc   = ['#55cccc', 14]
-  let s:gray_hc   = ['#cccccc', 250]
+  let s:red_hc    = ['#c43f53', 1]
+  let s:green_hc  = ['#c9d05c', 2]
+  let s:yellow_hc = ['#fff34b', 3]
+  let s:blue_hc   = ['#7396bf', 4]
+  let s:purple_hc = ['#ac76b5', 5]
+  let s:cyan_hc   = ['#73cef4', 6]
+  let s:gray_hc   = ['#aaaaaa', 240]
 
-  let s:default_fg = s:white
-  let s:default_bg = s:black
+  let s:default_fg = [ '#c5c5c5', 'NONE']
+  let s:default_bg = [ '#202020', 'NONE']
 end
 
 let s:default_lst2 = []
@@ -93,9 +93,9 @@ call s:hi('CursorLine', s:default_lst2, s:gray_lc)
 call s:hi('CursorLineNr')
 call s:hi('Error', s:default_bg, s:red)
 call s:hi('ErrorMsg', s:default_bg, s:red)
-call s:hi('IncSearch', s:default_fg, s:yellow)
+call s:hi('IncSearch', s:default_fg, s:yellow_lc)
 call s:hi('Normal')
-call s:hi('Search', s:default_fg, s:yellow)
+call s:hi('Search', s:black, s:yellow_lc)
 call s:hi('StatusLine', s:default_fg, s:default_bg)
 call s:hi('StatusLineNC', s:default_fg, s:default_bg)
 call s:hi('StatusLineTerm', s:default_bg, s:default_fg)
@@ -110,7 +110,7 @@ call s:hi('NonText', s:blue_hc)
 
 " Folding.
 call s:hi('FoldColumn', s:blue_hc, s:default_bg)
-call s:hi('Folded', s:blue, s:gray_lc)
+call s:hi('Folded', s:blue_hc, s:gray_lc)
 
 " Line numbers gutter.
 call s:hi('LineNr', s:gray_hc)
@@ -122,7 +122,7 @@ call s:hi('SpecialKey', s:blue_hc)
 call s:hi('Directory', s:blue_hc)
 
 " Popup menu.
-call s:hi('Pmenu', s:black, s:gray_lc)
+call s:hi('Pmenu', s:default_fg, s:gray_lc)
 call s:hi('PmenuSbar', s:default_fg, s:gray)
 call s:hi('PmenuSel', s:black, s:gray)
 call s:hi('PmenuThumb')
@@ -142,20 +142,24 @@ call s:hi('PreProc', s:purple_hc)
 call s:hi('Type', s:blue_hc)
 call s:hi('Special', s:purple_hc)
 
-call s:hi('MatchParen', s:default_fg, s:yellow)
+call s:hi('MatchParen', s:black, s:yellow_hc)
 
 " Diffs
-call s:hi('DiffAdd', s:default_fg, s:green_lc)
-call s:hi('DiffChange', s:default_fg, s:gray_lc)
-call s:hi('DiffDelete', s:default_fg, s:red_lc)
-call s:hi('DiffText', s:default_fg, s:cyan_lc)
-call s:hi('diffAdded', s:default_fg, s:green_lc)
+call s:hi('DiffAdd', s:green_lc)
+call s:hi('DiffChange', s:default_fg)
+call s:hi('DiffDelete', s:red_lc)
+call s:hi('DiffText', s:cyan_lc)
+call s:hi('diffAdded', s:green_lc)
 call s:hi('diffFile', s:default_fg, s:gray_lc)
 call s:hi('diffIndexLine', s:default_fg, s:gray_lc)
 call s:hi('diffLine', s:default_fg, s:gray_lc)
 call s:hi('diffNewFile', s:default_fg, s:gray_lc)
-call s:hi('diffRemoved', s:default_fg, s:red_lc)
+call s:hi('diffRemoved', s:red_lc)
 call s:hi('diffSubname', s:default_fg, s:gray_lc)
+
+call s:hi('CocInfoFloat', s:green_hc, s:gray_lc)
+call s:hi('CocErrorFloat', s:red_hc, s:gray_lc)
+call s:hi('CocWarningFloat', s:yellow_hc, s:gray_lc)
 
 " Terminal
 let g:terminal_ansi_colors = [
