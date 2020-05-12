@@ -1,8 +1,12 @@
 function! snippets#ruby#defi()
   let arguments = input("Arguments: ")
   let list = map(split(arguments, '\m,\s*'), { _, arg -> matchstr(arg, '^\m\k\+') })
-  let blop = map(list, { _, el -> "@".el." = ".el })
-  return "def initialize(".arguments.")\n".join(blop, "\n")."\nend\<esc>"
+  if empty(list)
+    return "def initialize\nend\<esc>O"
+  else
+    let blop = map(list, { _, el -> "@".el." = ".el })
+    return "def initialize(".arguments.")\n".join(blop, "\n")."\nend\<esc>"
+  endif
 endfunction
 
 function! snippets#ruby#class_name()

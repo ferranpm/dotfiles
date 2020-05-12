@@ -26,6 +26,8 @@ let g:snippets["html"] = {
       \ "ol": "<ol>\<cr></ol>\<c-o>O",
       \ "li": "<li></li>\<c-o>F<",
       \ "table": "<table>\<cr></table>\<c-o>O",
+      \ "thead": "<thead>\<cr></thead>\<c-o>O",
+      \ "tbody": "<tbody>\<cr></tbody>\<c-o>O",
       \ "tr": "<tr>\<cr></tr>\<c-o>O",
       \ "th": "<th></th>\<c-o>F<",
       \ "td": "<td></td>\<c-o>F<",
@@ -48,6 +50,7 @@ let g:snippets["ruby"] = {
       \ "describe": "describe \"\" do\<cr>end\<esc>k0f\"a",
       \ "context": "context \"\" do\<cr>end\<esc>k0f\"a",
       \ "it": "it \"\" do\<cr>end\<esc>k0f\"a",
+      \ "info": "Rails.logger.info "
       \ }
 let g:snippets["ruby"]["desc"] = g:snippets["ruby"]["describe"]
 let g:snippets["ruby"]["ctx"] = g:snippets["ruby"]["context"]
@@ -62,6 +65,11 @@ let g:snippets["javascript"] = {
 let g:snippets["typescript"] = g:snippets["javascript"]
 
 let g:snippets["javascript.jsx"] = g:snippets["javascript"]
+
+let g:snippets["markdown"] = {
+      \ "link": "[]()\<c-o>F]",
+      \ }
+let g:snippets["gitcommit"] = g:snippets["markdown"]
 
 function! TriggerSnippet()
   let trigger = matchstr(getline('.')[:col('.')-2], '\m\k\+$')
