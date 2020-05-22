@@ -4,8 +4,9 @@ function! snippets#ruby#defi()
   if empty(list)
     return "def initialize\nend\<esc>O"
   else
-    let blop = map(list, { _, el -> "@".el." = ".el })
-    return "def initialize(".arguments.")\n".join(blop, "\n")."\nend\<esc>"
+    let blop = map(copy(list), { _, el -> "@".el." = ".el })
+    let reader = map(copy(list), { _, el -> ":".el })
+    return "def initialize(".arguments.")\n".join(blop, "\n")."\nend\n\nattr_reader ".join(reader, ", ")."\<esc>"
   endif
 endfunction
 
