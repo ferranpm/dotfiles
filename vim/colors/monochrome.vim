@@ -1,10 +1,10 @@
+" https://jonasjacek.github.io/colors/
+"
 " Vim color scheme
 "
 " Name:       monochrome.vim
 " Maintainer: Xavier Noria <fxn@hashref.com>
 " License:    MIT
-
-set background=dark
 
 highlight clear
 
@@ -14,29 +14,41 @@ endif
 
 let g:colors_name = 'monochrome'
 
-let s:white  = ['White', 15]
-let s:black  = ['Black', 16]
-let s:lblack = ['#171717', 234]
-let s:bgray  = ['#1d1d1d', 235]
-let s:lgray  = ['LightGray', 255]
-let s:cgray  = ['#737373', 243]
-let s:dgray  = ['DarkGray', 248]
-let s:sblue  = ['#778797', 67]
-let s:yellow = ['Yellow', 226]
-let s:red    = ['Red', 160]
-let s:green  = ['DarkGreen', 28]
-let s:orange = ['DarkOrange', 166]
+if &background == 'dark'
+  let s:white           = ['Gray90',  15]
+  let s:black           = ['Gray10',   0]
 
-let s:default_fg = s:lgray
-let s:default_bg = s:lblack
+  let s:high_contrast   = ['Gray74', 250]
+  let s:medium_contrast = ['Gray35', 240]
+  let s:low_contrast    = ['Gray15', 235]
 
-let s:bold      = 'bold'
-let s:underline = 'underline'
-let s:reverse   = 'reverse'
-let s:none      = 'NONE'
+  let s:blue   = ['SlateGray4', 67]
+  let s:yellow = ['Yellow', 226]
+  let s:red    = ['DarkRed', 9]
+  let s:green  = ['DarkGreen', 28]
+  let s:orange = ['DarkOrange', 166]
+
+  let s:default_fg = ['LightGray', 255]
+  let s:default_bg = ['gray13', 'black']
+else
+  let s:white           = ['Gray93', 255]
+  let s:black           = ['Gray3',  232]
+  let s:high_contrast   = ['Gray7',  233]
+  let s:medium_contrast = ['Gray62', 247]
+  let s:low_contrast    = ['Gray85', 253]
+
+  let s:blue   = ['SlateGray4', 67]
+  let s:yellow = ['gold3',    226]
+  let s:red    = ['Red',       160]
+  let s:green  = ['Green',      28]
+  let s:orange = ['Orange',    166]
+
+  let s:default_fg = ['Gray3',  'NONE']
+  let s:default_bg = ['gray94', 'NONE']
+endif
 
 let s:default_lst = []
-let s:default_str = s:none
+let s:default_str = 'NONE'
 
 function! s:hi(...)
   let group = a:1
@@ -64,92 +76,108 @@ function! s:hi(...)
   exec join(cmd, ' ')
 endfunction
 
-"
-" --- Vim interface ------------------------------------------------------------
-"
-
-call s:hi('ColorColumn', s:default_fg, s:bgray)
+" Vim interface
+call s:hi('ColorColumn', s:default_fg, s:low_contrast)
 call s:hi('Cursor', s:black, s:orange)
-call s:hi('CursorColumn', s:default_lst, s:bgray)
-call s:hi('CursorLine', s:default_lst, s:bgray)
-call s:hi('CursorLineNr', s:white, s:default_bg, s:bold)
-call s:hi('ErrorMsg', s:white, s:red)
+call s:hi('CursorColumn', s:default_lst, s:low_contrast)
+call s:hi('CursorLine', s:default_lst, s:low_contrast)
+call s:hi('CursorLineNr', s:default_fg, s:default_bg, 'bold')
+call s:hi('ErrorMsg', s:default_fg, s:red)
+call s:hi('WarningMsg', s:default_fg, s:orange)
 call s:hi('Normal')
-call s:hi('Search', s:white, s:sblue)
-call s:hi('StatusLine', s:lgray, s:black, s:reverse.','.s:bold)
-call s:hi('StatusLineNC', s:lgray, s:black, s:reverse)
-call s:hi('StatusLineTerm', s:black, s:lgray, s:bold)
-call s:hi('StatusLineTermNC', s:black, s:lgray)
+call s:hi('Search', s:white, s:blue)
+call s:hi('StatusLine', s:high_contrast, s:default_bg, 'reverse,bold')
+call s:hi('StatusLineNC', s:high_contrast, s:default_bg, 'reverse')
+call s:hi('StatusLineTerm', s:default_bg, s:high_contrast, 'bold')
+call s:hi('StatusLineTermNC', s:default_bg, s:high_contrast)
 call s:hi('TabLine')
-call s:hi('TabLineFill', s:default_bg, s:default_bg)
-call s:hi('TabLineSel', s:black, s:lgray)
-call s:hi('Visual', s:white, s:sblue)
+call s:hi('TabLineFill', s:default_bg, s:default_fg)
+call s:hi('TabLineSel', s:default_bg, s:high_contrast)
+call s:hi('Visual', s:white, s:blue)
 
-" Tildes at the bottom of a buffer, etc.
-call s:hi('NonText', s:dgray)
+" Tildes at the bottom of a buffer, etc
+call s:hi('NonText')
 
-" Folding.
-call s:hi('FoldColumn', s:dgray)
-call s:hi('Folded')
+" Folding
+call s:hi('FoldColumn')
+call s:hi('Folded', s:medium_contrast, s:low_contrast)
 
-" Line numbers gutter.
-call s:hi('LineNr', s:dgray)
+" Line numbers gutter
+call s:hi('LineNr', s:medium_contrast)
 
-" Small arrow used for tabs.
-call s:hi('SpecialKey', s:sblue, s:default_bg, s:bold)
+" Small arrow used for tabs
+call s:hi('SpecialKey', s:blue, s:default_bg, 'bold')
 
-" File browsers.
-call s:hi('Directory', s:white, s:default_bg)
+" File browsers
+call s:hi('Directory', s:default_fg, s:default_bg, 'bold')
 
-" Popup menu.
-call s:hi('Pmenu', s:white, s:cgray)
-call s:hi('PmenuSel', s:black, s:white)
+" Popup menu
+call s:hi('Pmenu', s:default_fg, s:low_contrast)
+call s:hi('PmenuSel', s:low_contrast, s:medium_contrast)
 
-" Notes.
-call s:hi('Todo', s:black, s:yellow, s:bold)
+" Notes
+call s:hi('Todo', s:black, s:yellow, 'bold')
 
-" Signs.
+" Signs
 call s:hi('SignColumn')
 
-call s:hi('Title', s:white, s:default_bg, s:bold)
+call s:hi('Title', s:default_fg, s:default_bg, 'bold')
 
-"
-" --- Programming languages ----------------------------------------------------
-"
+" Programming languages
+call s:hi('Comment', s:medium_contrast)
+call s:hi('Constant', s:blue)
+call s:hi('Identifier', s:high_contrast)
+call s:hi('Statement', s:high_contrast)
+call s:hi('PreProc', s:high_contrast, s:default_bg, 'bold')
+call s:hi('Type', s:high_contrast)
+call s:hi('Special')
 
-call s:hi('Comment', s:cgray, s:default_bg)
+" Diffs
+call s:hi('DiffAdd', s:default_fg, s:green)
+call s:hi('DiffChange', s:default_fg, s:low_contrast)
+call s:hi('DiffDelete', s:default_fg, s:red)
+call s:hi('DiffText', s:default_fg, s:red)
+call s:hi('diffAdded', s:default_fg, s:green)
+call s:hi('diffFile', s:medium_contrast)
+call s:hi('diffIndexLine', s:medium_contrast)
+call s:hi('diffLine', s:medium_contrast)
+call s:hi('diffNewFile', s:medium_contrast)
+call s:hi('diffRemoved', s:default_fg, s:red)
+call s:hi('diffSubname', s:medium_contrast)
 
-call s:hi('Constant')
-call s:hi('String', s:sblue)
-call s:hi('Character', s:sblue)
-call s:hi('Number')
-call s:hi('Boolean')
-call s:hi('Float')
+" Terminal
+let g:terminal_ansi_colors = [
+      \ s:black[0],
+      \ s:red[0],
+      \ s:green[0],
+      \ s:yellow[0],
+      \ s:blue[0],
+      \ s:red[0],
+      \ s:green[0],
+      \ s:medium_contrast[0],
+      \ s:medium_contrast[0],
+      \ s:red[0],
+      \ s:green[0],
+      \ s:yellow[0],
+      \ s:blue[0],
+      \ s:red[0],
+      \ s:blue[0],
+      \ s:white[0],
+      \ ]
 
-call s:hi('Identifier', s:white, s:default_bg)
-
-call s:hi('Statement', s:white, s:default_bg)
-
-call s:hi('PreProc', s:white, s:default_bg)
-
-call s:hi('Type', s:white, s:default_bg)
-
-call s:hi('Special', s:white, s:default_bg)
-
-call s:hi('MatchParen', s:black, s:lgray)
-
-"
-" --- Diffs --------------------------------------------------------------------
-"
-
-call s:hi('DiffAdd', s:white, s:green)
-call s:hi('DiffChange', s:white, s:cgray)
-call s:hi('DiffDelete', s:white, s:red)
-call s:hi('DiffText', s:white, s:red)
-call s:hi('diffAdded', s:white, s:green)
-call s:hi('diffFile', s:cgray)
-call s:hi('diffIndexLine', s:cgray)
-call s:hi('diffLine', s:cgray)
-call s:hi('diffNewFile', s:cgray)
-call s:hi('diffRemoved', s:white, s:red)
-call s:hi('diffSubname', s:cgray)
+let g:terminal_color_0 = s:black[0]
+let g:terminal_color_1 = s:red[0]
+let g:terminal_color_2 = s:green[0]
+let g:terminal_color_3 = s:yellow[0]
+let g:terminal_color_4 = s:blue[0]
+let g:terminal_color_5 = s:red[0]
+let g:terminal_color_6 = s:green[0]
+let g:terminal_color_7 = s:medium_contrast[0]
+let g:terminal_color_8 = s:medium_contrast[0]
+let g:terminal_color_9 = s:red[0]
+let g:terminal_color_10 = s:green[0]
+let g:terminal_color_11 = s:yellow[0]
+let g:terminal_color_12 = s:blue[0]
+let g:terminal_color_13 = s:red[0]
+let g:terminal_color_14 = s:blue[0]
+let g:terminal_color_15 = s:white[0]

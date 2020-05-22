@@ -1,3 +1,5 @@
+" https://jonasjacek.github.io/colors/
+
 highlight clear
 
 if exists('syntax_on')
@@ -35,7 +37,7 @@ if &background == 'light'
   let s:gray_hc   = ['#777777', 240]
 
   let s:default_fg = s:black
-  let s:default_bg = ['#f5f5f3', 'NONE']
+  let s:default_bg = ['#e8e8e5', 'NONE']
 else
   let s:red_lc    = ['#bf4b5c', 9]
   let s:green_lc  = ['#7a8a48', 10]
@@ -49,8 +51,9 @@ else
   let s:green_hc  = ['#c9d05c', 2]
   let s:yellow_hc = ['#fff34b', 3]
   let s:blue_hc   = ['#7396bf', 4]
-  let s:purple_hc = ['#ac76b5', 5]
+  let s:purple_hc = ['#96679e', 5]
   let s:cyan_hc   = ['#73cef4', 6]
+  let s:orange_hc = ['#d49d31', 240]
   let s:gray_hc   = ['#aaaaaa', 240]
 
   let s:default_fg = [ '#c5c5c5', 'NONE']
@@ -140,7 +143,7 @@ call s:hi('Identifier', s:blue_hc)
 call s:hi('Statement', s:purple_hc)
 call s:hi('PreProc', s:purple_hc)
 call s:hi('Type', s:blue_hc)
-call s:hi('Special', s:purple_hc)
+call s:hi('Special')
 
 call s:hi('MatchParen', s:black, s:yellow_hc)
 
