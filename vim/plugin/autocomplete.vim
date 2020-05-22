@@ -7,4 +7,5 @@ if !exists("g:smart_completion")
   let g:smart_completion = 1
 endif
 
+inoremap <expr> <c-j> pumvisible() ? "\<c-n>" : "\<c-x>\<c-u>"
 set completefunc=autocomplete#complete
