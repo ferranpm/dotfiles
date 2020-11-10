@@ -1,4 +1,4 @@
-PROMPT='%B
+PROMPT='
 %n in %~ at %m ${vcs_info_msg_0_}
 %(!.#.>) %b'
 
@@ -90,7 +90,6 @@ alias pacse='pacman -Ss'
 alias pacupg='sudo pacman -Syu'
 alias psg='ps -e | grep'
 alias bex='bundle exec'
-alias bop='bopdle open'
 
 ## FUNCTIONS ##
 insert-word() {
@@ -170,4 +169,3 @@ precmd () {
 }
 
 test_and_source "$HOME/.asdf/asdf.sh"
-test_and_source "$HOME/.asdf/completions/asdf.bash"
