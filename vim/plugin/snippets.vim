@@ -70,6 +70,9 @@ let g:snippets["markdown"] = {
       \ "link": "[]()\<c-o>F]",
       \ }
 let g:snippets["gitcommit"] = g:snippets["markdown"]
+call extend(g:snippets["gitcommit"], {
+      \ "co": "Co-authored-by:  <name@sequra.es>\<esc>F<hi",
+      \ })
 
 function! TriggerSnippet()
   let trigger = matchstr(getline('.')[:col('.')-2], '\m\k\+$')
