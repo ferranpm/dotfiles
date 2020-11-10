@@ -23,6 +23,7 @@ iabbrev bp binding.pry
 
 command! -buffer Rubocop compiler rubocop | make
 command! -buffer Pronto compiler pronto | make
+command! -buffer RSpec compiler rspec | execute "make :".line(".")
 command! -buffer -range HashToJson s/=>/:/e | s/\<nil\>/null/e | .!json_pp
 
 setlocal iskeyword+=?,!
@@ -33,6 +34,7 @@ nnoremap <buffer> <leader>co :Econtroller
 nnoremap <buffer> <leader>se :Eservice 
 
 nnoremap <buffer> <expr> <silent> <leader>r RubyTest()
+nnoremap <buffer> <silent> <leader>m :update \| RSpec<cr>
 
 function! RubyTest()
   let line = line(".")
@@ -40,14 +42,6 @@ function! RubyTest()
   let spring = g:ruby_spring ? "spring " : ""
   let @*="bundle exec ".spring."rspec ".filename.":".line
   echo "Test copied: ".@*
-endfunction
-
-function! CreateSpecFile()
-  let file = 
-  let spec = 
-  let spec = 
-
-  
 endfunction
 
 command! -buffer CreateSpecFile execute 'split | edit '.substitute(substitute(expand("%"), "app\/", "spec/", ""), "\.rb$", "_spec.rb", "")

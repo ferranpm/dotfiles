@@ -17,11 +17,14 @@ call plug#end()
 runtime macros/matchit.vim
 
 " important
-set synmaxcol=255
+set synmaxcol=500
 set nocompatible
 
 " moving around, searching and patterns
 set path=,,
+if has('nvim')
+  set inccommand=nosplit
+endif
 set incsearch
 set ignorecase
 set smartcase
@@ -142,7 +145,7 @@ set isfname-==
 set virtualedit=block
 set exrc
 set gdefault
-set signcolumn=yes
+set signcolumn=auto
 
 " misc
 let mapleader=' '
@@ -211,6 +214,9 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
+
+nnoremap <c-]> g<c-]>
+nnoremap g<c-]> <c-]>
 
 if has('nvim')
   tnoremap <c-h> <C-\><c-n><c-w>h
