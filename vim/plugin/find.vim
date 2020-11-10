@@ -1,28 +1,15 @@
-command! -nargs=+ -bang -complete=customlist,FindComplete Find edit<bang> <args>
-
-function! Distance(name, i, substr, j)
-  if a:i == strchars(a:name)   | return strchars(a:substr) | endif
-  if a:j == strchars(a:substr) | return strchars(a:name)   | endif
-
-  if tolower(a:name[a:i]) == tolower(a:substr[a:j])
-    return Distance(a:name, a:i + 1, a:substr, a:j + 1)
-  else
-    return Distance(a:name, a:i + 1, a:substr, a:j) + 1
-  end
-endfunction
+command! -nargs=1 -bang -complete=customlist,FindComplete Find edit<bang> <args>
 
 function! FindComplete(A,L,P)
-  let regex = tolower(join(split(a:A, '\zs'), "*")) . "*"
+  let extension = stridx(a:A, '.') >= 0 ? '' : '*.\(rb\|html.erb\|js\)'
+  let regex = tolower(join(split(a:A, '\zs'), "*")) . extension
 
   return uniq(sort(
         \   map(
-        \     filter(
-        \       globpath(&path, regex, v:true, v:true),
-        \       { _, item -> !isdirectory(item) }
-        \     ),
+        \     globpath(&path, regex, v:true, v:true),
         \     { _, e -> fnamemodify(e, ':.') }
         \   ),
-        \   { a, b -> Distance(a, 0, a:A, 0) - Distance(b, 0, a:A, 0) }
+        \   { a, b -> strchars(a) - strchars(b) }
         \ ))
 endfunction
 
