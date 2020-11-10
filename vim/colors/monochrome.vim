@@ -28,6 +28,9 @@ if &background == 'dark'
   let s:green  = ['DarkGreen', 28]
   let s:orange = ['DarkOrange', 166]
 
+  let s:diff_delete = s:red
+  let s:diff_add  = s:green
+
   let s:default_fg = ['LightGray', 255]
   let s:default_bg = ['gray13', 'black']
 else
@@ -37,14 +40,17 @@ else
   let s:medium_contrast = ['Gray62', 247]
   let s:low_contrast    = ['Gray85', 253]
 
-  let s:blue   = ['SlateGray4', 67]
-  let s:yellow = ['gold3',    226]
-  let s:red    = ['Red',       160]
-  let s:green  = ['Green',      28]
-  let s:orange = ['Orange',    166]
+  let s:blue   = ['SlateGray4',  67]
+  let s:yellow = ['gold3',      226]
+  let s:red    = ['Maroon',     160]
+  let s:green  = ['Green4',      28]
+  let s:orange = ['Orange',     166]
+
+  let s:diff_delete = ['#ffdce0',   160]
+  let s:diff_add  = ['#cdffd8',      28]
 
   let s:default_fg = ['Gray3',  'NONE']
-  let s:default_bg = ['gray94', 'NONE']
+  let s:default_bg = ['#ebebe6', 'NONE']
 endif
 
 let s:default_lst = []
@@ -133,16 +139,16 @@ call s:hi('Type', s:high_contrast)
 call s:hi('Special')
 
 " Diffs
-call s:hi('DiffAdd', s:default_fg, s:green)
+call s:hi('DiffAdd', s:default_fg, s:diff_add)
 call s:hi('DiffChange', s:default_fg, s:low_contrast)
-call s:hi('DiffDelete', s:default_fg, s:red)
-call s:hi('DiffText', s:default_fg, s:red)
-call s:hi('diffAdded', s:default_fg, s:green)
+call s:hi('DiffDelete', s:default_fg, s:diff_delete)
+call s:hi('DiffText', s:default_fg, s:diff_delete)
+call s:hi('diffAdded', s:default_fg, s:diff_add)
 call s:hi('diffFile', s:medium_contrast)
 call s:hi('diffIndexLine', s:medium_contrast)
 call s:hi('diffLine', s:medium_contrast)
 call s:hi('diffNewFile', s:medium_contrast)
-call s:hi('diffRemoved', s:default_fg, s:red)
+call s:hi('diffRemoved', s:default_fg, s:diff_delete)
 call s:hi('diffSubname', s:medium_contrast)
 
 " Terminal

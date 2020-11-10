@@ -22,7 +22,7 @@ let s:gray    = ['#aaaaaa', 245]
 if &background == 'light'
   let s:red_lc    = ['#bb1111', 9]
   let s:green_lc  = ['#11bb11', 10]
-  let s:yellow_lc = ['#bbbb11', 11]
+  let s:yellow_lc = ['#cccc11', 11]
   let s:blue_lc   = ['#1111bb', 12]
   let s:purple_lc = ['#bb11bb', 13]
   let s:cyan_lc   = ['#11bbbb', 14]
@@ -37,7 +37,7 @@ if &background == 'light'
   let s:gray_hc   = ['#777777', 240]
 
   let s:default_fg = s:black
-  let s:default_bg = ['#e8e8e5', 'NONE']
+  let s:default_bg = ['#ebebe6', 'NONE']
 else
   let s:red_lc    = ['#bf4b5c', 9]
   let s:green_lc  = ['#7a8a48', 10]
@@ -47,7 +47,7 @@ else
   let s:cyan_lc   = ['#66b6d9', 14]
   let s:gray_lc   = ['#444444', 236]
 
-  let s:red_hc    = ['#c43f53', 1]
+  let s:red_hc    = ['#a52946', 1]
   let s:green_hc  = ['#c9d05c', 2]
   let s:yellow_hc = ['#fff34b', 3]
   let s:blue_hc   = ['#7396bf', 4]
@@ -106,6 +106,7 @@ call s:hi('StatusLineTermNC', s:default_bg, s:default_fg)
 call s:hi('TabLine', s:default_bg, s:default_fg, 'reverse')
 call s:hi('TabLineFill', s:default_bg, s:default_fg, 'reverse')
 call s:hi('TabLineSel', s:default_fg, s:default_bg, 'reverse,bold')
+call s:hi('VertSplit', s:default_bg, s:gray_hc)
 call s:hi('Visual', s:default_lst2, s:gray_lc)
 
 " Tildes at the bottom of a buffer, etc.
@@ -138,12 +139,12 @@ call s:hi('SignColumn')
 
 " Programming languages
 call s:hi('Comment', s:gray_hc)
-call s:hi('Constant', s:red_hc)
+call s:hi('Constant', s:gray_hc)
 call s:hi('Identifier', s:blue_hc)
 call s:hi('Statement', s:purple_hc)
 call s:hi('PreProc', s:purple_hc)
 call s:hi('Type', s:blue_hc)
-call s:hi('Special')
+call s:hi('Special', s:gray_hc)
 
 call s:hi('MatchParen', s:black, s:yellow_hc)
 
