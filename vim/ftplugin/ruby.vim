@@ -29,10 +29,6 @@ command! -buffer -range HashToJson s/=>/:/e | s/\<nil\>/null/e | .!json_pp
 setlocal iskeyword+=?,!
 setlocal isfname+=?,!
 
-nnoremap <buffer> <leader>mo :Emodel 
-nnoremap <buffer> <leader>co :Econtroller 
-nnoremap <buffer> <leader>se :Eservice 
-
 nnoremap <buffer> <expr> <silent> <leader>r RubyTest()
 nnoremap <buffer> <silent> <leader>m :update \| RSpec<cr>
 

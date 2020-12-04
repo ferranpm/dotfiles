@@ -12,5 +12,3 @@ function! FindComplete(A,L,P)
         \   { a, b -> strchars(a) - strchars(b) }
         \ ))
 endfunction
-
-nnoremap <c-q> :Find 
