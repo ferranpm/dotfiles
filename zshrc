@@ -62,7 +62,6 @@ bindkey -e '^n' down-line-or-search
 bindkey -e '^s' insert-sudo
 bindkey -e '^y' insert-man
 bindkey -e '^p' up-line-or-search
-bindkey -e '^r' search-history
 bindkey -e '^[[1;5C' forward-word
 bindkey -e '^[[1;5D' backward-word
 
@@ -102,12 +101,6 @@ insert-man() { insert-word "man" }
 zle -N insert-man
 insert-sudo() { insert-word "sudo" }
 zle -N insert-sudo
-
-search-history() {
-  BUFFER=$(history -r 0 | cut -d " " -f 4- | fzy --query="$BUFFER")
-  CURSOR=${#BUFFER}
-}
-zle -N search-history
 
 extract () {
   for f in $*; do
