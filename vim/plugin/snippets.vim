@@ -13,7 +13,9 @@ let g:snippets["html"] = {
       \ "meta": "<meta charset=\"UTF-8\">",
       \ "viewport": "<meta name=\"viewport\" content=\"width=device-width\">",
       \ "script": "<script src=\"\"></script>\<c-o>F\"",
+      \ "sc": "<script>\<cr></script>\<c-o>O",
       \ "style": "<link rel=\"stylesheet\" type=\"text/css\" href=\"\">\<c-o>F\"",
+      \ "st": "<style>\<cr></style>\<c-o>O",
       \ "title": "<title></title>\<c-o>F<",
       \ "h1": "<h1></h1>\<c-o>F<",
       \ "h2": "<h2></h2>\<c-o>F<",
@@ -32,6 +34,7 @@ let g:snippets["html"] = {
       \ "th": "<th></th>\<c-o>F<",
       \ "td": "<td></td>\<c-o>F<",
       \ "div": "<div>\<cr></div>\<c-o>O",
+      \ "img": "<img src=\"\">\<c-o>F\""
       \ }
 
 let g:snippets["eruby"] = g:snippets["html"]
@@ -65,6 +68,7 @@ let g:snippets["javascript"] = {
 let g:snippets["typescript"] = g:snippets["javascript"]
 
 let g:snippets["javascript.jsx"] = g:snippets["javascript"]
+let g:snippets["javascriptreact"] = g:snippets["javascript"]
 
 let g:snippets["markdown"] = {
       \ "link": "[]()\<c-o>F]",
@@ -73,6 +77,8 @@ let g:snippets["gitcommit"] = g:snippets["markdown"]
 call extend(g:snippets["gitcommit"], {
       \ "co": "Co-authored-by:  <name@sequra.es>\<esc>F<hi",
       \ })
+
+let g:snippets["svelte"] = extend(g:snippets["html"], g:snippets["javascript.jsx"])
 
 function! TriggerSnippet()
   let trigger = matchstr(getline('.')[:col('.')-2], '\m\k\+$')
