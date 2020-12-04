@@ -13,26 +13,23 @@ function! autocomplete#find_start()
   return match(part, '\m\<\w*$')
 endfunction
 
-function! autocomplete#completions(regexp)
+function! autocomplete#completions(base)
   let l:buffers = getbufinfo({ 'bufloaded': 1 })
+  let l:regexp = autocomplete#regexp(a:base)
 
   for l:mode in split(&complete, ',')
     if l:mode == '.'
-      call autocomplete#add_from_buffers(getbufinfo(bufnr()), a:regexp, '.')
+      call autocomplete#add_from_buffers(getbufinfo(bufnr()), a:base, '.')
     elseif l:mode == 'w'
-      call autocomplete#add_from_buffers(filter(copy(l:buffers), '!empty(v:val["windows"]) && v:val["bufnr"] != bufnr()'), a:regexp, 'w')
+      call autocomplete#add_from_buffers(filter(copy(l:buffers), '!empty(v:val["windows"]) && v:val["bufnr"] != bufnr()'), a:base, 'w')
     elseif l:mode == 'b'
-      call autocomplete#add_from_buffers(filter(copy(l:buffers), 'empty(v:val["windows"])'), a:regexp, 'b')
+      call autocomplete#add_from_buffers(filter(copy(l:buffers), 'empty(v:val["windows"])'), a:base, 'b')
     elseif l:mode == 't' || l:mode == ']'
-      call autocomplete#add_from_tags(a:regexp, 't')
+      call autocomplete#add_from_tags(l:regexp, 't')
     endif
   endfor
 
-  call autocomplete#add_from_lines(keys(get(g:snippets, &filetype, {})), a:regexp, 'snippet')
-endfunction
-
-function! autocomplete#regexp(base)
-  return '\<'.substitute(a:base, '\m\k\zs', '\\k*', 'g').'\>'
+  call autocomplete#add_from_lines(keys(get(g:snippets, &filetype, {})), a:base, 'snippet')
 endfunction
 
 function! autocomplete#add_from_tags(regexp, mode)
@@ -56,16 +53,23 @@ function! autocomplete#add_from_buffers(buffers, regexp, mode)
 endfunction
 
 function! autocomplete#add_from_lines(lines, base, mode)
-  if has('nvim')
-    let l:regexp = autocomplete#regexp(a:base)
-    for word in split(join(a:lines), '\m\s*\<\|\>\s*')
-      if word =~ l:regexp
-        call complete_add({ 'word': word, 'menu': a:mode })
-      endif
-    endfor
-  else
-    for word in matchfuzzy(split(join(a:lines), '\m\s*\<\|\>\s*'), a:base)
-      call complete_add({ 'word': word, 'menu': a:mode })
-    endfor
-  endif
+  let l:words = split(join(a:lines), '\m\s*\<\|\>\s*')
+  let l:Fuzzysearch = exists('*matchfuzzy') ? function('matchfuzzy') : function('autocomplete#matchfuzzy')
+  let l:ignorecase = &ignorecase
+  for word in l:Fuzzysearch(words, a:base)
+    call complete_add({ 'word': word, 'menu': a:mode })
+  endfor
+endfunction
+
+function! autocomplete#matchfuzzy(words, base)
+  let l:regexp = autocomplete#regexp(a:base)
+  return filter(a:words, 'v:val =~ l:regexp')
+endfunction
+
+function! autocomplete#matchfzy(words, base)
+  return split(system("fzy --show-matches='".a:base."'", a:words))
+endfunction
+
+function! autocomplete#regexp(base)
+  return '^'.substitute(a:base, '\m\k\zs', '\\k*', 'g').'$'
 endfunction
