@@ -46,7 +46,7 @@ set colorcolumn=128
 
 " multiple windows
 set laststatus=2
-set statusline=%f%m\ %y%h%r%w%=%l/%L\ [%{fnamemodify(getcwd(),':t')}]
+set statusline=%f%m\ %y%h%r%w%=%c\ %l/%L\ [%{fnamemodify(getcwd(),':t')}]
 set noequalalways
 set hidden
 set switchbuf=useopen
