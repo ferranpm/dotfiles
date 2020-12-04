@@ -118,8 +118,8 @@ set noswapfile
 set updatetime=300
 
 " command line editing
-set wildmode=full
-set wildignore=**/node_modules/**,*.cache,**/tmp/**,**/coverage/**,**/.git/**
+set wildmode=longest:full,full
+set wildignore=**/node_modules/**,*.cache,**/tmp/**,**/coverage/**
 set wildignorecase
 set wildmenu
 set undofile
