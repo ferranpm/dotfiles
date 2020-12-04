@@ -21,7 +21,7 @@ endif
 
 iabbrev bp binding.pry
 
-command! -buffer Rubocop compiler rubocop | make
+command! -buffer -nargs=* Rubocop compiler rubocop | make <args>
 command! -buffer Pronto compiler pronto | make
 command! -buffer RSpec compiler rspec | execute "make :".line(".")
 command! -buffer -range HashToJson s/=>/:/e | s/\<nil\>/null/e | .!json_pp

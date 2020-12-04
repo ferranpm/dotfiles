@@ -17,7 +17,11 @@ endif
 let s:cpo_save = &cpo
 set cpo-=C
 
-CompilerSet makeprg=bundle\ exec\ spring\ rspec\ %:S$*
+if g:ruby_spring
+  CompilerSet makeprg=bundle\ exec\ spring\ rspec\ %:S$*
+else
+  CompilerSet makeprg=bundle\ exec\ rspec\ %:S$*
+endif
 
 CompilerSet errorformat=
     \%f:%l:\ %tarning:\ %m,
