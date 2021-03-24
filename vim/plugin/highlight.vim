@@ -1,5 +1,0 @@
-command! -nargs=+ Highlight call highlight#set(<f-args>)
-command! -nargs=0 HighlightSearch call highlight#set(getreg("/"))
-command! -nargs=+ -complete=customlist,highlight#complete HighlightRemove call highlight#unset(<f-args>)
-command! -nargs=0 HighlightList echo highlight#list()
-command! -nargs=0 HighlightClear call highlight#clear()

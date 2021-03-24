@@ -30,7 +30,6 @@ setlocal iskeyword+=?,!
 setlocal isfname+=?,!
 
 nnoremap <buffer> <expr> <silent> <leader>r RubyTest()
-nnoremap <buffer> <silent> <leader>m :update \| RSpec<cr>
 
 function! RubyTest()
   let line = line(".")

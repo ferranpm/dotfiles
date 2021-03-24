@@ -1,13 +1,3 @@
-function! edit#reg()
-    reg
-    echo 'Register: '
-    let char = nr2char(getchar())
-    if char != "\<Esc>"
-        execute 'normal! "'.char.'p'
-    endif
-    redraw
-endfunction
-
 function! edit#align(string) range
     let col = min([ virtcol("'<"), virtcol("'>") ])
     let l:cursor_save = getpos('.')
@@ -37,8 +27,4 @@ function! edit#auto_highlight_toggle()
         augroup END
         echo 'Highlight current word: ON'
     endif
-endfunction
-
-function! edit#quickfix_to_args()
-  execute 'args '.join(filter(uniq(map(getqflist(), 'bufname(v:val["bufnr"])')), 'v:val !~ "^\s*$"'), ' ')
 endfunction

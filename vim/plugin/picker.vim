@@ -12,5 +12,3 @@ if executable("fzy")
 endif
 
 let g:picker_split = 'belowright'
-
-command! Tag PickerBufferTag
