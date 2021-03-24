@@ -10,11 +10,11 @@ setlocal shiftwidth=2
 map <silent> ]] /\m\<def\><cr>
 map <silent> [[ ?\m\<def\><cr>
 
-if !exists("g:ruby_spring")
-  let g:ruby_spring = 0
+if !exists("b:ruby_spring")
+  let b:ruby_spring = 0
   if filereadable("Gemfile")
     if !empty(filter(readfile("Gemfile"), "v:val =~# 'spring-commands-rspec'"))
-      let g:ruby_spring = 1
+      let b:ruby_spring = 1
     endif
   endif
 endif
@@ -34,7 +34,7 @@ nnoremap <buffer> <expr> <silent> <leader>r RubyTest()
 function! RubyTest()
   let line = line(".")
   let filename = expand("%")
-  let spring = g:ruby_spring ? "spring " : ""
+  let spring = b:ruby_spring ? "spring " : ""
   let @*="bundle exec ".spring."rspec ".filename.":".line
   echo "Test copied: ".@*
 endfunction

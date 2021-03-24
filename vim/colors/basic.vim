@@ -34,7 +34,7 @@ if &background == 'light'
   let s:blue_hc   = ['#000077', 4]
   let s:purple_hc = ['#770077', 5]
   let s:cyan_hc   = ['#770077', 6]
-  let s:gray_hc   = ['#777777', 240]
+  let s:gray_hc   = ['#606060', 240]
 
   let s:default_fg = s:black
   let s:default_bg = ['#ebebe6', 'NONE']
@@ -48,7 +48,7 @@ else
   let s:gray_lc   = ['#444444', 236]
 
   let s:red_hc    = ['#a52946', 1]
-  let s:green_hc  = ['#c9d05c', 2]
+  let s:green_hc  = ['#91b837', 2]
   let s:yellow_hc = ['#fff34b', 3]
   let s:blue_hc   = ['#7396bf', 4]
   let s:purple_hc = ['#96679e', 5]

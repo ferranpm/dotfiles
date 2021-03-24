@@ -88,8 +88,12 @@ nnoremap <f3> :setlocal hlsearch! hlsearch?<cr>
 nnoremap <f4> :setlocal spell! spell?<cr>
 nnoremap <f8> :setlocal wrap! wrap?<cr>
 
-nnoremap <c-p> :buffer 
-nnoremap <c-q> :find 
+nnoremap <leader>p :buffer 
+nnoremap <leader>q :find 
+
+nmap <c-p> <Plug>(PickerBuffer)
+nmap <c-q> <Plug>(PickerEdit)
+nmap <c-t> <Plug>(PickerTag)
 
 nnoremap <silent> <leader>bc :let @*=expand("%")<cr>
 nnoremap <silent> <leader>lo :!open <cWORD> &<cr>
@@ -129,6 +133,3 @@ nnoremap <leader>lP O<c-r>"<esc>
 
 cnoremap <C-A> <Home>
 
-nmap <leader>q <Plug>(PickerEdit)
-nmap <leader>p <Plug>(PickerBuffer)
-nmap <leader>t <Plug>(PickerTag)

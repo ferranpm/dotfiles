@@ -17,7 +17,7 @@ endif
 let s:cpo_save = &cpo
 set cpo-=C
 
-if g:ruby_spring
+if b:ruby_spring
   CompilerSet makeprg=bundle\ exec\ spring\ rspec\ %:S$*
 else
   CompilerSet makeprg=bundle\ exec\ rspec\ %:S$*

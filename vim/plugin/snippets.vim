@@ -78,7 +78,12 @@ call extend(g:snippets["gitcommit"], {
       \ "co": "Co-authored-by:  <name@sequra.es>\<esc>F<hi",
       \ })
 
-let g:snippets["svelte"] = extend(g:snippets["html"], g:snippets["javascript.jsx"])
+let g:snippets["vue"] = extend(g:snippets["html"], g:snippets["javascript.jsx"])
+
+let g:snippets["elixir"] = {
+      \ "pio": "|> IO.inspect()\<c-o>i",
+      \ "io": "IO.inspect()\<c-o>i",
+      \ }
 
 function! TriggerSnippet()
   let trigger = matchstr(getline('.')[:col('.')-2], '\m\k\+$')

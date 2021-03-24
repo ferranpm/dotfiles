@@ -46,7 +46,7 @@ set colorcolumn=128
 
 " multiple windows
 set laststatus=2
-set statusline=%f%m\ %y%h%r%w%=%c\ %l/%L\ [%{fnamemodify(getcwd(),':t')}]
+set statusline=[%{fnamemodify(getcwd(),':t')}]\ %f%m\ %y%h%r%w%=%c\ %l
 set noequalalways
 set hidden
 set switchbuf=useopen
@@ -78,6 +78,7 @@ set showcmd
 set showmode
 set ruler
 set confirm
+set belloff=all
 
 " selecting text
 
@@ -119,8 +120,8 @@ set updatetime=300
 
 " command line editing
 set wildmode=longest:full,full
-set wildignore=**/node_modules/**,*.cache,**/tmp/**,**/coverage/**
-set wildignorecase
+set nofileignorecase
+set nowildignorecase
 set wildmenu
 set undofile
 set undodir=~/.vim/undodir
@@ -136,8 +137,6 @@ if executable("ag")
   set grepformat=%f:%l:%c:%m
 endif
 
-" language specific
-set isfname-==
 
 " multi-byte characters
 
