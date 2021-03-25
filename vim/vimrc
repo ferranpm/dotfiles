@@ -13,6 +13,7 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'leafgarland/typescript-vim'
+Plug 'posva/vim-vue'
 call plug#end()
 
 runtime macros/matchit.vim
