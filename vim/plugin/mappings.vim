@@ -133,3 +133,4 @@ nnoremap <leader>lP O<c-r>"<esc>
 
 cnoremap <C-A> <Home>
 
+map , <Plug>(easymotion-prefix)
