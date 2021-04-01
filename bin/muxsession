@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+SESSION=$(basename $1)
+DIR="$PWD/$1"
+
+tmux has-session -t $SESSION && tmux switch-client -t $SESSION && exit 1
+
+[[ ! -d "$DIR" ]] && echo "$DIR directory not found" && exit 1
+
+tmux new-session     -s $SESSION -c "$DIR" -d
+tmux switch-client   -t $SESSION
+tmux new-window      -t $SESSION -c "$DIR" -d
+tmux split-window    -t $SESSION -c "$DIR" -l 25% -h -b -d
+tmux send-keys       -t $SESSION "$EDITOR" C-m
