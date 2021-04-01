@@ -1,7 +1,4 @@
-if executable("rg")
-  let g:picker_custom_find_executable = 'rg'
-  let g:picker_custom_find_flags = '--files'
-elseif executable("ag")
+if executable("ag")
   let g:picker_custom_find_executable = 'ag'
   let g:picker_custom_find_flags = '-g ""'
 endif

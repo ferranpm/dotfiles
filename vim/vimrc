@@ -1,19 +1,20 @@
 call plug#begin('~/.vim/bundle')
 Plug 'heewa/vim-tmux-navigator', { 'branch': 'add-no-wrap-option' }
 Plug 'easymotion/vim-easymotion'
+Plug 'preservim/nerdtree'
 Plug 'srstevenson/vim-picker'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'EinfachToll/DidYouMean'
 " Languages
 Plug 'elixir-editors/vim-elixir'
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
-Plug 'leafgarland/typescript-vim'
 Plug 'posva/vim-vue'
 call plug#end()
 
