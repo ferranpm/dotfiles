@@ -91,6 +91,7 @@ set undolevels=5000
 set textwidth=128
 set backspace=2
 set completeopt=menuone
+set completefunc=completefunc#complete
 
 " tabs and indenting
 set tabstop=2
