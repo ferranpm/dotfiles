@@ -21,13 +21,11 @@ endif
 
 iabbrev bp binding.pry
 
+command! -buffer -nargs=* Reek compiler reek | make <args>
 command! -buffer -nargs=* Rubocop compiler rubocop | make <args>
 command! -buffer Pronto compiler pronto | make
 command! -buffer RSpec compiler rspec | execute "make :".line(".")
 command! -buffer -range HashToJson s/=>/:/e | s/\<nil\>/null/e | .!json_pp
-
-setlocal iskeyword+=?,!
-setlocal isfname+=?,!
 
 nnoremap <buffer> <expr> <silent> <leader>r RubyTest()
 

@@ -6,7 +6,7 @@ function! snippets#ruby#defi()
   else
     let blop = map(copy(list), { _, el -> "@".el." = ".el })
     let reader = map(copy(list), { _, el -> ":".el })
-    return "def initialize(".arguments.")\n".join(blop, "\n")."\nend\n\nattr_reader ".join(reader, ", ")."\<esc>"
+    return "attr_reader ".join(reader, ", ")."\n\ndef initialize(".arguments.")\n".join(blop, "\n")."\nend\<esc>"
   endif
 endfunction
 
