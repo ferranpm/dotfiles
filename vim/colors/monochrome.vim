@@ -14,6 +14,8 @@ endif
 
 let g:colors_name = 'monochrome'
 
+let s:red_hc = ['Red', 3]
+
 if &background == 'dark'
   let s:white           = ['Gray90',  15]
   let s:black           = ['Gray10',   0]
@@ -42,7 +44,7 @@ else
 
   let s:blue   = ['SlateGray4',  67]
   let s:yellow = ['gold3',      226]
-  let s:red    = ['Maroon',     160]
+  let s:red    = ['Red',        160]
   let s:green  = ['Green4',      28]
   let s:orange = ['Orange',     166]
 
@@ -99,6 +101,7 @@ call s:hi('StatusLineTermNC', s:default_bg, s:high_contrast)
 call s:hi('TabLine')
 call s:hi('TabLineFill', s:default_bg, s:default_fg)
 call s:hi('TabLineSel', s:default_bg, s:high_contrast)
+call s:hi('VertSplit', s:default_bg, s:default_fg)
 call s:hi('Visual', s:white, s:blue)
 
 " Tildes at the bottom of a buffer, etc
@@ -125,14 +128,14 @@ call s:hi('PmenuSel', s:low_contrast, s:medium_contrast)
 call s:hi('Todo', s:black, s:yellow, 'bold')
 
 " Signs
-call s:hi('SignColumn')
+call s:hi('SignColumn', s:low_contrast, s:low_contrast)
 
 call s:hi('Title', s:default_fg, s:default_bg, 'bold')
 
 " Programming languages
-call s:hi('Comment', s:medium_contrast)
-call s:hi('Constant', s:blue)
-call s:hi('Identifier', s:high_contrast)
+call s:hi('Comment', s:red_hc)
+call s:hi('Constant', s:blue, s:default_bg, 'bold')
+call s:hi('Identifier')
 call s:hi('Statement', s:high_contrast)
 call s:hi('PreProc', s:high_contrast, s:default_bg, 'bold')
 call s:hi('Type', s:high_contrast)
@@ -150,6 +153,11 @@ call s:hi('diffLine', s:medium_contrast)
 call s:hi('diffNewFile', s:medium_contrast)
 call s:hi('diffRemoved', s:default_fg, s:diff_delete)
 call s:hi('diffSubname', s:medium_contrast)
+
+call s:hi('LspDiagnosticsDefaultInformation', s:yellow, s:low_contrast)
+call s:hi('LspDiagnosticsDefaultWarning', s:orange, s:low_contrast)
+call s:hi('LspDiagnosticsDefaultError', s:red, s:low_contrast)
+call s:hi('LspDiagnosticsDefaultHint', s:high_contrast, s:low_contrast)
 
 " Terminal
 let g:terminal_ansi_colors = [
@@ -187,3 +195,4 @@ let g:terminal_color_12 = s:blue[0]
 let g:terminal_color_13 = s:red[0]
 let g:terminal_color_14 = s:blue[0]
 let g:terminal_color_15 = s:white[0]
+

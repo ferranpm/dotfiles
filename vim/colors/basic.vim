@@ -19,6 +19,8 @@ let s:purple  = ['#aa55aa', 135]
 let s:cyan    = ['#55aaaa', 45]
 let s:gray    = ['#aaaaaa', 245]
 
+let s:red_alarm = ['#ff0000', 1]
+
 if &background == 'light'
   let s:red_lc    = ['#bb1111', 9]
   let s:green_lc  = ['#11bb11', 10]
@@ -28,12 +30,13 @@ if &background == 'light'
   let s:cyan_lc   = ['#11bbbb', 14]
   let s:gray_lc   = ['#e0e0e0', 250]
 
-  let s:red_hc    = ['#770000', 1]
-  let s:green_hc  = ['#007700', 2]
-  let s:yellow_hc = ['#777700', 3]
-  let s:blue_hc   = ['#000077', 4]
-  let s:purple_hc = ['#770077', 5]
-  let s:cyan_hc   = ['#770077', 6]
+  let s:red_hc    = ['#aa0000', 1]
+  let s:green_hc  = ['#00aa00', 2]
+  let s:yellow_hc = ['#aaaa00', 3]
+  let s:blue_hc   = ['#0000aa', 4]
+  let s:purple_hc = ['#aa00aa', 5]
+  let s:cyan_hc   = ['#00aaaa', 6]
+  let s:orange_hc = ['#db8d18', 240]
   let s:gray_hc   = ['#606060', 240]
 
   let s:default_fg = s:black
@@ -135,14 +138,14 @@ call s:hi('PmenuThumb')
 call s:hi('Todo', s:black, s:yellow_lc)
 
 " Signs.
-call s:hi('SignColumn')
+call s:hi('SignColumn', s:gray_hc, s:gray_lc)
 
 " Programming languages
-call s:hi('Comment', s:gray_hc)
-call s:hi('Constant', s:gray_hc)
+call s:hi('Comment', s:red_alarm)
+call s:hi('Constant', s:red_hc)
 call s:hi('Identifier', s:blue_hc)
 call s:hi('Statement', s:purple_hc)
-call s:hi('PreProc', s:purple_hc)
+call s:hi('PreProc', s:gray_hc)
 call s:hi('Type', s:blue_hc)
 call s:hi('Special', s:gray_hc)
 
@@ -161,9 +164,20 @@ call s:hi('diffNewFile', s:default_fg, s:gray_lc)
 call s:hi('diffRemoved', s:red_lc)
 call s:hi('diffSubname', s:default_fg, s:gray_lc)
 
-call s:hi('CocInfoFloat', s:green_hc, s:gray_lc)
+" CoC
 call s:hi('CocErrorFloat', s:red_hc, s:gray_lc)
+call s:hi('CocErrorSign', s:red_lc, s:gray_lc)
+
+call s:hi('CocInfoFloat', s:green_hc, s:gray_lc)
+call s:hi('CocInfoSign', s:orange_hc, s:gray_lc)
+
 call s:hi('CocWarningFloat', s:yellow_hc, s:gray_lc)
+call s:hi('CocWarningSign', s:yellow_hc, s:gray_lc)
+
+call s:hi('LspDiagnosticsDefaultInformation', s:yellow_hc, s:gray_lc)
+call s:hi('LspDiagnosticsDefaultWarning', s:orange_hc, s:gray_lc)
+call s:hi('LspDiagnosticsDefaultError', s:red_hc, s:gray_lc)
+call s:hi('LspDiagnosticsDefaultHint', s:gray_hc, s:gray_lc)
 
 " Terminal
 let g:terminal_ansi_colors = [
