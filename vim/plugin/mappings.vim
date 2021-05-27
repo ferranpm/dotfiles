@@ -31,7 +31,6 @@ vnoremap * y/<c-r>=escape('<c-r>0', '*/\[].')<cr><cr>
 vnoremap > >gv
 vnoremap < <gv
 
-nnoremap K i<cr><esc>`[
 nnoremap Y y$
 nnoremap - ^
 
@@ -96,7 +95,6 @@ nmap <c-q> <Plug>(PickerEdit)
 nmap <c-t> <Plug>(PickerTag)
 
 nnoremap <silent> <leader>bc :let @*=expand("%")<cr>
-nnoremap <silent> <leader>lo :!open <cWORD> &<cr>
 nnoremap <silent> <leader>zs :%s/\s\+$//<cr>
 vnoremap <silent> <leader>zs :s/\s\+$//<cr>
 nnoremap <silent> <leader>h :setlocal hlsearch! hlsearch?<cr>
@@ -128,9 +126,10 @@ noremap <silent> <c-s-tab> :bprevious<cr>
 noremap <silent> <c-tab> :bnext<cr>
 noremap <silent> <c-pageup> :tabprevious<cr>
 noremap <silent> <c-pagedown> :tabnext<cr>
-nnoremap <leader>lp o<c-r>"<esc>
-nnoremap <leader>lP O<c-r>"<esc>
 
 cnoremap <C-A> <Home>
 
 map , <Plug>(easymotion-prefix)
+inoremap <silent><expr> <tab> TriggerSnippet()
+
+inoremap <silent> <c-space> <c-x><c-o>

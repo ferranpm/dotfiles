@@ -2,8 +2,6 @@ if !exists("g:snippets")
   let g:snippets = {}
 endif
 
-inoremap <expr> <tab> TriggerSnippet()
-
 let g:snippets["html"] = {
       \ "html": "<html>\<cr></html>\<c-o>O",
       \ "head": "<head>\<cr></head>\<c-o>O",
