@@ -1,7 +1,6 @@
 call plug#begin('~/.vim/bundle')
 Plug 'heewa/vim-tmux-navigator', { 'branch': 'add-no-wrap-option' }
 Plug 'easymotion/vim-easymotion'
-Plug 'preservim/nerdtree'
 Plug 'srstevenson/vim-picker'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
@@ -15,14 +14,12 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'vim-ruby/vim-ruby'
-Plug 'posva/vim-vue'
 call plug#end()
 
 runtime macros/matchit.vim
 
 " important
-set synmaxcol=500
-set nocompatible
+set synmaxcol=1000
 
 " moving around, searching and patterns
 set path=,,
@@ -50,7 +47,7 @@ set colorcolumn=128
 
 " multiple windows
 set laststatus=2
-set statusline=[%{fnamemodify(getcwd(),':t')}]\ %f%m\ %y%h%r%w%=%c\ %l
+set statusline=[%{fnamemodify(getcwd(),':t')}]\ %f%m\ %y%h%r%w%=[%{FugitiveHead()}]\ %l/%L
 set noequalalways
 set hidden
 set switchbuf=useopen
