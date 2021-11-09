@@ -89,6 +89,8 @@ alias pacse='pacman -Ss'
 alias pacupg='sudo pacman -Syu'
 alias psg='ps -e | grep'
 alias bex='bundle exec'
+alias dk='docker'
+alias dkc='docker compose'
 
 ## FUNCTIONS ##
 insert-word() {
