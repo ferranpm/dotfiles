@@ -144,7 +144,7 @@ endif
 set virtualedit=block
 set exrc
 set gdefault
-set signcolumn=auto
+set signcolumn=no
 
 " misc
 let mapleader=' '
