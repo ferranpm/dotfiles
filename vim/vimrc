@@ -8,7 +8,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'EinfachToll/DidYouMean'
 " Languages
 Plug 'elixir-editors/vim-elixir'
 Plug 'pangloss/vim-javascript'
