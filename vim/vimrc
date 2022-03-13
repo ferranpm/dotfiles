@@ -125,7 +125,11 @@ set nofileignorecase
 set nowildignorecase
 set wildmenu
 set undofile
-set undodir=~/.vim/undodir
+if has('nvim')
+  set undodir=~/.vim/undodir
+else
+  set undodir=~/.vim/undodir-vim
+end
 if !isdirectory(&undodir)
   call system('mkdir '.&undodir)
 endif
