@@ -24,9 +24,11 @@
 	c = commit
 	co = checkout
 	dc = diff --cached
+	dm = diff origin/master...
 	d = diff
-	l  = log --graph --oneline --decorate=short
-	lo = log --graph --oneline --date=short --format='%C(yellow)%h %C(red)%ad%C(green)%d %C(reset)%s %C(blue)<%an>'
+	l  = log --graph --oneline
+	lm = log --graph --oneline HEAD origin/master
+	lp = log -p
 	m = merge
 	s = status
 [commit]
@@ -55,3 +57,5 @@
 	rebase = true
 [rebase]
 	autoStash = true
+[init]
+	defaultBranch = main
