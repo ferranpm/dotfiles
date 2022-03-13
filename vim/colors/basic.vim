@@ -14,6 +14,7 @@ let s:white   = ['#ffffff', 15]
 let s:red     = ['#aa5555', 160]
 let s:green   = ['#55aa55', 82]
 let s:yellow  = ['#aaaa55', 184]
+let s:orange  = ['DarkOrange', 166]
 let s:blue    = ['#5555aa', 25]
 let s:purple  = ['#aa55aa', 135]
 let s:cyan    = ['#55aaaa', 45]
@@ -94,6 +95,7 @@ endfunction
 
 " Vim interface
 call s:hi('ColorColumn', s:default_fg, s:gray_lc)
+call s:hi('Cursor', s:black, s:orange)
 call s:hi('CursorColumn', s:default_lst2, s:gray_lc)
 call s:hi('CursorLine', s:default_lst2, s:gray_lc)
 call s:hi('CursorLineNr')
@@ -145,9 +147,9 @@ call s:hi('Comment', s:red_alarm)
 call s:hi('Constant', s:red_hc)
 call s:hi('Identifier', s:blue_hc)
 call s:hi('Statement', s:purple_hc)
-call s:hi('PreProc', s:gray_hc)
+call s:hi('PreProc', s:purple_hc)
 call s:hi('Type', s:blue_hc)
-call s:hi('Special', s:gray_hc)
+call s:hi('Special', s:purple_hc)
 
 call s:hi('MatchParen', s:black, s:yellow_hc)
 

@@ -196,3 +196,13 @@ let g:terminal_color_13 = s:red[0]
 let g:terminal_color_14 = s:blue[0]
 let g:terminal_color_15 = s:white[0]
 
+call s:hi('DiagnosticError', [ 'Red'      , 1 ], s:low_contrast)
+call s:hi('DiagnosticWarn',  [ 'Orange'   , 3 ], s:low_contrast)
+call s:hi('DiagnosticInfo',  [ 'LightBlue', 4 ], s:low_contrast)
+call s:hi('DiagnosticHint',  [ 'LightGrey', 7 ], s:low_contrast)
+
+call s:hi('DiagnosticVirtualTextError', [ 'Red'      , 1 ])
+call s:hi('DiagnosticVirtualTextWarn',  [ 'Orange'   , 3 ])
+call s:hi('DiagnosticVirtualTextInfo',  [ 'LightBlue', 4 ])
+call s:hi('DiagnosticVirtualTextHint',  [ 'LightGrey', 7 ])
+

@@ -41,6 +41,8 @@ nnoremap <c-l> <c-w>l
 
 nnoremap <c-]> g<c-]>
 nnoremap g<c-]> <c-]>
+vnoremap <c-]> g<c-]>
+vnoremap g<c-]> <c-]>
 
 if has('nvim')
   tnoremap <c-h> <C-\><c-n><c-w>h
@@ -128,6 +130,7 @@ noremap <silent> <c-pageup> :tabprevious<cr>
 noremap <silent> <c-pagedown> :tabnext<cr>
 
 cnoremap <C-A> <Home>
+cnoremap <C-B> <C-A>
 
 map , <Plug>(easymotion-prefix)
 inoremap <silent><expr> <tab> TriggerSnippet()

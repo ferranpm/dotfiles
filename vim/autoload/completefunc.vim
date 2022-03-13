@@ -63,7 +63,7 @@ endfunction
 
 function! completefunc#matchfuzzy(words, base)
   let l:regexp = completefunc#regexp(a:base)
-  return filter(a:words, 'v:val =~ l:regexp')
+  return filter(a:words, 'v:val =~# l:regexp')
 endfunction
 
 function! completefunc#matchfzy(words, base)
