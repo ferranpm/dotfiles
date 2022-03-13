@@ -13,3 +13,7 @@ endfunction
 function! snippets#ruby#class_name()
   return substitute(expand('%:t:r'), '\m\%(_\|\<\)\(\l\)', '\U\1', 'g')
 endfunction
+
+function! snippets#ruby#module_name()
+  return substitute(expand('%:h:t'), '\m\%(_\|\<\)\(\l\)', '\U\1', 'g')
+endfunction

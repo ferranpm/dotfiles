@@ -46,6 +46,7 @@ let g:snippets["ruby"] = {
       \ "ar": "attr_reader ",
       \ "defi": function("snippets#ruby#defi"),
       \ "class": "class \<c-r>=snippets#ruby#class_name()\<cr>\<cr>end\<c-o>O",
+      \ "module": "module \<c-r>=snippets#ruby#module_name()\<cr>\<cr>end\<c-o>O",
       \ "fsl": "# frozen_string_literal: true\<cr>\<c-w>",
       \ "rspec": "RSpec.describe \<c-r>=substitute(snippets#ruby#class_name(), 'Spec$', '', '')\<cr> do\<cr>end\<c-o>O",
       \ "describe": "describe \"\" do\<cr>end\<esc>k0f\"a",
