@@ -1,20 +1,10 @@
-xmonad/xmonad-x86_64-linux
-xmonad/xmonad.errors
-xmonad/xmonad.hi
-xmonad/xmonad.o
-
-mutt/sent
-
-ranger/bookmarks
-ranger/colorschemes
-ranger/tagged
-
 vim/.netrwhist
 vim/bundle/*
 vim/view/*
 vim/spell/*
 vim/backups
 vim/undodir
+vim/undodir-vim
 
 *cache*
 *history*
