@@ -1,0 +1,121 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'pry'
+
+options = {}
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: #{$0} [options]"
+
+  opts.on("-f", "--by-file", "Sort and aggregate by file") { options[:by_file] = true }
+  opts.on("-d", "--by-directory", "Sort and aggregate by directory") { options[:by_directory] = true }
+  opts.on("-t", "--translate", "Translate to line") { options[:translate] = true }
+  opts.on("-h", "--help", "Prints this help") { puts opts; exit }
+end.parse!
+
+class Line
+  attr_reader :file, :context, :time, :state
+
+  def self.parse(line)
+    return if header_or_separator?(line)
+
+    test, state, time = line.split(/\|/).map(&:strip)
+    context = test[/\[[\d:]+\]/]
+    file = test.delete(context)
+
+    new(file: file, context: context, time: time.to_f, state: state)
+  end
+
+  def self.header_or_separator?(line)
+    (
+      line.match?(/^example_id\s+\| status\s+\| run_time\s+\|$/) ||
+      line.match?(/^-+ \| -+ \| -+ \|$/)
+    )
+  end
+
+  def initialize(file:, context:, time:, state:)
+    @file = file
+    @context = context
+    @time = time
+    @state = state
+  end
+
+  def directory
+    File.dirname(file)
+  end
+
+  def test
+    "#{file}:#{context}"
+  end
+
+  def passed?
+    state == "passed"
+  end
+
+  def unknown?
+    state == "unknown"
+  end
+end
+
+def print(name, time, max_width = 120)
+  puts "#{name.ljust(max_width)}#{time}"
+end
+
+if $PROGRAM_NAME == __FILE__
+  raise "ENV[\"RSPEC_PERSISTENCE_FILE\"] not found" unless ENV["RSPEC_PERSISTENCE_FILE"]
+
+  lines = File.readlines(ENV["RSPEC_PERSISTENCE_FILE"]).map { |line| Line.parse(line) }.compact
+
+  if options[:translate]
+  elsif options[:by_directory]
+    max_width = lines.map(&:directory).map(&:size).max + 1
+    lines
+      .group_by(&:directory)
+      .map { |directory, lines|  [ directory, lines.sum(&:time) ] }
+      .sort_by { |_, time| time }
+      .each { |directory, time| print(directory, time, max_width) }
+  elsif options[:by_file]
+    max_width = lines.map(&:file).map(&:size).max + 1
+    lines
+      .group_by(&:file)
+      .map { |file, file_lines| [ file, file_lines.sum(&:time) ] }
+      .sort_by { |_, time| time }
+      .each { |file, time| print(file, time, max_width) }
+  else
+    max_width = lines.map(&:file).map(&:size).max + 1
+    lines.sort_by(&:time).each { |line| print(line.test, line.time, max_width) }
+  end
+end
+
+
+require "rspec"
+
+RSpec.describe Line do
+  describe ".parse" do
+    it "is nil for a header line" do
+      line_to_parse = "example_id                               | status  | run_time               |"
+      line = Line.parse(line_to_parse)
+
+      expect(line).to be_nil
+    end
+
+    it "is nil for a separator line" do
+      line_to_parse = "---------------------------------------- | ------- | ---------------------- |"
+      line = Line.parse(line_to_parse)
+
+      expect(line).to be_nil
+    end
+
+    it "parses it for a test line", aggregate_failures: true do
+      line_to_parse = "./spec/models/cart_spec.rb[1:15:2]       | passed  | 0.00207 seconds        |"
+      line = Line.parse(line_to_parse)
+
+      expect(line.file).to eq "./spec/models/cart_spec.rb"
+      expect(line.directory).to eq "./spec/models"
+      expect(line.context).to eq "[1:15:2]"
+      expect(line).to be_passed
+      expect(line.time).to eq 0.00207
+    end
+  end
+end

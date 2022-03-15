@@ -7,13 +7,24 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
+Plug 'iberianpig/ranger-explorer.vim'
+if has('nvim')
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'yuntan/neovim-indent-guides'
+endif
+
 " Languages
 Plug 'elixir-editors/vim-elixir'
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'vim-ruby/vim-ruby'
 call plug#end()
+
+if has('nvim')
+  lua require('lsp')
+endif
 
 runtime macros/matchit.vim
 
@@ -41,7 +52,10 @@ set listchars=tab:»\ ,trail:·
 set nowrap
 
 " syntax, highlighting and spelling
+colorscheme monochrome
+set background=light
 set nohlsearch
+set termguicolors
 set colorcolumn=128
 
 " multiple windows

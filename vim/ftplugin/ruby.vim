@@ -29,3 +29,5 @@ function! RubyTest()
 endfunction
 
 command! -buffer CreateSpecFile execute 'split | edit '.substitute(substitute(expand("%"), "app\/", "spec/", ""), "\.rb$", "_spec.rb", "")
+
+set iskeyword+=?,!

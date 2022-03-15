@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+gone_branches() {
+  git branch -v | awk '/\[gone\]|\[no hi és\]/ { print $1 }'
+}
+
+branches=$(gone_branches)
+
+if [[ -z $branches ]]
+then
+  echo "No branches gone"
+else
+  git branch -D $branches
+fi

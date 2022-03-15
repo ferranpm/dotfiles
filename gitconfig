@@ -1,6 +1,7 @@
 [user]
 	name = Ferran Pelayo Monfort
-	email = ferran.pel.mon@gmail.com
+	email = ferran.pelayo@sequra.es
+	signingkey = ferran.pelayo@sequra.es
 [core]
 	editor = vim
 	pager = less -R

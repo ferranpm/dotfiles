@@ -20,8 +20,8 @@ nnoremap <silent> [q :cprevious<cr>
 nnoremap <silent> ]t :tnext<cr>
 nnoremap <silent> [t :tprevious<cr>
 
-nnoremap <silent> ]l :lnext<cr>
-nnoremap <silent> [l :lprevious<cr>
+nnoremap <silent> ]l :lafter<cr>
+nnoremap <silent> [l :lbefore<cr>
 
 noremap <silent> ]g /\v^(\<\|\=\|\>){7}([^=].+)?$<cr>
 noremap <silent> [g ?\v^(\<\|\=\|\>){7}([^=].+)\?$<cr>
@@ -136,3 +136,5 @@ map , <Plug>(easymotion-prefix)
 inoremap <silent><expr> <tab> TriggerSnippet()
 
 inoremap <silent> <c-space> <c-x><c-o>
+
+noremap <silent> <leader><leader>g :0G<cr>

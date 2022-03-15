@@ -8,7 +8,7 @@ stty -ixon
 
 ## EXPORTS ##
 export COLORFGBG="15;0"
-export EDITOR="vim"
+export EDITOR="nvim"
 export HISTFILE=$HOME/.zshhistory
 export HISTSIZE=50000
 export KEYTIMEOUT=1
@@ -20,8 +20,11 @@ export LESS_TERMCAP_so=$(printf "\e[1;40;33m")
 export LESS_TERMCAP_ue=$(printf "\e[0m")
 export LESS_TERMCAP_us=$(printf "\e[1;32m")
 export PATH=$HOME/.local/bin:$PATH
+export PATH=/usr/local/sbin:$PATH
+export PATH=$HOME.local/bin/elixir-ls:$PATH
 export SAVEHIST=10000
 export ZLS_COLORS=$LS_COLORS
+export GITHUB_TOKEN="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"
 
 autoload -U colors && colors
 autoload -U compinit && compinit -d $HOME/.zshcompdump
@@ -61,9 +64,11 @@ bindkey -e '^[[3~' delete-char
 bindkey -e '^n' down-line-or-search
 bindkey -e '^s' insert-sudo
 bindkey -e '^y' insert-man
+bindkey -e '^t' insert-docker-compose
 bindkey -e '^p' up-line-or-search
 bindkey -e '^[[1;5C' forward-word
 bindkey -e '^[[1;5D' backward-word
+bindkey -e '^q' insert-jenkins
 
 ## ALIASES ##
 alias aura='aura --color=auto'
@@ -78,9 +83,11 @@ alias cd3='cd ../../../'
 alias cd4='cd ../../../../'
 alias e='$EDITOR'
 alias g='git'
+alias github='open https://github.com/sequra/$(git_project)/tree/$(git_branch_name)'
+alias jira='open https://sequra.atlassian.net/browse/$(git_issue)'
 alias l='ls -lh'
 alias ll='l -A'
-alias ls='ls --color=auto'
+alias ls='ls -G'
 alias pacin='sudo pacman -S'
 alias pacman='pacman --color=auto'
 alias pacre='sudo pacman -Rns'
@@ -103,6 +110,10 @@ insert-man() { insert-word "man" }
 zle -N insert-man
 insert-sudo() { insert-word "sudo" }
 zle -N insert-sudo
+insert-docker-compose() { insert-word "docker compose up -d web && docker compose exec web sh" }
+zle -N insert-docker-compose
+insert-jenkins() { insert-word "jenkins -l | tee errors" }
+zle -N insert-jenkins
 
 extract () {
   for f in $*; do
@@ -170,3 +181,5 @@ if [ -d ~/.zsh/plugin/ ]; then
 fi
 
 test_and_source "$HOME/.asdf/asdf.sh"
+
+alias lens='open /Applications/Lens.app'
