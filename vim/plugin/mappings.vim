@@ -100,7 +100,6 @@ nnoremap <silent> <leader>bc :let @*=expand("%")<cr>
 nnoremap <silent> <leader>zs :%s/\s\+$//<cr>
 vnoremap <silent> <leader>zs :s/\s\+$//<cr>
 nnoremap <silent> <leader>h :setlocal hlsearch! hlsearch?<cr>
-nnoremap          <leader>s "_ddP
 nnoremap <silent> <leader>zh :call edit#auto_highlight_toggle()<cr>
 nnoremap          <leader>zv zMzvzz
 nnoremap          <leader>e :e <c-r>=expand("%:h")<cr>/
@@ -112,8 +111,8 @@ function! GrepEscaped(string)
 endfunction
 
 let silent = has('gui_running') || has('nvim') ? 'silent ' : ''
-execute 'nnoremap <leader>u :'.silent.'grep! "<c-r>=GrepEscaped(expand("<cword>"))<cr>"'
-execute 'nnoremap <leader>U :'.silent.'grep! "<c-r>=GrepEscaped(expand("<cWORD>"))<cr>"'
+execute 'nnoremap <leader>u :'.silent.'grep! "\C<c-r>=GrepEscaped(expand("<cword>"))<cr>"'
+execute 'nnoremap <leader>U :'.silent.'grep! "\C<c-r>=GrepEscaped(expand("<cWORD>"))<cr>"'
 execute 'vnoremap <leader>u y:'.silent.'grep! --case-sensitive --fixed-strings "<c-r>0"'
 execute 'nnoremap <leader>g :'.silent.'grep! ""<left>'
 execute 'vnoremap <leader>g y:'.silent.'grep! "<c-r>0"<left>'

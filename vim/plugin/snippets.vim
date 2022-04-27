@@ -43,7 +43,7 @@ call extend(g:snippets["eruby"], {
 
 let g:snippets["ruby"] = {
       \ "bp": "require \"pry\"; binding.pry",
-      \ "ar": "attr_reader ",
+      \ "ar": "attr_reader :",
       \ "defi": function("snippets#ruby#defi"),
       \ "class": "class \<c-r>=snippets#ruby#class_name()\<cr>\<cr>end\<c-o>O",
       \ "module": "module \<c-r>=snippets#ruby#module_name()\<cr>\<cr>end\<c-o>O",

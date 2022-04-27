@@ -1,8 +1,8 @@
 let g:projectionist_heuristics = {
       \ 'config/routes.rb': {
-      \   'lib/*.rb': {
-      \     'type': 'lib',
-      \     'alternate': [ 'spec/lib/{}_spec.rb' ],
+      \   'app/commands/*.rb': {
+      \     'type': 'command',
+      \     'alternate': [ 'spec/commands/{}_spec.rb' ],
       \     },
       \   'app/services/*.rb': {
       \     'type': 'service',
@@ -35,12 +35,15 @@ let g:projectionist_heuristics = {
       \     'type': 'view',
       \     'alternate': [ 'app/controllers/{dirname}_controller.rb' ],
       \     },
+      \   'lib/*.rb': {
+      \     'type': 'lib',
+      \     'alternate': [ 'spec/lib/{}_spec.rb' ],
+      \     },
       \   'app/*.rb': {
       \     'alternate': [ 'spec/{}_spec.rb' ],
       \     },
       \   'spec/*_spec.rb': {
-      \     'type': 'spec',
-      \     'alternate': [ 'app/{}.rb', '{}.rb' ],
-      \     },
+      \     'alternate': [ 'app/{}.rb' ],
+      \     }
       \   }
       \ }
