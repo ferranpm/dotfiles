@@ -2,8 +2,6 @@ PROMPT='
 %n in %~ at %m ${vcs_info_msg_0_}
 %(!.#.>) %b'
 
-fpath=(~/.zsh/completion $fpath)
-
 stty -ixon
 
 ## EXPORTS ##
@@ -163,10 +161,5 @@ precmd () {
   vcs_info
 }
 
-if [ -d ~/.zsh/plugin/ ]; then
-  for file in ~/.zsh/plugin/*; do
-    test_and_source $file
-  done
-fi
 
 test_and_source "$HOME/.asdf/asdf.sh"

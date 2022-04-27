@@ -1,3 +1,0 @@
-#compdef tmux-mksession
-
-_files -W ~/Workspace/
