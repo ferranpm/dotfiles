@@ -22,7 +22,7 @@ set synmaxcol=1000
 
 " moving around, searching and patterns
 set path=,,
-if has('nvim')
+if exists('&inccommand')
   set inccommand=nosplit
 endif
 set incsearch
