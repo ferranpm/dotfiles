@@ -18,6 +18,7 @@ vim.diagnostic.config({
   virtual_text = false,
   underline = true,
   signs = true,
+  loclist = true,
 })
 
 local lspconfig = require('lspconfig')
