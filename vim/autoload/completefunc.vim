@@ -15,7 +15,6 @@ endfunction
 
 function! completefunc#completions(base)
   let l:buffers = getbufinfo({ 'bufloaded': 1 })
-  let l:regexp = completefunc#regexp(a:base)
 
   for l:mode in split(&complete, ',')
     if l:mode == '.'
@@ -25,11 +24,9 @@ function! completefunc#completions(base)
     elseif l:mode == 'b'
       call completefunc#add_from_buffers(filter(copy(l:buffers), 'empty(v:val["windows"])'), a:base, 'b')
     elseif l:mode == 't' || l:mode == ']'
-      call completefunc#add_from_tags(l:regexp, 't')
+      call completefunc#add_from_tags(completefunc#regexp(a:base), 't')
     endif
   endfor
-
-  call completefunc#add_from_lines(keys(get(g:snippets, &filetype, {})), a:base, 'snippet')
 endfunction
 
 function! completefunc#add_from_tags(regexp, mode)
@@ -44,26 +41,30 @@ function! completefunc#add_from_buffers(buffers, regexp, mode)
       break
     endif
 
-    if get(l:buffer, 'linecount') > 2500
-      continue
-    endif
-
     call completefunc#add_from_lines(getbufline(l:buffer['bufnr'], 0, '$'), a:regexp, a:mode)
   endfor
 endfunction
 
 function! completefunc#add_from_lines(lines, base, mode)
   let l:words = split(join(a:lines), '\m\s*\<\|\>\s*')
-  let l:Fuzzysearch = exists('*matchfuzzy') ? function('matchfuzzy') : function('completefunc#matchfuzzy')
-  let l:ignorecase = &ignorecase
-  for word in l:Fuzzysearch(words, a:base)
+  for word in completefunc#matchfuzzy(words, a:base)
     call complete_add({ 'word': word, 'menu': a:mode })
   endfor
 endfunction
 
+function! completefunc#fuzzysearch(words, base)
+  if exists('*matchfuzzy')
+    return matchfuzzy(a:words, a:base)
+  elseif executable('fzy')
+    return completefunc#matchfzy(a:words, a:base)
+  else
+    return completefunc#matchfuzzy(a:words, a:base)
+  endif
+endfunction
+
 function! completefunc#matchfuzzy(words, base)
   let l:regexp = completefunc#regexp(a:base)
-  return filter(a:words, 'v:val =~# l:regexp')
+  return filter(a:words, 'v:val =~ l:regexp')
 endfunction
 
 function! completefunc#matchfzy(words, base)
