@@ -14,7 +14,7 @@ endif
 
 let g:colors_name = 'monochrome'
 
-let s:red_hc = ['Red', 3]
+let s:red_hc = ['Red', 1]
 
 if &background == 'dark'
   let s:white           = ['Gray90',  15]
@@ -121,7 +121,7 @@ call s:hi('SpecialKey', s:blue, s:default_bg, 'bold')
 call s:hi('Directory', s:default_fg, s:default_bg, 'bold')
 
 " Popup menu
-call s:hi('Pmenu', s:default_fg, s:low_contrast)
+call s:hi('Pmenu', s:high_contrast, s:low_contrast)
 call s:hi('PmenuSel', s:low_contrast, s:medium_contrast)
 
 " Notes
