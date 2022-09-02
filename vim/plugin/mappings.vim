@@ -92,7 +92,7 @@ nnoremap <f8> :setlocal wrap! wrap?<cr>
 nnoremap <leader>p :buffer 
 nnoremap <leader>q :find 
 
-nmap <c-p> <Plug>(PickerBuffer)
+noremap <c-p> :call picker#File(utils#mru_list_buffers_command(), 'buffer')<cr>
 nmap <c-q> <Plug>(PickerEdit)
 nmap <c-t> <Plug>(PickerTag)
 

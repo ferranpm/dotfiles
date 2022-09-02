@@ -47,3 +47,12 @@ function! utils#go_to_buffer(name, ...) " {{{
         execute 'file '.a:name
     endif
 endfunction " }}}
+
+function! utils#mru_list_buffers_command() abort
+  let l:buffers = getbufinfo()
+  let l:buffers = filter(l:buffers, 'buflisted(v:val["bufnr"]) && v:val["bufnr"] != bufnr("%")')
+  let l:buffers = sort(l:buffers, { a, b -> b["lastused"] - a["lastused"] })
+  let l:bufnames = map(l:buffers, 'bufname(v:val["bufnr"])')
+  return 'echo "' . join(l:bufnames, "\n"). '"'
+endfunction
+
