@@ -138,3 +138,5 @@ map , <Plug>(easymotion-prefix)
 inoremap <silent><expr> <tab> TriggerSnippet()
 
 inoremap <silent> <c-space> <c-x><c-o>
+
+nnoremap <silent> <leader>s :0G<cr>
