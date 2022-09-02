@@ -8,6 +8,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+if has('nvim')
+  Plug 'neovim/nvim-lspconfig'
+endif
+
 " Languages
 Plug 'elixir-editors/vim-elixir'
 Plug 'pangloss/vim-javascript'
