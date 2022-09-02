@@ -1,5 +1,5 @@
 call plug#begin('~/.vim/bundle')
-Plug 'heewa/vim-tmux-navigator', { 'branch': 'add-no-wrap-option' }
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'easymotion/vim-easymotion'
 Plug 'srstevenson/vim-picker'
 Plug 'tpope/vim-commentary'
