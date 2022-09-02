@@ -124,6 +124,7 @@ set noswapfile
 set updatetime=300
 
 " command line editing
+set wildcharm=<tab>
 set wildmode=longest:full,full
 set nofileignorecase
 set nowildignorecase
