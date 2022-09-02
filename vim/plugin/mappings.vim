@@ -23,6 +23,9 @@ nnoremap <silent> [t :tprevious<cr>
 nnoremap <silent> ]l :lnext<cr>
 nnoremap <silent> [l :lprevious<cr>
 
+nnoremap <silent> ]i :lbelow<cr>
+nnoremap <silent> [i :labove<cr>
+
 noremap <silent> ]g /\v^(\<\|\=\|\>){7}([^=].+)?$<cr>
 noremap <silent> [g ?\v^(\<\|\=\|\>){7}([^=].+)\?$<cr>
 
