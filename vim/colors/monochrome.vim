@@ -102,6 +102,7 @@ call s:hi('TabLine')
 call s:hi('TabLineFill', s:default_bg, s:default_fg)
 call s:hi('TabLineSel', s:default_bg, s:high_contrast)
 call s:hi('VertSplit', s:default_bg, s:default_fg)
+call s:hi('WinSeparator', s:default_fg, s:default_bg)
 call s:hi('Visual', s:white, s:blue)
 
 " Tildes at the bottom of a buffer, etc

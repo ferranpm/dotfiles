@@ -1,1 +1,0 @@
-let NERDTreeCascadeSingleChildDir=0
