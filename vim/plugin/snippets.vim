@@ -38,7 +38,11 @@ let g:snippets["html"] = {
 let g:snippets["eruby"] = g:snippets["html"]
 call extend(g:snippets["eruby"], {
       \ "%": "<%  %>\<esc>Bhi",
-      \ "%=": "<%=  %>\<esc>Bhi"
+      \ "%=": "<%=  %>\<esc>Bhi",
+      \ "if": "<% if # %>\<cr><% end %>\<esc>?#\<cr>s",
+      \ "else": "<% else %>",
+      \ "end": "<% end %>",
+      \ "each": "<% #.each do |item| %>\<cr><% end %>\<esc>?#\<cr>s",
       \ })
 
 let g:snippets["ruby"] = {
@@ -87,8 +91,27 @@ let g:snippets["elixir"] = {
 function! TriggerSnippet()
   let trigger = matchstr(getline('.')[:col('.')-2], '\m\k\+$')
   let snippets = get(g:snippets, &filetype, {})
-  let backspaces = has_key(snippets, trigger) ? repeat("\<backspace>", len(trigger)) : ""
-  let Expansion = get(snippets, trigger, "\<tab>")
+
+  let possible_snippets = filter(keys(snippets), { i, val -> match(val, trigger) == 0 })
+
+  if len(possible_snippets) == 0
+    return ""
+  elseif len(possible_snippets) == 1
+    let snippet_name = possible_snippets[0]
+  elseif !has_key(snippets, trigger)
+    let options = copy(possible_snippets)
+    call insert(options, "Cancel snippet insertion", 0)
+    let input = inputlist(map(options, { i, val -> i . ". " . val })) - 1
+    if input == 0
+      return ""
+    endif
+    let snippet_name = possible_snippets[input]
+  else
+    let snippet_name = trigger
+  endif
+
+  let backspaces = repeat("\<backspace>", len(trigger))
+  let Expansion = get(snippets, snippet_name, "\<tab>")
   let completion = type(Expansion) == v:t_func ? call(Expansion, []) : Expansion
   return backspaces . completion
 endfunction
