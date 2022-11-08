@@ -92,7 +92,7 @@ function! TriggerSnippet()
   let trigger = matchstr(getline('.')[:col('.')-2], '\m\k\+$')
   let snippets = get(g:snippets, &filetype, {})
 
-  let possible_snippets = filter(keys(snippets), { i, val -> match(val, trigger) == 0 })
+  let possible_snippets = sort(filter(keys(snippets), { i, val -> match(val, trigger) == 0 }))
 
   if len(possible_snippets) == 0
     return ""
@@ -102,7 +102,7 @@ function! TriggerSnippet()
     let options = copy(possible_snippets)
     call insert(options, "Cancel snippet insertion", 0)
     let input = inputlist(map(options, { i, val -> i . ". " . val })) - 1
-    if input == 0
+    if input == -1
       return ""
     endif
     let snippet_name = possible_snippets[input]
