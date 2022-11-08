@@ -1,8 +1,6 @@
 *.js.map
 *.lock
-*.log
 *.min.*
-*.sublime-workspace
 *.svg
 bower_components
 coverage
@@ -10,3 +8,8 @@ node_modules
 public/packs
 storybook-static
 tmp
+
+# Unity
+Builds
+Library
+Temp
