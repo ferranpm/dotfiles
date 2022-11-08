@@ -108,17 +108,14 @@ nnoremap          <leader>zv zMzvzz
 nnoremap          <leader>e :e <c-r>=expand("%:h")<cr>/
 
 function! GrepEscaped(string)
-  let extra = matchstr(a:string, '\(!\|?\)$')
-  let word = substitute(a:string, '\(!\|?\)$', '', '')
-  return '\b'.fnameescape(word).'\b'.fnameescape(extra)
+  return escape(escape(a:string, '\'), '"()[]\')
 endfunction
 
 let silent = has('gui_running') || has('nvim') ? 'silent ' : ''
-execute 'nnoremap <leader>u :'.silent.'grep! "\C<c-r>=GrepEscaped(expand("<cword>"))<cr>"'
-execute 'nnoremap <leader>U :'.silent.'grep! "\C<c-r>=GrepEscaped(expand("<cWORD>"))<cr>"'
-execute 'vnoremap <leader>u y:'.silent.'grep! --case-sensitive --fixed-strings "<c-r>0"'
+execute 'nnoremap <leader>u :'.silent.'grep! --case-sensitive "\b<c-r>=GrepEscaped(expand("<cword>"))<cr>\b"'
+execute 'nnoremap <leader>U :'.silent.'grep! --case-sensitive "<c-r>=GrepEscaped(expand("<cWORD>"))<cr>"'
+execute 'vnoremap <leader>u y:'.silent.'grep! --case-sensitive "<c-r>=GrepEscaped(@")<cr>"'
 execute 'nnoremap <leader>g :'.silent.'grep! ""<left>'
-execute 'vnoremap <leader>g y:'.silent.'grep! "<c-r>0"<left>'
 
 if has('clipboard')
   nnoremap <c-c> "+yy
