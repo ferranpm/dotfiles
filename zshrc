@@ -87,7 +87,7 @@ alias pacro='pacman -Qtdq && sudo pacman -Rns `pacman -Qtdq`'
 alias pacse='pacman -Ss'
 alias pacupg='sudo pacman -Syu'
 alias psg='ps -e | grep'
-alias bex='bundle exec'
+alias be='bundle exec'
 alias dk='docker'
 alias dkc='docker compose'
 
