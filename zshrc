@@ -76,6 +76,7 @@ alias cd3='cd ../../../'
 alias cd4='cd ../../../../'
 alias e='$EDITOR'
 alias g='git'
+alias github='open $(git_remote_http_url)/tree/$(git_branch_name)'
 alias l='ls -lh'
 alias ll='l -A'
 alias ls='ls --color=auto'
@@ -139,16 +140,8 @@ git_full_branch_name() {
   git symbolic-ref HEAD 2>/dev/null || git name-rev --name-only --no-undefined --always HEAD
 }
 
-is_git_directory() {
-  git_directory >/dev/null 2>&1
-}
-
-git_project() {
-  git_directory | sed 's/.*\///'
-}
-
-git_directory() {
-  git rev-parse --show-toplevel
+git_remote_http_url() {
+  git remote -v | head -n1 | awk '{ sub(":", "/", $2); sub("git@", "https://", $2); sub("\.git$", "", $2); print $2 }'
 }
 
 rm_tr_white () {
