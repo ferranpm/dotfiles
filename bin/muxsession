@@ -3,11 +3,11 @@
 DIR=$(realpath $1)
 SESSION=$(basename $DIR)
 
-tmux has-session -t $SESSION && tmux switch-client -t $SESSION && exit 1
+tmux has-session -t "$SESSION" && tmux switch-client -t "$SESSION" && exit 1
 
 [[ ! -d "$DIR" ]] && echo "$DIR directory not found" && exit 1
 
-tmux new-session     -s $SESSION -c "$DIR" -d
-tmux switch-client   -t $SESSION
-tmux new-window      -t $SESSION -c "$DIR" -d
-tmux send-keys       -t $SESSION "$EDITOR" C-m
+tmux new-session     -s "$SESSION" -c "$DIR" -d
+tmux switch-client   -t "$SESSION"
+tmux new-window      -t "$SESSION:" -c "$DIR" -d
+tmux send-keys       -t "$SESSION" "$EDITOR" C-m
