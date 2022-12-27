@@ -84,8 +84,27 @@ call extend(g:snippets["gitcommit"], {
 let g:snippets["vue"] = extend(g:snippets["html"], g:snippets["javascript.jsx"])
 
 let g:snippets["elixir"] = {
-      \ "pio": "|> IO.inspect()\<c-o>i",
-      \ "io": "IO.inspect()\<c-o>i",
+      \ "chunk": "|> Enum.chunk()\<left>",
+      \ "count": "|> Enum.count",
+      \ "each": "|> Enum.each()\<left>",
+      \ "filter": "|> Enum.filter()\<left>",
+      \ "flat_map": "|> Enum.flat_map()\<left>",
+      \ "flatten": "|> Enum.flatten",
+      \ "join": "|> Enum.join()\<left>",
+      \ "map": "|> Enum.map()\<left>",
+      \ "max": "|> Enum.max",
+      \ "min": "|> Enum.min",
+      \ "reduce": "|> Enum.reduce(initial, fn x, acc ->\<cr>end)\<esc>O",
+      \ "reject": "|> Enum.reject()\<left>",
+      \ "reverse": "|> Enum.reverse",
+      \ "sort": "|> Enum.sort",
+      \ "sum": "|> Enum.sum",
+      \ "with_index": "|> Enum.with_index",
+      \ "inspect": "|> IO.inspect",
+      \ "puts": "|> IO.puts",
+      \ "keys": "|> Map.keys",
+      \ "values": "|> Map.values",
+      \ "split": "|> String.split(\"\\n\", trim: true)",
       \ }
 
 function! TriggerSnippet()
