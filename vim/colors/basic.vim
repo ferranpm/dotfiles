@@ -20,7 +20,7 @@ let s:purple  = ['#aa55aa', 135]
 let s:cyan    = ['#55aaaa', 45]
 let s:gray    = ['#aaaaaa', 245]
 
-let s:red_alarm = ['#ff0000', 1]
+let s:red_alarm = ['#bb0000', 1]
 
 if &background == 'light'
   let s:red_lc    = ['#bb1111', 9]
@@ -147,6 +147,7 @@ call s:hi('Comment', s:red_alarm)
 call s:hi('Constant', s:red_hc)
 call s:hi('Identifier', s:blue_hc)
 call s:hi('Statement', s:purple_hc)
+call s:hi('Operator')
 call s:hi('PreProc', s:purple_hc)
 call s:hi('Type', s:blue_hc)
 call s:hi('Special', s:purple_hc)

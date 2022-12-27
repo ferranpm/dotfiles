@@ -14,7 +14,7 @@ endif
 
 let g:colors_name = 'monochrome'
 
-let s:red_hc = ['Red', 1]
+let s:red_hc = ['#cc0000', 1]
 
 if &background == 'dark'
   let s:white           = ['Gray90',  15]
@@ -34,7 +34,7 @@ if &background == 'dark'
   let s:diff_add  = s:green
 
   let s:default_fg = ['LightGray', 255]
-  let s:default_bg = ['gray13', 'black']
+  let s:default_bg = ['#282a36', 'black']
 else
   let s:white           = ['Gray93', 255]
   let s:black           = ['Gray3',  232]
