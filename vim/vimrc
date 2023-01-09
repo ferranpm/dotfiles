@@ -50,7 +50,16 @@ set colorcolumn=128
 
 " multiple windows
 set laststatus=2
-set statusline=%f\ %m%h%r%w%=[%l/%L][%{FugitiveHead()}][%{fnamemodify(getcwd(),':t')}]
+set statusline=
+set statusline+=%f
+set statusline+=\ %m%h%r%w
+set statusline+=%=
+set statusline+=%#PmenuSel#
+set statusline+=\ %l/%L\ 
+set statusline+=%#PmenuSbar#
+set statusline+=\ %{FugitiveHead()}\ 
+set statusline+=%#StatusLineNC#
+set statusline+=\ %{fnamemodify(getcwd(),':t')}\ 
 set noequalalways
 set hidden
 set switchbuf=useopen
