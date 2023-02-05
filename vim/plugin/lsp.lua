@@ -1,9 +1,9 @@
-local custom_on_attach = function(client)
-  -- See `:help nvim_buf_set_keymap()` for more information
-  vim.api.nvim_buf_set_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true })
-  vim.api.nvim_buf_set_keymap(0, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true })
+local on_attach = function(client, bufnr)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true })
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true })
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gu', '<cmd>lua vim.lsp.buf.references()<CR>', { noremap = true })
 
-  vim.api.nvim_buf_set_option(0, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 end
 
 vim.cmd([[
@@ -24,10 +24,10 @@ vim.diagnostic.config({
 local lspconfig = require('lspconfig')
 
 lspconfig.solargraph.setup({
-  on_attach = custom_on_attach,
+  on_attach = on_attach,
   diagnostics = true,
 })
 
 lspconfig.tsserver.setup({
-  on_attach = custom_on_attach,
+  on_attach = on_attach,
 })
