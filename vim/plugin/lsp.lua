@@ -1,9 +1,3 @@
-local on_attach = function(client, bufnr)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true })
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true })
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gu', '<cmd>lua vim.lsp.buf.references()<CR>', { noremap = true })
-end
-
 vim.api.nvim_create_autocmd(
   { "DiagnosticChanged" },
   {
