@@ -4,7 +4,7 @@ function! completefunc#complete(findstart, base)
   if a:findstart
     return completefunc#find_start()
   else
-    call completefunc#completions(a:base)
+    return completefunc#completions(a:base)
   endif
 endfunction
 
@@ -14,17 +14,21 @@ function! completefunc#find_start()
 endfunction
 
 function! completefunc#completions(base)
-  let l:buffers = getbufinfo({ 'bufloaded': 1 })
+  let l:regexp = completefunc#regexp(a:base)
 
   for l:mode in split(&complete, ',')
+    if complete_check()
+      break
+    endif
+
     if l:mode == '.'
-      call completefunc#add_from_buffers(getbufinfo(bufnr()), a:base, '.')
+      call completefunc#add_from_buffers(getbufinfo(bufnr()), l:regexp, '.')
     elseif l:mode == 'w'
-      call completefunc#add_from_buffers(filter(copy(l:buffers), '!empty(v:val["windows"]) && v:val["bufnr"] != bufnr()'), a:base, 'w')
+      call completefunc#add_from_buffers(filter(getbufinfo({ 'bufloaded': 1 }), '!empty(v:val["windows"]) && v:val["bufnr"] != bufnr()'), l:regexp, 'w')
     elseif l:mode == 'b'
-      call completefunc#add_from_buffers(filter(copy(l:buffers), 'empty(v:val["windows"])'), a:base, 'b')
+      call completefunc#add_from_buffers(filter(getbufinfo({ 'bufloaded': 1 }), 'empty(v:val["windows"]) && v:val["bufnr"] != bufnr()'), l:regexp, 'b')
     elseif l:mode == 't' || l:mode == ']'
-      call completefunc#add_from_tags(completefunc#regexp(a:base), 't')
+      call completefunc#add_from_tags(l:regexp, 't')
     endif
   endfor
 endfunction
@@ -37,38 +41,23 @@ endfunction
 
 function! completefunc#add_from_buffers(buffers, regexp, mode)
   for l:buffer in a:buffers
-    if complete_check()
-      break
-    endif
-
-    call completefunc#add_from_lines(getbufline(l:buffer['bufnr'], 0, '$'), a:regexp, a:mode)
+    call completefunc#add_from_lines(getbufline(l:buffer['bufnr'], 1, '$'), a:regexp, a:mode)
   endfor
 endfunction
 
-function! completefunc#add_from_lines(lines, base, mode)
-  let l:words = split(join(a:lines), '\m\s*\<\|\>\s*')
-  for word in completefunc#matchfuzzy(words, a:base)
-    call complete_add({ 'word': word, 'menu': a:mode })
-  endfor
-endfunction
-
-function! completefunc#fuzzysearch(words, base)
-  if exists('*matchfuzzy')
-    return matchfuzzy(a:words, a:base)
-  elseif executable('fzy')
-    return completefunc#matchfzy(a:words, a:base)
-  else
-    return completefunc#matchfuzzy(a:words, a:base)
+function! completefunc#add_from_lines(lines, regexp, mode)
+  let l:string = join(a:lines)
+  if strlen(l:string) > 1024*1024 " 1M limit file size
+    return
   endif
+  let l:words = split(l:string, '\m\s*\<\|\>\s*')
+  for l:word in completefunc#matchfuzzy(words, a:regexp)
+    call complete_add({ 'word': l:word, 'menu': a:mode })
+  endfor
 endfunction
 
-function! completefunc#matchfuzzy(words, base)
-  let l:regexp = completefunc#regexp(a:base)
-  return filter(a:words, 'v:val =~ l:regexp')
-endfunction
-
-function! completefunc#matchfzy(words, base)
-  return split(system("fzy --show-matches='".a:base."'", a:words))
+function! completefunc#matchfuzzy(words, regexp)
+  return filter(a:words, 'v:val =~ a:regexp')
 endfunction
 
 function! completefunc#regexp(base)
