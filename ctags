@@ -1,13 +1,14 @@
--R
 --tag-relative
---c-kinds=+l
+
 --exclude=*.min.*
+
 --exclude=.git
 --exclude=.hg
 --exclude=.svn
---exclude=.svn
+
 --exclude=coverage
 --exclude=log
+--exclude=migrate
 --exclude=node_modules
 --exclude=public/packs
 --exclude=spec
