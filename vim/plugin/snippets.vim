@@ -113,7 +113,9 @@ function! TriggerSnippet()
 
   let possible_snippets = sort(filter(keys(snippets), { i, val -> match(val, trigger) == 0 }))
 
-  if len(possible_snippets) == 0
+  if trigger == ""
+    return "\<tab>"
+  elseif len(possible_snippets) == 0
     return ""
   elseif len(possible_snippets) == 1
     let snippet_name = possible_snippets[0]
