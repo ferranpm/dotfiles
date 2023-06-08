@@ -1,1 +1,1 @@
-set path=.
+setlocal path=.
