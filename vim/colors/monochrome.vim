@@ -102,6 +102,7 @@ call s:hi('TabLine')
 call s:hi('TabLineFill', s:default_bg, s:default_fg)
 call s:hi('TabLineSel', s:default_bg, s:high_contrast)
 call s:hi('VertSplit', s:default_bg, s:default_fg)
+call s:hi('WildMenu', s:high_contrast, s:medium_contrast)
 call s:hi('WinSeparator', s:default_fg, s:default_bg)
 call s:hi('Visual', s:white, s:blue)
 
@@ -135,12 +136,12 @@ call s:hi('Title', s:default_fg, s:default_bg, 'bold')
 
 " Programming languages
 call s:hi('Comment', s:red_hc)
-call s:hi('Constant', s:blue, s:default_bg, 'bold')
+call s:hi('Constant', s:blue)
 call s:hi('Identifier')
-call s:hi('Statement', s:high_contrast)
-call s:hi('PreProc', s:high_contrast, s:default_bg, 'bold')
-call s:hi('Type', s:high_contrast)
+call s:hi('Statement', s:default_fg, s:default_bg, 'bold')
+call s:hi('PreProc', s:default_fg, s:default_bg, 'bold')
 call s:hi('Special')
+call s:hi('Type')
 
 " Diffs
 call s:hi('DiffAdd', s:default_fg, s:diff_add)
@@ -155,10 +156,10 @@ call s:hi('diffNewFile', s:medium_contrast)
 call s:hi('diffRemoved', s:default_fg, s:diff_delete)
 call s:hi('diffSubname', s:medium_contrast)
 
-call s:hi('LspDiagnosticsDefaultInformation', s:yellow, s:low_contrast)
-call s:hi('LspDiagnosticsDefaultWarning', s:orange, s:low_contrast)
-call s:hi('LspDiagnosticsDefaultError', s:red, s:low_contrast)
-call s:hi('LspDiagnosticsDefaultHint', s:high_contrast, s:low_contrast)
+call s:hi('DiagnosticUnderlineError', [ 'Red', 1 ])
+call s:hi('DiagnosticUnderlineWarn', [ 'Orange', 3 ])
+call s:hi('DiagnosticUnderlineInfo', [ 'Orange', 3 ])
+call s:hi('DiagnosticUnderlineHint', [ 'Orange', 3 ])
 
 " Terminal
 let g:terminal_ansi_colors = [
@@ -196,14 +197,3 @@ let g:terminal_color_12 = s:blue[0]
 let g:terminal_color_13 = s:red[0]
 let g:terminal_color_14 = s:blue[0]
 let g:terminal_color_15 = s:white[0]
-
-call s:hi('DiagnosticError', [ 'Red'      , 1 ], s:low_contrast)
-call s:hi('DiagnosticWarn',  [ 'Orange'   , 3 ], s:low_contrast)
-call s:hi('DiagnosticInfo',  [ 'LightBlue', 4 ], s:low_contrast)
-call s:hi('DiagnosticHint',  [ 'LightGrey', 7 ], s:low_contrast)
-
-call s:hi('DiagnosticVirtualTextError', [ 'Red'      , 1 ])
-call s:hi('DiagnosticVirtualTextWarn',  [ 'Orange'   , 3 ])
-call s:hi('DiagnosticVirtualTextInfo',  [ 'LightBlue', 4 ])
-call s:hi('DiagnosticVirtualTextHint',  [ 'LightGrey', 7 ])
-
