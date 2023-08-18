@@ -45,7 +45,10 @@ set listchars=tab:»\ ,trail:·
 set nowrap
 
 " syntax, highlighting and spelling
+colorscheme monochrome
+set background=light
 set nohlsearch
+set termguicolors
 set colorcolumn=128
 
 " multiple windows
