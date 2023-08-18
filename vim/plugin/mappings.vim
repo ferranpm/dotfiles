@@ -95,9 +95,9 @@ nnoremap <f8> :setlocal wrap! wrap?<cr>
 nnoremap <leader>p :buffer 
 nnoremap <leader>q :find 
 
-noremap <c-p> :call picker#File(utils#mru_list_buffers_command(), 'buffer')<cr>
-nmap <c-q> <Plug>(PickerEdit)
-nmap <c-t> <Plug>(PickerTag)
+nnoremap <silent> <c-q> :Files<cr>
+nnoremap <silent> <c-p> :Buffers<cr>
+nnoremap <silent> <c-t> :Tags<cr>
 
 nnoremap <silent> <leader>bc :let @*=expand("%")<cr>
 nnoremap <silent> <leader>zs :%s/\s\+$//<cr>
