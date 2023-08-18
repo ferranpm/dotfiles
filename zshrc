@@ -6,7 +6,7 @@ stty -ixon
 
 ## EXPORTS ##
 export COLORFGBG="15;0"
-export EDITOR="vim"
+export EDITOR="nvim"
 export HISTFILE=$HOME/.zshhistory
 export HISTSIZE=50000
 export KEYTIMEOUT=1
@@ -53,13 +53,11 @@ zstyle ':vcs_info:*' formats       'on %b'
 zstyle ':vcs_info:*' actionformats 'on %b (%a)'
 
 ## BINDKEYS ##
-bindkey -e '^[[1~' beginning-of-line
-bindkey -e '^[[4~' end-of-line
 bindkey -e '^[[3~' delete-char
-bindkey -e '^n' down-line-or-search
 bindkey -e '^s' insert-sudo
 bindkey -e '^y' insert-man
 bindkey -e '^p' up-line-or-search
+bindkey -e '^n' down-line-or-search
 bindkey -e '^[[1;5C' forward-word
 bindkey -e '^[[1;5D' backward-word
 
@@ -74,9 +72,12 @@ alias cd1='cd ../'
 alias cd2='cd ../../'
 alias cd3='cd ../../../'
 alias cd4='cd ../../../../'
+alias dk='docker'
+alias dkc='docker compose'
 alias e='$EDITOR'
 alias g='git'
 alias github='open $(git_remote_http_url)/tree/$(git_branch_name)'
+alias kcl='kubectl'
 alias l='ls -lh'
 alias ll='l -A'
 alias ls='ls --color=auto'
@@ -87,9 +88,6 @@ alias pacro='pacman -Qtdq && sudo pacman -Rns `pacman -Qtdq`'
 alias pacse='pacman -Ss'
 alias pacupg='sudo pacman -Syu'
 alias psg='ps -e | grep'
-alias be='bundle exec'
-alias dk='docker'
-alias dkc='docker compose'
 
 ## FUNCTIONS ##
 insert-word() {
@@ -148,11 +146,11 @@ rm_tr_white () {
   find . -not \( -name .svn -prune -o -name .git -prune -o -name '*.a' \) -type f -print0 | xargs -0 sed -i -e "s/[[:space:]]*$//"
 }
 
-test_and_source() { [ -f $1 ] && source $1 }
-
 precmd () {
   vcs_info
 }
 
+test_and_source() { [ -f $1 ] && source $1 }
 
-test_and_source "$HOME/.asdf/asdf.sh"
+test_and_source "$HOME/.zsh/$(uname).zsh"
+test_and_source "$HOME/.zsh/local.zsh"
