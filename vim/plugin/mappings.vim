@@ -139,7 +139,7 @@ cnoremap <C-A> <Home>
 cnoremap <C-B> <C-A>
 
 map , <Plug>(easymotion-prefix)
-inoremap <silent><expr> <tab> TriggerSnippet()
+inoremap <silent><expr> <tab> snippets#trigger()
 
 inoremap <silent> <c-space> <c-x><c-o>
 
