@@ -111,8 +111,15 @@ function! GrepEscaped(string)
   return escape(escape(a:string, '\'), '"()[]\')
 endfunction
 
+function! WordBounded(string)
+  let left_bound = a:string[0] =~ '[[:punct:]]' ? '' : '\b'
+  let right_bound = a:string[-1:] =~ '[[:punct:]]' ? '' : '\b'
+
+  return left_bound . a:string . right_bound
+endfunction
+
 let silent = has('gui_running') || has('nvim') ? 'silent ' : ''
-execute 'nnoremap <leader>u :'.silent.'grep! --case-sensitive "\b<c-r>=GrepEscaped(expand("<cword>"))<cr>\b"'
+execute 'nnoremap <leader>u :'.silent.'grep! --case-sensitive "<c-r>=WordBounded(GrepEscaped(expand("<cword>")))<cr>"'
 execute 'nnoremap <leader>U :'.silent.'grep! --case-sensitive "<c-r>=GrepEscaped(expand("<cWORD>"))<cr>"'
 execute 'vnoremap <leader>u y:'.silent.'grep! --case-sensitive "<c-r>=GrepEscaped(@")<cr>"'
 execute 'nnoremap <leader>g :'.silent.'grep! ""<left>'
