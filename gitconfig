@@ -23,14 +23,17 @@
 	b = branch
 	c = commit
 	co = checkout
+	d = diff
 	dc = diff --cached
 	dm = diff origin/master...
-	d = diff
-	l  = log --graph --oneline
-	lm = log --graph --oneline HEAD origin/master
+	l  = log --graph --pretty=myoneline
+	lm = log --graph --pretty=myoneline HEAD origin/master
 	lp = log -p
 	m = merge
 	s = status
+	w = whatchanged --pretty=myoneline --graph
+[pretty]
+  myoneline=%C(yellow)%h%C(reset) %C(auto)%as%C(reset) %s %C(yellow)%an%C(reset)%C(auto)%d%C(reset)
 [commit]
 	verbose = yes
 [sendemail]
