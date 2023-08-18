@@ -155,10 +155,7 @@ endif
 " executing external commands
 
 " running make and jumping to errors
-if executable("rg")
-  set grepprg=rg\ --vimgrep\ --sort\ path
-  set grepformat=%f:%l:%c:%m
-elseif executable("ag")
+if executable("ag")
   set grepprg=ag\ --vimgrep\ --nogroup\ --nocolor
   set grepformat=%f:%l:%c:%m
 endif
