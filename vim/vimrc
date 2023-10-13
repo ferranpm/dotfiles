@@ -12,12 +12,6 @@ Plug 'tpope/vim-surround'
 if has('nvim')
   Plug 'neovim/nvim-lspconfig'
 endif
-
-" Languages
-Plug 'elixir-editors/vim-elixir'
-Plug 'pangloss/vim-javascript'
-Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'vim-ruby/vim-ruby'
 call plug#end()
 
 runtime macros/matchit.vim
