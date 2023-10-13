@@ -35,6 +35,7 @@ set ignorecase
 set smartcase
 
 " tags
+set tagcase=match
 
 " displaying text
 set scrolloff=4
