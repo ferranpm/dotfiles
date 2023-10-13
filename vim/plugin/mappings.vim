@@ -29,7 +29,7 @@ nnoremap <silent> [i :labove<cr>
 noremap <silent> ]g /\v^(\<\|\=\|\>){7}([^=].+)?$<cr>
 noremap <silent> [g ?\v^(\<\|\=\|\>){7}([^=].+)\?$<cr>
 
-vnoremap * y/<c-r>=escape('<c-r>0', '*/\[].')<cr><cr>
+vnoremap * y/<c-r>=escape('<c-r>0', '*/\[].~')<cr><cr>
 
 vnoremap > >gv
 vnoremap < <gv
@@ -108,7 +108,7 @@ nnoremap          <leader>zv zMzvzz
 nnoremap          <leader>e :e <c-r>=expand("%:h")<cr>/
 
 function! GrepEscaped(string)
-  return escape(escape(a:string, '\'), '"()[]\')
+  return escape(escape(a:string, '\'), '"()[]\?')
 endfunction
 
 function! WordBounded(string)
@@ -144,3 +144,9 @@ inoremap <silent><expr> <tab> snippets#trigger()
 inoremap <silent> <c-space> <c-x><c-o>
 
 nnoremap <silent> <leader>s :0G<cr>
+
+nnoremap <c-RightMouse> <c-o>
+nnoremap <c-LeftMouse> <LeftMouse>g<c-]>
+
+nnoremap <silent> <leader>f :e .<cr>
+nnoremap <silent> <leader>F :e %:h<cr>
