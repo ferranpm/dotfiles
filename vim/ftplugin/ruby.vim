@@ -7,8 +7,8 @@ setlocal softtabstop=2
 setlocal tabstop=2
 setlocal shiftwidth=2
 
-map <silent> ]] /\m\<def\><cr>
-map <silent> [[ ?\m\<def\><cr>
+map <buffer><silent> ]] /\m\<def\><cr>
+map <buffer><silent> [[ ?\m\<def\><cr>
 
 iabbrev bp binding.pry
 
@@ -24,7 +24,12 @@ function! RubyTest()
   let line = line(".")
   let filename = expand("%")
 
-  let @*="bundle exec rspec ".filename.":".line
+  if match(filename, "_spec.rb$") > 0
+    let @*="bundle exec rspec ".filename.":".line
+  else
+    let @*="./bin/test ".filename.":".line
+  endif
+
   echo "Test copied: ".@*
 endfunction
 

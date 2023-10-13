@@ -34,7 +34,7 @@ function! completefunc#completions(base)
 endfunction
 
 function! completefunc#add_from_tags(regexp, mode)
-  for l:tag in taglist(a:regexp)
+  for l:tag in taglist(a:regexp, expand('%'))
     call complete_add({ 'word': l:tag['name'], 'kind': l:tag['kind'], 'menu': a:mode })
   endfor
 endfunction
