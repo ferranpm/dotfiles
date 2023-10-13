@@ -84,6 +84,10 @@ call extend(g:snippets["gitcommit"], {
 let g:snippets["vue"] = extend(g:snippets["html"], g:snippets["javascript.jsx"])
 
 let g:snippets["elixir"] = {
+      \ "describe": "describe \"\" do\<cr>end\<esc>k0f\"a",
+      \ "test": "test \"\" do\<cr>end\<esc>k0f\"a",
+      \ "defmodule": "defmodule \<c-r>=snippets#ruby#class_name()\<cr> do\<cr>end\<c-o>O",
+      \ "do": "do\<cr>end\<esc>O",
       \ "chunk": "|> Enum.chunk()\<left>",
       \ "count": "|> Enum.count",
       \ "each": "|> Enum.each()\<left>",
