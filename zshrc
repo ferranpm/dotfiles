@@ -88,6 +88,7 @@ alias pacro='pacman -Qtdq && sudo pacman -Rns `pacman -Qtdq`'
 alias pacse='pacman -Ss'
 alias pacupg='sudo pacman -Syu'
 alias psg='ps -e | grep'
+alias tf='terraform'
 
 ## FUNCTIONS ##
 insert-word() {
