@@ -1,10 +1,4 @@
 " https://jonasjacek.github.io/colors/
-"
-" Vim color scheme
-"
-" Name:       monochrome.vim
-" Maintainer: Xavier Noria <fxn@hashref.com>
-" License:    MIT
 
 highlight clear
 
@@ -14,19 +8,21 @@ endif
 
 let g:colors_name = 'monochrome'
 
-let s:red_hc = ['#cc0000', 1]
+let s:none = ['NONE', 'NONE']
 
 if &background == 'dark'
   let s:white           = ['Gray90',  15]
   let s:black           = ['Gray10',   0]
 
+  let s:higher_contrast = s:white
   let s:high_contrast   = ['Gray74', 250]
   let s:medium_contrast = ['Gray35', 240]
   let s:low_contrast    = ['Gray15', 235]
+  let s:lower_contrast  = s:black
 
   let s:blue   = ['SlateGray4', 67]
   let s:yellow = ['Yellow', 226]
-  let s:red    = ['DarkRed', 9]
+  let s:red    = ['IndianRed', 9]
   let s:green  = ['DarkGreen', 28]
   let s:orange = ['DarkOrange', 166]
 
@@ -34,25 +30,29 @@ if &background == 'dark'
   let s:diff_add  = s:green
 
   let s:default_fg = ['LightGray', 255]
-  let s:default_bg = ['#282a36', 'black']
+  let s:default_bg = ['NONE', 'NONE']
 else
-  let s:white           = ['Gray93', 255]
-  let s:black           = ['Gray3',  232]
-  let s:high_contrast   = ['Gray7',  233]
-  let s:medium_contrast = ['Gray62', 247]
+  let s:white           = ['Gray90', 255]
+  let s:black           = ['Gray0',  232]
+
+  let s:higher_contrast = s:black
+  let s:high_contrast   = ['Gray20', 233]
+  let s:medium_contrast = ['Gray60', 247]
   let s:low_contrast    = ['Gray85', 253]
+  let s:lower_contrast  = s:white
 
   let s:blue   = ['SlateGray4',  67]
-  let s:yellow = ['gold3',      226]
-  let s:red    = ['Red',        160]
+  let s:yellow = ['Yellow3',    226]
+
+  let s:red    = ['IndianRed2',        160]
   let s:green  = ['Green4',      28]
   let s:orange = ['Orange',     166]
 
   let s:diff_delete = ['#ffdce0',   160]
   let s:diff_add  = ['#cdffd8',      28]
 
-  let s:default_fg = ['Gray3',  'NONE']
-  let s:default_bg = ['#ebebe6', 'NONE']
+  let s:default_fg = ['NONE',  'NONE']
+  let s:default_bg = ['NONE', 'NONE']
 endif
 
 let s:default_lst = []
@@ -92,17 +92,18 @@ call s:hi('CursorLine', s:default_lst, s:low_contrast)
 call s:hi('CursorLineNr', s:default_fg, s:default_bg, 'bold')
 call s:hi('ErrorMsg', s:default_fg, s:red)
 call s:hi('WarningMsg', s:default_fg, s:orange)
+call s:hi('IncSearch')
 call s:hi('Normal')
 call s:hi('Search', s:white, s:blue)
-call s:hi('StatusLine', s:high_contrast, s:default_bg, 'reverse,bold')
-call s:hi('StatusLineNC', s:high_contrast, s:default_bg, 'reverse')
-call s:hi('StatusLineTerm', s:default_bg, s:high_contrast, 'bold')
-call s:hi('StatusLineTermNC', s:default_bg, s:high_contrast)
-call s:hi('TabLine')
-call s:hi('TabLineFill', s:default_bg, s:default_fg)
-call s:hi('TabLineSel', s:default_bg, s:high_contrast)
+call s:hi('StatusLine',       s:higher_contrast, s:lower_contrast, 'reverse,bold')
+call s:hi('StatusLineNC',     s:high_contrast, s:medium_contrast, 'reverse')
+call s:hi('StatusLineTerm',   s:higher_contrast, s:low_contrast, 'reverse,bold')
+call s:hi('StatusLineTermNC', s:high_contrast, s:medium_contrast, 'reverse')
+call s:hi('TabLine',     s:high_contrast, s:low_contrast, 'reverse')
+call s:hi('TabLineFill', s:high_contrast, s:low_contrast)
+call s:hi('TabLineSel',  s:high_contrast, s:low_contrast)
 call s:hi('VertSplit', s:default_bg, s:default_fg)
-call s:hi('WildMenu', s:high_contrast, s:medium_contrast)
+call s:hi('WildMenu', s:white, s:medium_contrast)
 call s:hi('WinSeparator', s:default_fg, s:default_bg)
 call s:hi('Visual', s:white, s:blue)
 
@@ -123,8 +124,8 @@ call s:hi('SpecialKey', s:blue, s:default_bg, 'bold')
 call s:hi('Directory', s:default_fg, s:default_bg, 'bold')
 
 " Popup menu
-call s:hi('Pmenu', s:high_contrast, s:low_contrast)
-call s:hi('PmenuSel', s:low_contrast, s:medium_contrast)
+call s:hi('Pmenu',    s:higher_contrast, s:low_contrast)
+call s:hi('PmenuSel', s:lower_contrast,  s:medium_contrast)
 
 " Notes
 call s:hi('Todo', s:black, s:yellow, 'bold')
@@ -135,7 +136,7 @@ call s:hi('SignColumn', s:low_contrast, s:low_contrast)
 call s:hi('Title', s:default_fg, s:default_bg, 'bold')
 
 " Programming languages
-call s:hi('Comment', s:red_hc)
+call s:hi('Comment', s:red)
 call s:hi('Constant', s:blue)
 call s:hi('Identifier')
 call s:hi('Statement', s:default_fg, s:default_bg, 'bold')
@@ -197,3 +198,5 @@ let g:terminal_color_12 = s:blue[0]
 let g:terminal_color_13 = s:red[0]
 let g:terminal_color_14 = s:blue[0]
 let g:terminal_color_15 = s:white[0]
+
+call s:hi('CopilotSuggestion', s:medium_contrast)

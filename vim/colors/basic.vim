@@ -8,9 +8,6 @@ endif
 
 let g:colors_name = 'basic'
 
-let s:black   = ['#000000', 0]
-let s:white   = ['#ffffff', 15]
-
 let s:red     = ['#aa5555', 160]
 let s:green   = ['#55aa55', 82]
 let s:yellow  = ['#aaaa55', 184]
@@ -21,8 +18,12 @@ let s:cyan    = ['#55aaaa', 45]
 let s:gray    = ['#aaaaaa', 245]
 
 let s:red_alarm = ['#bb0000', 1]
+let s:none = ['NONE', 'NONE']
 
 if &background == 'light'
+  let s:black   = ['#000000', 0]
+  let s:white   = ['#ffffff', 15]
+
   let s:red_lc    = ['#bb1111', 9]
   let s:green_lc  = ['#11bb11', 10]
   let s:yellow_lc = ['#cccc11', 11]
@@ -41,8 +42,11 @@ if &background == 'light'
   let s:gray_hc   = ['#606060', 240]
 
   let s:default_fg = s:black
-  let s:default_bg = ['#ebebe6', 'NONE']
+  let s:default_bg = ['NONE', 'NONE']
 else
+  let s:black   = ['#000000', 0]
+  let s:white   = ['#ffffff', 15]
+
   let s:red_lc    = ['#bf4b5c', 9]
   let s:green_lc  = ['#7a8a48', 10]
   let s:yellow_lc = ['#917b17', 11]
@@ -61,31 +65,31 @@ else
   let s:gray_hc   = ['#aaaaaa', 240]
 
   let s:default_fg = [ '#c5c5c5', 'NONE']
-  let s:default_bg = [ '#202020', 'NONE']
+  let s:default_bg = [ 'NONE', 'NONE']
 end
 
-let s:default_lst2 = []
-let s:default_str2 = ''
+let s:default_lst = []
+let s:default_str = 'NONE'
 
 function! s:hi(...)
   let group = a:1
   let fg    = get(a:, 2, s:default_fg)
   let bg    = get(a:, 3, s:default_bg)
-  let attr  = get(a:, 4, s:default_str2)
+  let attr  = get(a:, 4, s:default_str)
 
   let cmd = ['hi', group]
 
-  if fg != s:default_lst2
+  if fg != s:default_lst
     call add(cmd, 'guifg='.fg[0])
     call add(cmd, 'ctermfg='.fg[1])
   endif
 
-  if bg != s:default_lst2
+  if bg != s:default_lst
     call add(cmd, 'guibg='.bg[0])
     call add(cmd, 'ctermbg='.bg[1])
   endif
 
-  if attr != s:default_str2
+  if attr != s:default_str
     call add(cmd, 'gui='.attr)
     call add(cmd, 'cterm='.attr)
   endif
@@ -96,13 +100,13 @@ endfunction
 " Vim interface
 call s:hi('ColorColumn', s:default_fg, s:gray_lc)
 call s:hi('Cursor', s:black, s:orange)
-call s:hi('CursorColumn', s:default_lst2, s:gray_lc)
-call s:hi('CursorLine', s:default_lst2, s:gray_lc)
+call s:hi('CursorColumn', s:default_lst, s:gray_lc)
+call s:hi('CursorLine', s:default_lst, s:gray_lc)
 call s:hi('CursorLineNr')
-call s:hi('Error', s:default_bg, s:red)
-call s:hi('ErrorMsg', s:default_bg, s:red)
+call s:hi('ErrorMsg', s:default_fg, s:red)
+call s:hi('WarningMsg', s:default_fg, s:orange)
 call s:hi('IncSearch', s:default_fg, s:yellow_lc)
-call s:hi('Normal')
+call s:hi('Normal', s:none, s:none)
 call s:hi('Search', s:black, s:yellow_lc)
 call s:hi('StatusLine', s:default_fg, s:default_bg)
 call s:hi('StatusLineNC', s:default_fg, s:default_bg)
@@ -111,8 +115,8 @@ call s:hi('StatusLineTermNC', s:default_bg, s:default_fg)
 call s:hi('TabLine', s:default_bg, s:default_fg, 'reverse')
 call s:hi('TabLineFill', s:default_bg, s:default_fg, 'reverse')
 call s:hi('TabLineSel', s:default_fg, s:default_bg, 'reverse,bold')
-call s:hi('VertSplit', s:default_bg, s:gray_hc)
-call s:hi('Visual', s:default_lst2, s:gray_lc)
+call s:hi('VertSplit', s:default_fg, s:default_bg)
+call s:hi('Visual', s:default_lst, s:gray_lc)
 
 " Tildes at the bottom of a buffer, etc.
 call s:hi('NonText', s:blue_hc)
@@ -155,27 +159,17 @@ call s:hi('Special', s:purple_hc)
 call s:hi('MatchParen', s:black, s:yellow_hc)
 
 " Diffs
-call s:hi('DiffAdd', s:green_lc)
+call s:hi('DiffAdd', s:green_hc)
 call s:hi('DiffChange', s:default_fg)
-call s:hi('DiffDelete', s:red_lc)
+call s:hi('DiffDelete', s:red_hc)
 call s:hi('DiffText', s:cyan_lc)
-call s:hi('diffAdded', s:green_lc)
+call s:hi('diffAdded', s:green_hc)
 call s:hi('diffFile', s:default_fg, s:gray_lc)
 call s:hi('diffIndexLine', s:default_fg, s:gray_lc)
 call s:hi('diffLine', s:default_fg, s:gray_lc)
 call s:hi('diffNewFile', s:default_fg, s:gray_lc)
 call s:hi('diffRemoved', s:red_lc)
 call s:hi('diffSubname', s:default_fg, s:gray_lc)
-
-" CoC
-call s:hi('CocErrorFloat', s:red_hc, s:gray_lc)
-call s:hi('CocErrorSign', s:red_lc, s:gray_lc)
-
-call s:hi('CocInfoFloat', s:green_hc, s:gray_lc)
-call s:hi('CocInfoSign', s:orange_hc, s:gray_lc)
-
-call s:hi('CocWarningFloat', s:yellow_hc, s:gray_lc)
-call s:hi('CocWarningSign', s:yellow_hc, s:gray_lc)
 
 call s:hi('LspDiagnosticsDefaultInformation', s:yellow_hc, s:gray_lc)
 call s:hi('LspDiagnosticsDefaultWarning', s:orange_hc, s:gray_lc)
