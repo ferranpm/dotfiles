@@ -22,8 +22,6 @@ export SAVEHIST=10000
 export ZLS_COLORS=$LS_COLORS
 
 autoload -U colors && colors
-autoload -U compinit && compinit -d $HOME/.zshcompdump
-autoload -Uz vcs_info
 
 ## OPTS ##
 setopt APPEND_HISTORY
@@ -44,13 +42,15 @@ setopt PUSHD_MINUS
 setopt PUSHD_SILENT
 setopt PUSHD_TOHOME
 
-## ZSTYLE ##
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-zstyle ':completion:*' menu select
-zstyle ':completion:*' verbose true
+# VCS info ##
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' formats       'on %b'
 zstyle ':vcs_info:*' actionformats 'on %b (%a)'
+
+autoload -Uz vcs_info
+precmd () {
+  vcs_info
+}
 
 ## BINDKEYS ##
 bindkey -e '^[[3~' delete-char
@@ -146,11 +146,25 @@ rm_tr_white () {
   find . -not \( -name .svn -prune -o -name .git -prune -o -name '*.a' \) -type f -print0 | xargs -0 sed -i -e "s/[[:space:]]*$//"
 }
 
-precmd () {
-  vcs_info
-}
-
 test_and_source() { [ -f $1 ] && source $1 }
 
 test_and_source "$HOME/.zsh/$(uname).zsh"
 test_and_source "$HOME/.zsh/local.zsh"
+
+# The following lines were added by compinstall
+
+zstyle ':completion:*' completer _oldlist _expand _complete _ignored _match _prefix
+zstyle ':completion:*' completions 1
+zstyle ':completion:*' glob 1
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' matcher-list '' '' '' ''
+zstyle ':completion:*' menu select
+zstyle ':completion:*' squeeze-slashes true
+zstyle ':completion:*' substitute 1
+zstyle ':completion:*' use-compctl false
+zstyle ':completion:*' verbose true
+zstyle :compinstall filename '/Users/fpelayo/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
