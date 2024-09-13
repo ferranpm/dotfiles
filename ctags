@@ -1,4 +1,6 @@
---tag-relative
+--tag-relative=never
+--extras=+q
+--languages=ruby,elixir,go,C#,GDScript
 
 --exclude=*.min.*
 
@@ -6,11 +8,16 @@
 --exclude=.hg
 --exclude=.svn
 
+--exclude=Builds
 --exclude=coverage
+--exclude=deps
+--exclude=Library
 --exclude=log
 --exclude=migrate
 --exclude=node_modules
 --exclude=public/packs
+--exclude=serverconfig
 --exclude=spec
+--exclude=Temp
 --exclude=test
 --exclude=tmp
