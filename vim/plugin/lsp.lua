@@ -15,7 +15,7 @@ vim.diagnostic.config({
 
 local lspconfig = require('lspconfig')
 
-lspconfig.solargraph.setup({
+lspconfig.ruby_lsp.setup({
   on_attach = on_attach,
   diagnostics = true,
 })
