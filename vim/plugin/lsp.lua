@@ -7,7 +7,10 @@ vim.api.nvim_create_autocmd(
 )
 
 vim.diagnostic.config({
-  virtual_text = false,
+  virtual_text = {
+    prefix = "▶",
+    spacing = 4,
+  },
   underline = true,
   signs = true,
   loclist = true,
