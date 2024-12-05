@@ -24,10 +24,11 @@ export ZLS_COLORS=$LS_COLORS
 autoload -U colors && colors
 
 ## OPTS ##
+unsetopt BEEP
 setopt APPEND_HISTORY
 setopt AUTO_CD
 setopt AUTO_PUSHD
-setopt EXTENDED_GLOB
+setopt GLOB_COMPLETE
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
@@ -89,6 +90,7 @@ alias pacse='pacman -Ss'
 alias pacupg='sudo pacman -Syu'
 alias psg='ps -e | grep'
 alias tf='terraform'
+alias bundle-audit='bundle exec bundle-audit check --update'
 
 ## FUNCTIONS ##
 insert-word() {
@@ -147,11 +149,6 @@ rm_tr_white () {
   find . -not \( -name .svn -prune -o -name .git -prune -o -name '*.a' \) -type f -print0 | xargs -0 sed -i -e "s/[[:space:]]*$//"
 }
 
-test_and_source() { [ -f $1 ] && source $1 }
-
-test_and_source "$HOME/.zsh/$(uname).zsh"
-test_and_source "$HOME/.zsh/local.zsh"
-
 # The following lines were added by compinstall
 
 zstyle ':completion:*' completer _oldlist _expand _complete _ignored _match _prefix
@@ -169,3 +166,11 @@ zstyle :compinstall filename '/Users/fpelayo/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
+autoload bashcompinit
+bashcompinit
+
+test_and_source() { [ -f $1 ] && source $1 }
+
+test_and_source "$HOME/.zsh/$(uname).zsh"
+test_and_source "$HOME/.zsh/local.zsh"
