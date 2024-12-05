@@ -82,7 +82,7 @@ set mouse=a
 " printing
 
 " messages and info
-set shortmess=cITt
+set shortmess+=I
 set showcmd
 set showmode
 set ruler
