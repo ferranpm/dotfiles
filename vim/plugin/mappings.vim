@@ -108,7 +108,7 @@ nnoremap          <leader>zv zMzvzz
 nnoremap          <leader>e :e <c-r>=expand("%:h")<cr>/
 
 function! GrepEscaped(string)
-  return escape(escape(a:string, '\'), '"()[]\?')
+  return escape(escape(a:string, '\'), '."()[]\?#')
 endfunction
 
 function! WordBounded(string)
@@ -130,16 +130,10 @@ if has('clipboard')
 end
 nnoremap <silent> <c-s> :update<cr>
 
-noremap <silent> <c-s-tab> :bprevious<cr>
-noremap <silent> <c-tab> :bnext<cr>
-noremap <silent> <c-pageup> :tabprevious<cr>
-noremap <silent> <c-pagedown> :tabnext<cr>
-
 cnoremap <C-A> <Home>
 cnoremap <C-B> <C-A>
 
-map , <Plug>(easymotion-prefix)
-inoremap <silent><expr> <tab> snippets#trigger()
+inoremap <expr> <s-tab> snippets#trigger()
 
 inoremap <silent> <c-space> <c-x><c-o>
 
