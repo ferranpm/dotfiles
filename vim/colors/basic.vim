@@ -17,27 +17,26 @@ let s:purple  = ['#aa55aa', 135]
 let s:cyan    = ['#55aaaa', 45]
 let s:gray    = ['#aaaaaa', 245]
 
-let s:red_alarm = ['#bb0000', 1]
 let s:none = ['NONE', 'NONE']
 
 if &background == 'light'
   let s:black   = ['#000000', 0]
   let s:white   = ['#ffffff', 15]
 
-  let s:red_lc    = ['#bb1111', 9]
-  let s:green_lc  = ['#11bb11', 10]
-  let s:yellow_lc = ['#cccc11', 11]
-  let s:blue_lc   = ['#1111bb', 12]
-  let s:purple_lc = ['#bb11bb', 13]
-  let s:cyan_lc   = ['#11bbbb', 14]
+  let s:red_lc    = ['#bb5555', 9]
+  let s:green_lc  = ['#55bb55', 10]
+  let s:yellow_lc = ['#cccc55', 11]
+  let s:blue_lc   = ['#5555bb', 12]
+  let s:purple_lc = ['#bb55bb', 13]
+  let s:cyan_lc   = ['#55bbbb', 14]
   let s:gray_lc   = ['#e0e0e0', 250]
 
-  let s:red_hc    = ['#aa0000', 1]
-  let s:green_hc  = ['#00aa00', 2]
+  let s:red_hc    = ['#bb0000', 1]
+  let s:green_hc  = ['#008800', 2]
   let s:yellow_hc = ['#aaaa00', 3]
   let s:blue_hc   = ['#0000aa', 4]
   let s:purple_hc = ['#aa00aa', 5]
-  let s:cyan_hc   = ['#00aaaa', 6]
+  let s:cyan_hc   = ['#00dddd', 6]
   let s:orange_hc = ['#db8d18', 240]
   let s:gray_hc   = ['#606060', 240]
 
@@ -103,20 +102,23 @@ call s:hi('Cursor', s:black, s:orange)
 call s:hi('CursorColumn', s:default_lst, s:gray_lc)
 call s:hi('CursorLine', s:default_lst, s:gray_lc)
 call s:hi('CursorLineNr')
-call s:hi('ErrorMsg', s:default_fg, s:red)
+call s:hi('ErrorMsg', s:white, s:red_lc)
 call s:hi('WarningMsg', s:default_fg, s:orange)
-call s:hi('IncSearch', s:default_fg, s:yellow_lc)
 call s:hi('Normal', s:none, s:none)
-call s:hi('Search', s:black, s:yellow_lc)
-call s:hi('StatusLine', s:default_fg, s:default_bg)
-call s:hi('StatusLineNC', s:default_fg, s:default_bg)
-call s:hi('StatusLineTerm', s:default_bg, s:default_fg)
-call s:hi('StatusLineTermNC', s:default_bg, s:default_fg)
+call s:hi('StatusLine', s:default_fg, s:default_bg, 'reverse,bold')
+call s:hi('StatusLineNC', s:gray_hc, s:default_bg, 'reverse')
+call s:hi('StatusLineTerm', s:default_bg, s:default_fg, 'reverse')
+call s:hi('StatusLineTermNC', s:default_bg, s:default_fg, 'reverse')
 call s:hi('TabLine', s:default_bg, s:default_fg, 'reverse')
 call s:hi('TabLineFill', s:default_bg, s:default_fg, 'reverse')
 call s:hi('TabLineSel', s:default_fg, s:default_bg, 'reverse,bold')
 call s:hi('VertSplit', s:default_fg, s:default_bg)
-call s:hi('Visual', s:default_lst, s:gray_lc)
+call s:hi('Visual', s:default_fg, s:gray_lc)
+
+" Search
+call s:hi('CurSearch', s:white, s:yellow_hc)
+call s:hi('IncSearch', s:default_fg, s:orange_hc)
+call s:hi('Search', s:default_fg, s:yellow_lc)
 
 " Tildes at the bottom of a buffer, etc.
 call s:hi('NonText', s:blue_hc)
@@ -147,8 +149,9 @@ call s:hi('Todo', s:black, s:yellow_lc)
 call s:hi('SignColumn', s:gray_hc, s:gray_lc)
 
 " Programming languages
-call s:hi('Comment', s:red_alarm)
+call s:hi('Comment', s:red_hc)
 call s:hi('Constant', s:red_hc)
+call s:hi('String', s:red_lc)
 call s:hi('Identifier', s:blue_hc)
 call s:hi('Statement', s:purple_hc)
 call s:hi('Operator')
@@ -158,11 +161,15 @@ call s:hi('Special', s:purple_hc)
 
 call s:hi('MatchParen', s:black, s:yellow_hc)
 
+call s:hi('Added', s:green_hc)
+call s:hi('Changed', s:blue_hc)
+call s:hi('Removed', s:red_hc)
+
 " Diffs
 call s:hi('DiffAdd', s:green_hc)
 call s:hi('DiffChange', s:default_fg)
 call s:hi('DiffDelete', s:red_hc)
-call s:hi('DiffText', s:cyan_lc)
+call s:hi('DiffText', s:default_fg, s:cyan_hc)
 call s:hi('diffAdded', s:green_hc)
 call s:hi('diffFile', s:default_fg, s:gray_lc)
 call s:hi('diffIndexLine', s:default_fg, s:gray_lc)
@@ -175,6 +182,8 @@ call s:hi('LspDiagnosticsDefaultInformation', s:yellow_hc, s:gray_lc)
 call s:hi('LspDiagnosticsDefaultWarning', s:orange_hc, s:gray_lc)
 call s:hi('LspDiagnosticsDefaultError', s:red_hc, s:gray_lc)
 call s:hi('LspDiagnosticsDefaultHint', s:gray_hc, s:gray_lc)
+
+call s:hi('AvanteConfigIncomming', s:default_fg, s:gray_lc)
 
 " Terminal
 let g:terminal_ansi_colors = [

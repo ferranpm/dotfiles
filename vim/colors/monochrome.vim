@@ -11,45 +11,44 @@ let g:colors_name = 'monochrome'
 let s:none = ['NONE', 'NONE']
 
 if &background == 'dark'
-  let s:white           = ['Gray90',  15]
-  let s:black           = ['Gray10',   0]
+  let s:white = ['Gray90', 15]
+  let s:black = ['Gray10', 0]
 
   let s:higher_contrast = s:white
-  let s:high_contrast   = ['Gray74', 250]
+  let s:high_contrast = ['Gray74', 250]
   let s:medium_contrast = ['Gray35', 240]
-  let s:low_contrast    = ['Gray15', 235]
-  let s:lower_contrast  = s:black
+  let s:low_contrast = ['Gray15', 235]
+  let s:lower_contrast = s:black
 
-  let s:blue   = ['SlateGray4', 67]
+  let s:blue = ['SlateGray4', 67]
   let s:yellow = ['Yellow', 226]
-  let s:red    = ['IndianRed', 9]
-  let s:green  = ['DarkGreen', 28]
+  let s:red = ['IndianRed', 9]
+  let s:green = ['Green', 28]
   let s:orange = ['DarkOrange', 166]
 
-  let s:diff_delete = s:red
-  let s:diff_add  = s:green
+  let s:light_red = ['LightRed', 203]
+  let s:light_green = ['LightGreen', 28]
 
   let s:default_fg = ['LightGray', 255]
   let s:default_bg = ['NONE', 'NONE']
 else
-  let s:white           = ['Gray90', 255]
-  let s:black           = ['Gray0',  232]
+  let s:white = ['Gray90', 255]
+  let s:black = ['Gray0', 232]
 
   let s:higher_contrast = s:black
-  let s:high_contrast   = ['Gray20', 233]
+  let s:high_contrast = ['Gray20', 233]
   let s:medium_contrast = ['Gray60', 247]
-  let s:low_contrast    = ['Gray85', 253]
-  let s:lower_contrast  = s:white
+  let s:low_contrast = ['Gray80', 253]
+  let s:lower_contrast = s:white
 
-  let s:blue   = ['SlateGray4',  67]
-  let s:yellow = ['Yellow3',    226]
+  let s:blue = ['SlateGray4', 67]
+  let s:yellow = ['Yellow', 226]
+  let s:red = ['IndianRed2', 160]
+  let s:green = ['Green4', 28]
+  let s:orange = ['Orange', 166]
 
-  let s:red    = ['IndianRed2',        160]
-  let s:green  = ['Green4',      28]
-  let s:orange = ['Orange',     166]
-
-  let s:diff_delete = ['#ffdce0',   160]
-  let s:diff_add  = ['#cdffd8',      28]
+  let s:light_red = ['LightRed', 203]
+  let s:light_green = ['LightGreen', 28]
 
   let s:default_fg = ['NONE',  'NONE']
   let s:default_bg = ['NONE', 'NONE']
@@ -92,16 +91,16 @@ call s:hi('CursorLine', s:default_lst, s:low_contrast)
 call s:hi('CursorLineNr', s:default_fg, s:default_bg, 'bold')
 call s:hi('ErrorMsg', s:default_fg, s:red)
 call s:hi('WarningMsg', s:default_fg, s:orange)
-call s:hi('IncSearch')
+call s:hi('IncSearch', s:high_contrast, s:yellow, 'reverse')
 call s:hi('Normal')
-call s:hi('Search', s:white, s:blue)
+call s:hi('Search', s:high_contrast, s:yellow)
 call s:hi('StatusLine',       s:higher_contrast, s:lower_contrast, 'reverse,bold')
 call s:hi('StatusLineNC',     s:high_contrast, s:medium_contrast, 'reverse')
 call s:hi('StatusLineTerm',   s:higher_contrast, s:low_contrast, 'reverse,bold')
 call s:hi('StatusLineTermNC', s:high_contrast, s:medium_contrast, 'reverse')
-call s:hi('TabLine',     s:high_contrast, s:low_contrast, 'reverse')
+call s:hi('TabLine',     s:high_contrast, s:low_contrast)
 call s:hi('TabLineFill', s:high_contrast, s:low_contrast)
-call s:hi('TabLineSel',  s:high_contrast, s:low_contrast)
+call s:hi('TabLineSel',  s:high_contrast, s:low_contrast, 'reverse')
 call s:hi('VertSplit', s:default_bg, s:default_fg)
 call s:hi('WildMenu', s:white, s:medium_contrast)
 call s:hi('WinSeparator', s:default_fg, s:default_bg)
@@ -138,29 +137,46 @@ call s:hi('Title', s:default_fg, s:default_bg, 'bold')
 " Programming languages
 call s:hi('Comment', s:red)
 call s:hi('Constant', s:blue)
+call s:hi('String', s:blue)
 call s:hi('Identifier')
+call s:hi('Function')
 call s:hi('Statement', s:default_fg, s:default_bg, 'bold')
 call s:hi('PreProc', s:default_fg, s:default_bg, 'bold')
 call s:hi('Special')
 call s:hi('Type')
 
 " Diffs
-call s:hi('DiffAdd', s:default_fg, s:diff_add)
-call s:hi('DiffChange', s:default_fg, s:low_contrast)
-call s:hi('DiffDelete', s:default_fg, s:diff_delete)
-call s:hi('DiffText', s:default_fg, s:diff_delete)
-call s:hi('diffAdded', s:default_fg, s:diff_add)
-call s:hi('diffFile', s:medium_contrast)
+call s:hi('DiffAdd'      , s:default_fg, s:light_green)
+call s:hi('DiffChange'   , s:default_fg)
+call s:hi('DiffDelete'   , s:default_fg, s:light_red)
+call s:hi('DiffText'     , s:default_fg, s:yellow)
+call s:hi('diffAdded'    , s:green)
+call s:hi('diffFile'     , s:medium_contrast)
 call s:hi('diffIndexLine', s:medium_contrast)
-call s:hi('diffLine', s:medium_contrast)
-call s:hi('diffNewFile', s:medium_contrast)
-call s:hi('diffRemoved', s:default_fg, s:diff_delete)
-call s:hi('diffSubname', s:medium_contrast)
+call s:hi('diffLine'     , s:medium_contrast)
+call s:hi('diffNewFile'  , s:medium_contrast)
+call s:hi('diffRemoved'  , s:red)
+call s:hi('diffSubname'  , s:medium_contrast)
 
 call s:hi('DiagnosticUnderlineError', [ 'Red', 1 ])
 call s:hi('DiagnosticUnderlineWarn', [ 'Orange', 3 ])
 call s:hi('DiagnosticUnderlineInfo', [ 'Orange', 3 ])
 call s:hi('DiagnosticUnderlineHint', [ 'Orange', 3 ])
+
+call s:hi('LspDiagnosticsDefaultError', s:red)
+call s:hi('LspDiagnosticsDefaultWarning', s:low_contrast)
+call s:hi('LspDiagnosticsDefaultInformation', s:low_contrast)
+call s:hi('LspDiagnosticsDefaultHint', s:low_contrast)
+
+hi! link DiagnosticError LspDiagnosticsDefaultError
+hi! link DiagnosticWarn LspDiagnosticsDefaultWarning
+hi! link DiagnosticInfo LspDiagnosticsDefaultInformation
+hi! link DiagnosticHint LspDiagnosticsDefaultHint
+
+hi! link DiagnosticUnderlineError LspDiagnosticsUnderlineError
+hi! link DiagnosticUnderlineWarn LspDiagnosticsUnderlineWarning
+hi! link DiagnosticUnderlineInfo LspDiagnosticsUnderlineInformation
+hi! link DiagnosticUnderlineHint LspDiagnosticsUnderlineHint
 
 " Terminal
 let g:terminal_ansi_colors = [
