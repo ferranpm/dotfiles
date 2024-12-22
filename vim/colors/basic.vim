@@ -183,8 +183,6 @@ call s:hi('LspDiagnosticsDefaultWarning', s:orange_hc, s:gray_lc)
 call s:hi('LspDiagnosticsDefaultError', s:red_hc, s:gray_lc)
 call s:hi('LspDiagnosticsDefaultHint', s:gray_hc, s:gray_lc)
 
-call s:hi('AvanteConfigIncomming', s:default_fg, s:gray_lc)
-
 " Terminal
 let g:terminal_ansi_colors = [
       \ s:black[0],
