@@ -63,7 +63,6 @@ bindkey -e '^[[1;5C' forward-word
 bindkey -e '^[[1;5D' backward-word
 
 ## ALIASES ##
-alias aura='aura --color=auto'
 alias aurain='sudo aura -Ax'
 alias aurare='sudo aura -Rns'
 alias aurase='aura -Aas'
