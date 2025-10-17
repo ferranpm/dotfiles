@@ -183,6 +183,9 @@ call s:hi('LspDiagnosticsDefaultWarning', s:orange_hc, s:gray_lc)
 call s:hi('LspDiagnosticsDefaultError', s:red_hc, s:gray_lc)
 call s:hi('LspDiagnosticsDefaultHint', s:gray_hc, s:gray_lc)
 
+call s:hi('FzfLuaPathColNr', s:gray_hc)
+call s:hi('FzfLuaPathLineNr', s:gray_hc)
+
 " Terminal
 let g:terminal_ansi_colors = [
       \ s:black[0],

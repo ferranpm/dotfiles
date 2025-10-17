@@ -33,16 +33,16 @@ if &background == 'dark'
   let s:default_bg = ['NONE', 'NONE']
 else
   let s:white = ['Gray90', 255]
-  let s:black = ['Gray0', 232]
+  let s:black = ['black', 232]
 
   let s:higher_contrast = s:black
   let s:high_contrast = ['Gray20', 233]
   let s:medium_contrast = ['Gray60', 247]
-  let s:low_contrast = ['Gray80', 253]
+  let s:low_contrast = ['Gray78', 253]
   let s:lower_contrast = s:white
 
   let s:blue = ['SlateGray4', 67]
-  let s:yellow = ['Yellow', 226]
+  let s:yellow = ['Yellow3', 226]
   let s:red = ['IndianRed2', 160]
   let s:green = ['Green4', 28]
   let s:orange = ['Orange', 166]

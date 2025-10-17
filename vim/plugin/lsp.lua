@@ -7,22 +7,35 @@ vim.api.nvim_create_autocmd(
 )
 
 vim.diagnostic.config({
-  virtual_text = {
-    prefix = "▶",
-    spacing = 4,
-  },
   underline = true,
   signs = true,
   loclist = true,
 })
 
-local lspconfig = require('lspconfig')
+-- -- local vim.lsp.config = require('vim.lsp.config')
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-lspconfig.ruby_lsp.setup({
+vim.lsp.config('ruby_lsp', {
   on_attach = on_attach,
   diagnostics = true,
+  capabilities = capabilities,
 })
 
-lspconfig.ts_ls.setup({
+vim.lsp.enable('ruby_lsp')
+
+vim.lsp.config('ts_ls', {
   on_attach = on_attach,
+  capabilities = capabilities,
 })
+vim.lsp.enable('ts_ls')
+
+vim.lsp.config('elixirls', {
+  cmd = { "elixir-ls" };
+  capabilities = capabilities,
+})
+vim.lsp.enable('elixirls')
+
+vim.lsp.config('gdscript', {
+  capabilities = capabilities,
+})
+vim.lsp.enable('gdscript')
