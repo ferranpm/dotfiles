@@ -1,1 +1,1 @@
-/Users/fpelayo/.vim/vimrc
+vimrc
