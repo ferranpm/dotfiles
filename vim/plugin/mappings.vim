@@ -95,10 +95,6 @@ nnoremap <f8> :setlocal wrap! wrap?<cr>
 nnoremap <leader>p :buffer 
 nnoremap <leader>q :find 
 
-nnoremap <silent> <c-q> :Files<cr>
-nnoremap <silent> <c-p> :Buffers<cr>
-nnoremap <silent> <c-t> :Tags<cr>
-
 nnoremap <silent> <leader>bc :let @*=expand("%")<cr>
 nnoremap <silent> <leader>zs :%s/\s\+$//<cr>
 vnoremap <silent> <leader>zs :s/\s\+$//<cr>
@@ -144,3 +140,5 @@ nnoremap <c-LeftMouse> <LeftMouse>g<c-]>
 
 nnoremap <silent> <leader>f :e .<cr>
 nnoremap <silent> <leader>F :e %:h<cr>
+
+nnoremap <leader>C :!code . <c-r>=expand('%')<cr><cr>

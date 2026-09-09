@@ -49,3 +49,16 @@ cmp.setup({
   }
 })
 
+-- Register a command to enable Cmp
+vim.api.nvim_create_user_command('CmpEnable', function()
+  cmp.setup({
+    enabled = true,
+  })
+end, {})
+
+-- Register a command to disable Cmp
+vim.api.nvim_create_user_command('CmpDisable', function()
+  cmp.setup({
+    enabled = false,
+  })
+end, {})

@@ -11,7 +11,15 @@ require("fzf-lua").setup({
       flip_columns = 150,
     },
   },
+  files = {
+    formatter = "path.filename_first",
+  },
+  buffers = {
+    formatter = "path.filename_first",
+  },
 })
+
+vim.api.nvim_set_hl(0, "FzfLuaDirPart", { fg = "gray", italic = true })
 
 vim.keymap.set('n', '<c-q>', '<cmd>FzfLua files<cr>')
 vim.keymap.set('n', '<c-p>', '<cmd>FzfLua buffers<cr>')
