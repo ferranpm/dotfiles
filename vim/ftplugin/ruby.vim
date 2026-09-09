@@ -48,5 +48,3 @@ command! -buffer CreateSpecFile execute 'split | edit '.substitute(substitute(ex
 setlocal path=,,app/**,packs/*/app/**
 
 setlocal iskeyword+=?,!
-setlocal foldmethod=expr
-setlocal foldexpr=v:lua.vim.treesitter.foldexpr()
