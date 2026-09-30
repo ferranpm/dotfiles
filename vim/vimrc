@@ -84,7 +84,9 @@ set titlestring=%{fnamemodify(getcwd(),':t')}
 
 " using the mouse
 set mouse=a
-set mousescroll=ver:1,hor:1
+if has('nvim')
+  set mousescroll=ver:1,hor:1
+endif
 
 " printing
 
