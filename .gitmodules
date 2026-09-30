@@ -1,0 +1,3 @@
+[submodule "claude/skills/stop-slop"]
+	path = claude/skills/stop-slop
+	url = https://github.com/hardikpandya/stop-slop

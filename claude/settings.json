@@ -1,0 +1,152 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ag *)",
+      "Bash(find *)",
+      "Bash(find * | head *)",
+      "Bash(docker *)",
+      "Bash(git status *)",
+      "Bash(git log *)",
+      "Bash(git diff *)",
+      "Bash(git show *)",
+      "Bash(git branch *)",
+      "Bash(git remote *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git checkout *)",
+      "Bash(git status *)",
+      "Bash(git log *)",
+      "Bash(git diff *)",
+      "Bash(git show *)",
+      "Bash(git branch *)",
+      "Bash(git remote *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(gh pr *)",
+      "Bash(gh api *)",
+      "Bash(gh pr view *)",
+      "Bash(gh pr diff *)",
+      "Bash(gh search:*)",
+      "Bash(docker compose *)",
+      "Bash(docker-compose *)",
+      "Bash(docker-compose run *)",
+      "Bash(docker-compose exec *)",
+      "Bash(bin/rails db:migrate)",
+      "Bash(bin/rails test *)",
+      "Bash(bin/rails generate:*)",
+      "Bash(bin/rails db:create)",
+      "Bash(bin/rails db:seed)",
+      "Bash(bin/rails routes *)",
+      "Bash(bin/rails runner *)",
+      "Bash(bundle exec rails db:migrate)",
+      "Bash(rails db:migrate)",
+      "Bash(ls *)",
+      "Bash(ls)",
+      "Bash(ll *)",
+      "Bash(cat *)",
+      "Bash(less *)",
+      "Bash(more *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(grep *)",
+      "Bash(sed *)",
+      "Bash(awk *)",
+      "Bash(cut *)",
+      "Bash(sort *)",
+      "Bash(uniq *)",
+      "Bash(wc *)",
+      "Bash(cp *)",
+      "Bash(touch *)",
+      "Bash(diff *)",
+      "Bash(tree *)",
+      "Bash(pwd *)",
+      "Bash(cd *)",
+      "Bash(basename *)",
+      "Bash(dirname *)",
+      "Bash(gem *)",
+      "Bash(bundle *)",
+      "Bash(jq *)",
+      "Read",
+      "Edit",
+      "Grep",
+      "Glob",
+      "TodoWrite",
+      "mcp__claude_ai_Atlassian__atlassianUserInfo",
+      "mcp__claude_ai_Atlassian__getAccessibleAtlassianResources",
+      "mcp__claude_ai_Atlassian__getConfluencePage",
+      "mcp__claude_ai_Atlassian__getConfluencePageDescendants",
+      "mcp__claude_ai_Atlassian__getJiraIssue",
+      "mcp__claude_ai_Atlassian__searchJiraIssuesUsingJql",
+      "mcp__claude_ai_Atlassian__searchAtlassian",
+      "Bash(git mv *)",
+      "Bash(git status)",
+      "Bash(git stash *)",
+      "Bash(git fetch *)",
+      "Bash(git rebase *)",
+      "Bash(git rev-parse *)",
+      "Bash(git grep *)",
+      "Bash(gh pr view)",
+      "Bash(bundle exec *)",
+      "Bash(bundle info *)",
+      "Bash(bundle show *)"
+    ],
+    "deny": [
+      "Bash(git push origin master)",
+      "Bash(git push * master*)",
+      "Bash(git push*master*)",
+      "Bash(git push*origin*master*)",
+      "Bash(git push*--force*)",
+      "Bash(rm -rf /*)",
+      "Bash(rm -rf /)",
+      "Bash(sudo rm -rf /*)",
+      "Bash(sudo rm -rf /)"
+    ],
+    "defaultMode": "auto"
+  },
+  "model": "opus",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude"
+          }
+        ]
+      }
+    ]
+  },
+  "worktree": {
+    "baseRef": "fresh"
+  },
+  "enabledPlugins": {
+    "activerecord@claude-ruby-marketplace": false,
+    "rspec@claude-ruby-marketplace": false,
+    "rpi@claude-ruby-marketplace": true,
+    "skill-creator@claude-plugins-official": false,
+    "ruby-lsp@claude-plugins-official": true,
+    "ast-grep@ast-grep-marketplace": false,
+    "worktrunk@worktrunk": true
+  },
+  "extraKnownMarketplaces": {
+    "ast-grep-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "ast-grep/agent-skill"
+      }
+    },
+    "worktrunk": {
+      "source": {
+        "source": "github",
+        "repo": "max-sixty/worktrunk"
+      }
+    }
+  },
+  "advisorModel": "opus",
+  "tui": "fullscreen",
+  "autoMemoryEnabled": false,
+  "theme": "light",
+  "editorMode": "normal",
+  "skipAutoPermissionPrompt": true
+}
