@@ -1,11 +1,12 @@
 [user]
 	name = Ferran Pelayo Monfort
 	email = ferran.pel.mon@gmail.com
+	signingkey = ferran.pel.mon@gmail.com
 [core]
 	editor = vim
-	pager = less -R
 	autocrlf = input
 	excludesfile = ~/.cvsignore
+	ignorecase = false
 [color]
 	diff = auto
 	status = auto
@@ -13,6 +14,7 @@
 	ui = true
 [merge]
 	tool = vimdiff
+	conflictStyle = zdiff3
 [push]
 	default = current
 [web]
@@ -33,7 +35,7 @@
 	s = status
 	w = whatchanged --pretty=myoneline --graph
 [pretty]
-  myoneline=%C(yellow)%h%C(reset) %C(auto)%as%C(reset) %s %C(yellow)%an%C(reset)%C(auto)%d%C(reset)
+	myoneline=%C(yellow)%h%C(reset) %C(auto)%as%C(reset) %s %C(yellow)%an%C(reset)%C(auto)%d%C(reset)
 [commit]
 	verbose = yes
 [sendemail]
