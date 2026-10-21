@@ -1,5 +1,5 @@
 {
-  "name": "fpelayo-mods",
+  "name": "my-mods",
   "owner": { "name": "Ferran Pelayo Monfort" },
   "plugins": [
     { "name": "context-bars", "source": "./context-bars" },
