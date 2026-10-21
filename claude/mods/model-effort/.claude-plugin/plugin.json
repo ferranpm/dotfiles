@@ -1,0 +1,9 @@
+{
+  "name": "model-effort",
+  "version": "0.2.2",
+  "description": "Pick the model and effort from the mod bar, which shows the pair in use",
+  "types": "./types/index.d.ts",
+  "author": {
+    "name": "Ferran Pelayo Monfort"
+  }
+}

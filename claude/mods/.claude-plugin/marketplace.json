@@ -2,6 +2,7 @@
   "name": "fpelayo-mods",
   "owner": { "name": "Ferran Pelayo Monfort" },
   "plugins": [
-    { "name": "context-bars", "source": "./context-bars" }
+    { "name": "context-bars", "source": "./context-bars" },
+    { "name": "model-effort", "source": "./model-effort" }
   ]
 }
