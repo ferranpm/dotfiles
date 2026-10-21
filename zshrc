@@ -67,6 +67,9 @@ alias aurain='sudo aura -Ax'
 alias aurare='sudo aura -Rns'
 alias aurase='aura -Aas'
 alias auraupg='sudo aura -Aux'
+alias bexec='bundle exec'
+alias baudit='bundle exec bundle-audit check --update'
+alias bopen='bundle open'
 alias cal='cal -3 -m'
 alias cd1='cd ../'
 alias cd2='cd ../../'
@@ -74,9 +77,11 @@ alias cd3='cd ../../../'
 alias cd4='cd ../../../../'
 alias dk='docker'
 alias dkc='docker compose'
+alias dk-clean-images='docker rmi $(docker images -f "dangling=true" -q)'
 alias e='$EDITOR'
 alias g='git'
 alias github='open $(git_remote_http_url)/tree/$(git_branch_name)'
+alias github='gh pr view --web'
 alias kcl='kubectl'
 alias l='ls -lh'
 alias ll='l -A'
@@ -89,7 +94,6 @@ alias pacse='pacman -Ss'
 alias pacupg='sudo pacman -Syu'
 alias psg='ps -e | grep'
 alias tf='terraform'
-alias bundle-audit='bundle exec bundle-audit check --update'
 
 ## FUNCTIONS ##
 insert-word() {
@@ -153,14 +157,17 @@ rm_tr_white () {
 zstyle ':completion:*' completer _oldlist _expand _complete _ignored _match _prefix
 zstyle ':completion:*' completions 1
 zstyle ':completion:*' glob 1
-zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' matcher-list '' '' '' ''
 zstyle ':completion:*' menu select
 zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*' substitute 1
 zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
-zstyle :compinstall filename '/Users/fpelayo/.zshrc'
+zstyle ':completion:*:descriptions' format '%F{yellow}[%d]%f'
+zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*:git-checkout:*' sort false
+zstyle :compinstall filename '/Users/fpelayo/.zsh/completion'
 
 autoload -Uz compinit
 compinit
