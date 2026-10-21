@@ -126,18 +126,11 @@
     "rpi@claude-ruby-marketplace": true,
     "skill-creator@claude-plugins-official": false,
     "ruby-lsp@claude-plugins-official": true,
-    "ast-grep@ast-grep-marketplace": false,
     "worktrunk@worktrunk": true,
     "context-bars@my-mods": true,
     "model-effort@my-mods": true
   },
   "extraKnownMarketplaces": {
-    "ast-grep-marketplace": {
-      "source": {
-        "source": "github",
-        "repo": "ast-grep/agent-skill"
-      }
-    },
     "worktrunk": {
       "source": {
         "source": "github",
