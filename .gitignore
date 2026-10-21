@@ -12,3 +12,5 @@ zsh/local.zsh
 *history*
 
 claude/
+# Karabiner
+automatic_backups/*
