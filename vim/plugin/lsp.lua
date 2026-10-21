@@ -27,14 +27,14 @@ vim.lsp.config('ruby_lsp', {
     },
   },
 })
-
 vim.lsp.enable('ruby_lsp')
 
-vim.lsp.config('ts_ls', {
-  on_attach = on_attach,
+-- Native TypeScript 7 language server (`tsc --lsp --stdio`). nvim-lspconfig
+-- prefers the project's node_modules/.bin/tsc and falls back to the one on $PATH.
+vim.lsp.config('tsc', {
   capabilities = capabilities,
 })
-vim.lsp.enable('ts_ls')
+vim.lsp.enable('tsc')
 
 vim.lsp.config('elixirls', {
   cmd = { "elixir-ls" };
