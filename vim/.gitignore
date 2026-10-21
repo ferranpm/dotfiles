@@ -1,0 +1,8 @@
+.netrwhist
+bundle/*
+view/*
+spell/*
+backups/
+undodir/
+undodir-vim/
+

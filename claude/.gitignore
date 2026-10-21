@@ -1,0 +1,57 @@
+# Ignore everything by default
+**
+
+# Top-level files
+!.gitignore
+!.lintstagedrc.mjs
+!.mcp.json
+!.prettierignore
+!.prettierrc.yml
+!CLAUDE.md
+!LICENSE.md
+!README.md
+!bun.lock
+!justfile
+!keybindings.json
+!package.json
+!pyproject.toml
+!pyrightconfig.json
+!ruff.toml
+!uv.lock
+
+# Directories
+!.agents/
+!.agents/commit.toml
+!.github/
+!.github/**
+!.husky/
+!.husky/**
+!.vscode/
+!.vscode/**
+!agents/
+!agents/**
+!commands/
+!commands/**
+!helpers/
+!helpers/**
+!hooks/
+!hooks/**
+!settings/
+!settings/**
+!skills/
+!skills/**
+
+# Re-ignore generated files inside allowed directories
+
+# directories
+__pycache__/
+node_modules/
+skills/.system/
+skills/synced/
+
+# files
+.DS_Store
+*.pyc
+*.log*
+.coverage
+.debug.jsonl

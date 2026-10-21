@@ -1,16 +1,7 @@
-vim/.netrwhist
-vim/bundle/*
-vim/view/*
-vim/spell/*
-vim/backups
-vim/undodir
-vim/undodir-vim
-
 zsh/local.zsh
 
+tags
 *cache*
 *history*
 
-claude/
-# Karabiner
-automatic_backups/*
+karabiner/automatic_backups/**
