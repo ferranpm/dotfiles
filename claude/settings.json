@@ -128,8 +128,8 @@
     "ruby-lsp@claude-plugins-official": true,
     "ast-grep@ast-grep-marketplace": false,
     "worktrunk@worktrunk": true,
-    "context-bars@fpelayo-mods": true,
-    "model-effort@fpelayo-mods": true
+    "context-bars@my-mods": true,
+    "model-effort@my-mods": true
   },
   "extraKnownMarketplaces": {
     "ast-grep-marketplace": {
@@ -144,10 +144,10 @@
         "repo": "max-sixty/worktrunk"
       }
     },
-    "fpelayo-mods": {
+    "my-mods": {
       "source": {
         "source": "directory",
-        "path": "/Users/fpelayo/.claude/mods"
+        "path": "~/.claude/mods"
       }
     }
   },
