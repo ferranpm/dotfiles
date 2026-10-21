@@ -1,0 +1,9 @@
+{
+  "name": "context-bars",
+  "version": "0.2.1",
+  "description": "Bars above the prompt showing how much of the context window this session uses, by category",
+  "types": "./types/index.d.ts",
+  "author": {
+    "name": "Ferran Pelayo Monfort"
+  }
+}
