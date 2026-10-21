@@ -63,10 +63,6 @@ bindkey -e '^[[1;5C' forward-word
 bindkey -e '^[[1;5D' backward-word
 
 ## ALIASES ##
-alias aurain='sudo aura -Ax'
-alias aurare='sudo aura -Rns'
-alias aurase='aura -Aas'
-alias auraupg='sudo aura -Aux'
 alias bexec='bundle exec'
 alias baudit='bundle exec bundle-audit check --update'
 alias bopen='bundle open'
@@ -87,13 +83,17 @@ alias l='ls -lh'
 alias ll='l -A'
 alias ls='ls --color=auto'
 alias pacin='sudo pacman -S'
-alias pacman='pacman --color=auto'
 alias pacre='sudo pacman -Rns'
 alias pacro='pacman -Qtdq && sudo pacman -Rns `pacman -Qtdq`'
 alias pacse='pacman -Ss'
 alias pacupg='sudo pacman -Syu'
 alias psg='ps -e | grep'
 alias tf='terraform'
+alias yayin='sudo yay -S'
+alias yayre='sudo yay -Rns'
+alias yayro='yay -Qtdq && sudo yay -Rns `yay -Qtdq`'
+alias yayse='yay -Ss'
+alias yayupg='sudo yay -Syu'
 
 ## FUNCTIONS ##
 insert-word() {
