@@ -167,7 +167,7 @@ zstyle ':completion:*:descriptions' format '%F{yellow}[%d]%f'
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*:git-checkout:*' sort false
-zstyle :compinstall filename '/Users/fpelayo/.zsh/completion'
+zstyle :compinstall filename '~/.zsh/completion'
 
 autoload -Uz compinit
 compinit
