@@ -89,11 +89,11 @@ alias pacse='pacman -Ss'
 alias pacupg='sudo pacman -Syu'
 alias psg='ps -e | grep'
 alias tf='terraform'
-alias yayin='sudo yay -S'
-alias yayre='sudo yay -Rns'
-alias yayro='yay -Qtdq && sudo yay -Rns `yay -Qtdq`'
+alias yayin='yay -S'
+alias yayre='yay -Rns'
+alias yayro='yay -Qtdq && yay -Rns `yay -Qtdq`'
 alias yayse='yay -Ss'
-alias yayupg='sudo yay -Syu'
+alias yayupg='yay -Syu'
 
 ## FUNCTIONS ##
 insert-word() {
