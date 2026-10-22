@@ -128,7 +128,8 @@
     "ruby-lsp@claude-plugins-official": true,
     "worktrunk@worktrunk": true,
     "context-bars@my-mods": true,
-    "model-effort@my-mods": true
+    "model-effort@my-mods": true,
+    "session-switcher@my-mods": true
   },
   "extraKnownMarketplaces": {
     "worktrunk": {

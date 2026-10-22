@@ -1,0 +1,1 @@
+{ "name": "session-switcher", "version": "0.2.0", "description": "List the Claude Code sessions running in tmux and switch to one's pane, on macOS or Linux", "types": "./types/index.d.ts" }

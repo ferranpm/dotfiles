@@ -3,6 +3,7 @@
   "owner": { "name": "Ferran Pelayo Monfort" },
   "plugins": [
     { "name": "context-bars", "source": "./context-bars" },
-    { "name": "model-effort", "source": "./model-effort" }
+    { "name": "model-effort", "source": "./model-effort" },
+    { "name": "session-switcher", "source": "./session-switcher" }
   ]
 }
